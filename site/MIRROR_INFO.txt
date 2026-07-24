@@ -1,20 +1,19 @@
 Static mirror of https://canadent.net
 Captured: 2026-07-24
-Updated: 2026-07-24 (full courses/products/index coverage)
 
-Included:
-- Home, About, Courses indexes (courses/, courses-2/, upcoming-courses/, previous-courses/)
-- Shop indexes (shop/, shop/page/1-3/)
-- All public product/course pages (29)
-- Product categories and tags
-- Events, portfolio, posts, and related public pages
-- Referenced upload images/PDFs and theme/plugin assets
+Security hardening:
+- Removed remote tracker/badge/analytics scripts (TrustedSite, GoDaddy wsimg,
+  Jetpack stats, Stripe.js, Woo analytics clients).
+- Neutralized hijack/spam doorway URL patterns (including *.shop/?utm_term=...).
+- Rewrote absolute https://canadent.net/... URLs to root-relative local paths
+  so the mirror does not phone home to the live WordPress site.
+- Added Content-Security-Policy on HTML pages: self-only scripts/styles/images,
+  connect-src none, frame-src none.
 
-Sanitization:
-- Removed remote tracker/badge/analytics scripts from live WordPress HTML:
-  TrustedSite, GoDaddy wsimg traffic scripts, Jetpack stats, Stripe.js
-- Normalized wget query-string filenames for static HTTP hosting
-- No PHP/webshell files (static HTML/CSS/JS/media only)
+Note: yx9belqoni.yx9belqoni.shop is a known malware-redirect domain used in
+WordPress redirect campaigns. It was not present as a stored string in the
+static files, but absolute live-site links could still load infected responses
+from production. Those live links are now localized/blocked.
 
-Browse:
+Browse offline:
   cd site && python3 -m http.server 8080
