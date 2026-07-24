@@ -1,34 +1,27 @@
-# Canadent
+# Canadent + ConfiDentist
 
-**Dentistry Education Platform**
+Combined static mirrors of:
 
-Static snapshot of [canadent.net](https://canadent.net) — CanaDent Education Center.
+- **Canadent** (`canadent/`) — https://canadent.net
+- **ConfiDentist** (`confidentist/`) — https://www.confidentist.ca
 
-## Browse the mirrored site
+Both brands share the same Toronto training centre (265 Rimrock Road) and are included here for offline/reference browsing.
 
-Open [`site/index.html`](site/index.html) in a browser, or serve the folder locally:
+## Browse locally
 
 ```bash
-cd site && python3 -m http.server 8080
+python3 -m http.server 8080 --bind 0.0.0.0
 ```
 
-Then visit http://localhost:8080
+Then open:
 
-## What's included
+- Hub: http://127.0.0.1:8080/
+- Canadent: http://127.0.0.1:8080/canadent/
+- ConfiDentist: http://127.0.0.1:8080/confidentist/
 
-- Home, About, Courses, Shop, Events, and related public pages
-- Product/course pages from the live catalog
-- Theme, plugin, and upload assets referenced by those pages
+## Notes
 
-Remote trackers/analytics from the live WordPress HTML were stripped for a safer static copy.
-
-See [`site/MIRROR_INFO.txt`](site/MIRROR_INFO.txt) for capture and sanitization details.
-
-## About Canadent
-
-Canadent provides continuing education resources for dental professionals across Canada, including courses, workshops, and event registration.
-
-## Source
-
-Live site: https://canadent.net  
-Original stack: WordPress + WooCommerce (Avada theme)
+- These are static HTML snapshots, not runnable WordPress installs.
+- Remote trackers/analytics and known redirect-malware URL patterns were stripped.
+- Absolute live-site URLs were rewritten to local root-relative paths.
+- Cart/checkout/account/forms will not function dynamically.
