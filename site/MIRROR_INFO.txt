@@ -1,19 +1,20 @@
 Static mirror of https://canadent.net
 Captured: 2026-07-24
-Method: wget recursive mirror from public sitemap URLs + page assets
+Updated: 2026-07-24 (full courses/products/index coverage)
 
-Sanitization (2026-07-24):
-- Removed remote tracker / badge / analytics scripts that shipped with the live
-  WordPress HTML, including:
-  - cdn.trustedsite.com (TrustedSite badge)
-  - img1.wsimg.com (GoDaddy traffic / TTI scripts)
-  - stats.wp.com / pixel.wp.com (Jetpack stats)
-  - js.stripe.com and related Stripe browser SDKs
-- Normalized wget query-string filenames so assets can be served over HTTP
-- No PHP/webshells were present in the mirror (static HTML/CSS/JS/media only)
+Included:
+- Home, About, Courses indexes (courses/, courses-2/, upcoming-courses/, previous-courses/)
+- Shop indexes (shop/, shop/page/1-3/)
+- All public product/course pages (29)
+- Product categories and tags
+- Events, portfolio, posts, and related public pages
+- Referenced upload images/PDFs and theme/plugin assets
 
-Notes:
-- This is a static HTML snapshot for offline viewing/reference.
-- It is not a runnable WordPress/WooCommerce installation.
-- Dynamic features (cart, checkout, account, forms) will not function.
-- Open site/index.html in a browser, or serve the folder locally.
+Sanitization:
+- Removed remote tracker/badge/analytics scripts from live WordPress HTML:
+  TrustedSite, GoDaddy wsimg traffic scripts, Jetpack stats, Stripe.js
+- Normalized wget query-string filenames for static HTTP hosting
+- No PHP/webshell files (static HTML/CSS/JS/media only)
+
+Browse:
+  cd site && python3 -m http.server 8080
