@@ -20,7 +20,9 @@ Then visit http://localhost:8080
 - Product/course pages from the live catalog
 - Theme, plugin, and upload assets referenced by those pages
 
-See [`site/MIRROR_INFO.txt`](site/MIRROR_INFO.txt) for capture details.
+Remote trackers/analytics from the live WordPress HTML were stripped for a safer static copy.
+
+See [`site/MIRROR_INFO.txt`](site/MIRROR_INFO.txt) for capture and sanitization details.
 
 ## About Canadent
 
