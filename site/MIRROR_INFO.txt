@@ -1,0 +1,16 @@
+Static mirror of https://canadent.net
+Captured: 2026-07-24
+
+Security hardening:
+- Removed remote tracker/badge/analytics scripts (TrustedSite, GoDaddy traffic,
+  Jetpack stats, Stripe.js, Woo analytics clients).
+- Neutralized known WordPress redirect-malware doorway URL patterns
+  (random *.shop spam redirect hosts with utm_term payloads).
+- Rewrote absolute live-site URLs to root-relative local paths so the mirror
+  does not request the production WordPress site at runtime.
+- Added Content-Security-Policy on HTML pages: self-only scripts/styles/images,
+  connect-src none, frame-src none.
+- Verified no remote <script src="https://..."> tags remain.
+
+Browse offline:
+  cd site && python3 -m http.server 8080
