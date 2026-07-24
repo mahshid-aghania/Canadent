@@ -2,26 +2,31 @@
 
 **Dentistry Education Platform**
 
-Canadent is a platform dedicated to providing high-quality continuing education (CE) resources for dental professionals across Canada.
+Static snapshot of [canadent.net](https://canadent.net) — CanaDent Education Center.
 
-## About
+## Browse the mirrored site
 
-This project supports dentists, hygienists, and dental assistants with access to:
+Open [`site/index.html`](site/index.html) in a browser, or serve the folder locally:
 
-- Continuing education courses and workshops
-- CE credit tracking
-- Event registration and scheduling
-- Location-based course discovery
+```bash
+cd site && python3 -m http.server 8080
+```
 
-## Tech Stack
+Then visit http://localhost:8080
 
-- WordPress + WooCommerce (Avada theme)
-- Custom product tabs for course information (Date & Time, Format, CE Credits, Fee, Location)
+## What's included
 
-## Getting Started
+- Home, About, Courses, Shop, Events, and related public pages
+- Product/course pages from the live catalog
+- Theme, plugin, and upload assets referenced by those pages
 
-Coming soon.
+See [`site/MIRROR_INFO.txt`](site/MIRROR_INFO.txt) for capture details.
 
-## Contact
+## About Canadent
 
-For inquiries, please reach out via the repository owner's GitHub profile.
+Canadent provides continuing education resources for dental professionals across Canada, including courses, workshops, and event registration.
+
+## Source
+
+Live site: https://canadent.net  
+Original stack: WordPress + WooCommerce (Avada theme)

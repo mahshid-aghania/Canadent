@@ -1,0 +1,8 @@
+Static mirror of https://canadent.net
+Captured: 2026-07-24
+Method: wget recursive mirror from public sitemap URLs + page assets
+Notes:
+- This is a static HTML snapshot for offline viewing/reference.
+- It is not a runnable WordPress/WooCommerce installation.
+- Dynamic features (cart, checkout, account, forms, search) will not function.
+- Open site/index.html in a browser to browse locally.
