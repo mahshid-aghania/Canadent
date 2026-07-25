@@ -1,0 +1,58 @@
+.awcdp-deposits-wrapper .awcdp-deposits-option{background:#fff;border-radius:7px;width:290px;border:1px solid rgba(0,0,0,0.1);margin-bottom:20px}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio{padding:15px;border-bottom:1px solid rgba(0,0,0,0.1);position:relative}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposit-radio{position:absolute;opacity:0}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposit-radio+.awcdp-radio-label{cursor:pointer;font-weight:500;font-size:14px;line-height:16px;color:#000000}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposit-radio+.awcdp-radio-label:before{content:"";background:#fff;border-radius:100%;border:1px solid #bfbfbf;display:inline-block;width:20px;height:20px;position:relative;top:3px;margin-right:1em;vertical-align:bottom;cursor:pointer;text-align:center;transition:all 250ms ease}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposit-radio:checked+.awcdp-radio-label:before{background-color:#fff;box-shadow:inset 0 0 0 4px #2F80ED}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposit-radio:focus+.awcdp-radio-label:before{outline:none;border-color:#2F80ED}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposit-radio:disabled+.awcdp-radio-label:before{box-shadow:inset 0 0 0 4px #fff;border-color:#bfbfbf;background:#bfbfbf}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposit-radio+.awcdp-radio-label:empty:before{margin-right:0}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description{padding-left:35px;font-size:13px;line-height:15px;color:#E48128;font-weight:400;margin-top:3px}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description #awcdp-deposit-amount{font-weight:bold}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan{margin-left:-35px}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-toggle{cursor:pointer;display:flex}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-toggle .awcdp-tick{float:left}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-toggle .awcdp-plan-radio{opacity:0}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-toggle.awcdp-active .awcdp-tick{display:inline-block;width:30px;height:30px;background:url(../images/greentik.svg) no-repeat;background-size:contain;background-position:center;margin-right:15px}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-plan-description{font-size:14px;line-height:20px;color:rgba(0,0,0,0.45);margin:15px 0}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-plan-details{display:none}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-plan-details table{margin:17px 0;border:0}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-plan-details table th{font-size:14px;line-height:16px;color:#000000;opacity:0.75;border:0;border-bottom:1px solid rgba(0,0,0,0.15);padding:16px 0;font-weight:400}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-plan-details table td{border:0;font-size:14px;line-height:16px;color:#000000;padding:16px 0;font-weight:400}.awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-deposit-checkout.awcdp-plan-details{display:block}.awcdp-deposits-wrapper .awcdp-deposits-option .pay-deposit.awcdp-radio{background:rgba(51,51,51,0.02)}.awcdp-deposits-wrapper .awcdp-wide{width:100%}.awcdp-deposits-wrapper .awcdp-payment-plan ul{margin:0;list-style:none}.awcdp-deposits-wrapper .awcdp-payment-plan ul li{border-radius:16px;padding:22px;margin:25px 0;border:1px solid rgba(0,0,0,0.07)}.awcdp-deposits-wrapper .awcdp-payment-plan .awcdp-plan-title .awcdp-plan-label{font-size:18px;line-height:21px;color:#000000}.awcdp-deposits-wrapper .awcdp-payment-plan .awcdp-plan-title .awcdp-plan-deposit{font-size:14px;line-height:16px;color:#000000;margin-top:4px}.awcdp-deposits-wrapper .awcdp-payment-plan .awcdp-plan-radio{height:0;width:0;float:left}.awcdp-deposit-checkout-button .awcdp-plan-description{display:none}body.theme-sydney .product-gallery-summary .sydney-single-addtocart-wrapper{display:block}body.theme-twentytwentyone .awcdp-deposits-wrapper .awcdp-deposits-option .awcdp-radio .awcdp-deposits-description .awcdp-payment-plan .awcdp-plan-details table th{text-align:left}body.theme-neve.woocommerce.single .entry-summary>form.cart{display:block}body.theme-neve .awcdp-deposits-wrapper .awcdp-payment-plan ul li{list-style:none!important}body.theme-popularfx .woocommerce td.product-name dl.variation dd p{margin-top:0}body.theme-popularfx .shop_table.woocommerce-checkout-review-order-table tr td{text-align:left}body.theme-popularfx table.woocommerce-table.awcdp_deposits_summary th{text-align:left}
+
+/* ============================================================
+ * Custom Deposit Amount – frontend styles
+ * ============================================================ */
+
+.awcdp-custom-amount-wrap {
+    margin: 8px 0 4px;
+}
+
+.awcdp-custom-amount-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.awcdp-custom-deposit-input {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    padding: 6px 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.awcdp-custom-deposit-input:focus {
+    border-color: #7f54b3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(127,84,179,0.15);
+}
+
+.awcdp-custom-deposit-input.awcdp-invalid,
+.awcdp-custom-deposit-input:invalid {
+    border-color: #cc0000;
+}
+
+.awcdp-custom-amount-hint {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.82em;
+    color: #555;
+}
+
+.awcdp-custom-amount-error {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.85em;
+    color: #cc0000;
+}
+
+/* Checkout mode variant */
+.awcdp-checkout-custom-amount .awcdp-custom-deposit-input {
+    max-width: 280px;
+}
