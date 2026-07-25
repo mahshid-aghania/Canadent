@@ -128,13 +128,92 @@ var woocommerce_params = {"ajax_url":"#","wc_ajax_url":"/?wc-ajax=%%endpoint%%",
 <body class="home wp-singular page-template page-template-100-width page-template-100-width-php page page-id-2082 wp-custom-logo wp-theme-Avada theme-Avada woocommerce-no-js tribe-no-js fusion-image-hovers fusion-pagination-sizing fusion-button_type-flat fusion-button_span-yes fusion-button_gradient-linear avada-image-rollover-circle-no avada-image-rollover-yes avada-image-rollover-direction-fade dont-animate fusion-body ltr fusion-sticky-header no-tablet-sticky-header no-mobile-sticky-header no-mobile-slidingbar fusion-disable-outline fusion-sub-menu-fade mobile-logo-pos-left layout-wide-mode avada-has-boxed-modal-shadow-none layout-scroll-offset-full avada-has-zero-margin-offset-top fusion-top-header menu-text-align-center fusion-woo-product-design-classic fusion-woo-shop-page-columns-4 fusion-woo-related-columns-4 fusion-woo-archive-page-columns-3 avada-has-woo-gallery-disabled woo-sale-badge-circle woo-outofstock-badge-top_bar mobile-menu-design-modern fusion-hide-pagination-text fusion-header-layout-v3 avada-responsive avada-footer-fx-none avada-menu-highlight-style-bar fusion-search-form-classic fusion-main-menu-search-dropdown fusion-avatar-square avada-dropdown-styles avada-blog-layout-large avada-blog-archive-layout-grid avada-ec-not-100-width avada-ec-meta-layout-sidebar avada-header-shadow-no avada-menu-icon-position-left avada-has-megamenu-shadow avada-has-mainmenu-dropdown-divider avada-has-pagetitle-100-width avada-has-100-footer avada-has-titlebar-hide avada-has-footer-widget-bg-image avada-header-border-color-full-transparent avada-social-full-transparent avada-has-transparent-timeline_color avada-has-pagination-padding avada-flyout-menu-direction-top avada-ec-views-v2">
 <div id="page">
 
-<div id="header" role="banner">
-	<div id="headerimg">
-		<h1><a href="slide-page/home/index.html">Canadent</a></h1>
-		<div class="description">CanaDent Education Center</div>
-	</div>
-</div>
-<hr />
+<style id="canadent-local-navbar">
+  .canadent-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1.5rem;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(19, 34, 56, 0.1);
+    box-shadow: 0 8px 24px rgba(19, 34, 56, 0.06);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  .canadent-navbar__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: #132238;
+  }
+  .canadent-navbar__brand img {
+    height: 42px;
+    width: auto;
+    display: block;
+  }
+  .canadent-navbar__brand span {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .canadent-navbar__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .canadent-navbar__links a {
+    text-decoration: none;
+    color: #132238;
+    font-size: 0.98rem;
+    font-weight: 600;
+    padding: 0.35rem 0;
+    border-bottom: 2px solid transparent;
+  }
+  .canadent-navbar__links a:hover,
+  .canadent-navbar__links a[aria-current="page"] {
+    color: #0b6e4f;
+    border-bottom-color: #0b6e4f;
+  }
+  .canadent-navbar__links a.is-cta {
+    background: #0b6e4f;
+    color: #fff !important;
+    border-bottom: none !important;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+  }
+  .canadent-navbar__links a.is-cta:hover {
+    background: #095a41;
+  }
+  @media (max-width: 640px) {
+    .canadent-navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0.85rem 1rem;
+    }
+  }
+</style>
+<header class="canadent-navbar" role="banner">
+  <a class="canadent-navbar__brand" href="/canadent/">
+    <img src="/canadent/wp-content/uploads/2022/08/Artboard-20@72x-1-300x94.png" alt="Canadent" />
+    <span>Canadent</span>
+  </a>
+  <nav aria-label="Primary">
+    <ul class="canadent-navbar__links">
+      <li><a href="/canadent/" aria-current="page">Home</a></li>
+      <li><a class="is-cta" href="/canadent/courses-2/">Courses</a></li>
+      <li><a href="/canadent/shop/">Shop</a></li>
+      <li><a href="/canadent/about-us-2/">About</a></li>
+    </ul>
+  </nav>
+</header>
 <section id="content" class="full-width">
 					<div id="post-2082" class="post-2082 page type-page status-publish hentry">
 			<span class="entry-title rich-snippet-hidden">Home Page</span><span class="vcard rich-snippet-hidden"><span class="fn"><a href="/canadent/author/alireza-khk1993gmail-com/index.html" title="Posts by Alireza Khaksar" rel="author">Alireza Khaksar</a></span></span><span class="updated rich-snippet-hidden">2026-07-17T11:15:03-04:00</span>						<div class="post-content">
