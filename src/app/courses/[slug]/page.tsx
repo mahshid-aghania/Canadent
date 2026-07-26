@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { courses, getCourse } from "@/lib/courses";
@@ -81,6 +82,22 @@ export default async function CourseDetailPage({ params }: Props) {
           )}
         </div>
       </section>
+
+      {/* Course image */}
+      {course.image && (
+        <div className="max-w-7xl mx-auto px-4 pt-10">
+          <div className="relative w-full max-w-xl rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src={course.image}
+              alt={course.title}
+              width={800}
+              height={600}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
+        </div>
+      )}
 
       {/* Body */}
       <div className="max-w-7xl mx-auto px-4 py-12 grid lg:grid-cols-[1fr_360px] gap-10">

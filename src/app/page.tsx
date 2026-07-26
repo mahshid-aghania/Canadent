@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { courses } from "@/lib/courses";
 import {
   CheckCircle,
@@ -311,10 +312,22 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredCourses.map((course) => (
               <Link key={course.slug} href={`/courses/${course.slug}`} className="card block overflow-hidden group">
-                {/* Category banner */}
-                <div className="px-5 py-3 text-xs font-semibold tracking-wide uppercase text-white" style={{ background: "#1b3a8a" }}>
-                  {course.category}
-                </div>
+                {/* Image or category banner */}
+                {course.image ? (
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                    <Image
+                      src={course.image}
+                      alt={course.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                ) : (
+                  <div className="px-5 py-3 text-xs font-semibold tracking-wide uppercase text-white" style={{ background: "#1b3a8a" }}>
+                    {course.category}
+                  </div>
+                )}
                 <div className="p-6">
                   <h3 className="font-heading font-bold text-[#0f2150] text-lg leading-snug mb-2 group-hover:text-[#1b3a8a] transition-colors">
                     {course.title}

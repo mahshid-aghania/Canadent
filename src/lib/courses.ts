@@ -14,6 +14,7 @@ export type Course = {
   status: "sold-out" | "available" | "upcoming";
   category: string;
   format?: string;
+  image?: string;
   description: string;
   highlights?: string[];
   schedule?: { day: string; topic: string }[];
@@ -35,6 +36,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Endodontics",
     format: "In-Person Hands-On",
+    image: "/course-endo-general.png",
     description:
       "A comprehensive full-day endodontics course designed specifically for general dentists. This course covers everything from proper access cavity preparation through to working length determination, canal instrumentation, and obturation. Led by a certified endodontist, participants will develop the confidence and skills to handle a wider range of endo cases in their own practice.",
     highlights: [
@@ -59,6 +61,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Practice Management",
     format: "Seminar",
+    image: "/course-financial-steps.png",
     description:
       "A practical, insight-driven session focused on real financial decisions dentists face in their first years entering practice as associates. The course covers managing debt effectively while building financial growth and protecting your income and future. Limited seating ensures an interactive and personal learning experience.",
     highlights: [

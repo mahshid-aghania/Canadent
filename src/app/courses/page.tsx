@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { courses, categories } from "@/lib/courses";
 import { BookOpen, MapPin, Calendar, User, ArrowRight } from "lucide-react";
@@ -78,18 +79,30 @@ export default function CoursesPage() {
                 href={`/courses/${course.slug}`}
                 className="card block overflow-hidden group"
               >
-                {/* Category banner */}
-                <div
-                  className="px-5 py-3 flex items-center justify-between"
-                  style={{ background: "#1b3a8a" }}
-                >
-                  <span className="text-xs font-semibold tracking-wide uppercase text-white">
-                    {course.category}
-                  </span>
-                  {course.format && (
-                    <span className="text-[10px] text-white/50">{course.format}</span>
-                  )}
-                </div>
+                {/* Image or category banner */}
+                {course.image ? (
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                    <Image
+                      src={course.image}
+                      alt={course.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="px-5 py-3 flex items-center justify-between"
+                    style={{ background: "#1b3a8a" }}
+                  >
+                    <span className="text-xs font-semibold tracking-wide uppercase text-white">
+                      {course.category}
+                    </span>
+                    {course.format && (
+                      <span className="text-[10px] text-white/50">{course.format}</span>
+                    )}
+                  </div>
+                )}
 
                 <div className="p-6">
                   <h2 className="font-heading font-bold text-[#0f2150] text-lg leading-snug mb-1 group-hover:text-[#1b3a8a] transition-colors">
