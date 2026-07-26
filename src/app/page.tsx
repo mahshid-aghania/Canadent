@@ -148,6 +148,46 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FEATURED COURSE BANNER ── */}
+      <section className="py-14 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 items-center rounded-2xl overflow-hidden shadow-xl" style={{ background: "linear-gradient(135deg, #0f2150 0%, #1b3a8a 100%)" }}>
+            {/* Image */}
+            <div className="relative w-full" style={{ minHeight: "380px" }}>
+              <Image
+                src="/course-financial-steps.png"
+                alt="Your First Financial Steps as a New Dentist"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            </div>
+            {/* Text */}
+            <div className="p-8 lg:p-12">
+              <span className="section-label mb-3 block">Featured Course — Free</span>
+              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
+                Your First Financial Steps as a New Dentist
+              </h2>
+              <p className="text-white/70 leading-relaxed mb-6">
+                Essential financial strategies for newly licensed dentists entering real-world
+                practice — at no cost. 2 CE Credits included.
+              </p>
+              <ul className="space-y-2 text-sm text-white/65 mb-8">
+                <li>📅 Sunday, May 31 · 11:00 AM – 2:00 PM</li>
+                <li>📍 20 Cachet Woods Ct., Markham</li>
+                <li>👤 Mohammad Hossein Mohammadi, Financial Advisor</li>
+                <li>🎓 2 CE Credits (Type 3)</li>
+              </ul>
+              <Link href="/courses/your-first-financial-steps-as-a-dentist" className="btn-primary inline-flex">
+                Learn More
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── WHY CHOOSE CANADENT ── */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
