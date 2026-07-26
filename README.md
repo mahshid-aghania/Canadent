@@ -19,6 +19,18 @@ Then open:
 - Canadent: http://127.0.0.1:8080/canadent/
 - ConfiDentist: http://127.0.0.1:8080/confidentist/
 
+## Canadent mirror
+
+Full static copy of https://canadent.net including:
+
+- Home with Avada header menus (Home, Courses, My account, Enrolment Agreement, Cart, Contact Us)
+- Courses gallery with product images/links
+- Shop + product pages
+- My Account (login UI + offline section navigation)
+- Cart / Checkout / Privacy / About / Events
+
+See `canadent/MIRROR_INFO.txt` for security notes.
+
 ## Notes
 
 - These are static HTML snapshots, not runnable WordPress installs.
