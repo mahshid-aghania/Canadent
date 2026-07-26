@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, Phone, ShoppingCart, User } from "lucide-react";
 
@@ -48,23 +49,15 @@ export default function Header() {
       <div style={{ background: "#1b3a8a" }} className="px-4 shadow-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex items-center gap-2">
-              <div
-                className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm"
-                style={{ background: "#c9a84c", color: "#0f2150" }}
-              >
-                CD
-              </div>
-              <div>
-                <div className="font-heading text-lg font-bold text-white leading-none">
-                  CanaDent
-                </div>
-                <div className="text-[10px] text-[#c9a84c] uppercase tracking-widest leading-none">
-                  Education Center
-                </div>
-              </div>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="CanaDent Education Center"
+              width={160}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}

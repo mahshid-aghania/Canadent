@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { NewsletterForm } from "@/components/ContactForm";
 
@@ -25,21 +26,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-2 mb-5">
-            <div
-              className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm shrink-0"
-              style={{ background: "#c9a84c", color: "#0f2150" }}
-            >
-              CD
-            </div>
-            <div>
-              <div className="font-heading text-lg font-bold text-white leading-none">
-                CanaDent
-              </div>
-              <div className="text-[10px] text-[#c9a84c] uppercase tracking-widest">
-                Education Center
-              </div>
-            </div>
+          <div className="mb-5">
+            <Image
+              src="/logo.png"
+              alt="CanaDent Education Center"
+              width={160}
+              height={50}
+              className="h-10 w-auto object-contain brightness-0 invert"
+            />
           </div>
           <p className="text-sm leading-relaxed text-white/60 mb-5">
             Inspired by excellence &amp; innovation. CanaDent Education Center offers world-class

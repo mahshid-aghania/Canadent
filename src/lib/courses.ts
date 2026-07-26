@@ -15,6 +15,7 @@ export type Course = {
   category: string;
   format?: string;
   image?: string;
+  posterImage?: string;
   description: string;
   highlights?: string[];
   schedule?: { day: string; topic: string }[];
@@ -36,7 +37,8 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Endodontics",
     format: "In-Person Hands-On",
-    image: "/course-endo-general.png",
+    image: "/course-endo-general.png",   // user-supplied screenshot (kept as primary)
+    posterImage: "/course-endo-poster.png",
     description:
       "A comprehensive full-day endodontics course designed specifically for general dentists. This course covers everything from proper access cavity preparation through to working length determination, canal instrumentation, and obturation. Led by a certified endodontist, participants will develop the confidence and skills to handle a wider range of endo cases in their own practice.",
     highlights: [
@@ -63,6 +65,7 @@ export const courses: Course[] = [
     format: "Seminar",
     image: "/course-financial-steps.png",
     description:
+
       "A practical, insight-driven session focused on real financial decisions dentists face in their first years entering practice as associates. The course covers managing debt effectively while building financial growth and protecting your income and future. Limited seating ensures an interactive and personal learning experience.",
     highlights: [
       "Debt management strategies for early-career dentists",
@@ -85,6 +88,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Endodontics",
     format: "Online Lecture",
+    image: "/course-overcoming-curvatures.jpeg",
     description:
       "An advanced online lecture delivering practical, step-by-step clinical insights based on real cases for managing some of the most challenging situations in endodontics — severely curved canals and ledged root canal systems. Dr. Kalantar Motamedi shares his unique and innovative method for bypassing severe ledges, along with hybrid and crown-down shaping approaches applicable in daily practice.",
     highlights: [
@@ -109,6 +113,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Oral Surgery / Periodontics",
     format: "Hybrid",
+    image: "/course-post-extraction.jpeg",
     description:
       "An evidence-based program on socket grafting and alveolar ridge preservation for implant site preparation. The course covers bone graft biomaterials, barrier membranes, suturing techniques, guided bone regeneration, ridge augmentation, and complication management. The in-person session includes hands-on practice on simulated models.",
     highlights: [
@@ -139,6 +144,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Endodontics",
     format: "In-Person Hands-On",
+    image: "/course-root-to-resolution.jpg",
     description:
       "A master class for general dentists focusing on advanced endodontic techniques and real-world complication management. The program integrates didactic sessions with hands-on practice on extracted teeth in a small-group format (2 students per table, 18 participants total), ensuring personalized instruction from an experienced endodontist.",
     highlights: [
@@ -160,6 +166,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Technology & Innovation",
     format: "Seminar",
+    image: "/course-ai-dentistry.png",
     description:
       "A forward-looking seminar exploring artificial intelligence's transformative role in modern dentistry. Presentations from innovators, industry leaders, and academics focus on dental procedures using AI — including diagnostic applications, treatment improvement, machine learning for radiology, and AI's evolving role in healthcare delivery.",
     highlights: [
@@ -182,6 +189,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Implant Dentistry",
     format: "Lecture + Workshop",
+    image: "/course-complications-implant.jpeg",
     description:
       "A focused program on dental implant complications — how to prevent them and how to manage them when they occur. Through lectures and panel discussions, attendees gain practical strategies for avoiding the most common implant failures, with an optional hands-on workshop component for full CE credit registration.",
     highlights: [
@@ -206,6 +214,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Implant Dentistry",
     format: "Seminar Series",
+    image: "/course-fundamentals-implant.jpg",
     description:
       "A comprehensive 6-weekend implant program covering the full spectrum of implant dentistry from foundational principles to advanced surgical and prosthetic techniques. Taught by a multidisciplinary team of renowned specialists, this intensive series is designed for dentists and dental staff seeking to integrate implant services into their practice.",
     highlights: [
@@ -228,6 +237,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Oral Surgery",
     format: "In-Person",
+    image: "/course-oral-surgery.jpg",
     description:
       "A five-day intensive oral surgery program designed to elevate the surgical competencies of general dentists. Each day targets a distinct area of oral surgery, combining didactic instruction with clinical application.",
     schedule: [
@@ -250,6 +260,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Practice Management",
     format: "Seminar",
+    image: "/course-office-management.jpg",
     description:
       "A multi-speaker seminar uncovering the operational, financial, and human-resource strategies behind a thriving dental practice. Industry leaders and experienced clinicians share real-world insights on team management, patient experience, marketing, and financial performance.",
     highlights: [
@@ -277,6 +288,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Implant Dentistry",
     format: "Lecture + Hands-On Workshop",
+    image: "/course-all-on-4.jpg",
     description:
       "A two-day program with Professor Paulo Malo — the originator of the All-on-4® Treatment Concept — reviewing the evidence-based principles of full-arch rehabilitation. The course covers the evolution of the MALO protocol, new products including zygomatic and short implants, and clinical applications for the most complex edentulous cases.",
     highlights: [
@@ -299,6 +311,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Endodontics",
     format: "In-Person",
+    image: "/course-root-canal.jpg",
     description:
       "A practical half-day seminar with Dr. Farzad Salehipour, FRCD(C) — a certified endodontist and Fellow of the Royal College of Dentists of Canada with specialty training from Tehran University and the Dental Specialty Assessment and Training Program at the University of Toronto. The course simplifies the cleaning and shaping phase of root canal therapy for general dentists.",
     highlights: [
@@ -321,6 +334,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Cosmetic Dentistry",
     format: "In-Person Hands-On",
+    image: "/course-anatomy-layering.jpg",
     description:
       "A full-day hands-on course with Dr. Sandra Khodabandelou exploring the artistic and technical dimensions of composite veneer fabrication. Participants develop a deep understanding of tooth anatomy and master the layering technique to achieve lifelike esthetic results with direct composite materials.",
     highlights: [
@@ -343,6 +357,7 @@ export const courses: Course[] = [
     status: "sold-out",
     category: "Implant Dentistry",
     format: "Lecture + Hands-On",
+    image: "/course-arch-seminar.png",
     description:
       "A full-day seminar with Dr. Ammar Taimish — NYU College of Dentistry graduate with 20+ years of implant clinical experience — covering the full arch implant-supported restoration workflow. Learn how digital integration makes full-arch procedures less time-consuming, more predictable, and less traumatic for patients. Includes hands-on practice using a typodont.",
     highlights: [
