@@ -1,0 +1,49 @@
+
+.depicter-revert.depicter-4 .depicter-layers-wrapper{
+	padding-left:15px;
+	padding-right:15px;
+}
+.depicter-revert .depicter-4-element-42{
+	font-size:18px;
+	text-align:center;
+	color:#FFF;
+	font-family:"Roboto";
+	font-weight:700;
+	background-color:#4980F5;
+	border-radius:20px;
+}
+.depicter-revert .depicter-4-element-36{
+	font-size:18px;
+	text-align:center;
+	color:#FFF;
+	font-family:"Roboto";
+	font-weight:700;
+	background-color:#4980F5;
+	border-radius:20px;
+}
+.depicter-revert .depicter-4-section-1 .depicter-section-background{
+	background-color:#FFF;
+}
+
+/***** Mobile *****/
+@media screen and (max-width: 767px){
+
+.depicter-revert .depicter-4-element-42{
+	font-size:16px;
+}
+.depicter-revert .depicter-4-element-36{
+	font-size:16px;
+}
+
+}
+/*** Custom styles ***/
+#parent_for_slider{
+position:relative;
+}
+
+#slider{
+position:absolute;
+width:120% !important;
+height:auto;
+}
+

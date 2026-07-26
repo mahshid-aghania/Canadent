@@ -1,0 +1,19 @@
+Static mirror of https://canadent.net
+Refreshed: 2026-07-26
+
+Includes:
+- Full Avada header menus (Home, Courses, My account, Enrolment Agreement, Cart, Contact Us)
+- Courses page with product image gallery links
+- Shop and product pages
+- My Account (login UI + static section navigation; live auth unavailable offline)
+- Cart / Checkout / Privacy / About / Events
+
+Security:
+- Tracker scripts stripped (TrustedSite, GoDaddy wsimg, Jetpack stats, Stripe.js)
+- Redirect-malware / obfuscated doorway scripts removed
+- Absolute canadent.net URLs rewritten to /canadent/... local paths
+- Content-Security-Policy: self scripts/styles/images; connect-src none
+
+Serve from repo root:
+  python3 -m http.server 8080 --bind 0.0.0.0
+  http://127.0.0.1:8080/canadent/

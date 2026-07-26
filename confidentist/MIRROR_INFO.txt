@@ -1,0 +1,5 @@
+Static mirror of https://www.confidentist.ca
+Captured: 2026-07-24
+Includes public pages, products, portfolio/FAQ archives, and referenced assets.
+Sanitized: remote trackers removed, hijack *.shop patterns neutralized,
+absolute confidentist.ca URLs rewritten to local paths, CSP added.
