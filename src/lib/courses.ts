@@ -16,6 +16,7 @@ export type Course = {
   format?: string;
   image?: string;
   posterImage?: string;
+  instructorPhoto?: string;
   description: string;
   highlights?: string[];
   schedule?: { day: string; topic: string }[];
@@ -41,6 +42,7 @@ export const courses: Course[] = [
     category: "Restorative Dentistry",
     format: "In-Person Lecture",
     image: "/course-advanced-adhesive.png",
+    instructorPhoto: "/dr-amin-asadollahi.png",
     description:
       "An intensive 6-hour foundational lecture establishing comprehensive knowledge in modern adhesive dentistry. This program covers rubber dam isolation dynamics, dental histology, caries and crack management, dentin bonding chemistry across all generations, Immediate Dentin Sealing (IDS), Deep Margin Elevation (DME), C-factor and polymerization stress control, and evidence-based restorative workflow decisions. Designed as a prerequisite blueprint before hands-on modules, this lecture gives participants the scientific foundation to achieve predictable, sensitivity-free adhesive restorations in daily practice.",
     highlights: [

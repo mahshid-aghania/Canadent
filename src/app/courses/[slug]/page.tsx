@@ -166,12 +166,24 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
           <section className="mb-10">
             <h2 className="font-heading text-2xl font-bold text-[#0f2150] mb-5">Instructor</h2>
             <div className="flex items-start gap-4 card p-5">
-              <div
-                className="w-14 h-14 rounded-full shrink-0 flex items-center justify-center text-xl font-bold text-white"
-                style={{ background: "#1b3a8a" }}
-              >
-                {course.instructor.charAt(0)}
-              </div>
+              {course.instructorPhoto ? (
+                <div className="w-14 h-14 rounded-full shrink-0 overflow-hidden border-2 border-[#c9a84c]/30">
+                  <Image
+                    src={course.instructorPhoto}
+                    alt={course.instructor}
+                    width={56}
+                    height={56}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div
+                  className="w-14 h-14 rounded-full shrink-0 flex items-center justify-center text-xl font-bold text-white"
+                  style={{ background: "#1b3a8a" }}
+                >
+                  {course.instructor.charAt(0)}
+                </div>
+              )}
               <div>
                 <div className="font-semibold text-[#0f2150] mb-1">{course.instructor}</div>
                 <div className="text-xs text-[#1a1a2e]/50">Course Instructor · CanaDent Faculty</div>
