@@ -3,10 +3,7 @@ import Image from "next/image";
 import { courses } from "@/lib/courses";
 import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { CourseCountdown } from "@/components/CourseCountdown";
-import { SpotlightCTA } from "@/components/SpotlightCTA";
 import {
-  CheckCircle,
   Award,
   Users,
   BookOpen,
@@ -20,7 +17,7 @@ import {
   Calendar,
   MapPin,
   User,
-  Clock,
+  CheckCircle,
 } from "lucide-react";
 
 const stats = [
@@ -222,354 +219,127 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── UPCOMING COURSE SPOTLIGHT ── */}
-      <section
-        className="relative overflow-hidden py-20 px-4"
-        style={{ background: "linear-gradient(135deg, #07111f 0%, #0f2150 50%, #162d6e 100%)" }}
-      >
-        {/* Decorative radial glows */}
-        <div
-          className="pointer-events-none absolute -top-48 -right-48 h-[600px] w-[600px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(201,168,76,0.09), transparent 70%)" }}
-        />
-        <div
-          className="pointer-events-none absolute -bottom-24 -left-24 h-[360px] w-[360px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(201,168,76,0.06), transparent 70%)" }}
-        />
-
-        <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-          {/* LEFT — Poster */}
-          <ScrollReveal>
-            <div
-              className="spotlight-poster rounded-2xl overflow-hidden relative w-full"
-              style={{ aspectRatio: "4/3", minHeight: 300 }}
-            >
-              <BlurImage
-                src="/course-advanced-adhesive.png"
-                alt="Advanced Adhesive Dentistry: The Master Blueprint"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-            </div>
-          </ScrollReveal>
-
-          {/* RIGHT — Sales content */}
-          <div className="flex flex-col">
-
-            {/* Animated label */}
-            <ScrollReveal delay={80}>
-              <div className="flex items-center gap-2.5 mb-5">
-                <span className="pulse-dot" />
-                <span
-                  className="text-[0.7rem] font-bold tracking-[0.2em] uppercase"
-                  style={{ color: "#c9a84c" }}
-                >
-                  Next Upcoming Course
-                </span>
-              </div>
-            </ScrollReveal>
-
-            {/* Headline */}
-            <ScrollReveal delay={140}>
-              <h2 className="font-heading text-3xl lg:text-[2.6rem] font-bold text-white leading-tight mb-3">
-                Achieve Predictable, Sensitivity-Free Adhesive Restorations — Every Time
-              </h2>
-            </ScrollReveal>
-
-            {/* Course name */}
-            <ScrollReveal delay={190}>
-              <p className="text-base font-semibold mb-5" style={{ color: "#c9a84c" }}>
-                Advanced Adhesive Dentistry: The Master Blueprint
-              </p>
-            </ScrollReveal>
-
-            {/* Description */}
-            <ScrollReveal delay={230}>
-              <p className="text-white/68 leading-relaxed text-sm mb-5">
-                Transitioning to a truly biomimetic and minimally invasive practice requires moving past
-                traditional mechanical retention and understanding the sophisticated mechanics of modern
-                adhesion. This intensive 6-hour course is designed to serve as your ultimate foundational
-                platform and comprehensive overview — mapping out the entire adhesive landscape and
-                providing the big-picture clarity you need before diving into specific technical execution.
-              </p>
-            </ScrollReveal>
-
-            {/* Bullets */}
-            <ScrollReveal delay={270}>
-              <ul className="space-y-2 mb-6">
-                {[
-                  "Understand Absolute Isolation Dynamics: rubber dam isolation, clamp selection, and inversion techniques.",
-                  "Correlate Histology with Substrate Chemistry: bonding protocols for enamel versus deep, cracked, or caries-affected dentin.",
-                  "Differentiate Bonding Systems: fundamental differences between all generations of dentin bonding agents.",
-                  "Recognize Sensitivity-Prevention Protocols: clinical rationale for IDS and DME.",
-                  "Identify Stress Management Strategies: C-factor impact, decoupled mechanics, and layering.",
-                  "Navigate the Restorative Spectrum: direct, semi-direct, or indirect adhesive restorations.",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm text-white/62">
-                    <CheckCircle
-                      className="h-4 w-4 shrink-0 mt-0.5"
-                      style={{ color: "#c9a84c" }}
-                    />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-
-            {/* Meta bar */}
-            <ScrollReveal delay={310}>
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/50 border-t border-white/10 pt-4 mb-6">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  Sunday, September 6, 2026
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  9:00 AM – 4:00 PM
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  North York, ON
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  6 CE Hours
-                </span>
-              </div>
-            </ScrollReveal>
-
-            {/* Countdown */}
-            <ScrollReveal delay={350}>
-              <CourseCountdown targetDate="2026-09-06T09:00:00" />
-            </ScrollReveal>
-
-            {/* Price block */}
-            <ScrollReveal delay={390}>
-              <div className="flex items-baseline gap-3 mb-0.5">
-                <span className="font-heading text-4xl font-bold text-white">$799</span>
-                <span className="text-white/55 text-sm">· 6 CE Hours Included</span>
-              </div>
-              <p className="text-white/32 text-xs mb-1.5">≈ $133 per CE hour</p>
-              <p className="flex items-center gap-1.5 text-white/48 text-xs mb-6">
-                <Users className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                Only 14 seats remaining — intimate class sizes for hands-on attention.
-              </p>
-            </ScrollReveal>
-
-            {/* CTA */}
-            <ScrollReveal delay={430}>
-              <SpotlightCTA />
-              <Link
-                href="/courses/advanced-adhesive-dentistry-master-blueprint"
-                className="block mt-3 text-sm text-white/45 hover:text-white/75 transition-colors"
-                style={{ maxWidth: 320 }}
-              >
-                View full curriculum →
-              </Link>
-            </ScrollReveal>
-
-            {/* Trust row */}
-            <ScrollReveal delay={470}>
-              <div className="flex flex-wrap gap-5 mt-7 pt-5 border-t border-white/10 text-xs text-white/38">
-                <span className="flex items-center gap-1.5">
-                  <Award className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  CE-Accredited
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Users className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  500+ Dentists Trained
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  FRCD(C)-Level Faculty
-                </span>
-              </div>
-            </ScrollReveal>
-
+      {/* ── UPCOMING COURSES ── */}
+      <section className="py-20 px-4" style={{ background: "#f5f0e8" }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="section-label">Fall 2026</span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-3">
+              Upcoming Courses
+            </h2>
           </div>
-        </div>
-      </section>
 
-      {/* ── UPCOMING COURSE SPOTLIGHT 2 ── */}
-      <section
-        className="relative overflow-hidden py-20 px-4"
-        style={{ background: "linear-gradient(135deg, #0b1628 0%, #112057 50%, #1a2f72 100%)" }}
-      >
-        {/* Decorative radial glows — mirrored from spotlight 1 */}
-        <div
-          className="pointer-events-none absolute -top-48 -left-48 h-[600px] w-[600px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(201,168,76,0.08), transparent 70%)" }}
-        />
-        <div
-          className="pointer-events-none absolute -bottom-24 -right-24 h-[360px] w-[360px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(201,168,76,0.05), transparent 70%)" }}
-        />
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
 
-        <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Card 1 — Advanced Adhesive Dentistry */}
+            <ScrollReveal>
+              <div className="card overflow-hidden flex flex-col h-full">
+                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                  <BlurImage
+                    src="/course-advanced-adhesive.png"
+                    alt="Advanced Adhesive Dentistry: The Master Blueprint"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="p-6 lg:p-8 flex flex-col flex-1">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="badge-enrolling">Enrolling Now</span>
+                  </div>
+                  <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
+                    Advanced Adhesive Dentistry: The Master Blueprint
+                  </h3>
+                  <p className="text-xs text-[#1b3a8a]/70 mb-4 leading-relaxed">
+                    A comprehensive foundation in predictable, minimally invasive, and sensitivity-free restorative workflows.
+                  </p>
+                  <div className="space-y-1.5 text-xs text-[#1a1a2e]/60 mb-5">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                      Sunday, September 6, 2026
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                      265 Rimrock Rd, North York, ON
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <User className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                      Dr. Amin Asadollahi
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                      6 CE Credits · In-Person Lecture
+                    </div>
+                  </div>
+                  <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8 flex items-center justify-between gap-4">
+                    <div>
+                      <span className="font-heading text-2xl font-bold text-[#0f2150]">$799</span>
+                    </div>
+                    <Link
+                      href="/courses/advanced-adhesive-dentistry-master-blueprint"
+                      className="btn-primary"
+                    >
+                      Reserve Your Seat
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
 
-          {/* POSTER — first in DOM (shows first on mobile), right column on desktop */}
-          <ScrollReveal className="lg:order-2">
-            <div
-              className="spotlight-poster rounded-2xl overflow-hidden relative w-full"
-              style={{ aspectRatio: "4/3", minHeight: 300 }}
-            >
-              <BlurImage
-                src="/course-daily-orthodontic.jpeg"
-                alt="Daily and Unique Orthodontic Techniques"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-            </div>
-          </ScrollReveal>
-
-          {/* CONTENT — second in DOM (shows second on mobile), left column on desktop */}
-          <div className="flex flex-col lg:order-1">
-
-            {/* Animated label */}
+            {/* Card 2 — Daily and Unique Orthodontic Techniques */}
             <ScrollReveal delay={80}>
-              <div className="flex items-center gap-2.5 mb-5">
-                <span className="pulse-dot" />
-                <span
-                  className="text-[0.7rem] font-bold tracking-[0.2em] uppercase"
-                  style={{ color: "#c9a84c" }}
-                >
-                  Coming Soon · September 27, 2026
-                </span>
-              </div>
-            </ScrollReveal>
-
-            {/* Headline */}
-            <ScrollReveal delay={140}>
-              <h2 className="font-heading text-3xl lg:text-[2.6rem] font-bold text-white leading-tight mb-3">
-                Master Evidence-Based Aligner Therapy With Greater Confidence — From Day One
-              </h2>
-            </ScrollReveal>
-
-            {/* Course name */}
-            <ScrollReveal delay={190}>
-              <p className="text-base font-semibold mb-5" style={{ color: "#c9a84c" }}>
-                Daily and Unique Orthodontic Techniques
-              </p>
-            </ScrollReveal>
-
-            {/* Description */}
-            <ScrollReveal delay={230}>
-              <p className="text-white/68 leading-relaxed text-sm mb-5">
-                Predictable aligner therapy goes far beyond software defaults and standard attachments.
-                Led by Dr. John C. Voudouris — Harvard University Speaker and globally recognized
-                orthodontist — this intensive 6-hour lecture delivers the biological principles,
-                biomechanical concepts, and evidence-based protocols you need to plan, execute, and
-                finish aligner cases with confidence. Through real finished cases, you&apos;ll leave with a
-                structured clinical blueprint you can apply immediately.
-              </p>
-            </ScrollReveal>
-
-            {/* Bullets */}
-            <ScrollReveal delay={270}>
-              <ul className="space-y-2 mb-6">
-                {[
-                  "Evidence-based attachment design and the JV Supercorrection Rx to reduce refinements",
-                  "Digital workflows for diagnosis, treatment planning, and aligner prescription",
-                  "U2 Seater, Molar Intruder™, and Anterior Intruder™ auxiliary appliance integration",
-                  "Low-profile self-ligating bracket therapy combined with aligner treatment",
-                  "Managing deep bite, open bite, Class II, Class III, and impacted teeth",
-                  "Includes the full-colour hardcover textbook: Excellence and Efficiency",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm text-white/62">
-                    <CheckCircle
-                      className="h-4 w-4 shrink-0 mt-0.5"
-                      style={{ color: "#c9a84c" }}
-                    />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-
-            {/* Meta bar */}
-            <ScrollReveal delay={310}>
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/50 border-t border-white/10 pt-4 mb-6">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  Sunday, September 27, 2026
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  9:00 AM – 4:00 PM
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  265 Rimrock Rd, North York, ON
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  6 CE Credits (PACE Approved)
-                </span>
-              </div>
-            </ScrollReveal>
-
-            {/* Countdown */}
-            <ScrollReveal delay={350}>
-              <CourseCountdown targetDate="2026-09-27T09:00:00" />
-            </ScrollReveal>
-
-            {/* Price block */}
-            <ScrollReveal delay={390}>
-              <div className="flex items-center gap-2.5 mb-2">
-                <span
-                  className="text-[0.65rem] font-bold tracking-[0.12em] uppercase rounded-full px-2.5 py-0.5"
-                  style={{ background: "#c9a84c", color: "#0f2150" }}
-                >
-                  Early Bird
-                </span>
-                <span className="text-white/38 text-xs">Valid until August 31, 2026</span>
-              </div>
-              <div className="flex items-baseline gap-3 mb-0.5">
-                <span className="font-heading text-4xl font-bold text-white">$799</span>
-                <span className="text-white/55 text-sm">· 6 CE Credits Included</span>
-              </div>
-              <p className="text-white/32 text-xs mb-1.5">≈ $133 per CE hour</p>
-              <p className="flex items-center gap-1.5 text-white/48 text-xs mb-6">
-                <Users className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                Limited seats — register your interest early to secure your spot.
-              </p>
-            </ScrollReveal>
-
-            {/* CTA — contact-based since registration opens soon */}
-            <ScrollReveal delay={430}>
-              <Link
-                href="/contact"
-                className="btn-reserve inline-flex"
-                style={{ textDecoration: "none" }}
-              >
-                Register Interest
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-              <Link
-                href="/courses/daily-unique-orthodontic-techniques"
-                className="block mt-3 text-sm text-white/45 hover:text-white/75 transition-colors"
-                style={{ maxWidth: 320 }}
-              >
-                View full curriculum →
-              </Link>
-            </ScrollReveal>
-
-            {/* Trust row */}
-            <ScrollReveal delay={470}>
-              <div className="flex flex-wrap gap-5 mt-7 pt-5 border-t border-white/10 text-xs text-white/38">
-                <span className="flex items-center gap-1.5">
-                  <Award className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  PACE Approved (FAGD/MAGD)
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Users className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  Harvard University Speaker
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                  6 CE Credits
-                </span>
+              <div className="card overflow-hidden flex flex-col h-full">
+                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                  <BlurImage
+                    src="/course-daily-orthodontic.jpeg"
+                    alt="Daily and Unique Orthodontic Techniques"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="p-6 lg:p-8 flex flex-col flex-1">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="badge-upcoming">Coming Soon</span>
+                    <span className="badge-early-bird">Early Bird $799</span>
+                  </div>
+                  <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
+                    Daily and Unique Orthodontic Techniques
+                  </h3>
+                  <p className="text-xs text-[#1b3a8a]/70 mb-4 leading-relaxed">
+                    Evidence-based aligner therapy, advanced biomechanics, and efficient clinical workflows for predictable treatment outcomes.
+                  </p>
+                  <div className="space-y-1.5 text-xs text-[#1a1a2e]/60 mb-5">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                      Sunday, September 27, 2026
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                      265 Rimrock Rd, North York, ON
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <User className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                      Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                      6 CE Credits (PACE Approved) · In-Person Lecture
+                    </div>
+                  </div>
+                  <p className="text-[0.6rem] font-bold uppercase tracking-wide mb-4" style={{ color: "#a87219" }}>
+                    Early Bird valid until August 31, 2026
+                  </p>
+                  <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8 flex items-center justify-between gap-4">
+                    <div>
+                      <span className="font-heading text-2xl font-bold text-[#0f2150]">$799</span>
+                    </div>
+                    <Link
+                      href="/contact"
+                      className="btn-secondary"
+                    >
+                      Register Interest
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
 
