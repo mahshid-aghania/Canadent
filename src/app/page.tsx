@@ -297,7 +297,7 @@ export default function HomePage() {
                 </div>
                 <div className="p-6 lg:p-8 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="badge-upcoming">Coming Soon</span>
+                    <span className="badge-enrolling">Enrolling Now</span>
                     <span className="badge-early-bird">Early Bird $799</span>
                   </div>
                   <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
@@ -333,10 +333,10 @@ export default function HomePage() {
                       <span className="font-heading text-2xl font-bold text-green-600">$799</span>
                     </div>
                     <Link
-                      href="/contact"
-                      className="btn-secondary"
+                      href="/courses/daily-unique-orthodontic-techniques"
+                      className="btn-primary"
                     >
-                      Register Interest
+                      Reserve Your Seat
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
@@ -571,8 +571,7 @@ export default function HomePage() {
                         )}
                       </div>
                       <div className="flex items-center gap-2">
-                        {isEnrolling && <span className="badge-enrolling">Enrolling Now</span>}
-                        {isUpcoming && <span className="badge-upcoming">Coming Soon</span>}
+                        {(isEnrolling || isUpcoming) && <span className="badge-enrolling">Enrolling Now</span>}
                         {course.status === "sold-out" && <span className="badge-sold-out">Sold Out</span>}
                       </div>
                     </div>
