@@ -31,15 +31,24 @@ export async function POST(request: NextRequest) {
     const title = session.metadata?.title;
     const amountTotal = session.amount_total ?? 0;
 
+    console.log("[webhook] checkout.session.completed", { email, slug, title, amountTotal });
+
     if (email && slug && title) {
       const course = getCourse(slug);
-      await resend.emails.send({
+      const { data, error } = await resend.emails.send({
         from: "CanaDent Education <noreply@canadent.net>",
         to: email,
         cc: ["ar.movasagh@confidentist.ca", "mahshid.aghania@gmail.com", "canadent.edu@gmail.com"],
         subject: `Registration Confirmed — ${title}`,
         html: buildEmail(name, title, amountTotal, course),
       });
+      if (error) {
+        console.error("[webhook] Resend error:", error);
+      } else {
+        console.log("[webhook] Email sent:", data?.id);
+      }
+    } else {
+      console.warn("[webhook] Missing fields — email:", email, "slug:", slug, "title:", title);
     }
   }
 
