@@ -111,3 +111,43 @@ body {
   text-transform: uppercase;
   color: #15803d;
 }
+
+/* ── Animated logo ── */
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ring-spin-reverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%       { opacity: 0.65; transform: scale(1.08); }
+}
+
+@keyframes dot-orbit {
+  from { transform: rotate(0deg) translateX(90px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.logo-float      { animation: logo-float 4s ease-in-out infinite; }
+.ring-spin       { animation: ring-spin 8s linear infinite; }
+.ring-spin-rev   { animation: ring-spin-reverse 12s linear infinite; }
+.glow-pulse      { animation: glow-pulse 4s ease-in-out infinite; }
+.dot-orbit-1     { animation: dot-orbit 6s linear infinite; }
+.dot-orbit-2     { animation: dot-orbit 9s linear infinite reverse; animation-delay: -3s; }
+.dot-orbit-3     { animation: dot-orbit 12s linear infinite; animation-delay: -6s; }
+.hero-logo-fade  { animation: fade-in-up 0.8s ease both; animation-delay: 0.3s; }

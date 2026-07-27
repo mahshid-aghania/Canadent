@@ -117,32 +117,89 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Hero card */}
-          <div className="hidden lg:block">
-            <div className="card p-8" style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)" }}>
-              <div className="flex items-center gap-3 mb-6">
-                <Award className="h-8 w-8" style={{ color: "#c9a84c" }} />
-                <div>
-                  <div className="font-heading text-white font-semibold text-lg">CE-Accredited Courses</div>
-                  <div className="text-white/50 text-sm">Recognized across Canada</div>
+          {/* Animated logo */}
+          <div className="hidden lg:flex items-center justify-center hero-logo-fade">
+            <div className="relative flex items-center justify-center" style={{ width: 340, height: 340 }}>
+
+              {/* Glow backdrop */}
+              <div
+                className="glow-pulse absolute rounded-full"
+                style={{
+                  width: 260,
+                  height: 260,
+                  background: "radial-gradient(circle, rgba(201,168,76,0.3) 0%, transparent 70%)",
+                }}
+              />
+
+              {/* Outer dashed ring */}
+              <svg
+                className="ring-spin absolute"
+                width={320} height={320}
+                viewBox="0 0 320 320"
+                style={{ top: 10, left: 10 }}
+              >
+                <circle
+                  cx="160" cy="160" r="150"
+                  fill="none"
+                  stroke="rgba(201,168,76,0.35)"
+                  strokeWidth="1.5"
+                  strokeDasharray="8 10"
+                  strokeLinecap="round"
+                />
+              </svg>
+
+              {/* Inner solid ring */}
+              <svg
+                className="ring-spin-rev absolute"
+                width={240} height={240}
+                viewBox="0 0 240 240"
+                style={{ top: 50, left: 50 }}
+              >
+                <circle
+                  cx="120" cy="120" r="110"
+                  fill="none"
+                  stroke="rgba(201,168,76,0.2)"
+                  strokeWidth="1"
+                  strokeDasharray="4 14"
+                  strokeLinecap="round"
+                />
+              </svg>
+
+              {/* Orbiting dots */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="dot-orbit-1 absolute">
+                  <div className="w-3 h-3 rounded-full" style={{ background: "#c9a84c", boxShadow: "0 0 8px #c9a84c" }} />
+                </div>
+                <div className="dot-orbit-2 absolute">
+                  <div className="w-2 h-2 rounded-full" style={{ background: "rgba(201,168,76,0.7)" }} />
+                </div>
+                <div className="dot-orbit-3 absolute">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.5)" }} />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                {stats.map((s) => (
-                  <div key={s.label} className="rounded-xl p-4 text-center" style={{ background: "rgba(255,255,255,0.07)" }}>
-                    <div className="font-heading text-2xl font-bold" style={{ color: "#c9a84c" }}>{s.value}</div>
-                    <div className="text-xs text-white/55 mt-1">{s.label}</div>
-                  </div>
-                ))}
+
+              {/* Logo — floating */}
+              <div
+                className="logo-float relative z-10 rounded-2xl flex items-center justify-center p-8"
+                style={{
+                  background: "rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(201,168,76,0.4)",
+                  backdropFilter: "blur(12px)",
+                  width: 200,
+                  height: 200,
+                  boxShadow: "0 20px 60px rgba(0,0,0,0.35), 0 0 40px rgba(201,168,76,0.15)",
+                }}
+              >
+                <Image
+                  src="/logo.png"
+                  alt="CanaDent Education Center"
+                  width={160}
+                  height={60}
+                  className="w-full h-auto object-contain brightness-0 invert"
+                  priority
+                />
               </div>
-              <div className="flex items-center gap-2 text-sm text-white/60">
-                <Star className="h-4 w-4 fill-[#c9a84c] text-[#c9a84c]" />
-                <Star className="h-4 w-4 fill-[#c9a84c] text-[#c9a84c]" />
-                <Star className="h-4 w-4 fill-[#c9a84c] text-[#c9a84c]" />
-                <Star className="h-4 w-4 fill-[#c9a84c] text-[#c9a84c]" />
-                <Star className="h-4 w-4 fill-[#c9a84c] text-[#c9a84c]" />
-                <span className="ml-1">Rated highly by our participants</span>
-              </div>
+
             </div>
           </div>
         </div>
