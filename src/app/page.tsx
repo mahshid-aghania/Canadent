@@ -229,42 +229,42 @@ export default function HomePage() {
             {/* Blur-fill image panel */}
             <div className="relative w-full overflow-hidden" style={{ minHeight: "380px" }}>
               <BlurImage
-                src="/course-financial-steps.png"
-                alt="Your First Financial Steps as a New Dentist"
+                src="/course-advanced-adhesive.png"
+                alt="Advanced Adhesive Dentistry: The Master Blueprint"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
             </div>
             {/* Text */}
             <div className="p-8 lg:p-12 flex flex-col justify-center">
-              <span className="section-label mb-3 block">Featured Course — Free</span>
+              <span className="section-label mb-3 block">Featured Course</span>
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
-                Your First Financial Steps as a New Dentist
+                Advanced Adhesive Dentistry: The Master Blueprint
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
-                Essential financial strategies for newly licensed dentists entering real-world
-                practice — at no cost. 2 CE Credits included.
+                An intensive foundational lecture on modern adhesive dentistry — rubber dam isolation,
+                dentin bonding chemistry, IDS, DME, and sensitivity-free restorative workflows. 6 CE Hours included.
               </p>
               <ul className="space-y-2.5 text-sm text-white/65 mb-8">
                 <li className="flex items-center gap-2.5">
                   <Calendar className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-                  Sunday, May 31 · 11:00 AM – 2:00 PM
+                  Sunday, September 6, 2026 · 9:00 AM – 4:00 PM
                 </li>
                 <li className="flex items-center gap-2.5">
                   <MapPin className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-                  20 Cachet Woods Ct., Markham
+                  Rimrock Rd, Suite 204, North York, ON M3J 3A6
                 </li>
                 <li className="flex items-center gap-2.5">
                   <User className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-                  Mohammad Hossein Mohammadi, Financial Advisor
+                  CanaDent Faculty
                 </li>
                 <li className="flex items-center gap-2.5">
                   <GraduationCap className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-                  2 CE Credits (Type 3)
+                  6 CE Hours
                 </li>
               </ul>
               <Link
-                href="/courses/your-first-financial-steps-as-a-dentist"
+                href="/courses/advanced-adhesive-dentistry-master-blueprint"
                 className="btn-primary inline-flex self-start"
               >
                 Learn More
