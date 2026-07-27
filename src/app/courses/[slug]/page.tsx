@@ -113,7 +113,11 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
           {/* Description */}
           <section className="mb-10">
             <h2 className="font-heading text-2xl font-bold text-[#0f2150] mb-4">About This Course</h2>
-            <p className="text-[#1a1a2e]/70 leading-relaxed text-base">{course.description}</p>
+            <div className="space-y-4">
+              {course.description.split("\n\n").map((para, i) => (
+                <p key={i} className="text-[#1a1a2e]/70 leading-relaxed text-base">{para}</p>
+              ))}
+            </div>
           </section>
 
           {/* Highlights */}

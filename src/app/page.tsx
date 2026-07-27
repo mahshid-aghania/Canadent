@@ -287,11 +287,11 @@ export default function HomePage() {
             {/* Description */}
             <ScrollReveal delay={230}>
               <p className="text-white/68 leading-relaxed text-sm mb-5">
-                Most post-operative sensitivity isn&apos;t a material failure — it&apos;s a protocol gap.
-                This intensive 6-hour lecture delivers the complete scientific foundation to close it:
-                rubber dam isolation, dentin bonding chemistry across all generations, Immediate Dentin
-                Sealing, and Deep Margin Elevation — sequenced into a workflow you can apply in practice
-                the following Monday.
+                Transitioning to a truly biomimetic and minimally invasive practice requires moving past
+                traditional mechanical retention and understanding the sophisticated mechanics of modern
+                adhesion. This intensive 6-hour course is designed to serve as your ultimate foundational
+                platform and comprehensive overview — mapping out the entire adhesive landscape and
+                providing the big-picture clarity you need before diving into specific technical execution.
               </p>
             </ScrollReveal>
 
@@ -299,11 +299,12 @@ export default function HomePage() {
             <ScrollReveal delay={270}>
               <ul className="space-y-2 mb-6">
                 {[
-                  "Rubber dam isolation dynamics and moisture-protection strategies",
-                  "Dentin bonding across all generations — know which agent, when, and why",
-                  "Immediate Dentin Sealing (IDS) and Deep Margin Elevation (DME) in practice",
-                  "Polymerization stress control through C-factor and decoupled mechanics",
-                  "Decide with certainty: direct, semi-direct, or indirect restoration",
+                  "Understand Absolute Isolation Dynamics: rubber dam isolation, clamp selection, and inversion techniques.",
+                  "Correlate Histology with Substrate Chemistry: bonding protocols for enamel versus deep, cracked, or caries-affected dentin.",
+                  "Differentiate Bonding Systems: fundamental differences between all generations of dentin bonding agents.",
+                  "Recognize Sensitivity-Prevention Protocols: clinical rationale for IDS and DME.",
+                  "Identify Stress Management Strategies: C-factor impact, decoupled mechanics, and layering.",
+                  "Navigate the Restorative Spectrum: direct, semi-direct, or indirect adhesive restorations.",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2.5 text-sm text-white/62">
                     <CheckCircle
