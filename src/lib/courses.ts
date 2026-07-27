@@ -62,6 +62,7 @@ export const courses: Course[] = [
       "For Aligner Supercorrection, Rapid Class II Distalization, and Super-Efficiency with mini Active Self-ligation brackets and prosthodontics: Clinical Pearls",
     instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
     price: 799,
+    originalPrice: 999,
     date: "Sunday, September 27, 2026",
     time: "9:00 AM – 4:00 PM",
     duration: "6 hours",
