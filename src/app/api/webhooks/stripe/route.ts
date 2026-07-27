@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     if (email && slug && title) {
       const course = getCourse(slug);
       await resend.emails.send({
-        from: "CanaDent Education <onboarding@resend.dev>",
+        from: "CanaDent Education <noreply@canadent.net>",
         to: email,
         cc: ["ar.movasagh@confidentist.ca", "mahshid.aghania@gmail.com", "canadent.edu@gmail.com"],
         subject: `Registration Confirmed — ${title}`,
