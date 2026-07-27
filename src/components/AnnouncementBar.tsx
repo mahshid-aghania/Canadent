@@ -13,8 +13,21 @@ export function AnnouncementBar() {
       style={{ background: "#c9a84c" }}
     >
       <p className="text-sm font-semibold text-[#0f2150] leading-snug">
-        <span className="font-normal opacity-80">Next course: </span>
-        Advanced Adhesive Dentistry — Sept 6 ·{" "}
+        <span className="font-normal opacity-75">Upcoming: </span>
+        <Link
+          href="/courses/advanced-adhesive-dentistry-master-blueprint"
+          className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+        >
+          Advanced Adhesive Dentistry — Sept 6
+        </Link>
+        <span className="opacity-40 mx-2">·</span>
+        <Link
+          href="/courses/daily-unique-orthodontic-techniques"
+          className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+        >
+          Orthodontic Techniques — Sept 27
+        </Link>
+        <span className="opacity-40 mx-2">·</span>
         <Link
           href="/courses/advanced-adhesive-dentistry-master-blueprint"
           className="underline underline-offset-2 hover:opacity-70 transition-opacity"
