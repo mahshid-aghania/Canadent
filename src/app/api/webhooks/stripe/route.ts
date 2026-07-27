@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
       await resend.emails.send({
         from: "CanaDent Education <onboarding@resend.dev>",
         to: email,
+        cc: ["ar.movasagh@confidentist.ca"],
         subject: `Registration Confirmed — ${title}`,
         html: buildEmail(name, title, amountTotal, course),
       });
