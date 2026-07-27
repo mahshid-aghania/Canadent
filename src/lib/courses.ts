@@ -29,7 +29,7 @@ export const courses: Course[] = [
     title: "Advanced Adhesive Dentistry: The Master Blueprint",
     subtitle:
       "How to obtain a comprehensive understanding of predictable, minimally invasive, and long-lasting restorative workflows with zero post-operative sensitivity.",
-    instructor: "CanaDent Faculty",
+    instructor: "Dr. Amin Asadollahi",
     price: 799,
     date: "Sunday, September 6, 2026",
     time: "9:00 AM – 4:00 PM",
