@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { BlurImage } from "@/components/BlurImage";
+import { RegisterButton } from "@/components/RegisterButton";
 import { notFound } from "next/navigation";
 import { courses, getCourse } from "@/lib/courses";
 import {
@@ -16,7 +18,10 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ cancelled?: string }>;
+};
 
 export async function generateStaticParams() {
   return courses.map((c) => ({ slug: c.slug }));
@@ -32,8 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function CourseDetailPage({ params }: Props) {
+export default async function CourseDetailPage({ params, searchParams }: Props) {
   const { slug } = await params;
+  const { cancelled } = await searchParams;
   const course = getCourse(slug);
   if (!course) notFound();
 
@@ -72,6 +78,9 @@ export default async function CourseDetailPage({ params }: Props) {
             {course.status === "sold-out" && (
               <span className="badge-sold-out">Sold Out</span>
             )}
+            {course.status === "available" && (
+              <span className="badge-available">Open for Registration</span>
+            )}
           </div>
 
           <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
@@ -86,14 +95,12 @@ export default async function CourseDetailPage({ params }: Props) {
       {/* Course image */}
       {course.image && (
         <div className="max-w-7xl mx-auto px-4 pt-10">
-          <div className="relative w-full max-w-xl rounded-2xl overflow-hidden shadow-xl">
-            <Image
+          <div className="relative w-full max-w-xl aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+            <BlurImage
               src={course.image}
               alt={course.title}
-              width={800}
-              height={600}
-              className="w-full h-auto object-cover"
               priority
+              sizes="(max-width: 1280px) 100vw, 576px"
             />
           </div>
         </div>
@@ -250,6 +257,17 @@ export default async function CourseDetailPage({ params }: Props) {
               )}
             </ul>
 
+            {/* Cancel feedback only — success now goes to /success page */}
+            {cancelled === "true" && (
+              <div
+                className="flex items-center gap-2 rounded-xl px-4 py-3 mb-4 text-sm"
+                style={{ background: "#fef9ec", color: "#92400e" }}
+              >
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                Payment was cancelled. You can try again below.
+              </div>
+            )}
+
             {/* CTA */}
             {course.status === "sold-out" ? (
               <div>
@@ -265,7 +283,20 @@ export default async function CourseDetailPage({ params }: Props) {
                 </Link>
               </div>
             ) : (
-              <button className="btn-primary w-full">Register Now</button>
+              <div>
+                <div
+                  className="flex items-center gap-2 rounded-lg px-4 py-3 mb-3 text-sm"
+                  style={{ background: "#ecfdf5", color: "#065f46" }}
+                >
+                  <CheckCircle className="h-4 w-4 shrink-0" />
+                  Seats available — secure your spot today.
+                </div>
+                <RegisterButton
+                  slug={course.slug}
+                  title={course.title}
+                  price={course.price ?? 0}
+                />
+              </div>
             )}
 
             {/* Contact */}

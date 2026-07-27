@@ -1,16 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import { courses } from "@/lib/courses";
+import { BlurImage } from "@/components/BlurImage";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import {
   CheckCircle,
   Award,
   Users,
   BookOpen,
-  Star,
   ArrowRight,
   GraduationCap,
   Stethoscope,
   TrendingUp,
+  Target,
+  Telescope,
+  Settings2,
+  Calendar,
+  MapPin,
+  User,
 } from "lucide-react";
 
 const stats = [
@@ -47,6 +54,24 @@ const whyPoints = [
   "Convenient North York & Toronto locations",
 ];
 
+const missionItems = [
+  {
+    title: "Mission",
+    Icon: Target,
+    text: "Creating educational networks across dentistry disciplines by connecting dentists with the world's leading educators, enabling them to revisit, retrain, and optimize their knowledge.",
+  },
+  {
+    title: "Vision",
+    Icon: Telescope,
+    text: "Today is tomorrow's community health education. We envision a Canada where every dentist has access to world-class continuing education regardless of location or specialty.",
+  },
+  {
+    title: "Services",
+    Icon: Settings2,
+    text: "Providing theoretical and clinical training from the beginning to the top level — CE-accredited seminars, workshops, hands-on intensives, and online lectures across all dental specialties.",
+  },
+];
+
 const featuredCourses = courses.slice(0, 3);
 
 export default function HomePage() {
@@ -59,7 +84,6 @@ export default function HomePage() {
           background: "linear-gradient(135deg, #0f2150 0%, #1b3a8a 50%, #1e4db7 100%)",
         }}
       >
-        {/* Decorative circles */}
         <div
           className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-10"
           style={{
@@ -75,7 +99,7 @@ export default function HomePage() {
           }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-24 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-32 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <span className="section-label mb-4 block">CanaDent Education Center</span>
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-tight mb-6">
@@ -98,7 +122,6 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Trust indicators */}
             <div className="mt-10 flex items-center gap-5">
               <div className="flex -space-x-2">
                 {["D", "M", "K", "A"].map((l, i) => (
@@ -120,8 +143,6 @@ export default function HomePage() {
           {/* Animated logo */}
           <div className="hidden lg:flex items-center justify-center hero-logo-fade">
             <div className="relative flex items-center justify-center" style={{ width: 340, height: 340 }}>
-
-              {/* Glow backdrop */}
               <div
                 className="glow-pulse absolute rounded-full"
                 style={{
@@ -130,42 +151,24 @@ export default function HomePage() {
                   background: "radial-gradient(circle, rgba(201,168,76,0.3) 0%, transparent 70%)",
                 }}
               />
-
-              {/* Outer dashed ring */}
               <svg
                 className="ring-spin absolute"
-                width={320} height={320}
+                width={320}
+                height={320}
                 viewBox="0 0 320 320"
                 style={{ top: 10, left: 10 }}
               >
-                <circle
-                  cx="160" cy="160" r="150"
-                  fill="none"
-                  stroke="rgba(201,168,76,0.35)"
-                  strokeWidth="1.5"
-                  strokeDasharray="8 10"
-                  strokeLinecap="round"
-                />
+                <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(201,168,76,0.35)" strokeWidth="1.5" strokeDasharray="8 10" strokeLinecap="round" />
               </svg>
-
-              {/* Inner solid ring */}
               <svg
                 className="ring-spin-rev absolute"
-                width={240} height={240}
+                width={240}
+                height={240}
                 viewBox="0 0 240 240"
                 style={{ top: 50, left: 50 }}
               >
-                <circle
-                  cx="120" cy="120" r="110"
-                  fill="none"
-                  stroke="rgba(201,168,76,0.2)"
-                  strokeWidth="1"
-                  strokeDasharray="4 14"
-                  strokeLinecap="round"
-                />
+                <circle cx="120" cy="120" r="110" fill="none" stroke="rgba(201,168,76,0.2)" strokeWidth="1" strokeDasharray="4 14" strokeLinecap="round" />
               </svg>
-
-              {/* Orbiting dots */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="dot-orbit-1 absolute">
                   <div className="w-3 h-3 rounded-full" style={{ background: "#c9a84c", boxShadow: "0 0 8px #c9a84c" }} />
@@ -177,8 +180,6 @@ export default function HomePage() {
                   <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.5)" }} />
                 </div>
               </div>
-
-              {/* Logo — floating */}
               <div
                 className="logo-float relative z-10 rounded-2xl flex items-center justify-center p-8"
                 style={{
@@ -199,29 +200,43 @@ export default function HomePage() {
                   priority
                 />
               </div>
-
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── STATS BAR ── */}
+      <div className="bg-white border-b border-[#1a1a2e]/8">
+        <div className="max-w-7xl mx-auto px-4 py-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-[#1a1a2e]/8">
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col items-center text-center px-6 py-2">
+                <span className="font-heading text-4xl font-bold text-[#0f2150] leading-none">{s.value}</span>
+                <span className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#c9a84c] mt-2">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* ── FEATURED COURSE BANNER ── */}
       <section className="py-14 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-10 items-center rounded-2xl overflow-hidden shadow-xl" style={{ background: "linear-gradient(135deg, #0f2150 0%, #1b3a8a 100%)" }}>
-            {/* Image */}
-            <div className="relative w-full" style={{ minHeight: "380px" }}>
-              <Image
+          <div
+            className="grid lg:grid-cols-2 gap-0 items-stretch rounded-2xl overflow-hidden shadow-xl"
+            style={{ background: "linear-gradient(135deg, #0f2150 0%, #1b3a8a 100%)" }}
+          >
+            {/* Blur-fill image panel */}
+            <div className="relative w-full overflow-hidden" style={{ minHeight: "380px" }}>
+              <BlurImage
                 src="/course-financial-steps.png"
                 alt="Your First Financial Steps as a New Dentist"
-                fill
-                className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
             </div>
             {/* Text */}
-            <div className="p-8 lg:p-12">
+            <div className="p-8 lg:p-12 flex flex-col justify-center">
               <span className="section-label mb-3 block">Featured Course — Free</span>
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
                 Your First Financial Steps as a New Dentist
@@ -230,13 +245,28 @@ export default function HomePage() {
                 Essential financial strategies for newly licensed dentists entering real-world
                 practice — at no cost. 2 CE Credits included.
               </p>
-              <ul className="space-y-2 text-sm text-white/65 mb-8">
-                <li>📅 Sunday, May 31 · 11:00 AM – 2:00 PM</li>
-                <li>📍 20 Cachet Woods Ct., Markham</li>
-                <li>👤 Mohammad Hossein Mohammadi, Financial Advisor</li>
-                <li>🎓 2 CE Credits (Type 3)</li>
+              <ul className="space-y-2.5 text-sm text-white/65 mb-8">
+                <li className="flex items-center gap-2.5">
+                  <Calendar className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
+                  Sunday, May 31 · 11:00 AM – 2:00 PM
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <MapPin className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
+                  20 Cachet Woods Ct., Markham
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <User className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
+                  Mohammad Hossein Mohammadi, Financial Advisor
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <GraduationCap className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
+                  2 CE Credits (Type 3)
+                </li>
               </ul>
-              <Link href="/courses/your-first-financial-steps-as-a-dentist" className="btn-primary inline-flex">
+              <Link
+                href="/courses/your-first-financial-steps-as-a-dentist"
+                className="btn-primary inline-flex self-start"
+              >
                 Learn More
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -246,7 +276,7 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY CHOOSE CANADENT ── */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
@@ -261,14 +291,13 @@ export default function HomePage() {
                 into your practice.
               </p>
               <ul className="space-y-3">
-                {whyPoints.map((point) => (
-                  <li key={point} className="flex items-start gap-3">
-                    <CheckCircle
-                      className="h-5 w-5 shrink-0 mt-0.5"
-                      style={{ color: "#c9a84c" }}
-                    />
-                    <span className="text-sm text-[#1a1a2e]/70">{point}</span>
-                  </li>
+                {whyPoints.map((point, i) => (
+                  <ScrollReveal key={point} delay={i * 60}>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} />
+                      <span className="text-sm text-[#1a1a2e]/70">{point}</span>
+                    </li>
+                  </ScrollReveal>
                 ))}
               </ul>
               <Link href="/courses" className="btn-primary mt-8 inline-flex">
@@ -277,16 +306,13 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Visual panel */}
             <div className="grid grid-cols-2 gap-4">
               <div
                 className="rounded-2xl p-6 flex flex-col gap-3 col-span-2"
                 style={{ background: "linear-gradient(135deg, #0f2150, #1b3a8a)" }}
               >
                 <Stethoscope className="h-8 w-8" style={{ color: "#c9a84c" }} />
-                <div className="font-heading text-white text-xl font-semibold">
-                  Clinical Excellence
-                </div>
+                <div className="font-heading text-white text-xl font-semibold">Clinical Excellence</div>
                 <p className="text-white/60 text-sm leading-relaxed">
                   Our faculty includes FRCD(C)-certified specialists, professors, and
                   internationally recognized clinicians committed to raising the standard of
@@ -309,7 +335,7 @@ export default function HomePage() {
       </section>
 
       {/* ── MISSION / VISION / SERVICES ── */}
-      <section className="py-20 px-4" style={{ background: "#f5f7fb" }}>
+      <section className="py-24 px-4" style={{ background: "#f5f0e8" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="section-label">Our Foundation</span>
@@ -318,52 +344,44 @@ export default function HomePage() {
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Mission",
-                icon: "🎯",
-                text: "Creating educational networks across dentistry disciplines by connecting dentists with the world's leading educators, enabling them to revisit, retrain, and optimize their knowledge.",
-              },
-              {
-                title: "Vision",
-                icon: "🔭",
-                text: "Today is tomorrow's community health education. We envision a Canada where every dentist has access to world-class continuing education regardless of location or specialty.",
-              },
-              {
-                title: "Services",
-                icon: "⚙️",
-                text: "Providing theoretical and clinical training from the beginning to the top level — CE-accredited seminars, workshops, hands-on intensives, and online lectures across all dental specialties.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="card p-8">
-                <div className="text-4xl mb-5">{item.icon}</div>
-                <h3 className="font-heading text-xl font-bold text-[#0f2150] mb-3">{item.title}</h3>
-                <p className="text-sm text-[#1a1a2e]/65 leading-relaxed">{item.text}</p>
-              </div>
+            {missionItems.map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 100}>
+                <div className="card p-8 h-full">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                    style={{ background: "#f5f0e8" }}
+                  >
+                    <item.Icon className="h-6 w-6" style={{ color: "#c9a84c" }} />
+                  </div>
+                  <h3 className="font-heading text-xl font-bold text-[#0f2150] mb-3">{item.title}</h3>
+                  <p className="text-sm text-[#1a1a2e]/65 leading-relaxed">{item.text}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── WORLD CLASS FACILITIES ── */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
-            {/* Values */}
             <div className="order-2 lg:order-1 space-y-6">
-              {values.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="flex items-start gap-5">
-                  <div
-                    className="w-12 h-12 rounded-xl shrink-0 flex items-center justify-center"
-                    style={{ background: "#1b3a8a" }}
-                  >
-                    <Icon className="h-6 w-6 text-white" />
+              {values.map(({ icon: Icon, title, desc }, i) => (
+                <ScrollReveal key={title} delay={i * 100}>
+                  <div className="flex items-start gap-5">
+                    <div
+                      className="w-12 h-12 rounded-xl shrink-0 flex items-center justify-center"
+                      style={{ background: "#1b3a8a" }}
+                    >
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-[#0f2150] text-lg mb-1">{title}</h3>
+                      <p className="text-sm text-[#1a1a2e]/65 leading-relaxed">{desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-[#0f2150] text-lg mb-1">{title}</h3>
-                    <p className="text-sm text-[#1a1a2e]/65 leading-relaxed">{desc}</p>
-                  </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
 
@@ -388,7 +406,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED COURSES ── */}
-      <section className="py-20 px-4" style={{ background: "#f5f7fb" }}>
+      <section className="py-24 px-4" style={{ background: "#f5f0e8" }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
             <div>
@@ -407,56 +425,69 @@ export default function HomePage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredCourses.map((course) => (
-              <Link key={course.slug} href={`/courses/${course.slug}`} className="card block overflow-hidden group">
-                {/* Image or category banner */}
-                {course.image ? (
-                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                    <Image
-                      src={course.image}
-                      alt={course.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                ) : (
-                  <div className="px-5 py-3 text-xs font-semibold tracking-wide uppercase text-white" style={{ background: "#1b3a8a" }}>
-                    {course.category}
-                  </div>
-                )}
-                <div className="p-6">
-                  <h3 className="font-heading font-bold text-[#0f2150] text-lg leading-snug mb-2 group-hover:text-[#1b3a8a] transition-colors">
-                    {course.title}
-                  </h3>
-                  {course.subtitle && (
-                    <p className="text-xs text-[#1b3a8a]/70 mb-3">{course.subtitle}</p>
-                  )}
-                  <p className="text-xs text-[#1a1a2e]/55 mb-4 line-clamp-2">{course.description}</p>
-
-                  <div className="space-y-1.5 text-xs text-[#1a1a2e]/60 mb-4">
-                    <div>📅 {course.date}</div>
-                    <div>📍 {course.location}</div>
-                    <div>👤 {course.instructor}</div>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-3 border-t border-[#1a1a2e]/8">
-                    <div>
-                      {course.isFree ? (
-                        <span className="badge-free">Free</span>
-                      ) : (
-                        <div className="flex items-baseline gap-2">
-                          <span className="font-bold text-[#0f2150]">${course.price?.toLocaleString()}</span>
-                          {course.originalPrice && (
-                            <span className="text-xs text-[#1a1a2e]/40 line-through">${course.originalPrice.toLocaleString()}</span>
-                          )}
-                        </div>
-                      )}
+            {featuredCourses.map((course, i) => (
+              <ScrollReveal key={course.slug} delay={i * 80}>
+                <Link href={`/courses/${course.slug}`} className="card block overflow-hidden group h-full">
+                  {course.image ? (
+                    <div className="relative w-full aspect-[4/3] overflow-hidden">
+                      <BlurImage
+                        src={course.image}
+                        alt={course.title}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
                     </div>
-                    {course.status === "sold-out" && <span className="badge-sold-out">Sold Out</span>}
+                  ) : (
+                    <div
+                      className="px-5 py-3 text-xs font-semibold tracking-wide uppercase text-white"
+                      style={{ background: "#1b3a8a" }}
+                    >
+                      {course.category}
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h3 className="font-heading font-bold text-[#0f2150] text-lg leading-snug mb-2 group-hover:text-[#1b3a8a] transition-colors">
+                      {course.title}
+                    </h3>
+                    {course.subtitle && (
+                      <p className="text-xs text-[#1b3a8a]/70 mb-3">{course.subtitle}</p>
+                    )}
+                    <p className="text-xs text-[#1a1a2e]/55 mb-4 line-clamp-2">{course.description}</p>
+
+                    <div className="space-y-1.5 text-xs text-[#1a1a2e]/60 mb-4">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                        {course.date}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                        <span className="line-clamp-1">{course.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <User className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                        <span className="line-clamp-1">{course.instructor}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-3 border-t border-[#1a1a2e]/8">
+                      <div>
+                        {course.isFree ? (
+                          <span className="badge-free">Free</span>
+                        ) : (
+                          <div className="flex items-baseline gap-2">
+                            <span className="font-bold text-[#0f2150]">${course.price?.toLocaleString()}</span>
+                            {course.originalPrice && (
+                              <span className="text-xs text-[#1a1a2e]/40 line-through">
+                                ${course.originalPrice.toLocaleString()}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      {course.status === "sold-out" && <span className="badge-sold-out">Sold Out</span>}
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -464,14 +495,12 @@ export default function HomePage() {
 
       {/* ── CTA BAND ── */}
       <section
-        className="py-24 px-4 text-center relative overflow-hidden"
+        className="py-32 px-4 text-center relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0f2150 0%, #1b3a8a 100%)" }}
       >
         <div
           className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "radial-gradient(circle at 70% 50%, #c9a84c, transparent 60%)",
-          }}
+          style={{ backgroundImage: "radial-gradient(circle at 70% 50%, #c9a84c, transparent 60%)" }}
         />
         <div className="relative z-10 max-w-3xl mx-auto">
           <span className="section-label mb-3 block">Join Our Community</span>
@@ -481,7 +510,7 @@ export default function HomePage() {
             Taking Advantage of CanaDent
           </h2>
           <p className="text-white/70 text-lg mb-10 max-w-xl mx-auto">
-            Expand your skills, earn CE credits, and connect with Canada's dental education
+            Expand your skills, earn CE credits, and connect with Canada&apos;s dental education
             community. Apply for an upcoming course today.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

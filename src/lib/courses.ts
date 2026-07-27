@@ -24,6 +24,33 @@ export type Course = {
 
 export const courses: Course[] = [
   {
+    slug: "advanced-adhesive-dentistry-master-blueprint",
+    title: "Advanced Adhesive Dentistry: The Master Blueprint",
+    subtitle:
+      "How to obtain a comprehensive understanding of predictable, minimally invasive, and long-lasting restorative workflows with zero post-operative sensitivity.",
+    instructor: "CanaDent Faculty",
+    price: 799,
+    date: "Sunday, September 6, 2026",
+    time: "9:00 AM – 4:00 PM",
+    duration: "6 hours",
+    location: "Rimrock Rd, Suite 204, North York, ON M3J 3A6",
+    ceCredits: "6 CE Hours",
+    status: "available",
+    category: "Restorative Dentistry",
+    format: "In-Person Lecture",
+    image: "/course-advanced-adhesive.png",
+    description:
+      "An intensive 6-hour foundational lecture establishing comprehensive knowledge in modern adhesive dentistry. This program covers rubber dam isolation dynamics, dental histology, caries and crack management, dentin bonding chemistry across all generations, Immediate Dentin Sealing (IDS), Deep Margin Elevation (DME), C-factor and polymerization stress control, and evidence-based restorative workflow decisions. Designed as a prerequisite blueprint before hands-on modules, this lecture gives participants the scientific foundation to achieve predictable, sensitivity-free adhesive restorations in daily practice.",
+    highlights: [
+      "Master absolute isolation dynamics and moisture protection strategies",
+      "Connect dental histology with appropriate bonding protocols",
+      "Distinguish between generations of dentin bonding agents and apply each correctly",
+      "Apply sensitivity-prevention techniques — including IDS and DME — in clinical workflows",
+      "Manage polymerization stress through decoupled mechanics and C-factor control",
+      "Determine optimal restoration type: direct, semi-direct, or indirect",
+    ],
+  },
+  {
     slug: "endo-course-for-general-dentists",
     title: "Endo Course For General Dentists",
     subtitle: "Precision Endo: From Access to Apex",
