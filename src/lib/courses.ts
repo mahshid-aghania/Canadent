@@ -22,6 +22,7 @@ export type Course = {
   schedule?: { day: string; topic: string }[];
   priceOptions?: { label: string; price: number }[];
   seatsRemaining?: number;
+  earlyBirdDeadline?: string;
 };
 
 export const courses: Course[] = [
@@ -67,6 +68,7 @@ export const courses: Course[] = [
     location: "265 Rimrock Rd, North York, ON",
     ceCredits: "6 CE Credits (PACE Approved)",
     status: "upcoming",
+    earlyBirdDeadline: "2026-08-31",
     category: "Orthodontics",
     format: "In-Person Lecture",
     image: "/course-daily-orthodontic.jpeg",

@@ -515,6 +515,15 @@ export default function HomePage() {
 
             {/* Price block */}
             <ScrollReveal delay={390}>
+              <div className="flex items-center gap-2.5 mb-2">
+                <span
+                  className="text-[0.65rem] font-bold tracking-[0.12em] uppercase rounded-full px-2.5 py-0.5"
+                  style={{ background: "#c9a84c", color: "#0f2150" }}
+                >
+                  Early Bird
+                </span>
+                <span className="text-white/38 text-xs">Valid until August 31, 2026</span>
+              </div>
               <div className="flex items-baseline gap-3 mb-0.5">
                 <span className="font-heading text-4xl font-bold text-white">$799</span>
                 <span className="text-white/55 text-sm">· 6 CE Credits Included</span>
@@ -772,12 +781,19 @@ export default function HomePage() {
                         {course.isFree ? (
                           <span className="badge-free">Free</span>
                         ) : (
-                          <div className="flex items-baseline gap-2">
-                            <span className="font-bold text-[#0f2150]">${course.price?.toLocaleString()}</span>
-                            {course.originalPrice && (
-                              <span className="text-xs text-[#1a1a2e]/40 line-through">
-                                ${course.originalPrice.toLocaleString()}
-                              </span>
+                          <div>
+                            <div className="flex items-baseline gap-2">
+                              <span className="font-bold text-[#0f2150]">${course.price?.toLocaleString()}</span>
+                              {course.originalPrice && (
+                                <span className="text-xs text-[#1a1a2e]/40 line-through">
+                                  ${course.originalPrice.toLocaleString()}
+                                </span>
+                              )}
+                            </div>
+                            {course.earlyBirdDeadline && (
+                              <p className="text-[0.6rem] font-bold uppercase tracking-wide mt-0.5" style={{ color: "#a87219" }}>
+                                Early Bird · Until Aug 31
+                              </p>
                             )}
                           </div>
                         )}

@@ -207,6 +207,14 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
           <div className="card p-6 sticky top-6">
             {/* Price */}
             <div className="mb-5">
+              {course.earlyBirdDeadline && (
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="badge-early-bird">Early Bird</span>
+                  <span className="text-xs text-[#1a1a2e]/50">
+                    Valid until Aug 31, 2026
+                  </span>
+                </div>
+              )}
               {course.isFree ? (
                 <div>
                   <span className="font-heading text-3xl font-bold text-[#0f2150]">Free</span>
