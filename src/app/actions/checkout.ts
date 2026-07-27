@@ -34,6 +34,7 @@ export async function createCheckoutSession(
         },
       ],
       mode: "payment",
+      allow_promotion_codes: true,
       billing_address_collection: "auto",
       success_url: `${baseUrl}/success?course=${encodeURIComponent(title)}&slug=${slug}`,
       cancel_url: `${baseUrl}/courses/${slug}?cancelled=true`,
