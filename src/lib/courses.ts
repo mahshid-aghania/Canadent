@@ -20,6 +20,7 @@ export type Course = {
   highlights?: string[];
   schedule?: { day: string; topic: string }[];
   priceOptions?: { label: string; price: number }[];
+  seatsRemaining?: number;
 };
 
 export const courses: Course[] = [
@@ -36,6 +37,7 @@ export const courses: Course[] = [
     location: "Rimrock Rd, Suite 204, North York, ON M3J 3A6",
     ceCredits: "6 CE Hours",
     status: "available",
+    seatsRemaining: 14,
     category: "Restorative Dentistry",
     format: "In-Person Lecture",
     image: "/course-advanced-adhesive.png",

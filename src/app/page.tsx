@@ -3,6 +3,8 @@ import Image from "next/image";
 import { courses } from "@/lib/courses";
 import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { CourseCountdown } from "@/components/CourseCountdown";
+import { SpotlightCTA } from "@/components/SpotlightCTA";
 import {
   CheckCircle,
   Award,
@@ -18,6 +20,7 @@ import {
   Calendar,
   MapPin,
   User,
+  Clock,
 } from "lucide-react";
 
 const stats = [
@@ -219,15 +222,29 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── FEATURED COURSE BANNER ── */}
-      <section className="py-14 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div
-            className="grid lg:grid-cols-2 gap-0 items-stretch rounded-2xl overflow-hidden shadow-xl"
-            style={{ background: "linear-gradient(135deg, #0f2150 0%, #1b3a8a 100%)" }}
-          >
-            {/* Blur-fill image panel */}
-            <div className="relative w-full overflow-hidden" style={{ minHeight: "380px" }}>
+      {/* ── UPCOMING COURSE SPOTLIGHT ── */}
+      <section
+        className="relative overflow-hidden py-20 px-4"
+        style={{ background: "linear-gradient(135deg, #07111f 0%, #0f2150 50%, #162d6e 100%)" }}
+      >
+        {/* Decorative radial glows */}
+        <div
+          className="pointer-events-none absolute -top-48 -right-48 h-[600px] w-[600px] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(201,168,76,0.09), transparent 70%)" }}
+        />
+        <div
+          className="pointer-events-none absolute -bottom-24 -left-24 h-[360px] w-[360px] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(201,168,76,0.06), transparent 70%)" }}
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          {/* LEFT — Poster */}
+          <ScrollReveal>
+            <div
+              className="spotlight-poster rounded-2xl overflow-hidden relative w-full"
+              style={{ aspectRatio: "4/3", minHeight: 300 }}
+            >
               <BlurImage
                 src="/course-advanced-adhesive.png"
                 alt="Advanced Adhesive Dentistry: The Master Blueprint"
@@ -235,42 +252,140 @@ export default function HomePage() {
                 priority
               />
             </div>
-            {/* Text */}
-            <div className="p-8 lg:p-12 flex flex-col justify-center">
-              <span className="section-label mb-3 block">Featured Course</span>
-              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
-                Advanced Adhesive Dentistry: The Master Blueprint
+          </ScrollReveal>
+
+          {/* RIGHT — Sales content */}
+          <div className="flex flex-col">
+
+            {/* Animated label */}
+            <ScrollReveal delay={80}>
+              <div className="flex items-center gap-2.5 mb-5">
+                <span className="pulse-dot" />
+                <span
+                  className="text-[0.7rem] font-bold tracking-[0.2em] uppercase"
+                  style={{ color: "#c9a84c" }}
+                >
+                  Next Upcoming Course
+                </span>
+              </div>
+            </ScrollReveal>
+
+            {/* Headline */}
+            <ScrollReveal delay={140}>
+              <h2 className="font-heading text-3xl lg:text-[2.6rem] font-bold text-white leading-tight mb-3">
+                Achieve Predictable, Sensitivity-Free Adhesive Restorations — Every Time
               </h2>
-              <p className="text-white/70 leading-relaxed mb-6">
-                An intensive foundational lecture on modern adhesive dentistry — rubber dam isolation,
-                dentin bonding chemistry, IDS, DME, and sensitivity-free restorative workflows. 6 CE Hours included.
+            </ScrollReveal>
+
+            {/* Course name */}
+            <ScrollReveal delay={190}>
+              <p className="text-base font-semibold mb-5" style={{ color: "#c9a84c" }}>
+                Advanced Adhesive Dentistry: The Master Blueprint
               </p>
-              <ul className="space-y-2.5 text-sm text-white/65 mb-8">
-                <li className="flex items-center gap-2.5">
-                  <Calendar className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-                  Sunday, September 6, 2026 · 9:00 AM – 4:00 PM
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <MapPin className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-                  Rimrock Rd, Suite 204, North York, ON M3J 3A6
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <User className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-                  CanaDent Faculty
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <GraduationCap className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-                  6 CE Hours
-                </li>
+            </ScrollReveal>
+
+            {/* Description */}
+            <ScrollReveal delay={230}>
+              <p className="text-white/68 leading-relaxed text-sm mb-5">
+                Most post-operative sensitivity isn&apos;t a material failure — it&apos;s a protocol gap.
+                This intensive 6-hour lecture delivers the complete scientific foundation to close it:
+                rubber dam isolation, dentin bonding chemistry across all generations, Immediate Dentin
+                Sealing, and Deep Margin Elevation — sequenced into a workflow you can apply in practice
+                the following Monday.
+              </p>
+            </ScrollReveal>
+
+            {/* Bullets */}
+            <ScrollReveal delay={270}>
+              <ul className="space-y-2 mb-6">
+                {[
+                  "Rubber dam isolation dynamics and moisture-protection strategies",
+                  "Dentin bonding across all generations — know which agent, when, and why",
+                  "Immediate Dentin Sealing (IDS) and Deep Margin Elevation (DME) in practice",
+                  "Polymerization stress control through C-factor and decoupled mechanics",
+                  "Decide with certainty: direct, semi-direct, or indirect restoration",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-2.5 text-sm text-white/62">
+                    <CheckCircle
+                      className="h-4 w-4 shrink-0 mt-0.5"
+                      style={{ color: "#c9a84c" }}
+                    />
+                    {b}
+                  </li>
+                ))}
               </ul>
+            </ScrollReveal>
+
+            {/* Meta bar */}
+            <ScrollReveal delay={310}>
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/50 border-t border-white/10 pt-4 mb-6">
+                <span className="flex items-center gap-1.5">
+                  <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                  Sunday, September 6, 2026
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Clock className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                  9:00 AM – 4:00 PM
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                  North York, ON
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                  6 CE Hours
+                </span>
+              </div>
+            </ScrollReveal>
+
+            {/* Countdown */}
+            <ScrollReveal delay={350}>
+              <CourseCountdown targetDate="2026-09-06T09:00:00" />
+            </ScrollReveal>
+
+            {/* Price block */}
+            <ScrollReveal delay={390}>
+              <div className="flex items-baseline gap-3 mb-0.5">
+                <span className="font-heading text-4xl font-bold text-white">$799</span>
+                <span className="text-white/55 text-sm">· 6 CE Hours Included</span>
+              </div>
+              <p className="text-white/32 text-xs mb-1.5">≈ $133 per CE hour</p>
+              <p className="flex items-center gap-1.5 text-white/48 text-xs mb-6">
+                <Users className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                Only 14 seats remaining — intimate class sizes for hands-on attention.
+              </p>
+            </ScrollReveal>
+
+            {/* CTA */}
+            <ScrollReveal delay={430}>
+              <SpotlightCTA />
               <Link
                 href="/courses/advanced-adhesive-dentistry-master-blueprint"
-                className="btn-primary inline-flex self-start"
+                className="block mt-3 text-sm text-white/45 hover:text-white/75 transition-colors"
+                style={{ maxWidth: 320 }}
               >
-                Learn More
-                <ArrowRight className="h-4 w-4" />
+                View full curriculum →
               </Link>
-            </div>
+            </ScrollReveal>
+
+            {/* Trust row */}
+            <ScrollReveal delay={470}>
+              <div className="flex flex-wrap gap-5 mt-7 pt-5 border-t border-white/10 text-xs text-white/38">
+                <span className="flex items-center gap-1.5">
+                  <Award className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                  CE-Accredited
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Users className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                  500+ Dentists Trained
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
+                  FRCD(C)-Level Faculty
+                </span>
+              </div>
+            </ScrollReveal>
+
           </div>
         </div>
       </section>
@@ -425,9 +540,14 @@ export default function HomePage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredCourses.map((course, i) => (
+            {featuredCourses.map((course, i) => {
+              const isSpotlight = course.slug === "advanced-adhesive-dentistry-master-blueprint";
+              return (
               <ScrollReveal key={course.slug} delay={i * 80}>
-                <Link href={`/courses/${course.slug}`} className="card block overflow-hidden group h-full">
+                <Link
+                  href={`/courses/${course.slug}`}
+                  className={`card block overflow-hidden group h-full${isSpotlight ? " ring-2 ring-[#c9a84c]/45" : ""}`}
+                >
                   {course.image ? (
                     <div className="relative w-full aspect-[4/3] overflow-hidden">
                       <BlurImage
@@ -483,12 +603,16 @@ export default function HomePage() {
                           </div>
                         )}
                       </div>
-                      {course.status === "sold-out" && <span className="badge-sold-out">Sold Out</span>}
+                      <div className="flex items-center gap-2">
+                        {isSpotlight && <span className="badge-enrolling">Enrolling Now</span>}
+                        {course.status === "sold-out" && <span className="badge-sold-out">Sold Out</span>}
+                      </div>
                     </div>
                   </div>
                 </Link>
               </ScrollReveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
