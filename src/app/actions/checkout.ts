@@ -15,6 +15,8 @@ export async function createCheckoutSession(
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3001");
 
+  let checkoutUrl: string;
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -37,18 +39,12 @@ export async function createCheckoutSession(
       cancel_url: `${baseUrl}/courses/${slug}?cancelled=true`,
     });
 
-    redirect(session.url!);
+    checkoutUrl = session.url!;
   } catch (err: unknown) {
-    if (
-      err &&
-      typeof err === "object" &&
-      "digest" in err &&
-      typeof (err as { digest: string }).digest === "string" &&
-      (err as { digest: string }).digest.startsWith("NEXT_REDIRECT")
-    ) {
-      throw err;
-    }
     const message = err instanceof Error ? err.message : "Payment setup failed.";
     return { error: message };
   }
+
+  // redirect() is called outside try/catch so Next.js can handle it cleanly
+  redirect(checkoutUrl);
 }
