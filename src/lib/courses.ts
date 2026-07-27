@@ -53,6 +53,33 @@ export const courses: Course[] = [
     ],
   },
   {
+    slug: "daily-unique-orthodontic-techniques",
+    title: "Daily and Unique Orthodontic Techniques",
+    subtitle:
+      "For Aligner Supercorrection, Rapid Class II Distalization, and Super-Efficiency with mini Active Self-ligation brackets and prosthodontics: Clinical Pearls",
+    instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
+    price: 799,
+    date: "Sunday, September 27, 2026",
+    time: "9:00 AM – 4:00 PM",
+    duration: "6 hours",
+    location: "265 Rimrock Rd, North York, ON",
+    ceCredits: "6 CE Credits (PACE Approved)",
+    status: "upcoming",
+    category: "Orthodontics",
+    format: "In-Person Lecture",
+    image: "/course-daily-orthodontic.jpeg",
+    description:
+      "Achieving predictable, efficient, and biologically sound orthodontic treatment with clear aligners requires more than simply prescribing attachments or following default software setups. Successful aligner therapy depends on understanding biomechanics, evidence-based treatment planning, supercorrection strategies, and the appropriate integration of auxiliary appliances. This intensive 6-hour course provides a comprehensive foundation and clinical blueprint for advanced aligner therapy — led by Dr. John C. Voudouris, Harvard University Speaker and internationally recognized orthodontist. Through numerous finished clinical cases, attendees explore practical solutions for treating deep bite, open bite, Class II and Class III malocclusions, transverse discrepancies, impacted teeth, and complex interdisciplinary orthodontic–prosthodontic cases.",
+    highlights: [
+      "Evidence-based attachment design and the JV Supercorrection Rx to reduce refinements",
+      "Digital workflows for diagnosis, treatment planning, and aligner prescription",
+      "U2 Seater, Molar Intruder™, and Anterior Intruder™ auxiliary appliance integration",
+      "Low-profile self-ligating bracket therapy combined with aligner treatment",
+      "Managing deep bite, open bite, Class II, Class III, transverse discrepancies, and impacted teeth",
+      "Includes the full-colour hardcover textbook: Excellence and Efficiency",
+    ],
+  },
+  {
     slug: "endo-course-for-general-dentists",
     title: "Endo Course For General Dentists",
     subtitle: "Precision Endo: From Access to Apex",

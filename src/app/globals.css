@@ -203,6 +203,18 @@ body {
   color: #065f46;
 }
 
+.badge-upcoming {
+  display: inline-block;
+  border-radius: 999px;
+  background: #eff6ff;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1e40af;
+}
+
 /* ── Countdown ── */
 .countdown-unit {
   display: flex;
