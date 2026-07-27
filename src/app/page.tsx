@@ -140,66 +140,116 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Animated logo */}
+          {/* Premium animated emblem */}
           <div className="hidden lg:flex items-center justify-center hero-logo-fade">
-            <div className="relative flex items-center justify-center" style={{ width: 340, height: 340 }}>
-              <div
-                className="glow-pulse absolute rounded-full"
-                style={{
-                  width: 260,
-                  height: 260,
-                  background: "radial-gradient(circle, rgba(201,168,76,0.3) 0%, transparent 70%)",
-                }}
-              />
-              <svg
-                className="ring-spin absolute"
-                width={320}
-                height={320}
-                viewBox="0 0 320 320"
-                style={{ top: 10, left: 10 }}
-              >
-                <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(201,168,76,0.35)" strokeWidth="1.5" strokeDasharray="8 10" strokeLinecap="round" />
+            <div className="relative flex items-center justify-center" style={{ width: 420, height: 420 }}>
+
+              {/* Sonar pulse rings — energy radiating outward */}
+              {[0, 2, 4].map((delay) => (
+                <div
+                  key={delay}
+                  className="sonar-ring absolute rounded-full"
+                  style={{ width: 360, height: 360, top: 30, left: 30, animationDelay: `${delay}s` }}
+                />
+              ))}
+
+              {/* Multi-layer glow */}
+              <div className="absolute rounded-full" style={{
+                width: 290, height: 290,
+                background: "radial-gradient(circle, rgba(27,58,138,0.3) 0%, rgba(201,168,76,0.18) 45%, transparent 70%)",
+                filter: "blur(28px)",
+              }} />
+              <div className="glow-pulse absolute rounded-full" style={{
+                width: 205, height: 205,
+                background: "radial-gradient(circle, rgba(201,168,76,0.32) 0%, rgba(201,168,76,0.08) 60%, transparent 80%)",
+                filter: "blur(14px)",
+              }} />
+
+              {/* Ring 1 — outermost, slow spin with gradient stroke */}
+              <svg className="absolute" style={{ width: 400, height: 400, top: 10, left: 10, animation: "ring-spin 26s linear infinite" }} viewBox="0 0 400 400">
+                <defs>
+                  <linearGradient id="rg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%"   stopColor="#c9a84c" stopOpacity="0" />
+                    <stop offset="35%"  stopColor="#c9a84c" stopOpacity="0.65" />
+                    <stop offset="65%"  stopColor="#e8d278" stopOpacity="0.45" />
+                    <stop offset="100%" stopColor="#c9a84c" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <circle cx="200" cy="200" r="188" fill="none" stroke="url(#rg1)" strokeWidth="1.5" strokeDasharray="12 22" strokeLinecap="round" />
               </svg>
-              <svg
-                className="ring-spin-rev absolute"
-                width={240}
-                height={240}
-                viewBox="0 0 240 240"
-                style={{ top: 50, left: 50 }}
-              >
-                <circle cx="120" cy="120" r="110" fill="none" stroke="rgba(201,168,76,0.2)" strokeWidth="1" strokeDasharray="4 14" strokeLinecap="round" />
+
+              {/* Ring 2 — mid reverse with cardinal tick marks */}
+              <svg className="absolute" style={{ width: 310, height: 310, top: 55, left: 55, animation: "ring-spin-reverse 16s linear infinite" }} viewBox="0 0 310 310">
+                <circle cx="155" cy="155" r="143" fill="none" stroke="rgba(201,168,76,0.22)" strokeWidth="0.75" strokeDasharray="4 16" strokeLinecap="round" />
+                {[0, 90, 180, 270].map((angle) => {
+                  const rad = (angle - 90) * Math.PI / 180;
+                  return (
+                    <line key={angle}
+                      x1={155 + 136 * Math.cos(rad)} y1={155 + 136 * Math.sin(rad)}
+                      x2={155 + 149 * Math.cos(rad)} y2={155 + 149 * Math.sin(rad)}
+                      stroke="#c9a84c" strokeWidth="2" strokeLinecap="round" opacity="0.55" />
+                  );
+                })}
               </svg>
+
+              {/* Ring 3 — inner forward */}
+              <svg className="absolute" style={{ width: 220, height: 220, top: 100, left: 100, animation: "ring-spin 14s linear infinite" }} viewBox="0 0 220 220">
+                <circle cx="110" cy="110" r="100" fill="none" stroke="rgba(201,168,76,0.14)" strokeWidth="1" strokeDasharray="2 9" />
+              </svg>
+
+              {/* Ring 4 — innermost reverse */}
+              <svg className="absolute" style={{ width: 162, height: 162, top: 129, left: 129, animation: "ring-spin-reverse 22s linear infinite" }} viewBox="0 0 162 162">
+                <circle cx="81" cy="81" r="71" fill="none" stroke="rgba(201,168,76,0.1)" strokeWidth="0.75" strokeDasharray="1 7" />
+              </svg>
+
+              {/* Orbiting particles — 6 dots at varied radii & speeds */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="dot-orbit-1 absolute">
-                  <div className="w-3 h-3 rounded-full" style={{ background: "#c9a84c", boxShadow: "0 0 8px #c9a84c" }} />
+                  <div className="w-3 h-3 rounded-full" style={{ background: "#c9a84c", boxShadow: "0 0 12px #c9a84c, 0 0 24px rgba(201,168,76,0.5)" }} />
                 </div>
                 <div className="dot-orbit-2 absolute">
-                  <div className="w-2 h-2 rounded-full" style={{ background: "rgba(201,168,76,0.7)" }} />
+                  <div className="w-2 h-2 rounded-full" style={{ background: "rgba(201,168,76,0.85)", boxShadow: "0 0 8px rgba(201,168,76,0.6)" }} />
                 </div>
                 <div className="dot-orbit-3 absolute">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.5)" }} />
+                  <div className="w-2 h-2 rounded-full" style={{ background: "rgba(255,255,255,0.7)", boxShadow: "0 0 6px rgba(255,255,255,0.4)" }} />
+                </div>
+                <div className="dot-orbit-4 absolute">
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#e8d278", boxShadow: "0 0 10px rgba(201,168,76,0.7)" }} />
+                </div>
+                <div className="dot-orbit-5 absolute">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.55)" }} />
+                </div>
+                <div className="dot-orbit-6 absolute">
+                  <div className="w-2 h-2 rounded-full" style={{ background: "rgba(201,168,76,0.65)", boxShadow: "0 0 6px rgba(201,168,76,0.4)" }} />
                 </div>
               </div>
+
+              {/* Logo card — premium glassmorphism */}
               <div
-                className="logo-float relative z-10 rounded-2xl flex items-center justify-center p-8"
+                className="logo-float relative z-10 rounded-3xl flex items-center justify-center overflow-hidden"
                 style={{
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(201,168,76,0.4)",
-                  backdropFilter: "blur(12px)",
-                  width: 200,
-                  height: 200,
-                  boxShadow: "0 20px 60px rgba(0,0,0,0.35), 0 0 40px rgba(201,168,76,0.15)",
+                  background: "linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.04) 100%)",
+                  border: "1px solid rgba(201,168,76,0.5)",
+                  backdropFilter: "blur(20px)",
+                  width: 235,
+                  height: 235,
+                  boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.08), 0 0 60px rgba(201,168,76,0.14), inset 0 1px 0 rgba(255,255,255,0.14)",
                 }}
               >
+                {/* Top edge gold line */}
+                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.75), transparent)" }} />
+                {/* Diagonal inner sheen */}
+                <div className="absolute inset-0 rounded-3xl" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, transparent 55%, rgba(201,168,76,0.05) 100%)" }} />
                 <Image
                   src="/logo.png"
                   alt="CanaDent Education Center"
-                  width={160}
-                  height={60}
-                  className="w-full h-auto object-contain brightness-0 invert"
+                  width={175}
+                  height={67}
+                  className="relative z-10 w-[74%] h-auto object-contain brightness-0 invert"
                   priority
                 />
               </div>
+
             </div>
           </div>
         </div>

@@ -127,7 +127,7 @@ body {
 /* ── Animated logo ── */
 @keyframes logo-float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-14px); }
+  50%       { transform: translateY(-18px); }
 }
 
 @keyframes ring-spin {
@@ -141,13 +141,33 @@ body {
 }
 
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50%       { opacity: 0.65; transform: scale(1.08); }
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.15); }
+}
+
+@keyframes sonar-expand {
+  0%   { opacity: 0.6; transform: scale(0.48); }
+  100% { opacity: 0;   transform: scale(1.05); }
+}
+
+@keyframes orbit-outer {
+  from { transform: rotate(0deg) translateX(155px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(155px) rotate(-360deg); }
+}
+
+@keyframes orbit-mid {
+  from { transform: rotate(0deg) translateX(110px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
 }
 
 @keyframes dot-orbit {
-  from { transform: rotate(0deg) translateX(90px) rotate(0deg); }
-  to   { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+  from { transform: rotate(0deg) translateX(78px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(78px) rotate(-360deg); }
+}
+
+@keyframes orbit-inner {
+  from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
 }
 
 @keyframes fade-in-up {
@@ -155,14 +175,24 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.logo-float      { animation: logo-float 4s ease-in-out infinite; }
-.ring-spin       { animation: ring-spin 8s linear infinite; }
-.ring-spin-rev   { animation: ring-spin-reverse 12s linear infinite; }
-.glow-pulse      { animation: glow-pulse 4s ease-in-out infinite; }
-.dot-orbit-1     { animation: dot-orbit 6s linear infinite; }
-.dot-orbit-2     { animation: dot-orbit 9s linear infinite reverse; animation-delay: -3s; }
-.dot-orbit-3     { animation: dot-orbit 12s linear infinite; animation-delay: -6s; }
-.hero-logo-fade  { animation: fade-in-up 0.8s ease both; animation-delay: 0.3s; }
+.logo-float    { animation: logo-float 5s ease-in-out infinite; }
+.ring-spin     { animation: ring-spin 8s linear infinite; }
+.ring-spin-rev { animation: ring-spin-reverse 12s linear infinite; }
+.glow-pulse    { animation: glow-pulse 4s ease-in-out infinite; }
+
+.sonar-ring {
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  animation: sonar-expand 6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.dot-orbit-1 { animation: orbit-outer  7s linear infinite;                              }
+.dot-orbit-2 { animation: orbit-outer 11s linear infinite reverse;  animation-delay: -4s; }
+.dot-orbit-3 { animation: orbit-mid    9s linear infinite;          animation-delay: -2s; }
+.dot-orbit-4 { animation: orbit-mid   13s linear infinite reverse;  animation-delay: -6s; }
+.dot-orbit-5 { animation: dot-orbit    8s linear infinite;          animation-delay: -3s; }
+.dot-orbit-6 { animation: orbit-inner 16s linear infinite reverse;  animation-delay: -8s; }
+
+.hero-logo-fade { animation: fade-in-up 0.8s ease both; animation-delay: 0.3s; }
 
 /* ── Scroll reveal ── */
 .sr-hidden {
