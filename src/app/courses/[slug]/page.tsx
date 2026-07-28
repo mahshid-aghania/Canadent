@@ -95,7 +95,7 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
       {/* Course image */}
       {course.image && (
         <div className="max-w-7xl mx-auto px-4 pt-10">
-          <div className="relative w-full max-w-xl aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+          <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden shadow-xl" style={{ aspectRatio: '1' }}>
             <BlurImage
               src={course.image}
               alt={course.title}

@@ -296,7 +296,7 @@ export default function HomePage() {
             {/* Card 1 — Advanced Adhesive Dentistry */}
             <ScrollReveal>
               <div className="card overflow-hidden flex flex-col h-full">
-                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                <div className="relative w-full aspect-square overflow-hidden" style={{ aspectRatio: '1' }}>
                   <BlurImage
                     src="/course-advanced-adhesive.png"
                     alt="Advanced Adhesive Dentistry: The Master Blueprint"
@@ -350,7 +350,7 @@ export default function HomePage() {
             {/* Card 2 — Daily and Unique Orthodontic Techniques */}
             <ScrollReveal delay={80}>
               <div className="card overflow-hidden flex flex-col h-full">
-                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                <div className="relative w-full aspect-square overflow-hidden" style={{ aspectRatio: '1' }}>
                   <BlurImage
                     src="/course-daily-orthodontic.jpeg"
                     alt="Daily and Unique Orthodontic Techniques"
@@ -714,7 +714,7 @@ export default function HomePage() {
                   className={`card block overflow-hidden group h-full${hasRing ? " ring-2 ring-[#c9a84c]/40" : ""}`}
                 >
                   {course.image ? (
-                    <div className="relative w-full aspect-[4/3] overflow-hidden">
+                    <div className="relative w-full aspect-square overflow-hidden" style={{ aspectRatio: '1' }}>
                       <BlurImage
                         src={course.image}
                         alt={course.title}
