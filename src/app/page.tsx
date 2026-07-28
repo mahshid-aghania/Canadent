@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { courses } from "@/lib/courses";
+import { getAllArticles } from "@/lib/articles";
 import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import {
@@ -18,6 +19,8 @@ import {
   MapPin,
   User,
   CheckCircle,
+  Clock,
+  FileText,
 } from "lucide-react";
 
 const stats = [
@@ -74,7 +77,16 @@ const missionItems = [
 
 const featuredCourses = courses.slice(0, 3);
 
+function formatArticleDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString("en-CA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 export default function HomePage() {
+  const latestArticles = getAllArticles().slice(0, 3);
   return (
     <>
       {/* ── HERO ── */}
@@ -397,6 +409,149 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── LATEST ARTICLES ── */}
+      {latestArticles.length > 0 && (
+        <section className="py-24 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+              <div>
+                <span className="section-label">From Our Blog</span>
+                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-3">
+                  Latest Articles
+                </h2>
+              </div>
+              <Link
+                href="/articles"
+                className="text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+                style={{ color: "#1b3a8a" }}
+              >
+                View All Articles <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-6">
+              {/* Featured article — spans 2 columns on large screens */}
+              {latestArticles[0] && (
+                <ScrollReveal>
+                  <article className="card overflow-hidden flex flex-col group lg:col-span-2">
+                    <Link
+                      href={`/articles/${latestArticles[0].slug}`}
+                      className="block relative w-full overflow-hidden bg-[#f0ece2]"
+                      style={{ aspectRatio: "16/9" }}
+                    >
+                      <Image
+                        src={latestArticles[0].heroImage}
+                        alt={latestArticles[0].heroImageAlt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 66vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </Link>
+                    <div className="p-6 lg:p-8 flex flex-col flex-1">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span
+                          className="rounded-full px-3 py-1 text-[0.65rem] font-bold tracking-wide uppercase"
+                          style={{ background: "#f5f0e8", color: "#a87219" }}
+                        >
+                          {latestArticles[0].category}
+                        </span>
+                      </div>
+                      <Link href={`/articles/${latestArticles[0].slug}`}>
+                        <h3 className="font-heading text-xl lg:text-2xl font-bold text-[#0f2150] leading-snug mb-3 group-hover:text-[#1b3a8a] transition-colors">
+                          {latestArticles[0].title}
+                        </h3>
+                      </Link>
+                      <p className="text-sm text-[#1a1a2e]/60 leading-relaxed mb-5 flex-1 line-clamp-3">
+                        {latestArticles[0].excerpt}
+                      </p>
+                      <div className="flex items-center justify-between gap-4 border-t border-[#1a1a2e]/8 pt-4">
+                        <div className="flex items-center gap-3 text-xs text-[#1a1a2e]/50">
+                          <span className="flex items-center gap-1.5">
+                            <User className="h-3.5 w-3.5" style={{ color: "#c9a84c" }} />
+                            {latestArticles[0].author}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3.5 w-3.5" style={{ color: "#c9a84c" }} />
+                            {latestArticles[0].readTimeMinutes} min
+                          </span>
+                        </div>
+                        <Link
+                          href={`/articles/${latestArticles[0].slug}`}
+                          className="text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+                          style={{ color: "#1b3a8a" }}
+                        >
+                          Read Article <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                </ScrollReveal>
+              )}
+
+              {/* Smaller article cards */}
+              <div className="flex flex-col gap-6">
+                {latestArticles.slice(1, 3).map((article, i) => (
+                  <ScrollReveal key={article.slug} delay={(i + 1) * 80}>
+                    <article className="card overflow-hidden flex flex-col sm:flex-row lg:flex-col group">
+                      <Link
+                        href={`/articles/${article.slug}`}
+                        className="block relative shrink-0 overflow-hidden bg-[#f0ece2] sm:w-40 lg:w-full"
+                        style={{ aspectRatio: "16/9" }}
+                      >
+                        <Image
+                          src={article.heroImage}
+                          alt={article.heroImageAlt}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 160px, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </Link>
+                      <div className="p-5 flex flex-col flex-1">
+                        <span
+                          className="inline-block rounded-full px-2.5 py-0.5 text-[0.6rem] font-bold tracking-wide uppercase mb-2 self-start"
+                          style={{ background: "#f5f0e8", color: "#a87219" }}
+                        >
+                          {article.category}
+                        </span>
+                        <Link href={`/articles/${article.slug}`}>
+                          <h3 className="font-heading text-base font-bold text-[#0f2150] leading-snug mb-2 group-hover:text-[#1b3a8a] transition-colors line-clamp-2">
+                            {article.title}
+                          </h3>
+                        </Link>
+                        <p className="text-xs text-[#1a1a2e]/55 leading-relaxed line-clamp-2 mb-3 flex-1">
+                          {article.excerpt}
+                        </p>
+                        <div className="flex items-center justify-between gap-2 text-xs text-[#1a1a2e]/45">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" style={{ color: "#c9a84c" }} />
+                            {formatArticleDate(article.publishDate)}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" style={{ color: "#c9a84c" }} />
+                            {article.readTimeMinutes} min
+                          </span>
+                        </div>
+                      </div>
+                    </article>
+                  </ScrollReveal>
+                ))}
+
+                {/* Placeholder card if only 1 article */}
+                {latestArticles.length === 1 && (
+                  <div
+                    className="card p-8 flex flex-col items-center justify-center text-center gap-4 border-2 border-dashed"
+                    style={{ borderColor: "rgba(201,168,76,0.3)", minHeight: 180 }}
+                  >
+                    <FileText className="h-8 w-8" style={{ color: "#c9a84c", opacity: 0.5 }} />
+                    <p className="text-sm text-[#1a1a2e]/40">More articles coming soon.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── WHY CHOOSE CANADENT ── */}
       <section className="py-24 px-4 bg-white">
