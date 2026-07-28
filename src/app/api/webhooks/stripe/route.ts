@@ -121,10 +121,9 @@ function buildEmail(
             <div style="background:#f0f4ff;border-radius:12px;padding:20px 24px;margin-bottom:28px;">
               <div style="font-size:13px;font-weight:700;color:#1b3a8a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">What to Expect</div>
               <ul style="margin:0;padding-left:18px;color:#1a1a2e;font-size:14px;line-height:1.8;">
-                <li>Please arrive <strong>15 minutes early</strong> for registration and setup</li>
-                <li>Bring a valid photo ID and your dental registration number</li>
-                <li>Lunch and refreshments will be provided</li>
-                <li>CE certificates will be distributed on the day of the course</li>
+                <li>Please arrive <strong>15 minutes early</strong> to complete registration and get settled.</li>
+                <li>Lunch and refreshments will be provided.</li>
+                <li>CE certificates will be issued approximately one week after the course.</li>
               </ul>
             </div>
 
