@@ -85,7 +85,7 @@ export default function CoursesPage() {
                   className={`card block overflow-hidden group h-full${course.status === "available" ? " ring-2 ring-[#c9a84c]/60" : ""}`}
                 >
                   {course.image ? (
-                    <div className="relative w-full aspect-square overflow-hidden" style={{ aspectRatio: '1' }}>
+                    <div className="relative w-full overflow-hidden" style={{ height: 0, paddingBottom: '100%' }}>
                       <BlurImage
                         src={course.image}
                         alt={course.title}
