@@ -95,13 +95,15 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
       {/* Course image */}
       {course.image && (
         <div className="max-w-7xl mx-auto px-4 pt-10">
-          <div className="relative w-full max-w-sm rounded-2xl overflow-hidden shadow-xl" style={{ height: 0, paddingBottom: '100%' }}>
-            <BlurImage
-              src={course.image}
-              alt={course.title}
-              priority
-              sizes="(max-width: 1280px) 100vw, 576px"
-            />
+          <div className="w-full max-w-sm">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-xl" style={{ height: 0, paddingBottom: '100%' }}>
+              <BlurImage
+                src={course.image}
+                alt={course.title}
+                priority
+                sizes="(max-width: 640px) 100vw, 384px"
+              />
+            </div>
           </div>
         </div>
       )}
