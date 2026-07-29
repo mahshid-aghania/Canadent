@@ -24,10 +24,10 @@ import {
 } from "lucide-react";
 
 const stats = [
-  { value: "500+", label: "Dentists Trained" },
+  { value: "+500", label: "Dentists Trained" },
   { value: "14+", label: "Courses Offered" },
-  { value: "10+", label: "Expert Instructors" },
-  { value: "7+", label: "CE Credit Categories" },
+  { value: "+20", label: "Expert Instructors" },
+  { value: "Type 2 and 3", label: "CE Credit Categories" },
 ];
 
 const values = [
