@@ -601,7 +601,7 @@ export default function HomePage() {
                 </p>
               </div>
               {[
-                { icon: BookOpen, label: "14+ Courses", sub: "Across all disciplines" },
+                { icon: BookOpen, label: "50+ Courses", sub: "Across all disciplines" },
                 { icon: Award, label: "CE Accredited", sub: "Recognized credentials" },
               ].map(({ icon: Icon, label, sub }) => (
                 <div key={label} className="card p-5 flex flex-col gap-2">
