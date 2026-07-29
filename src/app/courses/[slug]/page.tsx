@@ -217,7 +217,7 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                 <div className="flex items-center gap-2 mb-2">
                   <span className="badge-early-bird">Early Bird</span>
                   <span className="text-xs text-[#1a1a2e]/50">
-                    Valid until Aug 31, 2026
+                    Valid until {course.earlyBirdDeadline}
                   </span>
                 </div>
               )}
