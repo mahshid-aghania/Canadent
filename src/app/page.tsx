@@ -363,7 +363,7 @@ export default function HomePage() {
                 <div className="p-6 lg:p-8 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="badge-enrolling">Enrolling Now</span>
-                    <span className="badge-early-bird">Early Bird $799</span>
+                    <span className="badge-early-bird">Early Bird — Until Aug 10</span>
                   </div>
                   <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
                     Daily and Unique Orthodontic Techniques
@@ -390,7 +390,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <p className="text-[0.6rem] font-bold uppercase tracking-wide mb-4" style={{ color: "#a87219" }}>
-                    Early Bird valid until August 31, 2026
+                    Early Bird valid until August 10, 2026
                   </p>
                   <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8 flex items-center justify-between gap-4">
                     <div>
@@ -772,7 +772,7 @@ export default function HomePage() {
                             </div>
                             {course.earlyBirdDeadline && (
                               <p className="text-[0.6rem] font-bold uppercase tracking-wide mt-0.5" style={{ color: "#a87219" }}>
-                                Early Bird · Until Aug 31
+                                Early Bird · Until {course.earlyBirdDeadline}
                               </p>
                             )}
                           </div>

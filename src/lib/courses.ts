@@ -71,7 +71,7 @@ export const courses: Course[] = [
     location: "265 Rimrock Rd, North York, ON",
     ceCredits: "6 CE Credits (PACE Approved)",
     status: "available",
-    earlyBirdDeadline: "2026-08-31",
+    earlyBirdDeadline: "August 10, 2026",
     category: "Orthodontics",
     format: "In-Person Lecture",
     image: "/course-daily-orthodontic.jpeg",
