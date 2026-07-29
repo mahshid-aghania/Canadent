@@ -335,7 +335,7 @@ export default function HomePage() {
                   <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8 flex items-center justify-between gap-4">
                     <div>
                       <span className="text-sm font-semibold line-through text-red-500 block leading-none mb-1">$799</span>
-                      <span className="font-heading text-2xl font-bold text-green-600">$599</span>
+                      <span className="font-heading text-2xl font-bold text-green-600">$699</span>
                       <span className="text-xs text-[#1a1a2e]/50 block">Until Aug 10</span>
                     </div>
                     <Link
