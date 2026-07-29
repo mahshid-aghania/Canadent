@@ -25,7 +25,7 @@ import {
 
 const stats = [
   { value: "+500", label: "Dentists Trained" },
-  { value: "14+", label: "Courses Offered" },
+  { value: "50+", label: "Courses Offered" },
   { value: "+20", label: "Expert Instructors" },
   { value: "Type 2 and 3", label: "CE Credit Categories" },
 ];
