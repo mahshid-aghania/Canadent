@@ -61,7 +61,9 @@ function buildEmail(
   amountTotal: number,
   course: Course | undefined
 ): string {
-  const greeting = name ? `Dear ${name.split(" ")[0]},` : "Dear Participant,";
+  const nameParts = name ? name.trim().split(" ") : [];
+  const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : nameParts[0];
+  const greeting = lastName ? `Dear Dr. ${lastName},` : "Dear Doctor,";
   const amountPaid = amountTotal === 0 ? "Complimentary" : `$${(amountTotal / 100).toFixed(2)} CAD`;
 
   const details = course
