@@ -34,7 +34,7 @@ export const courses: Course[] = [
     instructor: "Dr. Amin Asadollahi",
     price: 699,
     originalPrice: 799,
-    earlyBirdDeadline: "August 20, 2026",
+    earlyBirdDeadline: "August 10, 2026",
     date: "Sunday, September 6, 2026",
     time: "9:00 AM – 4:00 PM",
     duration: "6 hours",
