@@ -239,14 +239,21 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                   ))}
                 </div>
               ) : (
-                <div className="flex items-baseline gap-3">
-                  <span className="font-heading text-3xl font-bold text-[#0f2150]">
-                    ${minPrice?.toLocaleString()}
-                  </span>
-                  {course.originalPrice && (
-                    <span className="text-lg text-[#1a1a2e]/35 line-through">
-                      ${course.originalPrice.toLocaleString()}
+                <div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-heading text-3xl font-bold" style={{ color: "#16a34a" }}>
+                      ${minPrice?.toLocaleString()}
                     </span>
+                    {course.originalPrice && (
+                      <span className="text-lg line-through" style={{ color: "#ef4444" }}>
+                        ${course.originalPrice.toLocaleString()}
+                      </span>
+                    )}
+                  </div>
+                  {course.earlyBirdDeadline && (
+                    <p className="text-xs font-medium mt-1" style={{ color: "#16a34a" }}>
+                      Until {course.earlyBirdDeadline.replace(/^(\w{3})\w* (\d+),.+$/, "$1 $2")}
+                    </p>
                   )}
                 </div>
               )}
