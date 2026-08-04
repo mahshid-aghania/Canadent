@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { BlurImage } from "@/components/BlurImage";
+import { RegisterButton } from "@/components/RegisterButton";
 import { notFound } from "next/navigation";
 import { courses, getCourse } from "@/lib/courses";
 import {
@@ -16,7 +18,10 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ cancelled?: string }>;
+};
 
 export async function generateStaticParams() {
   return courses.map((c) => ({ slug: c.slug }));
@@ -32,8 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function CourseDetailPage({ params }: Props) {
+export default async function CourseDetailPage({ params, searchParams }: Props) {
   const { slug } = await params;
+  const { cancelled } = await searchParams;
   const course = getCourse(slug);
   if (!course) notFound();
 
@@ -72,6 +78,9 @@ export default async function CourseDetailPage({ params }: Props) {
             {course.status === "sold-out" && (
               <span className="badge-sold-out">Sold Out</span>
             )}
+            {course.status === "available" && (
+              <span className="badge-available">Open for Registration</span>
+            )}
           </div>
 
           <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
@@ -86,15 +95,15 @@ export default async function CourseDetailPage({ params }: Props) {
       {/* Course image */}
       {course.image && (
         <div className="max-w-7xl mx-auto px-4 pt-10">
-          <div className="relative w-full max-w-xl rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              src={course.image}
-              alt={course.title}
-              width={800}
-              height={600}
-              className="w-full h-auto object-cover"
-              priority
-            />
+          <div className="w-full max-w-sm">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-xl" style={{ height: 0, paddingBottom: '100%' }}>
+              <BlurImage
+                src={course.image}
+                alt={course.title}
+                priority
+                sizes="(max-width: 640px) 100vw, 384px"
+              />
+            </div>
           </div>
         </div>
       )}
@@ -106,7 +115,11 @@ export default async function CourseDetailPage({ params }: Props) {
           {/* Description */}
           <section className="mb-10">
             <h2 className="font-heading text-2xl font-bold text-[#0f2150] mb-4">About This Course</h2>
-            <p className="text-[#1a1a2e]/70 leading-relaxed text-base">{course.description}</p>
+            <div className="space-y-4">
+              {course.description.split("\n\n").map((para, i) => (
+                <p key={i} className="text-[#1a1a2e]/70 leading-relaxed text-base">{para}</p>
+              ))}
+            </div>
           </section>
 
           {/* Highlights */}
@@ -159,12 +172,24 @@ export default async function CourseDetailPage({ params }: Props) {
           <section className="mb-10">
             <h2 className="font-heading text-2xl font-bold text-[#0f2150] mb-5">Instructor</h2>
             <div className="flex items-start gap-4 card p-5">
-              <div
-                className="w-14 h-14 rounded-full shrink-0 flex items-center justify-center text-xl font-bold text-white"
-                style={{ background: "#1b3a8a" }}
-              >
-                {course.instructor.charAt(0)}
-              </div>
+              {course.instructorPhoto ? (
+                <div className="w-14 h-14 rounded-full shrink-0 overflow-hidden border-2 border-[#c9a84c]/30">
+                  <Image
+                    src={course.instructorPhoto}
+                    alt={course.instructor}
+                    width={56}
+                    height={56}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div
+                  className="w-14 h-14 rounded-full shrink-0 flex items-center justify-center text-xl font-bold text-white"
+                  style={{ background: "#1b3a8a" }}
+                >
+                  {course.instructor.charAt(0)}
+                </div>
+              )}
               <div>
                 <div className="font-semibold text-[#0f2150] mb-1">{course.instructor}</div>
                 <div className="text-xs text-[#1a1a2e]/50">Course Instructor · CanaDent Faculty</div>
@@ -188,6 +213,14 @@ export default async function CourseDetailPage({ params }: Props) {
           <div className="card p-6 sticky top-6">
             {/* Price */}
             <div className="mb-5">
+              {course.earlyBirdDeadline && (
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="badge-early-bird">Early Bird</span>
+                  <span className="text-xs text-[#1a1a2e]/50">
+                    Valid until {course.earlyBirdDeadline}
+                  </span>
+                </div>
+              )}
               {course.isFree ? (
                 <div>
                   <span className="font-heading text-3xl font-bold text-[#0f2150]">Free</span>
@@ -206,14 +239,21 @@ export default async function CourseDetailPage({ params }: Props) {
                   ))}
                 </div>
               ) : (
-                <div className="flex items-baseline gap-3">
-                  <span className="font-heading text-3xl font-bold text-[#0f2150]">
-                    ${minPrice?.toLocaleString()}
-                  </span>
-                  {course.originalPrice && (
-                    <span className="text-lg text-[#1a1a2e]/35 line-through">
-                      ${course.originalPrice.toLocaleString()}
+                <div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-heading text-3xl font-bold" style={{ color: "#16a34a" }}>
+                      ${minPrice?.toLocaleString()}
                     </span>
+                    {course.originalPrice && (
+                      <span className="text-lg line-through" style={{ color: "#ef4444" }}>
+                        ${course.originalPrice.toLocaleString()}
+                      </span>
+                    )}
+                  </div>
+                  {course.earlyBirdDeadline && (
+                    <p className="text-xs font-medium mt-1" style={{ color: "#16a34a" }}>
+                      Until {course.earlyBirdDeadline.replace(/^(\w{3})\w* (\d+),.+$/, "$1 $2")}
+                    </p>
                   )}
                 </div>
               )}
@@ -250,6 +290,17 @@ export default async function CourseDetailPage({ params }: Props) {
               )}
             </ul>
 
+            {/* Cancel feedback only — success now goes to /success page */}
+            {cancelled === "true" && (
+              <div
+                className="flex items-center gap-2 rounded-xl px-4 py-3 mb-4 text-sm"
+                style={{ background: "#fef9ec", color: "#92400e" }}
+              >
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                Payment was cancelled. You can try again below.
+              </div>
+            )}
+
             {/* CTA */}
             {course.status === "sold-out" ? (
               <div>
@@ -265,7 +316,20 @@ export default async function CourseDetailPage({ params }: Props) {
                 </Link>
               </div>
             ) : (
-              <button className="btn-primary w-full">Register Now</button>
+              <div>
+                <div
+                  className="flex items-center gap-2 rounded-lg px-4 py-3 mb-3 text-sm"
+                  style={{ background: "#ecfdf5", color: "#065f46" }}
+                >
+                  <CheckCircle className="h-4 w-4 shrink-0" />
+                  Seats available — secure your spot today.
+                </div>
+                <RegisterButton
+                  slug={course.slug}
+                  title={course.title}
+                  price={course.price ?? 0}
+                />
+              </div>
             )}
 
             {/* Contact */}

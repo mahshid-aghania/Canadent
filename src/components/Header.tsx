@@ -8,6 +8,7 @@ import { Menu, X, Phone, ShoppingCart, User } from "lucide-react";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/courses", label: "Courses" },
+  { href: "/articles", label: "Articles" },
   { href: "/my-account", label: "My Account" },
   { href: "/enrolment-agreement", label: "Enrolment Agreement" },
   { href: "/cart", label: "Cart" },

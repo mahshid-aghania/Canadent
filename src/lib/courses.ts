@@ -16,13 +16,78 @@ export type Course = {
   format?: string;
   image?: string;
   posterImage?: string;
+  instructorPhoto?: string;
   description: string;
   highlights?: string[];
   schedule?: { day: string; topic: string }[];
   priceOptions?: { label: string; price: number }[];
+  seatsRemaining?: number;
+  earlyBirdDeadline?: string;
 };
 
 export const courses: Course[] = [
+  {
+    slug: "advanced-adhesive-dentistry-master-blueprint",
+    title: "Advanced Adhesive Dentistry: The Master Blueprint",
+    subtitle:
+      "How to obtain a comprehensive understanding of predictable, minimally invasive, and long-lasting restorative workflows with zero post-operative sensitivity.",
+    instructor: "Dr. Amin Asadollahi",
+    price: 699,
+    originalPrice: 799,
+    earlyBirdDeadline: "August 10, 2026",
+    date: "Sunday, September 6, 2026",
+    time: "9:00 AM – 4:00 PM",
+    duration: "6 hours",
+    location: "265 Rimrock Rd, North York, ON",
+    ceCredits: "6 CE Credits",
+    status: "available",
+    seatsRemaining: 14,
+    category: "Restorative Dentistry",
+    format: "In-Person Lecture",
+    image: "/course-advanced-adhesive.png",
+    instructorPhoto: "/dr-amin-asadollahi.png",
+    description:
+      "Transitioning to a truly biomimetic and minimally invasive practice requires moving past traditional mechanical retention and understanding the sophisticated mechanics of modern adhesion. Because advanced adhesive dentistry is an incredibly comprehensive and multi-layered discipline, it cannot be mastered in a single day. Instead, this intensive 6-hour course is designed to serve as your ultimate foundational platform and comprehensive overview. Led by an experienced clinician and educator, this session maps out the entire adhesive landscape, providing the big-picture clarity you need before diving into specific technical execution.\n\nThis course serves as the mandatory preliminary blueprint for a series of upcoming, consecutive deep-dive sessions. Over 6 hours, we will establish the structural framework of modern adhesion, covering the core principles of advanced rubber dam isolation, dental histology, and modern caries and crack management. We will break down the chemistry behind modern dentin bonding agents, and explore the clinical logic behind Immediate Dentin Sealing (IDS) and Deep Margin Elevation (DME). Finally, we will overview how to control the C-factor to manage polymerization stress, shifting from direct composite restorations to semi-direct and indirect options. By the end of this course, participants will not only understand how these components interconnect to eliminate post-operative sensitivity, but they will also possess the essential conceptual roadmap required to excel in the subsequent step-by-step, hands-on modules.",
+    highlights: [
+      "Understand Absolute Isolation Dynamics: Gain a clear understanding of how advanced rubber dam isolation, clamp selection, and inversion techniques protect the hybrid layer from moisture.",
+      "Correlate Histology with Substrate Chemistry: Comprehend how bonding protocols must change when treating enamel versus deep, cracked, or caries-affected dentin.",
+      "Differentiate Bonding Systems: Grasp the fundamental differences between various generations of dentin bonding agents to eliminate clinical guesswork.",
+      "Recognize Sensitivity-Prevention Protocols: Understand the clinical rationale and biological benefits of utilizing Immediate Dentin Sealing (IDS) and Deep Margin Elevation (DME).",
+      "Identify Stress Management Strategies: Learn how the C-factor impacts the adhesive interface and understand the concepts behind decoupled mechanics and layering.",
+      "Navigate the Restorative Spectrum: Establish a clear conceptual framework for deciding when a clinical case calls for direct, semi-direct, or indirect adhesive restorations.",
+    ],
+  },
+  {
+    slug: "daily-unique-orthodontic-techniques",
+    title: "Daily and Unique Orthodontic Techniques",
+    subtitle:
+      "How to obtain a comprehensive understanding of evidence-based aligner therapy, advanced biomechanics, and efficient clinical workflows for predictable treatment outcomes.",
+    instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
+    price: 799,
+    originalPrice: 999,
+    date: "Sunday, September 27, 2026",
+    time: "9:00 AM – 4:00 PM",
+    duration: "6 hours",
+    location: "265 Rimrock Rd, North York, ON",
+    ceCredits: "6 CE Credits (PACE Approved)",
+    status: "available",
+    earlyBirdDeadline: "August 29, 2026",
+    category: "Orthodontics",
+    format: "In-Person Lecture",
+    image: "/course-daily-orthodontic.jpeg",
+    description:
+      "Achieving predictable, efficient, and biologically sound orthodontic treatment with clear aligners requires more than simply prescribing attachments or following default software setups. Successful aligner therapy depends on understanding biomechanics, evidence-based treatment planning, supercorrection strategies, and the appropriate integration of auxiliary appliances. Because modern aligner orthodontics is a comprehensive and rapidly evolving discipline, it cannot be mastered in a single day. Instead, this intensive 6-hour course is designed to provide participants with a comprehensive foundation and clinical blueprint for advanced aligner therapy.\n\nLed by experienced clinicians, this course presents the biological principles and biomechanical concepts that underpin predictable tooth movement with clear aligners. Participants will learn the rationale behind evidence-based attachment design, the JV Supercorrection Rx, digital treatment planning, and the incorporation of modern auxiliaries to improve treatment efficiency while minimizing refinements.\n\nThrough numerous finished clinical cases, attendees will explore practical solutions for treating deep bite, open bite, Class II and Class III malocclusions, transverse discrepancies, impacted teeth, and complex interdisciplinary orthodontic–prosthodontic cases. Special emphasis will be placed on understanding digital workflows, evidence-based biomechanics, and clinical decision-making that can be immediately incorporated into everyday practice.\n\nThe course combines comprehensive lectures with hands-on demonstrations of innovative orthodontic auxiliaries, including the U2 Seater, Molar Intruder™️, Anterior Intruder™️, and the Experience®️ low-profile self-ligating bracket system, providing participants with practical techniques to increase treatment predictability and efficiency.\n\nParticipants will also receive the opportunity to obtain the full-colour hardcover textbook Excellence and Efficiency, providing an extensive evidence-based reference for continued clinical learning.\n\nBy the end of this course, participants will possess a structured conceptual framework for planning, executing, and finishing aligner treatments with greater confidence, efficiency, and predictability.",
+    highlights: [
+      "Understand the biological and biomechanical principles governing predictable tooth movement with clear aligners.",
+      "Apply evidence-based attachment design and the JV Supercorrection Rx to improve treatment accuracy and reduce refinements.",
+      "Develop efficient digital workflows for diagnosis, treatment planning, and aligner prescription.",
+      "Recognize appropriate indications for auxiliary appliances, including the U2 Seater, Molar Intruder™️, and Anterior Intruder™️, to enhance treatment outcomes.",
+      "Integrate low-profile self-ligating bracket therapy with aligner treatment when clinically indicated.",
+      "Diagnose and manage common orthodontic challenges including deep bite, open bite, Class II, Class III, transverse discrepancies, impacted teeth, and interdisciplinary restorative cases.",
+      "Interpret current scientific evidence supporting modern aligner biomechanics and evidence-based clinical protocols.",
+      "Apply practical clinical tips and treatment strategies that can be immediately incorporated into daily orthodontic and interdisciplinary practice.",
+    ],
+  },
   {
     slug: "endo-course-for-general-dentists",
     title: "Endo Course For General Dentists",
