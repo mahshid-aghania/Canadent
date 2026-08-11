@@ -433,6 +433,28 @@ export const courses: Course[] = [
       "Q&A and networking session",
     ],
   },
+  {
+    slug: "developing-treatment-plan-dentistry",
+    title: "Developing Treatment Plan in Dentistry: Definitive Phase of Treatment",
+    instructor: "Dr. Mehdi Adibrad",
+    price: 79,
+    originalPrice: 79,
+    date: "August 20, 2022",
+    location: "Online",
+    ceCredits: "2 CE Credits",
+    status: "sold-out",
+    category: "Treatment Planning",
+    format: "Online Seminar",
+    image: "/course-treatment-plan-adibrad.png",
+    description:
+      "An online seminar covering the definitive phase of treatment planning in dentistry. Dr. Mehdi Adibrad guides participants through systematic approaches to building comprehensive, evidence-based treatment plans — from initial diagnosis through to final restorative decisions. A practical session designed to sharpen clinical decision-making for general dentists.",
+    highlights: [
+      "Systematic framework for comprehensive treatment planning",
+      "Definitive phase decision-making strategies",
+      "Evidence-based approach to restorative sequencing",
+      "Case-based learning with real clinical examples",
+    ],
+  },
 ];
 
 export function getCourse(slug: string): Course | undefined {
