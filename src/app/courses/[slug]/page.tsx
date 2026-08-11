@@ -50,13 +50,14 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
     <>
       {/* Header */}
       <section
-        className="py-14 px-4"
+        className="px-4 pt-14 pb-10"
         style={{ background: "linear-gradient(135deg, #0f2150, #1b3a8a)" }}
       >
         <div className="max-w-7xl mx-auto">
-          <div className={course.image ? "lg:flex lg:items-end lg:gap-16" : ""}>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-10 lg:gap-16 items-center">
+
             {/* Text */}
-            <div className="flex-1">
+            <div>
               <nav className="text-sm text-white/50 mb-6 flex items-center gap-1.5">
                 <Link href="/" className="hover:text-[#c9a84c] transition-colors">Home</Link>
                 <span>/</span>
@@ -93,13 +94,13 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
               )}
             </div>
 
-            {/* Poster — desktop only */}
+            {/* Poster — single element, responsive */}
             {course.image && (
-              <div className="hidden lg:block shrink-0">
+              <div className="w-full max-w-[240px] mx-auto lg:mx-0 lg:w-[220px] shrink-0">
                 <div
-                  className="relative w-56 rounded-2xl overflow-hidden"
+                  className="relative w-full rounded-2xl overflow-hidden"
                   style={{
-                    height: "320px",
+                    paddingBottom: "125%",
                     boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.25)",
                   }}
                 >
@@ -109,39 +110,15 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                     fill
                     priority
                     className="object-cover"
-                    sizes="224px"
+                    sizes="(max-width: 1024px) 240px, 220px"
                   />
                 </div>
               </div>
             )}
+
           </div>
         </div>
       </section>
-
-      {/* Poster — mobile only (below hero, still inside the dark band) */}
-      {course.image && (
-        <div
-          className="lg:hidden px-4 pt-2 pb-8"
-          style={{ background: "linear-gradient(180deg, #1b3a8a, #0f2150)" }}
-        >
-          <div
-            className="relative w-full max-w-[260px] mx-auto rounded-2xl overflow-hidden"
-            style={{
-              paddingBottom: "125%",
-              boxShadow: "0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.2)",
-            }}
-          >
-            <Image
-              src={course.image}
-              alt={course.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="260px"
-            />
-          </div>
-        </div>
-      )}
 
       {/* Body */}
       <div className="max-w-7xl mx-auto px-4 py-12 grid lg:grid-cols-[1fr_360px] gap-10">
