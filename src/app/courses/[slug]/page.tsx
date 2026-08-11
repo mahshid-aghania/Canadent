@@ -101,6 +101,7 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                   className="relative w-full rounded-2xl overflow-hidden"
                   style={{
                     paddingBottom: "125%",
+                    background: "#0f2150",
                     boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.25)",
                   }}
                 >
@@ -109,7 +110,7 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                     alt={course.title}
                     fill
                     priority
-                    className="object-cover"
+                    className="object-contain z-10"
                     sizes="(max-width: 1024px) 240px, 220px"
                   />
                 </div>

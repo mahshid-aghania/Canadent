@@ -9,13 +9,16 @@ interface BlurImageProps {
 
 export function BlurImage({ src, alt, sizes, priority }: BlurImageProps) {
   return (
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      priority={priority}
-      className="object-cover"
-      sizes={sizes ?? "100vw"}
-    />
+    <>
+      <div className="absolute inset-0" style={{ background: "#0f2150" }} />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority={priority}
+        className="object-contain z-10"
+        sizes={sizes ?? "100vw"}
+      />
+    </>
   );
 }
