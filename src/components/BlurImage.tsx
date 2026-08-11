@@ -16,7 +16,7 @@ export function BlurImage({ src, alt, sizes, priority }: BlurImageProps) {
         alt={alt}
         fill
         priority={priority}
-        className="object-contain z-10"
+        style={{ objectFit: "contain", objectPosition: "center center", zIndex: 10 }}
         sizes={sizes ?? "100vw"}
       />
     </>
