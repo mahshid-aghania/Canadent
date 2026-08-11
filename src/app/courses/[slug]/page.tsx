@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { BlurImage } from "@/components/BlurImage";
 import { RegisterButton } from "@/components/RegisterButton";
 import { notFound } from "next/navigation";
 import { courses, getCourse } from "@/lib/courses";
@@ -55,55 +54,91 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
         style={{ background: "linear-gradient(135deg, #0f2150, #1b3a8a)" }}
       >
         <div className="max-w-7xl mx-auto">
-          <nav className="text-sm text-white/50 mb-6 flex items-center gap-1.5">
-            <Link href="/" className="hover:text-[#c9a84c] transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/courses" className="hover:text-[#c9a84c] transition-colors">Courses</Link>
-            <span>/</span>
-            <span className="text-white line-clamp-1">{course.title}</span>
-          </nav>
+          <div className={course.image ? "lg:flex lg:items-end lg:gap-16" : ""}>
+            {/* Text */}
+            <div className="flex-1">
+              <nav className="text-sm text-white/50 mb-6 flex items-center gap-1.5">
+                <Link href="/" className="hover:text-[#c9a84c] transition-colors">Home</Link>
+                <span>/</span>
+                <Link href="/courses" className="hover:text-[#c9a84c] transition-colors">Courses</Link>
+                <span>/</span>
+                <span className="text-white line-clamp-1">{course.title}</span>
+              </nav>
 
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span
-              className="rounded-full px-3 py-1 text-xs font-semibold text-[#0f2150]"
-              style={{ background: "#c9a84c" }}
-            >
-              {course.category}
-            </span>
-            {course.format && (
-              <span className="rounded-full px-3 py-1 text-xs font-medium text-white/70 border border-white/20">
-                {course.format}
-              </span>
-            )}
-            {course.status === "sold-out" && (
-              <span className="badge-sold-out">Sold Out</span>
-            )}
-            {course.status === "available" && (
-              <span className="badge-available">Open for Registration</span>
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <span
+                  className="rounded-full px-3 py-1 text-xs font-semibold text-[#0f2150]"
+                  style={{ background: "#c9a84c" }}
+                >
+                  {course.category}
+                </span>
+                {course.format && (
+                  <span className="rounded-full px-3 py-1 text-xs font-medium text-white/70 border border-white/20">
+                    {course.format}
+                  </span>
+                )}
+                {course.status === "sold-out" && (
+                  <span className="badge-sold-out">Sold Out</span>
+                )}
+                {course.status === "available" && (
+                  <span className="badge-available">Open for Registration</span>
+                )}
+              </div>
+
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
+                {course.title}
+              </h1>
+              {course.subtitle && (
+                <p className="text-[#c9a84c] text-lg font-medium">{course.subtitle}</p>
+              )}
+            </div>
+
+            {/* Poster — desktop only */}
+            {course.image && (
+              <div className="hidden lg:block shrink-0">
+                <div
+                  className="relative w-56 rounded-2xl overflow-hidden"
+                  style={{
+                    height: "320px",
+                    boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.25)",
+                  }}
+                >
+                  <Image
+                    src={course.image}
+                    alt={course.title}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="224px"
+                  />
+                </div>
+              </div>
             )}
           </div>
-
-          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
-            {course.title}
-          </h1>
-          {course.subtitle && (
-            <p className="text-[#c9a84c] text-lg font-medium">{course.subtitle}</p>
-          )}
         </div>
       </section>
 
-      {/* Course image */}
+      {/* Poster — mobile only (below hero, still inside the dark band) */}
       {course.image && (
-        <div className="max-w-7xl mx-auto px-4 pt-10">
-          <div className="w-full max-w-sm">
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-xl" style={{ height: 0, paddingBottom: '100%' }}>
-              <BlurImage
-                src={course.image}
-                alt={course.title}
-                priority
-                sizes="(max-width: 640px) 100vw, 384px"
-              />
-            </div>
+        <div
+          className="lg:hidden px-4 pt-2 pb-8"
+          style={{ background: "linear-gradient(180deg, #1b3a8a, #0f2150)" }}
+        >
+          <div
+            className="relative w-full max-w-[260px] mx-auto rounded-2xl overflow-hidden"
+            style={{
+              paddingBottom: "125%",
+              boxShadow: "0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.2)",
+            }}
+          >
+            <Image
+              src={course.image}
+              alt={course.title}
+              fill
+              priority
+              className="object-cover"
+              sizes="260px"
+            />
           </div>
         </div>
       )}
