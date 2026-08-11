@@ -434,6 +434,28 @@ export const courses: Course[] = [
     ],
   },
   {
+    slug: "tmj-radiologic-diagnosis",
+    title: "TMJ Radiologic Diagnosis",
+    instructor: "Dr. Masoud Varshosaz",
+    price: 79,
+    date: "July 30, 2022",
+    time: "11:00 AM Toronto Time",
+    location: "Online",
+    ceCredits: "2 CE Credits",
+    status: "sold-out",
+    category: "Radiology",
+    format: "Online Seminar",
+    image: "/course-tmj-radiologic.png",
+    description:
+      "An online seminar on the radiologic diagnosis of temporomandibular joint (TMJ) disorders. Dr. Masoud Varshosaz covers imaging modalities, diagnostic interpretation, and clinical decision-making for TMJ pathology — providing practical tools for general dentists to improve their diagnostic accuracy.",
+    highlights: [
+      "Radiologic interpretation of TMJ anatomy and pathology",
+      "Imaging modality selection for TMJ assessment",
+      "Diagnostic criteria for common TMJ disorders",
+      "Clinical correlation and treatment planning implications",
+    ],
+  },
+  {
     slug: "developing-treatment-plan-dentistry",
     title: "Developing Treatment Plan in Dentistry: Definitive Phase of Treatment",
     instructor: "Dr. Mehdi Adibrad",
