@@ -4,10 +4,11 @@ import { Resend } from "resend";
 import { getCourse } from "@/lib/courses";
 import type { Course } from "@/lib/courses";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-const resend = new Resend(process.env.RESEND_API_KEY!);
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+  const resend = new Resend(process.env.RESEND_API_KEY!);
   const body = await request.text();
   const sig = request.headers.get("stripe-signature");
 
