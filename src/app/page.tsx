@@ -355,8 +355,8 @@ export default function HomePage() {
               <div className="card overflow-hidden flex flex-col h-full">
                 <div className="relative w-full overflow-hidden" style={{ height: 0, paddingBottom: '125%' }}>
                   <BlurImage
-                    src="/course-daily-orthodontic.jpeg"
-                    alt="Daily and Unique Orthodontic Techniques"
+                    src="/course-orthodontic-prosthodontics-poster.jpeg"
+                    alt="Daily and Unique Orthodontic Techniques for Prosthodontics"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
@@ -366,7 +366,7 @@ export default function HomePage() {
                     <span className="badge-early-bird">Early Bird — Until Aug 20</span>
                   </div>
                   <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
-                    Daily and Unique Orthodontic Techniques
+                    Daily and Unique Orthodontic Techniques for Prosthodontics
                   </h3>
                   <p className="text-xs text-[#1b3a8a]/70 mb-4 leading-relaxed">
                     Evidence-based aligner therapy, advanced biomechanics, and efficient clinical workflows for predictable treatment outcomes.

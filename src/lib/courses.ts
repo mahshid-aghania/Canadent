@@ -59,7 +59,7 @@ export const courses: Course[] = [
   },
   {
     slug: "daily-unique-orthodontic-techniques",
-    title: "Daily and Unique Orthodontic Techniques",
+    title: "Daily and Unique Orthodontic Techniques for Prosthodontics",
     subtitle:
       "How to obtain a comprehensive understanding of evidence-based aligner therapy, advanced biomechanics, and efficient clinical workflows for predictable treatment outcomes.",
     instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
@@ -74,7 +74,7 @@ export const courses: Course[] = [
     earlyBirdDeadline: "August 29, 2026",
     category: "Orthodontics",
     format: "In-Person Lecture",
-    image: "/course-daily-orthodontic.jpeg",
+    image: "/course-orthodontic-prosthodontics-poster.jpeg",
     description:
       "Achieving predictable, efficient, and biologically sound orthodontic treatment with clear aligners requires more than simply prescribing attachments or following default software setups. Successful aligner therapy depends on understanding biomechanics, evidence-based treatment planning, supercorrection strategies, and the appropriate integration of auxiliary appliances. Because modern aligner orthodontics is a comprehensive and rapidly evolving discipline, it cannot be mastered in a single day. Instead, this intensive 6-hour course is designed to provide participants with a comprehensive foundation and clinical blueprint for advanced aligner therapy.\n\nLed by experienced clinicians, this course presents the biological principles and biomechanical concepts that underpin predictable tooth movement with clear aligners. Participants will learn the rationale behind evidence-based attachment design, the JV Supercorrection Rx, digital treatment planning, and the incorporation of modern auxiliaries to improve treatment efficiency while minimizing refinements.\n\nThrough numerous finished clinical cases, attendees will explore practical solutions for treating deep bite, open bite, Class II and Class III malocclusions, transverse discrepancies, impacted teeth, and complex interdisciplinary orthodontic–prosthodontic cases. Special emphasis will be placed on understanding digital workflows, evidence-based biomechanics, and clinical decision-making that can be immediately incorporated into everyday practice.\n\nThe course combines comprehensive lectures with hands-on demonstrations of innovative orthodontic auxiliaries, including the U2 Seater, Molar Intruder™️, Anterior Intruder™️, and the Experience®️ low-profile self-ligating bracket system, providing participants with practical techniques to increase treatment predictability and efficiency.\n\nParticipants will also receive the opportunity to obtain the full-colour hardcover textbook Excellence and Efficiency, providing an extensive evidence-based reference for continued clinical learning.\n\nBy the end of this course, participants will possess a structured conceptual framework for planning, executing, and finishing aligner treatments with greater confidence, efficiency, and predictability.",
     highlights: [
