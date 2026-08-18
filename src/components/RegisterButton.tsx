@@ -3,20 +3,32 @@ import { useTransition, useState } from "react";
 import { AlertCircle } from "lucide-react";
 import { createCheckoutSession } from "@/app/actions/checkout";
 
+interface PriceOption {
+  label: string;
+  price: number;
+  originalPrice?: number;
+}
+
 interface Props {
   slug: string;
   title: string;
   price: number;
+  options?: PriceOption[];
 }
 
-export function RegisterButton({ slug, title, price }: Props) {
+export function RegisterButton({ slug, title, price, options }: Props) {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
+  const [selected, setSelected] = useState(options?.[0]?.label ?? null);
+
+  const activePrice = options
+    ? (options.find((o) => o.label === selected)?.price ?? price)
+    : price;
 
   function handleClick() {
     setError(null);
     startTransition(async () => {
-      const result = await createCheckoutSession(slug, title, price);
+      const result = await createCheckoutSession(slug, title, activePrice, selected);
       if (result && "error" in result) {
         setError(result.error);
       }
@@ -25,6 +37,43 @@ export function RegisterButton({ slug, title, price }: Props) {
 
   return (
     <div>
+      {options && (
+        <fieldset className="mb-3">
+          <legend className="text-xs font-semibold text-[#0f2150] mb-2">
+            Choose how you&apos;ll attend
+          </legend>
+          <div className="space-y-2">
+            {options.map((opt) => (
+              <label
+                key={opt.label}
+                className="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 cursor-pointer text-sm transition-colors"
+                style={{
+                  background: selected === opt.label ? "#eef2fb" : "#f5f7fb",
+                  border:
+                    selected === opt.label
+                      ? "1px solid #1b3a8a"
+                      : "1px solid transparent",
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="attendance-mode"
+                    value={opt.label}
+                    checked={selected === opt.label}
+                    onChange={() => setSelected(opt.label)}
+                    className="accent-[#1b3a8a]"
+                  />
+                  <span className="text-[#1a1a2e]/75">{opt.label}</span>
+                </span>
+                <span className="font-semibold text-[#0f2150] shrink-0">
+                  ${opt.price.toLocaleString()}
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )}
       <button
         onClick={handleClick}
         disabled={isPending}

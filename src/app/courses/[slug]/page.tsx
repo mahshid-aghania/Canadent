@@ -243,11 +243,23 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                   {course.priceOptions.map((opt) => (
                     <div
                       key={opt.label}
-                      className="flex items-center justify-between rounded-lg p-3"
+                      className="flex items-center justify-between gap-3 rounded-lg p-3"
                       style={{ background: "#f5f7fb" }}
                     >
                       <span className="text-sm text-[#1a1a2e]/70">{opt.label}</span>
-                      <span className="font-bold text-[#0f2150]">${opt.price}</span>
+                      <span className="flex items-baseline gap-2 shrink-0">
+                        {opt.originalPrice && (
+                          <span className="text-xs line-through" style={{ color: "#ef4444" }}>
+                            ${opt.originalPrice.toLocaleString()}
+                          </span>
+                        )}
+                        <span
+                          className="font-bold"
+                          style={{ color: opt.originalPrice ? "#16a34a" : "#0f2150" }}
+                        >
+                          ${opt.price.toLocaleString()}
+                        </span>
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -341,6 +353,7 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                   slug={course.slug}
                   title={course.title}
                   price={course.price ?? 0}
+                  options={course.priceOptions}
                 />
               </div>
             )}

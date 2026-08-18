@@ -13,7 +13,8 @@ export function SpotlightCTA() {
       const result = await createCheckoutSession(
         "advanced-adhesive-dentistry-master-blueprint",
         "Advanced Adhesive Dentistry: The Master Blueprint",
-        799
+        699,
+        "In-Person Attendance"
       );
       if (result && "error" in result) {
         setError(result.error);

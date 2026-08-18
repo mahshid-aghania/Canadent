@@ -20,7 +20,7 @@ export type Course = {
   description: string;
   highlights?: string[];
   schedule?: { day: string; topic: string }[];
-  priceOptions?: { label: string; price: number }[];
+  priceOptions?: { label: string; price: number; originalPrice?: number }[];
   seatsRemaining?: number;
   earlyBirdDeadline?: string;
 };
@@ -32,18 +32,21 @@ export const courses: Course[] = [
     subtitle:
       "How to obtain a comprehensive understanding of predictable, minimally invasive, and long-lasting restorative workflows with zero post-operative sensitivity.",
     instructor: "Dr. Amin Asadollahi",
-    price: 699,
-    originalPrice: 799,
-    earlyBirdDeadline: "August 10, 2026",
+    price: 499,
+    earlyBirdDeadline: "August 24, 2026",
+    priceOptions: [
+      { label: "Online Attendance", price: 499 },
+      { label: "In-Person Attendance", price: 699, originalPrice: 799 },
+    ],
     date: "Sunday, September 6, 2026",
     time: "9:00 AM – 4:00 PM",
     duration: "6 hours",
-    location: "265 Rimrock Rd, North York, ON",
+    location: "Hybrid — Online + In-Person (265 Rimrock Rd, North York, ON)",
     ceCredits: "6 CE Credits",
     status: "available",
     seatsRemaining: 14,
     category: "Restorative Dentistry",
-    format: "In-Person Lecture",
+    format: "Hybrid (In-Person / Online)",
     image: "/course-advanced-adhesive.png",
     instructorPhoto: "/dr-amin-asadollahi.png",
     description:

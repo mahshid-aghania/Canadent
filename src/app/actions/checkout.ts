@@ -1,14 +1,38 @@
 "use server";
 import Stripe from "stripe";
 import { redirect } from "next/navigation";
+import { getCourse } from "@/lib/courses";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function createCheckoutSession(
   slug: string,
   title: string,
-  priceCAD: number
+  priceCAD: number,
+  optionLabel?: string | null
 ): Promise<{ error: string } | never> {
+  // Never trust the client-supplied amount — always recompute from course data.
+  const course = getCourse(slug);
+  if (!course) {
+    return { error: "This course could not be found." };
+  }
+
+  let resolvedPrice: number | null | undefined;
+  if (course.priceOptions) {
+    const option = optionLabel
+      ? course.priceOptions.find((o) => o.label === optionLabel)
+      : undefined;
+    if (!option) {
+      return { error: "Please choose how you would like to attend." };
+    }
+    resolvedPrice = option.price;
+  } else {
+    resolvedPrice = course.price;
+  }
+
+  if (!resolvedPrice || resolvedPrice <= 0) {
+    return { error: "This course is not available for online payment." };
+  }
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL ||
     (process.env.VERCEL_URL
@@ -25,10 +49,10 @@ export async function createCheckoutSession(
           price_data: {
             currency: "cad",
             product_data: {
-              name: title,
+              name: optionLabel ? `${course.title} — ${optionLabel}` : course.title,
               description: "CanaDent Education Center — Continuing Education Course",
             },
-            unit_amount: priceCAD * 100,
+            unit_amount: resolvedPrice * 100,
           },
           quantity: 1,
         },
@@ -36,8 +60,8 @@ export async function createCheckoutSession(
       mode: "payment",
       allow_promotion_codes: true,
       billing_address_collection: "auto",
-      metadata: { slug, title },
-      success_url: `${baseUrl}/success?course=${encodeURIComponent(title)}&slug=${slug}`,
+      metadata: { slug, title: course.title, ...(optionLabel ? { attendance: optionLabel } : {}) },
+      success_url: `${baseUrl}/success?course=${encodeURIComponent(course.title)}&slug=${slug}`,
       cancel_url: `${baseUrl}/courses/${slug}?cancelled=true`,
     });
 
