@@ -306,7 +306,7 @@ export default function HomePage() {
                 <div className="p-6 lg:p-8 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="badge-enrolling">Enrolling Now</span>
-                    <span className="badge-early-bird">Early Bird — Until Aug 10</span>
+                    <span className="badge-early-bird">Early Bird — Until Aug 24</span>
                   </div>
                   <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
                     Advanced Adhesive Dentistry: The Master Blueprint
@@ -329,14 +329,21 @@ export default function HomePage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      6 CE Credits · In-Person Lecture
+                      6 CE Credits · Hybrid (In-Person / Online)
                     </div>
                   </div>
-                  <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8 flex items-center justify-between gap-4">
+                  <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8 flex items-end justify-between gap-4">
                     <div>
-                      <span className="text-sm font-semibold line-through text-red-500 block leading-none mb-1">$799</span>
-                      <span className="font-heading text-2xl font-bold text-green-600">$699</span>
-                      <span className="text-xs text-[#1a1a2e]/50 block">Until Aug 10</span>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-xs text-[#1a1a2e]/50 w-14 shrink-0">Online</span>
+                        <span className="font-heading text-lg font-bold text-[#0f2150]">$499</span>
+                      </div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-xs text-[#1a1a2e]/50 w-14 shrink-0">In-Person</span>
+                        <span className="text-xs font-semibold line-through text-red-500">$799</span>
+                        <span className="font-heading text-lg font-bold text-green-600">$699</span>
+                      </div>
+                      <span className="text-xs text-[#1a1a2e]/50 block mt-1">Early bird until Aug 24</span>
                     </div>
                     <Link
                       href="/courses/advanced-adhesive-dentistry-master-blueprint"
