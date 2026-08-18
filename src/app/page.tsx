@@ -298,7 +298,7 @@ export default function HomePage() {
               <div className="card overflow-hidden flex flex-col h-full">
                 <div className="relative w-full overflow-hidden" style={{ height: 0, paddingBottom: '125%' }}>
                   <BlurImage
-                    src="/course-advanced-adhesive.png"
+                    src="/course-adhesive-dentistry-poster.jpeg"
                     alt="Advanced Adhesive Dentistry: The Master Blueprint"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
