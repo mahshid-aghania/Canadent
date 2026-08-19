@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { RegisterButton } from "@/components/RegisterButton";
 import { notFound } from "next/navigation";
 import { courses, getCourse } from "@/lib/courses";
+import { TAX_NOTE, TAX_SUFFIX } from "@/lib/tax";
 import {
   Calendar,
   Clock,
@@ -259,9 +260,11 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                         >
                           ${opt.price.toLocaleString()}
                         </span>
+                        <span className="text-xs text-[#1a1a2e]/50">{TAX_SUFFIX}</span>
                       </span>
                     </div>
                   ))}
+                  <p className="text-xs text-[#1a1a2e]/50">{TAX_NOTE}</p>
                 </div>
               ) : (
                 <div>
@@ -274,12 +277,14 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                         ${course.originalPrice.toLocaleString()}
                       </span>
                     )}
+                    <span className="text-sm text-[#1a1a2e]/50">{TAX_SUFFIX}</span>
                   </div>
                   {course.earlyBirdDeadline && (
                     <p className="text-xs font-medium mt-1" style={{ color: "#16a34a" }}>
                       Until {course.earlyBirdDeadline.replace(/^(\w{3})\w* (\d+),.+$/, "$1 $2")}
                     </p>
                   )}
+                  <p className="text-xs text-[#1a1a2e]/50 mt-1">{TAX_NOTE}</p>
                 </div>
               )}
             </div>

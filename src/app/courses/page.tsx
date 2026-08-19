@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { courses, categories } from "@/lib/courses";
+import { TAX_SUFFIX } from "@/lib/tax";
 import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { BookOpen, MapPin, Calendar, User, GraduationCap, ArrowRight } from "lucide-react";
@@ -150,6 +151,7 @@ export default function CoursesPage() {
                             <span className="font-bold text-[#0f2150]">
                               ${Math.min(...course.priceOptions.map((o) => o.price)).toLocaleString()}
                             </span>
+                            <span className="text-xs text-[#1a1a2e]/45"> {TAX_SUFFIX}</span>
                           </div>
                         ) : (
                           <div className="flex items-baseline gap-2">
@@ -161,6 +163,7 @@ export default function CoursesPage() {
                                 ${course.originalPrice.toLocaleString()}
                               </span>
                             )}
+                            <span className="text-xs text-[#1a1a2e]/45">{TAX_SUFFIX}</span>
                           </div>
                         )}
                       </div>

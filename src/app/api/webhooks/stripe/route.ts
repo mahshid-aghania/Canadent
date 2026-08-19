@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import { Resend } from "resend";
 import { getCourse } from "@/lib/courses";
 import type { Course } from "@/lib/courses";
+import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
 
 export const dynamic = "force-dynamic";
 
@@ -31,8 +32,17 @@ export async function POST(request: NextRequest) {
     const slug = session.metadata?.slug;
     const title = session.metadata?.title;
     const amountTotal = session.amount_total ?? 0;
+    const amountSubtotal = session.amount_subtotal ?? 0;
+    const amountTax = session.total_details?.amount_tax ?? 0;
 
-    console.log("[webhook] checkout.session.completed", { email, slug, title, amountTotal });
+    console.log("[webhook] checkout.session.completed", {
+      email,
+      slug,
+      title,
+      amountSubtotal,
+      amountTax,
+      amountTotal,
+    });
 
     if (email && slug && title) {
       const course = getCourse(slug);
@@ -41,7 +51,7 @@ export async function POST(request: NextRequest) {
         to: email,
         cc: ["ar.movasagh@confidentist.ca", "mahshid.aghania@gmail.com", "canadent.edu@gmail.com"],
         subject: `Registration Confirmed — ${title}`,
-        html: buildEmail(name, title, amountTotal, course),
+        html: buildEmail(name, title, amountTotal, course, amountSubtotal, amountTax),
       });
       if (error) {
         console.error("[webhook] Resend error:", error);
@@ -60,12 +70,28 @@ function buildEmail(
   name: string | null | undefined,
   title: string,
   amountTotal: number,
-  course: Course | undefined
+  course: Course | undefined,
+  amountSubtotal = 0,
+  amountTax = 0
 ): string {
   const nameParts = name ? name.trim().split(" ") : [];
   const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : nameParts[0];
   const greeting = lastName ? `Dear Dr. ${lastName},` : "Dear Doctor,";
   const amountPaid = amountTotal === 0 ? "Complimentary" : `$${(amountTotal / 100).toFixed(2)} CAD`;
+
+  const rowLabel =
+    "padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;";
+  const rowValue =
+    "padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;";
+
+  // Only show the breakdown when tax was actually charged.
+  const taxRows =
+    amountTax > 0
+      ? `
+      <tr><td style="${rowLabel}">🧾 Course Fee</td><td style="${rowValue}">$${(amountSubtotal / 100).toFixed(2)} CAD</td></tr>
+      <tr><td style="${rowLabel}">${TAX_LABEL} (${TAX_PERCENTAGE}%)</td><td style="${rowValue}">$${(amountTax / 100).toFixed(2)} CAD</td></tr>
+    `
+      : "";
 
   const details = course
     ? `
@@ -74,9 +100,10 @@ function buildEmail(
       <tr><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;">📍 Location</td><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;">${course.location}</td></tr>
       <tr><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;">👨‍⚕️ Instructor</td><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;">${course.instructor}</td></tr>
       ${course.ceCredits ? `<tr><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;">🎓 CE Credits</td><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;">${course.ceCredits}</td></tr>` : ""}
-      <tr><td style="padding:10px 0;color:#555;font-size:14px;">💳 Amount Paid</td><td style="padding:10px 0;font-weight:600;color:#0f2150;font-size:14px;">${amountPaid}</td></tr>
+      ${taxRows}
+      <tr><td style="padding:10px 0;color:#555;font-size:14px;">💳 Total Paid</td><td style="padding:10px 0;font-weight:600;color:#0f2150;font-size:14px;">${amountPaid}</td></tr>
     `
-    : `<tr><td style="padding:10px 0;color:#555;font-size:14px;">💳 Amount Paid</td><td style="padding:10px 0;font-weight:600;color:#0f2150;font-size:14px;">${amountPaid}</td></tr>`;
+    : `${taxRows}<tr><td style="padding:10px 0;color:#555;font-size:14px;">💳 Total Paid</td><td style="padding:10px 0;font-weight:600;color:#0f2150;font-size:14px;">${amountPaid}</td></tr>`;
 
   return `<!DOCTYPE html>
 <html lang="en">

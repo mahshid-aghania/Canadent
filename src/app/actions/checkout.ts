@@ -2,8 +2,17 @@
 import Stripe from "stripe";
 import { redirect } from "next/navigation";
 import { getCourse } from "@/lib/courses";
+import { getHstTaxRateId } from "@/lib/stripe-tax";
+import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+// Constructed lazily: instantiating at module scope crashes the entire server
+// action on import when STRIPE_SECRET_KEY is absent, which surfaces as an
+// unhelpful 500 instead of a readable message on the page.
+function getStripe(): Stripe | null {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) return null;
+  return new Stripe(key);
+}
 
 export async function createCheckoutSession(
   slug: string,
@@ -33,6 +42,15 @@ export async function createCheckoutSession(
   if (!resolvedPrice || resolvedPrice <= 0) {
     return { error: "This course is not available for online payment." };
   }
+
+  const stripe = getStripe();
+  if (!stripe) {
+    console.error("[checkout] STRIPE_SECRET_KEY is not set");
+    return {
+      error:
+        "Online payment is temporarily unavailable. Please call 1.437.370.0122 to register.",
+    };
+  }
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL ||
     (process.env.VERCEL_URL
@@ -42,6 +60,9 @@ export async function createCheckoutSession(
   let checkoutUrl: string;
 
   try {
+    // Course prices are tax-exclusive — Stripe adds HST as its own line.
+    const taxRateId = await getHstTaxRateId(stripe);
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -50,11 +71,12 @@ export async function createCheckoutSession(
             currency: "cad",
             product_data: {
               name: optionLabel ? `${course.title} — ${optionLabel}` : course.title,
-              description: "CanaDent Education Center — Continuing Education Course",
+              description: `CanaDent Education Center — Continuing Education Course (plus ${TAX_PERCENTAGE}% ${TAX_LABEL})`,
             },
             unit_amount: resolvedPrice * 100,
           },
           quantity: 1,
+          tax_rates: [taxRateId],
         },
       ],
       mode: "payment",
