@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { courses } from "@/lib/courses";
+import { TAX_SUFFIX } from "@/lib/tax";
 import { getAllArticles } from "@/lib/articles";
 import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -337,11 +338,13 @@ export default function HomePage() {
                       <div className="flex items-baseline gap-2">
                         <span className="text-xs text-[#1a1a2e]/50 w-14 shrink-0">Online</span>
                         <span className="font-heading text-lg font-bold text-[#0f2150]">$499</span>
+                        <span className="text-xs text-[#1a1a2e]/50">{TAX_SUFFIX}</span>
                       </div>
                       <div className="flex items-baseline gap-2">
                         <span className="text-xs text-[#1a1a2e]/50 w-14 shrink-0">In-Person</span>
                         <span className="text-xs font-semibold line-through text-red-500">$799</span>
                         <span className="font-heading text-lg font-bold text-green-600">$699</span>
+                        <span className="text-xs text-[#1a1a2e]/50">{TAX_SUFFIX}</span>
                       </div>
                       <span className="text-xs text-[#1a1a2e]/50 block mt-1">Early bird until Aug 24</span>
                     </div>
@@ -403,6 +406,7 @@ export default function HomePage() {
                     <div>
                       <span className="text-sm font-semibold line-through text-red-500 block leading-none mb-1">$999</span>
                       <span className="font-heading text-2xl font-bold text-green-600">$799</span>
+                      <span className="text-xs text-[#1a1a2e]/50 ml-1">{TAX_SUFFIX}</span>
                       <span className="text-xs text-[#1a1a2e]/50 block">Until Aug 20</span>
                     </div>
                     <Link
@@ -719,6 +723,7 @@ export default function HomePage() {
                                   ${course.originalPrice.toLocaleString()}
                                 </span>
                               )}
+                              <span className="text-xs text-[#1a1a2e]/45">{TAX_SUFFIX}</span>
                             </div>
                             {course.earlyBirdDeadline && (
                               <p className="text-[0.6rem] font-bold uppercase tracking-wide mt-0.5" style={{ color: "#a87219" }}>

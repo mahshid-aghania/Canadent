@@ -2,6 +2,7 @@
 import { useTransition, useState } from "react";
 import { AlertCircle } from "lucide-react";
 import { createCheckoutSession } from "@/app/actions/checkout";
+import { TAX_NOTE, TAX_SUFFIX } from "@/lib/tax";
 
 interface PriceOption {
   label: string;
@@ -67,7 +68,8 @@ export function RegisterButton({ slug, title, price, options }: Props) {
                   <span className="text-[#1a1a2e]/75">{opt.label}</span>
                 </span>
                 <span className="font-semibold text-[#0f2150] shrink-0">
-                  ${opt.price.toLocaleString()}
+                  ${opt.price.toLocaleString()}{" "}
+                  <span className="font-normal text-xs text-[#1a1a2e]/50">{TAX_SUFFIX}</span>
                 </span>
               </label>
             ))}
@@ -96,6 +98,7 @@ export function RegisterButton({ slug, title, price, options }: Props) {
           "Register Now"
         )}
       </button>
+      <p className="text-xs text-center text-[#1a1a2e]/50 mt-2.5">{TAX_NOTE}</p>
       {error && (
         <div className="flex items-start gap-2 mt-3 rounded-lg px-3 py-2.5 text-sm" style={{ background: "#fee2e2", color: "#b91c1c" }}>
           <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
