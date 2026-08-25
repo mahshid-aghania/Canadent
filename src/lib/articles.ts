@@ -24,6 +24,44 @@ function estimateReadTime(html: string): number {
 // ── Add new articles to the top of this array (newest first) ──────────────
 export const articles: Article[] = [
   {
+    slug: "financial-management-in-dentistry",
+    title:
+      "Unlocking Hidden Pr ofits: The Importance of Financial Management in Dentistry",
+    excerpt:
+      "In discussions of financial management in dentistry, Dr. Scott Leune explains that the financial success of a dental practice is determined not only by its annual revenue, but also by its profitability, overhead, and financial efficiency.",
+    author: "CanaDent Education Team",
+    authorTitle: "CanaDent Education Center",
+    authorBio:
+      "The CanaDent Education Team produces evidence-informed articles on clinical practice, practice management, and continuing education for dental professionals across Canada.",
+    publishDate: "2026-08-25",
+    category: "Practice Management",
+    heroImage: "/article-financial-management-hero.jpg",
+    heroImageAlt:
+      "Unlocking Hidden Pr ofits: The Importance of Financial Management in Dentistry",
+    bodyHtml: `
+<h2>Introduction</h2>
+<p>In discussions of financial management in dentistry, Dr. Scott Leune explains that the financial success of a dental practice is determined not only by its annual revenue, but also by its profitability, overhead, and financial efficiency. By reviewing three real profit-and-loss (P&amp;L) statements, he demonstrates that many dentists overlook opportunities to improve profitability because they focus primarily on production and collections instead of understanding their expenses. Leune argues that learning to read and interpret a P&amp;L statement allows practice owners to identify hidden profits, make better business decisions, and increase both their annual income and the long-term value of their practices.</p>
+
+<h2>Looking Beyond Collections</h2>
+<p>One of the central messages is that total collections do not accurately measure the financial health of a dental practice. While many dentists assume that higher collections automatically lead to higher profits, Leune explains that this is not always true. A practice that collects millions of dollars each year can still generate relatively low profits if operating expenses are excessive. Instead of focusing only on revenue, practice owners should pay close attention to key financial indicators such as overhead, cash flow, and EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortisation). These measurements provide a clearer picture of how much income the practice produces after expenses and play an important role in determining the practice’s overall value.</p>
+
+<h2>Finding Hidden Profit Through Expense Management</h2>
+<p>Leune emphasises that hidden profit is often found through pragmatic management of expenses rather than by increasing production. He encourages dentists to divide their costs into major categories, including staff compensation, clinical supplies, laboratory fees, facility expenses, administrative costs, and marketing. Reviewing each category individually makes it easier to identify areas where spending has become unnecessarily high. According to Leune, many practices unknowingly lose significant amounts of money through overstaffing, excessive supply purchases, high administrative expenses, or facilities that cost more than necessary. Reducing these expenses can improve profitability immediately without requiring additional patients, longer hours, or more complex dental procedures.</p>
+
+<h2>Evaluating Practice Performance</h2>
+<p>Leune analyses several real dental practice P&amp;Ls to illustrate how financial statements reveal opportunities that owners often miss. One practice collecting approximately $1.8 million annually appeared average to its owner, yet the analysis showed roughly $160,000 in EBITDA and an estimated practice value of about $1 million. Another example involved a dentist who owned two practices. After reviewing both financial statements together, Leune estimated that the combined practices generated approximately $650,000 in annual cash flow and could be worth around $4.2 million if sold. These examples demonstrate that understanding financial reports can help owners recognise the true performance and value of their businesses instead of relying solely on production numbers.</p>
+
+<h2>Building Long-Term Practice Value</h2>
+<p>Another important concept is the relationship between profitability and practice valuation. Leune explains that buyers and investors typically evaluate dental practices based on EBITDA rather than total collections. As a result, increasing profitability through improved expense management can significantly increase the value of a practice. Even modest improvements in annual profit may lead to substantial increases in the practice’s selling price because valuations are commonly based on multiples of EBITDA. Leune also introduces what he calls the “Rent Test,” encouraging dentists to evaluate rent as a percentage of collections to determine whether facility costs are appropriate for dentistry being produced. This simple comparison can help identify whether a practice is underutilising its space or carrying unnecessarily high occupancy costs.</p>
+
+<h2>Conclusion</h2>
+<p>The overall lesson is that financial knowledge is an essential part of successful dental practice ownership. Rather than relying entirely on accountants or bookkeepers, Leune encourages dentists to understand every line of their own profit-and-loss statements so they can identify trends, monitor expenses, and make informed business decisions. The episode demonstrates that improving profitability often depends less on increasing production and more on managing existing resources effectively. By understanding financial metrics such as overhead, cash flow, EBITDA, and expense categories, dentists can uncover hidden profit, strengthen the financial health of their practices, and increase the long-term value of their businesses.</p>
+
+<p><strong><em>Reference:</em></strong></p>
+<p>Dental CEO Podcast Ep.71: Where Your Profit Is Hiding (Scott Analyzes Actual P&amp;Ls)</p>
+`,
+  },
+  {
     slug: "digital-marketing-strategies-dental-practices",
     title: "Digital Marketing Strategies in Modern Dental Practices",
     excerpt:
