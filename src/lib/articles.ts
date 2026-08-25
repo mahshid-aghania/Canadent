@@ -26,7 +26,7 @@ export const articles: Article[] = [
   {
     slug: "financial-management-in-dentistry",
     title:
-      "Unlocking Hidden Pr ofits: The Importance of Financial Management in Dentistry",
+      "Unlocking Hidden Profit: The Importance of Financial Management in Dentistry",
     excerpt:
       "In discussions of financial management in dentistry, Dr. Scott Leune explains that the financial success of a dental practice is determined not only by its annual revenue, but also by its profitability, overhead, and financial efficiency.",
     author: "CanaDent Education Team",
@@ -37,7 +37,7 @@ export const articles: Article[] = [
     category: "Practice Management",
     heroImage: "/article-financial-management-hero.jpg",
     heroImageAlt:
-      "Unlocking Hidden Pr ofits: The Importance of Financial Management in Dentistry",
+      "Unlocking Hidden Profit: The Importance of Financial Management in Dentistry",
     bodyHtml: `
 <h2>Introduction</h2>
 <p>In discussions of financial management in dentistry, Dr. Scott Leune explains that the financial success of a dental practice is determined not only by its annual revenue, but also by its profitability, overhead, and financial efficiency. By reviewing three real profit-and-loss (P&amp;L) statements, he demonstrates that many dentists overlook opportunities to improve profitability because they focus primarily on production and collections instead of understanding their expenses. Leune argues that learning to read and interpret a P&amp;L statement allows practice owners to identify hidden profits, make better business decisions, and increase both their annual income and the long-term value of their practices.</p>
