@@ -87,7 +87,7 @@ function formatArticleDate(dateString: string) {
 }
 
 export default function HomePage() {
-  const latestArticles = getAllArticles().slice(0, 3);
+  const latestArticles = getAllArticles();
   return (
     <>
       {/* ── HERO ── */}
