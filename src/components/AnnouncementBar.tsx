@@ -27,7 +27,7 @@ export function AnnouncementBar() {
         >
           Orthodontic Techniques — Sept 27
         </Link>
-        <span className="opacity-60 mx-1 text-[#0f2150] font-normal">(Early Bird $799 + HST · Until Aug 31)</span>
+        <span className="opacity-60 mx-1 text-[#0f2150] font-normal">(Early Bird $799 + HST · Until Sep 10)</span>
         <span className="opacity-40 mx-2">·</span>
         <Link
           href="/courses/advanced-adhesive-dentistry-master-blueprint"
