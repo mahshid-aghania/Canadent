@@ -21,12 +21,12 @@ const INTENTS: Intent[] = [
   {
     patterns: [/all courses|what courses|upcoming|what do you offer|catalog|list.*course|course.*list/i],
     response:
-      "We have two courses enrolling now for Fall 2026:\n\n• Advanced Adhesive Dentistry: The Master Blueprint — Sept 6 · Hybrid: $499 online / $699 in-person Early Bird (reg. $799 until Aug 24) · 6 CE credits · Dr. Amin Asadollahi\n\n• Daily and Unique Orthodontic Techniques — Sept 27 · $799 Early Bird (reg. $999 until Aug 31) · 6 PACE CE credits · Dr. John Voudouris\n\nAll prices exclude 13% HST, which is added at checkout.\n\nAsk me about either one, or browse the full catalog at canadent.net/courses",
+      "We have two courses enrolling now for Fall 2026:\n\n• Advanced Adhesive Dentistry: The Master Blueprint — Sept 6 · Hybrid: $499 online / $799 in-person · 6 CE credits · Dr. Amin Asadollahi\n\n• Daily and Unique Orthodontic Techniques — Sept 27 · $799 Early Bird (reg. $999 until Aug 31) · 6 PACE CE credits · Dr. John Voudouris\n\nAll prices exclude 13% HST, which is added at checkout.\n\nAsk me about either one, or browse the full catalog at canadent.net/courses",
   },
   {
     patterns: [/adhesive|composite|bonding|master blueprint|asadollahi|restorative|ids|dme|rubber dam|dentin|amin/i],
     response:
-      "Advanced Adhesive Dentistry: The Master Blueprint\n\nInstructor: Dr. Amin Asadollahi\nDate: Sunday, September 6, 2026\nLocation: 265 Rimrock Rd, North York, ON (or attend online)\nFormat: Hybrid — in-person or online · 6 hours · 6 CE credits\nPrice: $499 online · $699 in-person Early Bird (reg. $799) — early bird valid until August 24, 2026. Prices exclude 13% HST, added at checkout.\n\nCovers rubber dam isolation, dentin bonding chemistry, IDS, DME, C-factor, and the progression from direct composite to indirect restorations.\n\nReserve your seat:\ncanadent.net/courses/advanced-adhesive-dentistry-master-blueprint",
+      "Advanced Adhesive Dentistry: The Master Blueprint\n\nInstructor: Dr. Amin Asadollahi\nDate: Sunday, September 6, 2026\nLocation: 265 Rimrock Rd, North York, ON (or attend online)\nFormat: Hybrid — in-person or online · 6 hours · 6 CE credits\nPrice: $499 online · $799 in-person. Prices exclude 13% HST, added at checkout.\n\nCovers rubber dam isolation, dentin bonding chemistry, IDS, DME, C-factor, and the progression from direct composite to indirect restorations.\n\nReserve your seat:\ncanadent.net/courses/advanced-adhesive-dentistry-master-blueprint",
   },
   {
     patterns: [/ortho|orthodontic|aligner|voudouris|clear aligner|brackets|biomechanics|deep bite|open bite|class ii|class iii|supercorrection/i],
@@ -46,7 +46,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/price|cost|how much|fee|pay|pricing|\$/i],
     response:
-      "Fall 2026 course pricing:\n\n• Advanced Adhesive Dentistry — Hybrid: $499 online / $699 in-person Early Bird (reg. $799, until Aug 24)\n• Daily & Unique Orthodontic Techniques — $799 Early Bird (reg. $999, until Aug 31)\n\nAll prices exclude 13% HST, which is added at checkout.\n\nPayment is handled securely online during registration. Questions? Email canadent.edu@gmail.com",
+      "Fall 2026 course pricing:\n\n• Advanced Adhesive Dentistry — Hybrid: $499 online / $799 in-person\n• Daily & Unique Orthodontic Techniques — $799 Early Bird (reg. $999, until Aug 31)\n\nAll prices exclude 13% HST, which is added at checkout.\n\nPayment is handled securely online during registration. Questions? Email canadent.edu@gmail.com",
   },
   {
     patterns: [/register|enroll|enrol|sign up|book|reserve|seat|spot/i],
