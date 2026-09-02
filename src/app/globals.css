@@ -485,3 +485,93 @@ body {
   transform: translateY(-6px) perspective(800px) rotateY(-3deg) rotateX(1deg);
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 40px rgba(201, 168, 76, 0.12);
 }
+
+/* ── Attendance selectable cards ── */
+.attendance-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  border-radius: 14px;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  padding: 1rem;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+}
+.attendance-card:hover {
+  border-color: #c3ccdb;
+  box-shadow: 0 6px 20px rgba(15, 33, 80, 0.08);
+}
+.attendance-card--selected {
+  border-color: #1b3a8a;
+  background: #f7f9ff;
+  box-shadow: 0 8px 26px rgba(27, 58, 138, 0.14);
+}
+/* Visible keyboard focus ring driven by the visually-hidden radio */
+.attendance-card:has(input:focus-visible) {
+  outline: 3px solid rgba(27, 58, 138, 0.45);
+  outline-offset: 2px;
+}
+.attendance-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 2px solid #cbd5e1;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background 0.18s, border-color 0.18s;
+}
+.attendance-check--on {
+  background: #1b3a8a;
+  border-color: #1b3a8a;
+}
+.attendance-selected-flag {
+  display: block;
+  margin-top: 0.75rem;
+  min-height: 0.9rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1b3a8a;
+}
+
+/* ── Sticky mobile registration bar ── */
+.reg-sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 -6px 24px rgba(15, 33, 80, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom));
+}
+.reg-sticky__inner {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* ── Reduced-motion: honour the user's OS preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .sr-hidden {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

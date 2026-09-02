@@ -18,7 +18,8 @@ export async function createCheckoutSession(
   slug: string,
   title: string,
   priceCAD: number,
-  optionLabel?: string | null
+  optionLabel?: string | null,
+  utm?: Record<string, string>
 ): Promise<{ error: string } | never> {
   // Never trust the client-supplied amount — always recompute from course data.
   const course = getCourse(slug);
@@ -57,6 +58,18 @@ export async function createCheckoutSession(
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3001");
 
+  // Whitelist UTM keys only — these are attribution data, never PII. Cap the
+  // count and length so a crafted URL can't bloat Stripe metadata.
+  const utmMetadata: Record<string, string> = {};
+  if (utm) {
+    for (const [key, value] of Object.entries(utm)) {
+      if (/^utm_[a-z]+$/.test(key) && typeof value === "string") {
+        utmMetadata[key] = value.slice(0, 200);
+      }
+    }
+  }
+  const utmQuery = new URLSearchParams(utmMetadata).toString();
+
   let checkoutUrl: string;
 
   try {
@@ -82,9 +95,23 @@ export async function createCheckoutSession(
       mode: "payment",
       allow_promotion_codes: true,
       billing_address_collection: "auto",
-      metadata: { slug, title: course.title, ...(optionLabel ? { attendance: optionLabel } : {}) },
-      success_url: `${baseUrl}/success?course=${encodeURIComponent(course.title)}&slug=${slug}`,
-      cancel_url: `${baseUrl}/courses/${slug}?cancelled=true`,
+      // Collect a mobile number for essential course communication. Stripe's
+      // hosted field handles country code, formatting, keypad, validation, and
+      // accessibility; the number lands on the order + Dashboard, never in our
+      // analytics.
+      phone_number_collection: { enabled: true },
+      metadata: {
+        slug,
+        title: course.title,
+        ...(optionLabel ? { attendance: optionLabel } : {}),
+        ...utmMetadata,
+      },
+      // {CHECKOUT_SESSION_ID} is substituted by Stripe on redirect so the
+      // success page can verify the payment server-side before showing success.
+      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/courses/${slug}?cancelled=true${
+        optionLabel ? `&attendance=${encodeURIComponent(optionLabel)}` : ""
+      }${utmQuery ? `&${utmQuery}` : ""}`,
     });
 
     checkoutUrl = session.url!;

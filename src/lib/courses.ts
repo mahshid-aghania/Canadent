@@ -23,6 +23,25 @@ export type Course = {
   priceOptions?: { label: string; price: number; originalPrice?: number }[];
   seatsRemaining?: number;
   earlyBirdDeadline?: string;
+  // ── Optional "premium journey" content. Present only on enhanced courses;
+  //    every section that reads these renders conditionally, so courses that
+  //    omit them keep the original simpler layout. ──
+  outcomeIntro?: string;
+  audience?: string[];
+  modules?: { title: string; detail: string }[];
+  instructorTitle?: string;
+  instructorBio?: string;
+  /** Descriptive copy for each attendance option, matched to priceOptions by label. */
+  attendanceModes?: {
+    label: string;
+    kind: "online" | "in-person";
+    summary: string;
+    location?: string;
+    includes: string[];
+    access: string;
+  }[];
+  /** Fixed UTC timestamps for "Add to Calendar" — only set when the date/time is confirmed. */
+  calendar?: { startUtc: string; endUtc: string; timezone: string };
 };
 
 export const courses: Course[] = [
@@ -58,6 +77,79 @@ export const courses: Course[] = [
       "Identify Stress Management Strategies: Learn how the C-factor impacts the adhesive interface and understand the concepts behind decoupled mechanics and layering.",
       "Navigate the Restorative Spectrum: Establish a clear conceptual framework for deciding when a clinical case calls for direct, semi-direct, or indirect adhesive restorations.",
     ],
+    outcomeIntro:
+      "Build a clear clinical framework for predictable, minimally invasive adhesive restorations — with protocols designed to reduce post-operative sensitivity. By the end of the day you will be able to:",
+    audience: [
+      "General dentists moving toward minimally invasive, adhesion-first restorative care.",
+      "Restorative and cosmetic dentists refining their bonding and biomimetic protocols.",
+      "Dental professionals who want a structured overview before advanced, hands-on modules.",
+    ],
+    modules: [
+      {
+        title: "Absolute Isolation",
+        detail:
+          "Advanced rubber dam isolation, clamp selection, and inversion techniques that protect the hybrid layer from moisture.",
+      },
+      {
+        title: "Histology & Substrate",
+        detail:
+          "How enamel, deep dentin, cracked, and caries-affected substrates differ — and why bonding protocols must adapt to each.",
+      },
+      {
+        title: "Bonding Systems",
+        detail:
+          "The chemistry and generational differences between modern dentin bonding agents, and how to choose with confidence.",
+      },
+      {
+        title: "IDS & DME",
+        detail:
+          "The clinical logic and biological rationale behind Immediate Dentin Sealing and Deep Margin Elevation.",
+      },
+      {
+        title: "Stress Management",
+        detail:
+          "How the C-factor drives polymerization stress, and the concepts behind decoupled mechanics and layering.",
+      },
+      {
+        title: "The Restorative Spectrum",
+        detail:
+          "A framework for deciding between direct, semi-direct, and indirect adhesive restorations, case by case.",
+      },
+    ],
+    instructorTitle: "Course Instructor · CanaDent Faculty",
+    instructorBio:
+      "Dr. Amin Asadollahi leads CanaDent's adhesive dentistry curriculum, focused on predictable, minimally invasive, and biomimetic restorative workflows. He developed this Master Blueprint as the foundational overview that maps the entire adhesive landscape before practitioners move into the step-by-step, hands-on modules that follow.",
+    attendanceModes: [
+      {
+        label: "Online Attendance",
+        kind: "online",
+        summary: "Join the full live session remotely from anywhere in Canada.",
+        includes: [
+          "Live online access to the full 6-hour session",
+          "Session recording shared with you afterward",
+          "6 CE Credits",
+        ],
+        access:
+          "Your joining link and access details are emailed to you before the course date.",
+      },
+      {
+        label: "In-Person Attendance",
+        kind: "in-person",
+        summary: "Attend on-site with the instructor at our North York facility.",
+        location: "265 Rimrock Road, North York, Ontario",
+        includes: [
+          "On-site attendance with the instructor",
+          "Lunch and refreshments provided",
+          "6 CE Credits",
+        ],
+        access: "Please plan to arrive 15 minutes early to check in.",
+      },
+    ],
+    calendar: {
+      startUtc: "2026-09-06T13:00:00Z",
+      endUtc: "2026-09-06T20:00:00Z",
+      timezone: "America/Toronto",
+    },
   },
   {
     slug: "daily-unique-orthodontic-techniques",

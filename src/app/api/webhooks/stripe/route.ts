@@ -29,16 +29,25 @@ export async function POST(request: NextRequest) {
 
     const email = session.customer_details?.email;
     const name = session.customer_details?.name;
+    const phone = session.customer_details?.phone ?? null;
     const slug = session.metadata?.slug;
     const title = session.metadata?.title;
+    const attendance = session.metadata?.attendance ?? null;
     const amountTotal = session.amount_total ?? 0;
     const amountSubtotal = session.amount_subtotal ?? 0;
     const amountTax = session.total_details?.amount_tax ?? 0;
+    const regNumber =
+      typeof session.payment_intent === "string"
+        ? session.payment_intent.toUpperCase().replace(/^PI_/, "").slice(-12)
+        : session.id.toUpperCase().slice(-12);
 
+    // Never log the full phone number.
     console.log("[webhook] checkout.session.completed", {
       email,
       slug,
       title,
+      attendance,
+      hasPhone: Boolean(phone),
       amountSubtotal,
       amountTax,
       amountTotal,
@@ -51,7 +60,11 @@ export async function POST(request: NextRequest) {
         to: email,
         cc: ["ar.movasagh@confidentist.ca", "mahshid.aghania@gmail.com", "canadent.edu@gmail.com"],
         subject: `Registration Confirmed — ${title}`,
-        html: buildEmail(name, title, amountTotal, course, amountSubtotal, amountTax),
+        html: buildEmail(name, title, amountTotal, course, amountSubtotal, amountTax, {
+          attendance,
+          phone,
+          regNumber,
+        }),
       });
       if (error) {
         console.error("[webhook] Resend error:", error);
@@ -66,14 +79,41 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ received: true });
 }
 
+function maskLast4(phone: string | null): string | null {
+  if (!phone) return null;
+  const digits = phone.replace(/\D/g, "");
+  return digits.length >= 4 ? digits.slice(-4) : null;
+}
+
+function compactUtc(iso: string): string {
+  return iso.replace(/[-:]/g, "").replace(/\.\d+/, "");
+}
+
+function calendarUrl(course: Course | undefined): string | null {
+  if (!course?.calendar) return null;
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: `${course.title} — CanaDent`,
+    dates: `${compactUtc(course.calendar.startUtc)}/${compactUtc(course.calendar.endUtc)}`,
+    details: `Instructor: ${course.instructor}. Continuing education with CanaDent Education Center.`,
+    location: course.location,
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
 function buildEmail(
   name: string | null | undefined,
   title: string,
   amountTotal: number,
   course: Course | undefined,
   amountSubtotal = 0,
-  amountTax = 0
+  amountTax = 0,
+  extra: { attendance?: string | null; phone?: string | null; regNumber?: string } = {}
 ): string {
+  const { attendance = null, phone = null, regNumber } = extra;
+  const isOnline = (attendance ?? "").toLowerCase().includes("online");
+  const last4 = maskLast4(phone);
+  const calLink = calendarUrl(course);
   const nameParts = name ? name.trim().split(" ") : [];
   const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : nameParts[0];
   const greeting = lastName ? `Dear Dr. ${lastName},` : "Dear Doctor,";
@@ -93,17 +133,51 @@ function buildEmail(
     `
       : "";
 
+  const locationValue = isOnline
+    ? "Online — joining link emailed before the session"
+    : course?.attendanceModes?.find((m) => m.kind === "in-person")?.location ?? course?.location ?? "";
+
+  const attendanceRow = attendance
+    ? `<tr><td style="${rowLabel}">${isOnline ? "💻" : "🏛️"} Attendance</td><td style="${rowValue}">${attendance}</td></tr>`
+    : "";
+  const regRow = regNumber
+    ? `<tr><td style="${rowLabel}">🔖 Registration #</td><td style="${rowValue}">${regNumber}</td></tr>`
+    : "";
+
   const details = course
     ? `
-      <tr><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;">📅 Date</td><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;">${course.date}</td></tr>
-      ${course.time ? `<tr><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;">🕘 Time</td><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;">${course.time}</td></tr>` : ""}
-      <tr><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;">📍 Location</td><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;">${course.location}</td></tr>
-      <tr><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;">👨‍⚕️ Instructor</td><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;">${course.instructor}</td></tr>
-      ${course.ceCredits ? `<tr><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;color:#555;font-size:14px;">🎓 CE Credits</td><td style="padding:10px 0;border-bottom:1px solid #f0ebe0;font-weight:600;color:#0f2150;font-size:14px;">${course.ceCredits}</td></tr>` : ""}
+      ${attendanceRow}
+      ${regRow}
+      <tr><td style="${rowLabel}">📅 Date</td><td style="${rowValue}">${course.date}</td></tr>
+      ${course.time ? `<tr><td style="${rowLabel}">🕘 Time</td><td style="${rowValue}">${course.time} ET (Toronto)</td></tr>` : ""}
+      <tr><td style="${rowLabel}">📍 ${isOnline ? "Format" : "Location"}</td><td style="${rowValue}">${locationValue}</td></tr>
+      <tr><td style="${rowLabel}">👨‍⚕️ Instructor</td><td style="${rowValue}">${course.instructor}</td></tr>
+      ${course.ceCredits ? `<tr><td style="${rowLabel}">🎓 CE Credits</td><td style="${rowValue}">${course.ceCredits}</td></tr>` : ""}
       ${taxRows}
       <tr><td style="padding:10px 0;color:#555;font-size:14px;">💳 Total Paid</td><td style="padding:10px 0;font-weight:600;color:#0f2150;font-size:14px;">${amountPaid}</td></tr>
     `
-    : `${taxRows}<tr><td style="padding:10px 0;color:#555;font-size:14px;">💳 Total Paid</td><td style="padding:10px 0;font-weight:600;color:#0f2150;font-size:14px;">${amountPaid}</td></tr>`;
+    : `${attendanceRow}${regRow}${taxRows}<tr><td style="padding:10px 0;color:#555;font-size:14px;">💳 Total Paid</td><td style="padding:10px 0;font-weight:600;color:#0f2150;font-size:14px;">${amountPaid}</td></tr>`;
+
+  // Next steps differ by attendance type — only confirmed facts are stated.
+  const nextSteps = isOnline
+    ? `
+        <li>Your <strong>joining link and access details</strong> will be emailed to you before the course date.</li>
+        <li>The live session is <strong>recorded</strong>, and the recording will be shared with you afterward.</li>
+        <li>CE certificates are issued approximately one week after the course.</li>
+      `
+    : `
+        <li>Please arrive <strong>15 minutes early</strong> to check in and get settled.</li>
+        <li><strong>Lunch and refreshments</strong> will be provided.</li>
+        <li>CE certificates are issued approximately one week after the course.</li>
+      `;
+
+  const phoneNote = last4
+    ? `<p style="margin:0 0 20px;font-size:13px;color:#777;">We&rsquo;ll use the mobile number ending in <strong>${last4}</strong> only for important course-related updates.</p>`
+    : "";
+
+  const calendarButton = calLink
+    ? `<div style="text-align:center;margin:0 0 28px;"><a href="${calLink}" style="display:inline-block;background:#1b3a8a;color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:12px 24px;border-radius:8px;">📅 Add to Calendar</a></div>`
+    : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -147,15 +221,16 @@ function buildEmail(
               </table>
             </div>
 
-            <!-- What to expect -->
-            <div style="background:#f0f4ff;border-radius:12px;padding:20px 24px;margin-bottom:28px;">
-              <div style="font-size:13px;font-weight:700;color:#1b3a8a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">What to Expect</div>
+            <!-- What happens next -->
+            <div style="background:#f0f4ff;border-radius:12px;padding:20px 24px;margin-bottom:20px;">
+              <div style="font-size:13px;font-weight:700;color:#1b3a8a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">What Happens Next</div>
               <ul style="margin:0;padding-left:18px;color:#1a1a2e;font-size:14px;line-height:1.8;">
-                <li>Please arrive <strong>15 minutes early</strong> to complete registration and get settled.</li>
-                <li>Lunch and refreshments will be provided.</li>
-                <li>CE certificates will be issued approximately one week after the course.</li>
+                ${nextSteps}
               </ul>
             </div>
+
+            ${phoneNote}
+            ${calendarButton}
 
             <p style="margin:0 0 8px;font-size:14px;color:#555;">Questions? We're here to help:</p>
             <p style="margin:0 0 4px;font-size:14px;color:#1b3a8a;">📞 <a href="tel:14373700122" style="color:#1b3a8a;text-decoration:none;">1.437.370.0122</a></p>
