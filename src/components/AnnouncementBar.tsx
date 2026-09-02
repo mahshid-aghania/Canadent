@@ -22,11 +22,14 @@ export function AnnouncementBar() {
         </Link>
         <span className="opacity-40 mx-2 hidden sm:inline">·</span>
         <Link
-          href="/courses"
+          href="/courses/daily-unique-orthodontic-techniques"
           className="underline underline-offset-2 hover:opacity-70 transition-opacity hidden sm:inline"
         >
-          View all courses →
+          Orthodontic Techniques — Sept 27
         </Link>
+        <span className="opacity-60 mx-1 text-[#0f2150] font-normal hidden sm:inline">
+          (Early Bird until Sep 10)
+        </span>
       </p>
       <button
         onClick={() => setDismissed(true)}

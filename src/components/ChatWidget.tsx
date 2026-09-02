@@ -21,7 +21,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/all courses|what courses|upcoming|what do you offer|catalog|list.*course|course.*list/i],
     response:
-      "We have two courses enrolling now for Fall 2026:\n\n• Advanced Adhesive Dentistry: The Master Blueprint — Sept 6 · Hybrid: $499 online / $799 in-person · 6 CE credits · Dr. Amin Asadollahi\n\n• Daily and Unique Orthodontic Techniques — Sept 27 · $799 Early Bird (reg. $999 until Aug 31) · 6 PACE CE credits · Dr. John Voudouris\n\nAll prices exclude 13% HST, which is added at checkout.\n\nAsk me about either one, or browse the full catalog at canadent.net/courses",
+      "We have two courses enrolling now for Fall 2026:\n\n• Advanced Adhesive Dentistry: The Master Blueprint — Sept 6 · Hybrid: $499 online / $799 in-person · 6 CE credits · Dr. Amin Asadollahi\n\n• Daily and Unique Orthodontic Techniques — Sept 27 · $799 Early Bird (reg. $999 until Sep 10) · 6 PACE CE credits · Dr. John Voudouris\n\nAll prices exclude 13% HST, which is added at checkout.\n\nAsk me about either one, or browse the full catalog at canadent.net/courses",
   },
   {
     patterns: [/adhesive|composite|bonding|master blueprint|asadollahi|restorative|ids|dme|rubber dam|dentin|amin/i],
@@ -31,7 +31,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/ortho|orthodontic|aligner|voudouris|clear aligner|brackets|biomechanics|deep bite|open bite|class ii|class iii|supercorrection/i],
     response:
-      "Daily and Unique Orthodontic Techniques\n\nInstructor: Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)\nDate: Sunday, September 27, 2026\nLocation: 265 Rimrock Rd, North York, ON\nFormat: In-person + hands-on demos · 6 hours · 6 PACE CE credits\nPrice: $799 Early Bird (reg. $999) — valid until August 31, 2026. Prices exclude 13% HST, added at checkout.\n\nCovers evidence-based aligner therapy, JV Supercorrection Rx, deep bite, open bite, Class II/III, and hands-on auxiliary demos.\n\nReserve your seat:\ncanadent.net/courses/daily-unique-orthodontic-techniques",
+      "Daily and Unique Orthodontic Techniques\n\nInstructor: Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)\nDate: Sunday, September 27, 2026\nLocation: 265 Rimrock Rd, North York, ON\nFormat: In-person + hands-on demos · 6 hours · 6 PACE CE credits\nPrice: $799 Early Bird (reg. $999) — valid until September 10, 2026. Prices exclude 13% HST, added at checkout.\n\nCovers evidence-based aligner therapy, JV Supercorrection Rx, deep bite, open bite, Class II/III, and hands-on auxiliary demos.\n\nReserve your seat:\ncanadent.net/courses/daily-unique-orthodontic-techniques",
   },
   {
     patterns: [/endo|root canal|endodontic|apex|pulp|bakhtiar|hengameh|precision endo/i],
@@ -41,12 +41,12 @@ const INTENTS: Intent[] = [
   {
     patterns: [/early bird|discount|deal|save|promotion|\$200/i],
     response:
-      "The Daily and Unique Orthodontic Techniques course has an Early Bird price of $799 (regular $999) — that's $200 off, valid until August 31, 2026. Prices exclude 13% HST, added at checkout.\n\nSecure your spot before the deadline:\ncanadent.net/courses/daily-unique-orthodontic-techniques",
+      "The Daily and Unique Orthodontic Techniques course has an Early Bird price of $799 (regular $999) — that's $200 off, valid until September 10, 2026. Prices exclude 13% HST, added at checkout.\n\nSecure your spot before the deadline:\ncanadent.net/courses/daily-unique-orthodontic-techniques",
   },
   {
     patterns: [/price|cost|how much|fee|pay|pricing|\$/i],
     response:
-      "Fall 2026 course pricing:\n\n• Advanced Adhesive Dentistry — Hybrid: $499 online / $799 in-person\n• Daily & Unique Orthodontic Techniques — $799 Early Bird (reg. $999, until Aug 31)\n\nAll prices exclude 13% HST, which is added at checkout.\n\nPayment is handled securely online during registration. Questions? Email canadent.edu@gmail.com",
+      "Fall 2026 course pricing:\n\n• Advanced Adhesive Dentistry — Hybrid: $499 online / $799 in-person\n• Daily & Unique Orthodontic Techniques — $799 Early Bird (reg. $999, until Sep 10)\n\nAll prices exclude 13% HST, which is added at checkout.\n\nPayment is handled securely online during registration. Questions? Email canadent.edu@gmail.com",
   },
   {
     patterns: [/register|enroll|enrol|sign up|book|reserve|seat|spot/i],
