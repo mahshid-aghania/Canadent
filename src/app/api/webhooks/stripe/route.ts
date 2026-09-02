@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import { Resend } from "resend";
 import { getCourse } from "@/lib/courses";
 import type { Course } from "@/lib/courses";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
 
 export const dynamic = "force-dynamic";
@@ -73,6 +74,39 @@ export async function POST(request: NextRequest) {
       }
     } else {
       console.warn("[webhook] Missing fields — email:", email, "slug:", slug, "title:", title);
+    }
+
+    // Persist the registration for the admin list / exports. Idempotent on the
+    // Checkout session id, so Stripe webhook retries won't create duplicates.
+    // No-op until Supabase env vars are provisioned.
+    const supabase = getSupabaseAdmin();
+    if (supabase && email && slug && title) {
+      const utm: Record<string, string> = {};
+      for (const [k, v] of Object.entries(session.metadata ?? {})) {
+        if (/^utm_[a-z]+$/.test(k) && typeof v === "string") utm[k] = v;
+      }
+      const { error: dbError } = await supabase.from("registrations").upsert(
+        {
+          course_slug: slug,
+          course_title: title,
+          attendance,
+          student_name: name ?? null,
+          student_email: email,
+          student_phone: phone,
+          amount_total_cents: amountTotal,
+          currency: session.currency ?? "cad",
+          stripe_session_id: session.id,
+          stripe_payment_intent:
+            typeof session.payment_intent === "string" ? session.payment_intent : null,
+          utm,
+        },
+        { onConflict: "stripe_session_id" }
+      );
+      if (dbError) {
+        console.error("[webhook] Supabase insert error:", dbError.message);
+      } else {
+        console.log("[webhook] Registration saved:", session.id);
+      }
     }
   }
 
