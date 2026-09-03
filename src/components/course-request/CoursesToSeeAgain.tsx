@@ -7,13 +7,13 @@ import { RequestSelectionBar } from "./RequestSelectionBar";
 import { RequestInterestDialog } from "./RequestInterestDialog";
 
 /**
- * "Courses You'd Like to See Again" — the multi-select demand section.
+ * "Courses You'd Like to Attend Again" — the multi-select demand section.
  * Rendered inside a server page that passes serialisable course summaries.
  */
 export function CoursesToSeeAgain({
   courses,
   surface = "courses",
-  heading = "Courses You'd Like to See Again",
+  heading = "Courses You'd Like to Attend Again",
 }: {
   courses: CourseSummary[];
   surface?: string;

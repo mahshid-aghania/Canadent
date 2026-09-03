@@ -187,7 +187,7 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* Courses You'd Like to See Again — demand collection */}
+      {/* Courses You'd Like to Attend Again — demand collection */}
       <CoursesToSeeAgain courses={getRequestCourseSummaries()} surface="courses" />
 
       {/* CTA */}
