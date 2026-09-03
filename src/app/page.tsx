@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { courses } from "@/lib/courses";
 import { getRequestCourseSummaries } from "@/lib/course-requests";
 import { TAX_SUFFIX } from "@/lib/tax";
 import { getAllArticles } from "@/lib/articles";
@@ -8,22 +7,13 @@ import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CoursesToSeeAgain } from "@/components/course-request/CoursesToSeeAgain";
 import {
-  Award,
-  Users,
   BookOpen,
   ArrowRight,
   GraduationCap,
-  Stethoscope,
-  TrendingUp,
-  Target,
-  Telescope,
-  Settings2,
   Calendar,
   MapPin,
   User,
-  CheckCircle,
   Clock,
-  FileText,
 } from "lucide-react";
 
 const stats = [
@@ -32,53 +22,6 @@ const stats = [
   { value: "+20", label: "Expert Instructors" },
   { value: "Type 2 and 3", label: "CE Credit Categories" },
 ];
-
-const values = [
-  {
-    icon: GraduationCap,
-    title: "Ultimate Training",
-    desc: "Providing theoretical and clinical training from the beginning to the top level, ensuring every participant leaves with practical, applicable skills.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Practical Progress",
-    desc: "We bridge the gap between academic knowledge and everyday clinical application so your skills grow in the real world.",
-  },
-  {
-    icon: Users,
-    title: "Stronger Collective",
-    desc: "Building educational networks across dentistry disciplines to foster collaboration and elevate the profession across Canada.",
-  },
-];
-
-const whyPoints = [
-  "World-class instructors including FRCD(C)-certified specialists",
-  "Hands-on workshops with real patient scenarios and extracted teeth",
-  "CE-accredited courses recognized across Canada",
-  "Intimate class sizes for personalized learning",
-  "Courses spanning all major dentistry disciplines",
-  "Convenient North York & Toronto locations",
-];
-
-const missionItems = [
-  {
-    title: "Mission",
-    Icon: Target,
-    text: "Creating educational networks across dentistry disciplines by connecting dentists with the world's leading educators, enabling them to revisit, retrain, and optimize their knowledge.",
-  },
-  {
-    title: "Vision",
-    Icon: Telescope,
-    text: "Today is tomorrow's community health education. We envision a Canada where every dentist has access to world-class continuing education regardless of location or specialty.",
-  },
-  {
-    title: "Services",
-    Icon: Settings2,
-    text: "Providing theoretical and clinical training from the beginning to the top level — CE-accredited seminars, workshops, hands-on intensives, and online lectures across all dental specialties.",
-  },
-];
-
-const featuredCourses = courses.slice(0, 3);
 
 function formatArticleDate(dateString: string) {
   return new Date(dateString).toLocaleDateString("en-CA", {
@@ -508,243 +451,6 @@ export default function HomePage() {
           </div>
         </section>
       )}
-
-      {/* ── WHY CHOOSE CANADENT ── */}
-      <section className="py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
-            <div>
-              <span className="section-label">Why Choose Us</span>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-3 mb-6 leading-tight">
-                Why Choose CanaDent Education Center?
-              </h2>
-              <p className="text-[#1a1a2e]/65 leading-relaxed mb-8">
-                CanaDent Education Center services allow dentists to revisit, retrain, and
-                optimize their knowledge and experience. We partner with leading specialists and
-                institutions to deliver cutting-edge clinical education that translates directly
-                into your practice.
-              </p>
-              <ul className="space-y-3">
-                {whyPoints.map((point, i) => (
-                  <ScrollReveal key={point} delay={i * 60}>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} />
-                      <span className="text-sm text-[#1a1a2e]/70">{point}</span>
-                    </li>
-                  </ScrollReveal>
-                ))}
-              </ul>
-              <Link href="/courses" className="btn-primary mt-8 inline-flex">
-                Browse All Courses
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div
-                className="rounded-2xl p-6 flex flex-col gap-3 col-span-2"
-                style={{ background: "linear-gradient(135deg, #0f2150, #1b3a8a)" }}
-              >
-                <Stethoscope className="h-8 w-8" style={{ color: "#c9a84c" }} />
-                <div className="font-heading text-white text-xl font-semibold">Clinical Excellence</div>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Our faculty includes FRCD(C)-certified specialists, professors, and
-                  internationally recognized clinicians committed to raising the standard of
-                  dental education in Canada.
-                </p>
-              </div>
-              {[
-                { icon: BookOpen, label: "50+ Courses", sub: "Across all disciplines" },
-                { icon: Award, label: "CE Accredited", sub: "Recognized credentials" },
-              ].map(({ icon: Icon, label, sub }) => (
-                <div key={label} className="card p-5 flex flex-col gap-2">
-                  <Icon className="h-6 w-6" style={{ color: "#c9a84c" }} />
-                  <div className="font-semibold text-[#0f2150]">{label}</div>
-                  <div className="text-xs text-[#1a1a2e]/50">{sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── MISSION / VISION / SERVICES ── */}
-      <section className="py-24 px-4" style={{ background: "#f5f0e8" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="section-label">Our Foundation</span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-3">
-              Mission, Vision &amp; Services
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {missionItems.map((item, i) => (
-              <ScrollReveal key={item.title} delay={i * 100}>
-                <div className="card p-8 h-full">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                    style={{ background: "#f5f0e8" }}
-                  >
-                    <item.Icon className="h-6 w-6" style={{ color: "#c9a84c" }} />
-                  </div>
-                  <h3 className="font-heading text-xl font-bold text-[#0f2150] mb-3">{item.title}</h3>
-                  <p className="text-sm text-[#1a1a2e]/65 leading-relaxed">{item.text}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WORLD CLASS FACILITIES ── */}
-      <section className="py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
-            <div className="order-2 lg:order-1 space-y-6">
-              {values.map(({ icon: Icon, title, desc }, i) => (
-                <ScrollReveal key={title} delay={i * 100}>
-                  <div className="flex items-start gap-5">
-                    <div
-                      className="w-12 h-12 rounded-xl shrink-0 flex items-center justify-center"
-                      style={{ background: "#1b3a8a" }}
-                    >
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-bold text-[#0f2150] text-lg mb-1">{title}</h3>
-                      <p className="text-sm text-[#1a1a2e]/65 leading-relaxed">{desc}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <span className="section-label">Our Core Values</span>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-3 mb-6 leading-tight">
-                World Class Facilities &amp; Faculty
-              </h2>
-              <p className="text-[#1a1a2e]/65 leading-relaxed mb-6">
-                CanaDent Education Center is devoted to excellence in teaching, learning, and
-                research. Our venues are equipped with state-of-the-art simulation labs, and our
-                faculty are among the most respected names in Canadian and international dentistry.
-              </p>
-              <p className="text-[#1a1a2e]/65 leading-relaxed">
-                From our North York campus to partnered facilities across the GTA, Vancouver, and
-                beyond, every CanaDent course is delivered in an environment designed to maximize
-                learning outcomes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FEATURED COURSES ── */}
-      <section className="py-24 px-4" style={{ background: "#f5f0e8" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-            <div>
-              <span className="section-label">Continuing Education</span>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-3">
-                Featured Courses
-              </h2>
-            </div>
-            <Link
-              href="/courses"
-              className="text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all"
-              style={{ color: "#1b3a8a" }}
-            >
-              View All Courses <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredCourses.map((course, i) => {
-              const isEnrolling = course.slug === "advanced-adhesive-dentistry-master-blueprint";
-              const isUpcoming = course.slug === "daily-unique-orthodontic-techniques";
-              const hasRing = isEnrolling || isUpcoming;
-              return (
-              <ScrollReveal key={course.slug} delay={i * 80}>
-                <Link
-                  href={`/courses/${course.slug}`}
-                  className={`card block overflow-hidden group h-full${hasRing ? " ring-2 ring-[#c9a84c]/40" : ""}`}
-                >
-                  {course.image ? (
-                    <div className="relative w-full overflow-hidden" style={{ height: 0, paddingBottom: '125%' }}>
-                      <BlurImage
-                        src={course.image}
-                        alt={course.title}
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className="px-5 py-3 text-xs font-semibold tracking-wide uppercase text-white"
-                      style={{ background: "#1b3a8a" }}
-                    >
-                      {course.category}
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <h3 className="font-heading font-bold text-[#0f2150] text-lg leading-snug mb-2 group-hover:text-[#1b3a8a] transition-colors">
-                      {course.title}
-                    </h3>
-                    {course.subtitle && (
-                      <p className="text-xs text-[#1b3a8a]/70 mb-3">{course.subtitle}</p>
-                    )}
-                    <p className="text-xs text-[#1a1a2e]/55 mb-4 line-clamp-2">{course.description}</p>
-
-                    <div className="space-y-1.5 text-xs text-[#1a1a2e]/60 mb-4">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                        {course.date}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                        <span className="line-clamp-1">{course.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <User className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                        <span className="line-clamp-1">{course.instructor}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between pt-3 border-t border-[#1a1a2e]/8">
-                      <div>
-                        {course.isFree ? (
-                          <span className="badge-free">Free</span>
-                        ) : (
-                          <div>
-                            <div className="flex items-baseline gap-2">
-                              <span className="font-bold text-[#0f2150]">${course.price?.toLocaleString()}</span>
-                              {course.originalPrice && (
-                                <span className="text-xs text-[#1a1a2e]/40 line-through">
-                                  ${course.originalPrice.toLocaleString()}
-                                </span>
-                              )}
-                              <span className="text-xs text-[#1a1a2e]/45">{TAX_SUFFIX}</span>
-                            </div>
-                            {course.earlyBirdDeadline && (
-                              <p className="text-[0.6rem] font-bold uppercase tracking-wide mt-0.5" style={{ color: "#a87219" }}>
-                                Early Bird · Until {course.earlyBirdDeadline}
-                              </p>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {(isEnrolling || isUpcoming) && <span className="badge-enrolling">Enrolling Now</span>}
-                        {course.status === "sold-out" && <span className="badge-sold-out">Sold Out</span>}
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* ── Courses You'd Like to Attend Again ── */}
       <CoursesToSeeAgain courses={getRequestCourseSummaries()} surface="home" />
