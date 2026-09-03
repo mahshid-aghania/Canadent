@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { courses, categories } from "@/lib/courses";
+import { getRequestCourseSummaries } from "@/lib/course-requests";
 import { TAX_SUFFIX } from "@/lib/tax";
 import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { CoursesToSeeAgain } from "@/components/course-request/CoursesToSeeAgain";
 import { BookOpen, MapPin, Calendar, User, GraduationCap, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -184,6 +186,9 @@ export default function CoursesPage() {
           </div>
         </div>
       </section>
+
+      {/* Courses You'd Like to See Again — demand collection */}
+      <CoursesToSeeAgain courses={getRequestCourseSummaries()} surface="courses" />
 
       {/* CTA */}
       <section className="py-16 px-4 bg-white text-center">
