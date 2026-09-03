@@ -10,6 +10,7 @@
 
 // NOTE: keep this module out of client components — it is imported only by the
 // API route and the admin (server) pages.
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type {
   AttendancePreference,
   CourseRequestInput,
@@ -118,15 +119,163 @@ class MemoryCourseRequestStore implements CourseRequestStore {
   }
 }
 
-// The single store instance for the app. Preserved across HMR in dev via a
-// global so submissions you make while reviewing don't vanish on hot reload.
+// ── Supabase adapter ────────────────────────────────────────────────────────
+// Durable persistence. Used automatically when SUPABASE_URL and
+// SUPABASE_SERVICE_ROLE_KEY are set (server-side only — the service role key
+// must never be exposed to the client). Requires the `course_requests` table
+// from supabase/migrations/.
+
+type Row = {
+  id: string;
+  slug: string;
+  course_title: string;
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  attendance: string | null;
+  timing: string | null;
+  message: string | null;
+  consent: boolean;
+  utm: Record<string, string> | null;
+  created_at: string;
+  updated_at: string;
+};
+
+class SupabaseCourseRequestStore implements CourseRequestStore {
+  private client: SupabaseClient;
+  private table = "course_requests";
+
+  constructor(url: string, serviceKey: string) {
+    this.client = createClient(url, serviceKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+  }
+
+  private toRecord(row: Row): CourseRequestRecord {
+    return {
+      id: row.id,
+      slug: row.slug,
+      courseTitle: row.course_title,
+      name: row.name,
+      email: row.email,
+      phone: row.phone,
+      role: row.role,
+      attendance: row.attendance,
+      timing: row.timing,
+      message: row.message,
+      consent: row.consent,
+      utm: row.utm,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+    };
+  }
+
+  async save(
+    input: CourseRequestInput,
+    titleFor: (slug: string) => string
+  ): Promise<SaveOutcome[]> {
+    // Emails are case-insensitive; normalise so dedupe is reliable.
+    const email = input.email.toLowerCase();
+    const outcomes: SaveOutcome[] = [];
+
+    for (const slug of input.slugs) {
+      const courseTitle = titleFor(slug);
+      const { data: existing, error: selErr } = await this.client
+        .from(this.table)
+        .select("id, message")
+        .eq("email", email)
+        .eq("slug", slug)
+        .maybeSingle();
+      if (selErr) throw selErr;
+
+      if (existing) {
+        // Update preferences in place — never a duplicate vote.
+        const { error } = await this.client
+          .from(this.table)
+          .update({
+            course_title: courseTitle,
+            name: input.name,
+            phone: input.phone,
+            role: input.role,
+            attendance: input.attendance ?? null,
+            timing: input.timing ?? null,
+            message: input.message ?? existing.message ?? null,
+            consent: input.consent,
+            utm: input.utm ?? null,
+            updated_at: new Date().toISOString(),
+          })
+          .eq("id", existing.id);
+        if (error) throw error;
+        outcomes.push({ slug, courseTitle, status: "updated" });
+      } else {
+        const { error } = await this.client.from(this.table).insert({
+          slug,
+          course_title: courseTitle,
+          name: input.name,
+          email,
+          phone: input.phone,
+          role: input.role,
+          attendance: input.attendance ?? null,
+          timing: input.timing ?? null,
+          message: input.message ?? null,
+          consent: input.consent,
+          utm: input.utm ?? null,
+        });
+        if (error) throw error;
+        outcomes.push({ slug, courseTitle, status: "created" });
+      }
+    }
+    return outcomes;
+  }
+
+  async all(): Promise<CourseRequestRecord[]> {
+    const { data, error } = await this.client
+      .from(this.table)
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) throw error;
+    return (data ?? []).map((r) => this.toRecord(r as Row));
+  }
+
+  async bySlug(slug: string): Promise<CourseRequestRecord[]> {
+    const { data, error } = await this.client
+      .from(this.table)
+      .select("*")
+      .eq("slug", slug)
+      .order("created_at", { ascending: false });
+    if (error) throw error;
+    return (data ?? []).map((r) => this.toRecord(r as Row));
+  }
+}
+
+// ── Adapter selection ───────────────────────────────────────────────────────
+// Prefer Supabase when configured; otherwise fall back to the in-memory store
+// (non-persistent — dev / preview only). The memory instance is preserved
+// across HMR in dev via a global so submissions don't vanish on hot reload.
 const globalForStore = globalThis as unknown as {
   __canadentRequestStore?: CourseRequestStore;
 };
 
-export const store: CourseRequestStore =
-  globalForStore.__canadentRequestStore ??
-  (globalForStore.__canadentRequestStore = new MemoryCourseRequestStore());
+function createStore(): CourseRequestStore {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (url && key) {
+    return new SupabaseCourseRequestStore(url, key);
+  }
+  if (process.env.NODE_ENV === "production") {
+    console.warn(
+      "[course-requests] SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY not set — " +
+        "using the non-persistent in-memory store. Requests will NOT be saved durably."
+    );
+  }
+  return (
+    globalForStore.__canadentRequestStore ??
+    (globalForStore.__canadentRequestStore = new MemoryCourseRequestStore())
+  );
+}
+
+export const store: CourseRequestStore = createStore();
 
 // ── Aggregations for the admin dashboard ────────────────────────────────────
 
