@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { courses } from "@/lib/courses";
+import { getRequestCourseSummaries } from "@/lib/course-requests";
 import { TAX_SUFFIX } from "@/lib/tax";
 import { getAllArticles } from "@/lib/articles";
 import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { CoursesToSeeAgain } from "@/components/course-request/CoursesToSeeAgain";
 import {
   Award,
   Users,
@@ -743,6 +745,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── Courses You'd Like to See Again ── */}
+      <CoursesToSeeAgain courses={getRequestCourseSummaries()} surface="home" />
 
       {/* ── CTA BAND ── */}
       <section
