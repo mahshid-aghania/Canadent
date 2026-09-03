@@ -746,7 +746,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Courses You'd Like to See Again ── */}
+      {/* ── Courses You'd Like to Attend Again ── */}
       <CoursesToSeeAgain courses={getRequestCourseSummaries()} surface="home" />
 
       {/* ── CTA BAND ── */}
