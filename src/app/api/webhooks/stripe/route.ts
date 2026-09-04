@@ -357,7 +357,7 @@ function buildSponsorshipEmail(
 
             ${phoneNote}
 
-            <p style="margin:0 0 24px;font-size:14px;color:#555;">For any urgent matters, you can reach us at <a href="tel:437922020" style="color:#1b3a8a;text-decoration:none;">437-92-2020</a>.</p>
+            <p style="margin:0 0 24px;font-size:14px;color:#555;">For any urgent matters, you can reach us at <a href="tel:4379622020" style="color:#1b3a8a;text-decoration:none;">437-962-2020</a>.</p>
 
             <p style="margin:0;font-size:14px;color:#1a1a2e;">We are here to welcome you,<br><strong style="color:#0f2150;">The CanaDent Team</strong></p>
           </td>
