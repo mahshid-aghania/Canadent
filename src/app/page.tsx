@@ -16,6 +16,10 @@ import {
   Clock,
 } from "lucide-react";
 
+// Re-render hourly so the date-based "Courses You'd Like to Attend Again"
+// filter reflects the current calendar date rather than the build time.
+export const revalidate = 3600;
+
 const stats = [
   { value: "+500", label: "Dentists Trained" },
   { value: "50+", label: "Courses Offered" },

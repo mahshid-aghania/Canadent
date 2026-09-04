@@ -8,6 +8,10 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { CoursesToSeeAgain } from "@/components/course-request/CoursesToSeeAgain";
 import { BookOpen, MapPin, Calendar, User, GraduationCap, ArrowRight } from "lucide-react";
 
+// Re-render hourly so the date-based "Courses You'd Like to Attend Again"
+// filter reflects the current calendar date rather than the build time.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Courses",
   description:
