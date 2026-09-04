@@ -38,6 +38,27 @@ body {
 .btn-primary:hover { background: var(--gold-dark); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
 .btn-primary:active { transform: scale(0.98); }
 
+/* Green variant — used for the sponsorship purchase CTA */
+.btn-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  background: #16a34a;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.btn-green:hover { background: #15803d; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+.btn-green:active { transform: scale(0.98); }
+.btn-green:focus-visible { outline: 3px solid rgba(22,163,74,0.4); outline-offset: 2px; }
+
 .btn-secondary {
   display: inline-flex;
   align-items: center;
