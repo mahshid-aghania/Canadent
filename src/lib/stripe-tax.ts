@@ -45,3 +45,44 @@ export async function getHstTaxRateId(stripe: Stripe): Promise<string> {
   cachedTaxRateId = created.id;
   return created.id;
 }
+
+// ── Tax-INCLUSIVE HST ────────────────────────────────────────────────────────
+// Used for prices that are advertised tax-included (e.g. the sponsorship
+// package: $500 CAD total = $442.48 net + $57.52 HST). Stripe treats the
+// unit_amount as already containing HST and shows the HST portion as its own
+// line — it does NOT add 13% on top.
+const TAX_RATE_INCLUSIVE_KEY = "canadent-hst-inclusive-13";
+
+let cachedInclusiveTaxRateId: string | null = null;
+
+export async function getHstInclusiveTaxRateId(stripe: Stripe): Promise<string> {
+  if (cachedInclusiveTaxRateId) return cachedInclusiveTaxRateId;
+
+  const existing = await stripe.taxRates.list({ active: true, limit: 100 });
+  const match = existing.data.find(
+    (rate) =>
+      rate.metadata?.key === TAX_RATE_INCLUSIVE_KEY ||
+      (rate.display_name === TAX_LABEL &&
+        rate.percentage === TAX_PERCENTAGE &&
+        rate.inclusive === true)
+  );
+
+  if (match) {
+    cachedInclusiveTaxRateId = match.id;
+    return match.id;
+  }
+
+  const created = await stripe.taxRates.create({
+    display_name: TAX_LABEL,
+    description: `Ontario ${TAX_LABEL} (${TAX_PERCENTAGE}%) — tax inclusive`,
+    jurisdiction: "CA-ON",
+    country: "CA",
+    state: "ON",
+    percentage: TAX_PERCENTAGE,
+    inclusive: true,
+    metadata: { key: TAX_RATE_INCLUSIVE_KEY },
+  });
+
+  cachedInclusiveTaxRateId = created.id;
+  return created.id;
+}

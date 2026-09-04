@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle, BadgeCheck } from "lucide-react";
+import { SponsorshipCheckoutButton } from "@/components/SponsorshipCheckoutButton";
 
 export const metadata: Metadata = {
   title: "Sponsorship",
@@ -154,6 +155,9 @@ export default function SponsorshipPage() {
                 </p>
               </li>
             </ul>
+
+            {/* Purchase — Stripe Checkout (tax-inclusive $500 CAD) */}
+            <SponsorshipCheckoutButton />
           </div>
         </div>
       </section>
