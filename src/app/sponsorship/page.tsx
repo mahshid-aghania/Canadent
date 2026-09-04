@@ -106,17 +106,23 @@ export default function SponsorshipPage() {
             <h2 className="font-heading text-2xl font-bold text-[#0f2150] leading-snug mb-5">
               Sponsorship Package — $500 CAD (Tax Included)
             </h2>
-            <div
+            <dl
               className="rounded-xl p-5 mb-8"
               style={{ background: "#fff", border: "1px solid #f0dc9d" }}
             >
-              <p className="text-[#1a1a2e]/70 text-[15px] pb-3 mb-3 border-b border-[#1a1a2e]/8">
-                Sponsorship Fee: $442.48 + $57.52 HST
-              </p>
-              <p className="font-heading text-2xl font-bold text-[#0f2150]">
-                Total: $500 CAD
-              </p>
-            </div>
+              <div className="flex items-baseline justify-between gap-3 py-1">
+                <dt className="text-[#1a1a2e]/70 text-[15px]">Sponsorship Fee</dt>
+                <dd className="text-[#1a1a2e]/80 text-[15px] font-medium">$442.48</dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-3 py-1 pb-3 mb-3 border-b border-[#1a1a2e]/8">
+                <dt className="text-[#1a1a2e]/70 text-[15px]">HST (13%)</dt>
+                <dd className="text-[#1a1a2e]/80 text-[15px] font-medium">+ $57.52</dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-3">
+                <dt className="font-heading text-lg font-bold text-[#0f2150]">Total</dt>
+                <dd className="font-heading text-2xl font-bold text-[#0f2150]">$500 CAD</dd>
+              </div>
+            </dl>
 
             <h3 className="font-heading text-xl font-bold text-[#0f2150] mb-6">
               The package includes:
