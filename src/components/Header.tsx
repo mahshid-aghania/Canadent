@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, Phone, ShoppingCart, User } from "lucide-react";
 
@@ -9,6 +10,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/courses", label: "Courses" },
   { href: "/articles", label: "Articles" },
+  { href: "/sponsorship", label: "Sponsorship" },
   { href: "/my-account", label: "My Account" },
   { href: "/enrolment-agreement", label: "Enrolment Agreement" },
   { href: "/cart", label: "Cart" },
@@ -16,6 +18,12 @@ const navLinks = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Active for the exact route, or any nested route (except Home, which only
+  // matches "/" exactly).
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header className="w-full">
@@ -62,16 +70,24 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-2 text-sm font-medium text-white/85 rounded-md hover:text-white hover:bg-white/10 transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden lg:flex items-center gap-0.5">
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`px-3 py-2 text-sm font-medium rounded-md whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1b3a8a] ${
+                    active
+                      ? "text-white bg-white/15"
+                      : "text-white/85 hover:text-white hover:bg-white/10"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Icons */}
@@ -103,16 +119,24 @@ export default function Header() {
         {/* Mobile nav */}
         {open && (
           <div className="lg:hidden border-t border-white/10 pb-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block px-3 py-3 text-sm font-medium text-white/85 hover:text-white hover:bg-white/10 rounded-md transition-colors"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`block px-3 py-3 text-sm font-medium rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] ${
+                    active
+                      ? "text-white bg-white/15"
+                      : "text-white/85 hover:text-white hover:bg-white/10"
+                  }`}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>
