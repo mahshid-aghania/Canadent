@@ -93,18 +93,16 @@ export function buildSponsorshipEmail(
 
             <!-- What happens next -->
             <div style="background:#f0f4ff;border-radius:12px;padding:20px 24px;margin-bottom:20px;">
-              <div style="font-size:13px;font-weight:700;color:#1b3a8a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">What Happens Next</div>
-              <ul style="margin:0;padding-left:18px;color:#1a1a2e;font-size:14px;line-height:1.8;">
-                <li>A member of the CanaDent team will contact you to coordinate your sponsor table and presentation.</li>
-                <li>You can reply to this email with any promotional materials or questions ahead of the event.</li>
-              </ul>
+              <div style="font-size:13px;font-weight:700;color:#1b3a8a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">What happens next:</div>
+              <p style="margin:0 0 12px;color:#1a1a2e;font-size:14px;line-height:1.7;">Our Course Manager will coordinate with you regarding the event details and arrangements.</p>
+              <p style="margin:0;color:#1a1a2e;font-size:14px;line-height:1.7;">If you have any questions in the meantime, please feel free to reply to this email.</p>
             </div>
 
             ${phoneNote}
 
             <p style="margin:0 0 24px;font-size:14px;color:#555;">For any urgent matters, you can reach us at <a href="tel:4379622020" style="color:#1b3a8a;text-decoration:none;">437-962-2020</a>.</p>
 
-            <p style="margin:0;font-size:14px;color:#1a1a2e;">We are here to welcome you,<br><strong style="color:#0f2150;">The CanaDent Team</strong></p>
+            <p style="margin:0;font-size:14px;color:#1a1a2e;">Best regards,<br><strong style="color:#0f2150;">CANADENT Team</strong></p>
           </td>
         </tr>
 
