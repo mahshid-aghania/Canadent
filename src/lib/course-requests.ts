@@ -57,6 +57,38 @@ export function isRequestable(course: Course): boolean {
 }
 
 /**
+ * Best-effort parse of a course's human date string ("Sunday, September 6,
+ * 2026", "May 16, 2026", …) into a Date at local midnight. Returns null when the
+ * date can't be understood (e.g. ranges like "6 Weekends — January & February").
+ */
+export function parseCourseStart(dateStr?: string): Date | null {
+  if (!dateStr) return null;
+  // Drop a leading weekday ("Sunday, ") — Date can't parse it on its own.
+  const cleaned = dateStr.replace(/^\s*[A-Za-z]+,\s*/, "").trim();
+  for (const candidate of [cleaned, dateStr]) {
+    const d = new Date(candidate);
+    if (!Number.isNaN(d.getTime())) {
+      d.setHours(0, 0, 0, 0);
+      return d;
+    }
+  }
+  return null;
+}
+
+/**
+ * True when a course's date is still in the future — it hasn't been presented
+ * yet, so it should NOT appear in "Courses You'd Like to Attend Again" (you can
+ * simply register for it). Unparseable dates are treated as already presented.
+ */
+export function isNotYetPresented(course: Course): boolean {
+  const start = parseCourseStart(course.date);
+  if (!start) return false;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return start.getTime() > today.getTime();
+}
+
+/**
  * Lightweight, serialisable view of a course for the request UI. We deliberately
  * omit price and expired dates from the card face; `previouslyHeld` is included
  * only so the UI can label it clearly ("Previously held on …") rather than
@@ -77,7 +109,10 @@ export type CourseSummary = {
 };
 
 export function toCourseSummary(course: Course): CourseSummary {
-  const enrolling = isCurrentlyEnrolling(course);
+  // A course is only genuinely "enrolling" if its status allows registration
+  // AND its date is still upcoming. A past date always reads as previously held,
+  // even if the status field hasn't been updated yet.
+  const enrolling = isCurrentlyEnrolling(course) && isNotYetPresented(course);
   return {
     slug: course.slug,
     title: course.title,
@@ -96,6 +131,9 @@ export function toCourseSummary(course: Course): CourseSummary {
 export function getRequestCourseSummaries(): CourseSummary[] {
   return REQUEST_COURSE_SLUGS.map((slug) => getCourse(slug))
     .filter((c): c is Course => Boolean(c))
+    // Hide courses that haven't been presented yet — only show programs whose
+    // date is already in the past as "bring it back" candidates.
+    .filter((c) => !isNotYetPresented(c))
     .map(toCourseSummary);
 }
 
