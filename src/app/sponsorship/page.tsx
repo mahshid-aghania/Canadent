@@ -72,57 +72,51 @@ export default function SponsorshipPage() {
             CANADENT Sponsorship Opportunity
           </h1>
           {/* Gold accent rule */}
-          <div className="h-1 w-16 rounded-full mb-6" style={{ background: "#c9a84c" }} aria-hidden="true" />
-          <p className="text-white/75 text-lg leading-relaxed max-w-3xl">{INTRO}</p>
+          <div className="h-1 w-16 rounded-full" style={{ background: "#c9a84c" }} aria-hidden="true" />
         </div>
       </section>
 
-      {/* ── Event + Package ── */}
+      {/* ── Intro + Event + Package ── */}
       <section className="py-16 px-4" style={{ background: "#f5f7fb" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
-            {/* Upcoming Event */}
-            <div className="card p-8">
-              <h2 className="section-label" style={{ marginBottom: "0.35rem" }}>
-                Upcoming Event
-              </h2>
-              <h3 className="font-heading text-2xl font-bold text-[#0f2150] mb-6 leading-snug">
-                {EVENT.title}
-              </h3>
-              <ul className="divide-y divide-[#1a1a2e]/8 border-y border-[#1a1a2e]/8 mb-6">
-                {EVENT.meta.map((row) => (
-                  <li key={row} className="py-3 text-[#1a1a2e]/75 text-[15px]">
-                    {row}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-[#1a1a2e]/70 leading-relaxed">{EVENT.description}</p>
-            </div>
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Introduction — first row of the white area */}
+          <p className="text-[#1a1a2e]/75 text-lg leading-relaxed">{INTRO}</p>
 
-            {/* Sponsorship Package */}
-            <div
-              className="card p-8"
-              style={{ background: "#fffdf7", border: "1px solid #f0dc9d" }}
-            >
-              <h2 className="font-heading text-2xl font-bold text-[#0f2150] leading-snug mb-5">
-                Sponsorship Package — $500 CAD (Tax Included)
-              </h2>
-              <div
-                className="rounded-xl p-5"
-                style={{ background: "#fff", border: "1px solid #f0dc9d" }}
-              >
-                <p className="text-[#1a1a2e]/70 text-[15px] pb-3 mb-3 border-b border-[#1a1a2e]/8">
-                  Sponsorship Fee: $443 + HST
-                </p>
-                <p className="font-heading text-2xl font-bold text-[#0f2150]">
-                  Total: $500 CAD
-                </p>
-              </div>
-            </div>
+          {/* Upcoming Event */}
+          <div className="card p-8">
+            <h2 className="section-label" style={{ marginBottom: "0.35rem" }}>
+              Upcoming Event
+            </h2>
+            <h3 className="font-heading text-2xl font-bold text-[#0f2150] mb-6 leading-snug">
+              {EVENT.title}
+            </h3>
+            <ul className="divide-y divide-[#1a1a2e]/8 border-y border-[#1a1a2e]/8 mb-6">
+              {EVENT.meta.map((row) => (
+                <li key={row} className="py-3 text-[#1a1a2e]/75 text-[15px]">
+                  {row}
+                </li>
+              ))}
+            </ul>
+            <p className="text-[#1a1a2e]/70 leading-relaxed">{EVENT.description}</p>
           </div>
 
-          {/* Package benefits */}
-          <div className="mt-8 card p-8" style={{ background: "#fffdf7", border: "1px solid #f0dc9d" }}>
+          {/* Sponsorship Package — heading, price, and benefits (moved below) */}
+          <div className="card p-8" style={{ background: "#fffdf7", border: "1px solid #f0dc9d" }}>
+            <h2 className="font-heading text-2xl font-bold text-[#0f2150] leading-snug mb-5">
+              Sponsorship Package — $500 CAD (Tax Included)
+            </h2>
+            <div
+              className="rounded-xl p-5 mb-8"
+              style={{ background: "#fff", border: "1px solid #f0dc9d" }}
+            >
+              <p className="text-[#1a1a2e]/70 text-[15px] pb-3 mb-3 border-b border-[#1a1a2e]/8">
+                Sponsorship Fee: $443 + HST
+              </p>
+              <p className="font-heading text-2xl font-bold text-[#0f2150]">
+                Total: $500 CAD
+              </p>
+            </div>
+
             <h3 className="font-heading text-xl font-bold text-[#0f2150] mb-6">
               The package includes:
             </h3>
