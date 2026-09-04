@@ -275,7 +275,7 @@ function buildSponsorshipEmail(
   const { phone = null, regNumber } = extra;
   const last4 = maskLast4(phone);
   const firstName = name ? name.trim().split(" ")[0] : null;
-  const greeting = firstName ? `Dear ${firstName},` : "Hello,";
+  const greeting = firstName ? `Dear ${firstName},` : "Dear Sponsor,";
 
   const net = ((amountTotal - amountTax) / 100).toFixed(2);
   const tax = (amountTax / 100).toFixed(2);
@@ -357,11 +357,9 @@ function buildSponsorshipEmail(
 
             ${phoneNote}
 
-            <p style="margin:0 0 8px;font-size:14px;color:#555;">Questions? We're here to help:</p>
-            <p style="margin:0 0 4px;font-size:14px;color:#1b3a8a;">📞 <a href="tel:14373700122" style="color:#1b3a8a;text-decoration:none;">1.437.370.0122</a></p>
-            <p style="margin:0 0 24px;font-size:14px;color:#1b3a8a;">✉️ <a href="mailto:canadent.edu@gmail.com" style="color:#1b3a8a;text-decoration:none;">canadent.edu@gmail.com</a></p>
+            <p style="margin:0 0 24px;font-size:14px;color:#555;">For any urgent matters, you can reach us at <a href="tel:437922020" style="color:#1b3a8a;text-decoration:none;">437-92-2020</a>.</p>
 
-            <p style="margin:0;font-size:14px;color:#1a1a2e;">Thank you for partnering with us,<br><strong style="color:#0f2150;">The CanaDent Team</strong></p>
+            <p style="margin:0;font-size:14px;color:#1a1a2e;">We are here to welcome you,<br><strong style="color:#0f2150;">The CanaDent Team</strong></p>
           </td>
         </tr>
 
