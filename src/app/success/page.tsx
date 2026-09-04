@@ -1,8 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import Stripe from "stripe";
-import { BookOpen, Mail, Phone, ArrowRight, Calendar, MapPin, Video, User, Hash, CreditCard, Smartphone, AlertCircle } from "lucide-react";
+import { BookOpen, Mail, Phone, ArrowRight, Calendar, MapPin, Video, User, Hash, CreditCard, Smartphone, AlertCircle, CheckCircle } from "lucide-react";
 import { getCourse } from "@/lib/courses";
 import type { Course } from "@/lib/courses";
 import { PaymentCompleted } from "./PaymentCompleted";
@@ -95,22 +94,18 @@ async function loadConfirmation(sessionId: string): Promise<Confirmation | "unpa
   };
 }
 
-const shell = "min-h-screen flex flex-col";
-const shellStyle = { background: "linear-gradient(160deg, #0f2150 0%, #1b3a8a 55%, #1e4db7 100%)" };
+const shellStyle = { background: "linear-gradient(180deg, #f7f9fc 0%, #eef2fb 55%, #e7edf8 100%)" };
+// Reusable light surface for cards on this page.
+const cardStyle = { background: "#ffffff", border: "1px solid #e6ebf3", boxShadow: "0 6px 24px rgba(15,33,80,0.07)" };
 
+// Renders inside the global layout (navy Header above, Footer below), so this
+// only provides the light receipt area — no page-level header/footer.
 function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <div className={shell} style={shellStyle}>
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 65%)" }} />
-      <header className="relative z-10 max-w-7xl mx-auto w-full px-6 py-6">
-        <Link href="/">
-          <Image src="/logo.png" alt="CanaDent Education Center" width={160} height={50} className="h-10 w-auto object-contain brightness-0 invert" />
-        </Link>
-      </header>
-      <main className="relative z-10 flex-1 flex items-center justify-center px-4 py-12">{children}</main>
-      <footer className="relative z-10 text-center py-6 text-xs text-white/30">
-        © {new Date().getFullYear()} CanaDent Education Center. All rights reserved.
-      </footer>
+    <div className="relative px-4 py-16 sm:py-20" style={shellStyle}>
+      {/* Soft gold wash at the top for warmth */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px]" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12), transparent 70%)" }} />
+      <div className="relative z-10 flex justify-center">{children}</div>
     </div>
   );
 }
@@ -118,11 +113,11 @@ function Shell({ children }: { children: React.ReactNode }) {
 function SupportRow() {
   return (
     <div className="flex flex-col sm:flex-row gap-3">
-      <a href="mailto:canadent.edu@gmail.com" className="flex items-center gap-2 text-sm text-white/60 hover:text-[#c9a84c] transition-colors">
+      <a href="mailto:canadent.edu@gmail.com" className="flex items-center gap-2 text-sm text-[#1a1a2e]/60 hover:text-[#1b3a8a] transition-colors">
         <Mail className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
         canadent.edu@gmail.com
       </a>
-      <a href="tel:14373700122" className="flex items-center gap-2 text-sm text-white/60 hover:text-[#c9a84c] transition-colors">
+      <a href="tel:14373700122" className="flex items-center gap-2 text-sm text-[#1a1a2e]/60 hover:text-[#1b3a8a] transition-colors">
         <Phone className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
         1.437.370.0122
       </a>
@@ -143,15 +138,15 @@ export default async function SuccessPage({ searchParams }: Props) {
           <div className="mx-auto mb-6 w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "rgba(201,168,76,0.15)", border: "1px solid rgba(201,168,76,0.4)" }}>
             <AlertCircle className="h-7 w-7" style={{ color: "#c9a84c" }} />
           </div>
-          <h1 className="font-heading text-3xl font-bold text-white mb-3">We&apos;re confirming your payment</h1>
-          <p className="text-white/70 mb-8">
+          <h1 className="font-heading text-3xl font-bold text-[#0f2150] mb-3">We&apos;re confirming your payment</h1>
+          <p className="text-[#1a1a2e]/65 mb-8">
             Your payment is still processing. This page will reflect your registration once it&apos;s confirmed —
             you&apos;ll also receive a confirmation email. If you have any questions, reach us below.
           </p>
-          <div className="rounded-2xl p-6 mb-8" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
+          <div className="rounded-2xl p-6 mb-8" style={cardStyle}>
             <SupportRow />
           </div>
-          <Link href="/courses" className="btn-outline-white inline-flex items-center gap-2">Browse Courses<ArrowRight className="h-4 w-4" /></Link>
+          <Link href="/courses" className="btn-secondary inline-flex items-center gap-2">Browse Courses<ArrowRight className="h-4 w-4" /></Link>
         </div>
       </Shell>
     );
@@ -163,12 +158,12 @@ export default async function SuccessPage({ searchParams }: Props) {
     return (
       <Shell>
         <div className="w-full max-w-lg text-center">
-          <h1 className="font-heading text-3xl font-bold text-white mb-3">Thank you</h1>
-          <p className="text-white/70 mb-8">
-            {title ? <>Thank you for your interest in <strong className="text-white">{title}</strong>. </> : null}
+          <h1 className="font-heading text-3xl font-bold text-[#0f2150] mb-3">Thank you</h1>
+          <p className="text-[#1a1a2e]/65 mb-8">
+            {title ? <>Thank you for your interest in <strong className="text-[#0f2150]">{title}</strong>. </> : null}
             If you&apos;ve just paid, a confirmation email is on its way. For anything you need, our team is here to help.
           </p>
-          <div className="rounded-2xl p-6 mb-8" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
+          <div className="rounded-2xl p-6 mb-8" style={cardStyle}>
             <SupportRow />
           </div>
           <Link href="/courses" className="btn-primary inline-flex items-center gap-2"><BookOpen className="h-4 w-4" />Browse Courses</Link>
@@ -196,46 +191,49 @@ export default async function SuccessPage({ searchParams }: Props) {
       <PaymentCompleted slug={c.course?.slug} attendance={c.isOnline ? "online" : "in-person"} />
       <div className="w-full max-w-2xl">
         <div className="text-center mb-8">
+          <div className="mx-auto mb-5 w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "#ecfdf5", border: "1px solid #a7f3d0" }}>
+            <CheckCircle className="h-8 w-8" style={{ color: "#16a34a" }} aria-hidden="true" />
+          </div>
           <div className="mb-3 text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#c9a84c" }}>
             Registration Confirmed
           </div>
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-white leading-tight">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-[#0f2150] leading-tight">
             {firstName ? <>You&apos;re registered, {firstName}.</> : <>Your registration is confirmed.</>}
           </h1>
-          <p className="mt-4 text-white/70 text-lg">{c.courseTitle}</p>
+          <p className="mt-4 text-[#1a1a2e]/60 text-lg">{c.courseTitle}</p>
         </div>
 
         {/* Details card */}
-        <div className="rounded-2xl p-6 sm:p-8 mb-6" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", backdropFilter: "blur(16px)" }}>
-          <dl className="divide-y divide-white/10">
+        <div className="rounded-2xl p-6 sm:p-8 mb-6" style={cardStyle}>
+          <dl className="divide-y divide-[#0f2150]/8">
             {rows.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-center justify-between gap-4 py-3">
-                <dt className="flex items-center gap-2 text-sm text-white/55">
+                <dt className="flex items-center gap-2 text-sm text-[#1a1a2e]/55">
                   <Icon className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} aria-hidden="true" />
                   {label}
                 </dt>
-                <dd className="text-sm font-semibold text-white text-right">{value}</dd>
+                <dd className="text-sm font-semibold text-[#0f2150] text-right">{value}</dd>
               </div>
             ))}
           </dl>
         </div>
 
         {/* Next steps — differs by attendance type */}
-        <div className="rounded-2xl p-6 sm:p-8 mb-6 text-left" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
-          <h2 className="font-heading text-lg font-bold text-white mb-4">What happens next</h2>
+        <div className="rounded-2xl p-6 sm:p-8 mb-6 text-left" style={cardStyle}>
+          <h2 className="font-heading text-lg font-bold text-[#0f2150] mb-4">What happens next</h2>
           {c.isOnline ? (
-            <ul className="space-y-3 text-white/75 text-sm leading-relaxed">
+            <ul className="space-y-3 text-[#1a1a2e]/70 text-sm leading-relaxed">
               <li className="flex items-start gap-3"><Video className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} /><span>Your joining link and access details will be emailed to you before the course date.</span></li>
               <li className="flex items-start gap-3"><BookOpen className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} /><span>The live session is recorded, and the recording will be shared with you afterward.</span></li>
             </ul>
           ) : (
-            <ul className="space-y-3 text-white/75 text-sm leading-relaxed">
+            <ul className="space-y-3 text-[#1a1a2e]/70 text-sm leading-relaxed">
               <li className="flex items-start gap-3"><MapPin className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} /><span>{c.course?.attendanceModes?.find((m) => m.kind === "in-person")?.location ?? "265 Rimrock Road, North York, Ontario"}</span></li>
               <li className="flex items-start gap-3"><Calendar className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} /><span>Please plan to arrive 15 minutes early to check in. Lunch and refreshments are provided.</span></li>
             </ul>
           )}
           {c.maskedPhone && (
-            <p className="mt-4 text-xs text-white/45">
+            <p className="mt-4 text-xs text-[#1a1a2e]/45">
               We&apos;ll use the mobile number ending in {c.maskedPhone.slice(-4)} only for important course updates.
             </p>
           )}
@@ -249,14 +247,14 @@ export default async function SuccessPage({ searchParams }: Props) {
               Add to Calendar
             </a>
           )}
-          <Link href="/my-account" className="btn-outline-white flex items-center gap-2">
+          <Link href="/my-account" className="btn-secondary flex items-center gap-2">
             Go to My Account
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="rounded-2xl p-6 text-center" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
-          <p className="text-sm text-white/60 mb-3">Questions about your registration? We&apos;re here to help.</p>
+        <div className="rounded-2xl p-6 text-center" style={cardStyle}>
+          <p className="text-sm text-[#1a1a2e]/60 mb-3">Questions about your registration? We&apos;re here to help.</p>
           <div className="flex justify-center"><SupportRow /></div>
         </div>
       </div>
