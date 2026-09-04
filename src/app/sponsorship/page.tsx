@@ -111,7 +111,7 @@ export default function SponsorshipPage() {
               style={{ background: "#fff", border: "1px solid #f0dc9d" }}
             >
               <p className="text-[#1a1a2e]/70 text-[15px] pb-3 mb-3 border-b border-[#1a1a2e]/8">
-                Sponsorship Fee: $443 + HST
+                Sponsorship Fee: $442.48 + $57.52 HST
               </p>
               <p className="font-heading text-2xl font-bold text-[#0f2150]">
                 Total: $500 CAD
