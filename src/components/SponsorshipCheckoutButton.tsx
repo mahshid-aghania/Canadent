@@ -58,7 +58,7 @@ export function SponsorshipCheckoutButton() {
         onClick={buy}
         disabled={isPending}
         aria-disabled={isPending}
-        className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-green w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isPending ? (
           <>
