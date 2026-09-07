@@ -255,7 +255,7 @@ export default function HomePage() {
                 </div>
                 <div className="p-6 lg:p-8 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="badge-enrolling">Enrolling Now</span>
+                    <span className="badge-sold-out">Sold Out</span>
                   </div>
                   <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
                     Advanced Adhesive Dentistry: The Master Blueprint
@@ -295,10 +295,10 @@ export default function HomePage() {
                       </div>
                     </div>
                     <Link
-                      href="/courses/advanced-adhesive-dentistry-master-blueprint"
-                      className="btn-primary"
+                      href="/contact"
+                      className="btn-secondary"
                     >
-                      Reserve Your Seat
+                      Join Waitlist
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
