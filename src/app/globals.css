@@ -278,6 +278,18 @@ body {
   color: #92400e;
 }
 
+.badge-past {
+  display: inline-block;
+  border-radius: 999px;
+  background: #f1f0ec;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #57534e;
+}
+
 /* ── Countdown ── */
 .countdown-unit {
   display: flex;

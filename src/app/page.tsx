@@ -1,17 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getRequestCourseSummaries } from "@/lib/course-requests";
-import { TAX_SUFFIX } from "@/lib/tax";
+import { getCourseGroups } from "@/lib/course-status";
 import { getAllArticles } from "@/lib/articles";
-import { BlurImage } from "@/components/BlurImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { CourseCard, courseGridClass } from "@/components/CourseCard";
 import { CoursesToSeeAgain } from "@/components/course-request/CoursesToSeeAgain";
 import {
   BookOpen,
   ArrowRight,
-  GraduationCap,
   Calendar,
-  MapPin,
   User,
   Clock,
 } from "lucide-react";
@@ -37,6 +35,8 @@ function formatArticleDate(dateString: string) {
 
 export default function HomePage() {
   const latestArticles = getAllArticles();
+  const { upcoming: upcomingCourses } = getCourseGroups();
+  const upcomingGridClass = courseGridClass(upcomingCourses.length);
   return (
     <>
       {/* ── HERO ── */}
@@ -234,77 +234,41 @@ export default function HomePage() {
       {/* ── UPCOMING COURSES ── */}
       <section className="py-20 px-4" style={{ background: "#f5f0e8" }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="section-label">Fall 2026</span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-3">
-              Upcoming Courses
-            </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+            <div>
+              <span className="section-label">Continuing Education</span>
+              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-3">
+                Upcoming Courses
+              </h2>
+            </div>
+            <Link
+              href="/courses"
+              className="text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+              style={{ color: "#1b3a8a" }}
+            >
+              View All Courses <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
 
-          <div className="max-w-md mx-auto">
-
-            {/* Card 2 — Daily and Unique Orthodontic Techniques */}
-            <ScrollReveal delay={80}>
-              <div className="card overflow-hidden flex flex-col h-full">
-                <div className="relative w-full overflow-hidden" style={{ height: 0, paddingBottom: '125%' }}>
-                  <BlurImage
-                    src="/course-orthodontic-prosthodontics-poster.jpeg"
-                    alt="Daily and Unique Orthodontic Techniques for Prosthodontics"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="p-6 lg:p-8 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="badge-enrolling">Enrolling Now</span>
-                    <span className="badge-early-bird">Early Bird — Until Sep 10</span>
-                  </div>
-                  <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
-                    Daily and Unique Orthodontic Techniques for Prosthodontics
-                  </h3>
-                  <p className="text-xs text-[#1b3a8a]/70 mb-4 leading-relaxed">
-                    Evidence-based aligner therapy, advanced biomechanics, and efficient clinical workflows for predictable treatment outcomes.
-                  </p>
-                  <div className="space-y-1.5 text-xs text-[#1a1a2e]/60 mb-5">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      Sunday, September 27, 2026
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      265 Rimrock Rd, North York, ON
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <User className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      6 CE Credits (PACE Approved) · In-Person Lecture
-                    </div>
-                  </div>
-                  <p className="text-[0.6rem] font-bold uppercase tracking-wide mb-4" style={{ color: "#a87219" }}>
-                    Early Bird valid until September 10, 2026
-                  </p>
-                  <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8 flex items-center justify-between gap-4">
-                    <div>
-                      <span className="text-sm font-semibold line-through text-red-500 block leading-none mb-1">$999</span>
-                      <span className="font-heading text-2xl font-bold text-green-600">$799</span>
-                      <span className="text-xs text-[#1a1a2e]/50 ml-1">{TAX_SUFFIX}</span>
-                      <span className="text-xs text-[#1a1a2e]/50 block">Until Sep 10</span>
-                    </div>
-                    <Link
-                      href="/courses/daily-unique-orthodontic-techniques"
-                      className="btn-primary"
-                    >
-                      Reserve Your Seat
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-          </div>
+          {upcomingCourses.length === 0 ? (
+            <div className="rounded-2xl bg-white/60 border border-[#1a1a2e]/8 py-16 text-center">
+              <p className="text-[#1a1a2e]/60">
+                No upcoming courses are scheduled right now.{" "}
+                <Link href="/courses" className="font-semibold text-[#1b3a8a] hover:underline">
+                  Browse past courses
+                </Link>{" "}
+                or check back soon.
+              </p>
+            </div>
+          ) : (
+            <div className={upcomingGridClass}>
+              {upcomingCourses.map((course, i) => (
+                <ScrollReveal key={course.slug} delay={Math.min(i, 2) * 80}>
+                  <CourseCard course={course} priority={i === 0} />
+                </ScrollReveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

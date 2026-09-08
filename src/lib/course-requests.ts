@@ -6,6 +6,7 @@
 // the client form and the API route so the rules can never drift apart.
 
 import { getCourse, type Course } from "@/lib/courses";
+import { isUpcoming } from "@/lib/course-status";
 
 /**
  * Courses featured in the "Courses You'd Like to See Again" experience, in
@@ -57,35 +58,13 @@ export function isRequestable(course: Course): boolean {
 }
 
 /**
- * Best-effort parse of a course's human date string ("Sunday, September 6,
- * 2026", "May 16, 2026", …) into a Date at local midnight. Returns null when the
- * date can't be understood (e.g. ranges like "6 Weekends — January & February").
- */
-export function parseCourseStart(dateStr?: string): Date | null {
-  if (!dateStr) return null;
-  // Drop a leading weekday ("Sunday, ") — Date can't parse it on its own.
-  const cleaned = dateStr.replace(/^\s*[A-Za-z]+,\s*/, "").trim();
-  for (const candidate of [cleaned, dateStr]) {
-    const d = new Date(candidate);
-    if (!Number.isNaN(d.getTime())) {
-      d.setHours(0, 0, 0, 0);
-      return d;
-    }
-  }
-  return null;
-}
-
-/**
- * True when a course's date is still in the future — it hasn't been presented
- * yet, so it should NOT appear in "Courses You'd Like to Attend Again" (you can
- * simply register for it). Unparseable dates are treated as already presented.
+ * True when a course hasn't been presented yet — it should NOT appear in
+ * "Courses You'd Like to Attend Again" (you can simply register for it).
+ * Delegates to the shared course-status source of truth (America/Toronto,
+ * end-date based) so this can never drift from the homepage / courses grid.
  */
 export function isNotYetPresented(course: Course): boolean {
-  const start = parseCourseStart(course.date);
-  if (!start) return false;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return start.getTime() > today.getTime();
+  return isUpcoming(course);
 }
 
 /**

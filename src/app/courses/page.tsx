@@ -1,15 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { courses, categories } from "@/lib/courses";
+import { courses } from "@/lib/courses";
+import { getCourseGroups } from "@/lib/course-status";
 import { getRequestCourseSummaries } from "@/lib/course-requests";
-import { TAX_SUFFIX } from "@/lib/tax";
-import { BlurImage } from "@/components/BlurImage";
-import { ScrollReveal } from "@/components/ScrollReveal";
 import { CoursesToSeeAgain } from "@/components/course-request/CoursesToSeeAgain";
-import { BookOpen, MapPin, Calendar, User, GraduationCap, ArrowRight } from "lucide-react";
+import { CourseBrowser } from "@/components/courses/CourseBrowser";
 
-// Re-render hourly so the date-based "Courses You'd Like to Attend Again"
-// filter reflects the current calendar date rather than the build time.
+// Re-render hourly so the date-based upcoming/past classification reflects the
+// current calendar date (America/Toronto) rather than the build time.
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -19,12 +17,25 @@ export const metadata: Metadata = {
 };
 
 const statsBar = [
-  { value: `${courses.length}`, label: "Courses Available" },
+  { value: `${courses.length}`, label: "Courses in Catalogue" },
   { value: "10+", label: "Expert Instructors" },
   { value: "3", label: "Cities & Online" },
 ];
 
-export default function CoursesPage() {
+export default async function CoursesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string; category?: string }>;
+}) {
+  const { upcoming, past } = getCourseGroups();
+  const { tab, category } = await searchParams;
+  const initialTab = tab === "past" ? "past" : "upcoming";
+  // Only honour a category that exists in the selected group; otherwise show all.
+  const groupCategories = new Set(
+    (initialTab === "past" ? past : upcoming).map((c) => c.category),
+  );
+  const initialCategory = category && groupCategories.has(category) ? category : "all";
+
   return (
     <>
       {/* Page header */}
@@ -46,24 +57,6 @@ export default function CoursesPage() {
             CE-accredited courses designed for Canadian dental professionals. Hands-on workshops,
             seminars, and online lectures across all major dental disciplines.
           </p>
-
-          {/* Category pills */}
-          <div className="flex flex-wrap gap-2 mt-8">
-            <span
-              className="rounded-full px-4 py-1.5 text-xs font-semibold cursor-default"
-              style={{ background: "#c9a84c", color: "#fff" }}
-            >
-              All Categories
-            </span>
-            {categories.map((cat) => (
-              <span
-                key={cat}
-                className="rounded-full px-4 py-1.5 text-xs font-medium text-white/70 border border-white/20 cursor-default"
-              >
-                {cat}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -81,113 +74,15 @@ export default function CoursesPage() {
         </div>
       </div>
 
-      {/* Course grid */}
+      {/* Tabbed, filterable course grid */}
       <section className="py-16 px-4" style={{ background: "#f5f0e8" }}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {courses.map((course, i) => (
-              <ScrollReveal key={course.slug} delay={Math.min(i % 3, 2) * 80}>
-                <Link
-                  href={`/courses/${course.slug}`}
-                  className={`card block overflow-hidden group h-full${course.status === "available" ? " ring-2 ring-[#c9a84c]/60" : ""}`}
-                >
-                  {course.image ? (
-                    <div className="relative w-full overflow-hidden" style={{ height: 0, paddingBottom: '125%' }}>
-                      <BlurImage
-                        src={course.image}
-                        alt={course.title}
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className="px-5 py-3 flex items-center justify-between"
-                      style={{ background: "#1b3a8a" }}
-                    >
-                      <span className="text-xs font-semibold tracking-wide uppercase text-white">
-                        {course.category}
-                      </span>
-                      {course.format && (
-                        <span className="text-[10px] text-white/50">{course.format}</span>
-                      )}
-                    </div>
-                  )}
-
-                  <div className="p-6">
-                    <h2 className="font-heading font-bold text-[#0f2150] text-lg leading-snug mb-1 group-hover:text-[#1b3a8a] transition-colors">
-                      {course.title}
-                    </h2>
-                    {course.subtitle && (
-                      <p className="text-xs text-[#c9a84c] font-medium mb-3">{course.subtitle}</p>
-                    )}
-
-                    <p className="text-xs text-[#1a1a2e]/60 mb-5 line-clamp-3 leading-relaxed">
-                      {course.description}
-                    </p>
-
-                    <div className="space-y-2 text-xs text-[#1a1a2e]/55 mb-5">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                        {course.date}
-                        {course.time && <span className="text-[#1a1a2e]/35">· {course.time}</span>}
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <MapPin className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} />
-                        <span className="line-clamp-1">{course.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <User className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                        <span className="line-clamp-1">{course.instructor}</span>
-                      </div>
-                      {course.ceCredits && (
-                        <div className="flex items-center gap-2">
-                          <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                          {course.ceCredits}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-[#1a1a2e]/8">
-                      <div>
-                        {course.isFree ? (
-                          <span className="badge-free">Free</span>
-                        ) : course.priceOptions ? (
-                          <div>
-                            <span className="text-xs text-[#1a1a2e]/45">From </span>
-                            <span className="font-bold text-[#0f2150]">
-                              ${Math.min(...course.priceOptions.map((o) => o.price)).toLocaleString()}
-                            </span>
-                            <span className="text-xs text-[#1a1a2e]/45"> {TAX_SUFFIX}</span>
-                          </div>
-                        ) : (
-                          <div className="flex items-baseline gap-2">
-                            <span className="font-bold text-[#0f2150]">
-                              ${course.price?.toLocaleString()}
-                            </span>
-                            {course.originalPrice && (
-                              <span className="text-xs text-[#1a1a2e]/35 line-through">
-                                ${course.originalPrice.toLocaleString()}
-                              </span>
-                            )}
-                            <span className="text-xs text-[#1a1a2e]/45">{TAX_SUFFIX}</span>
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        {course.status === "sold-out" && (
-                          <span className="badge-sold-out">Sold Out</span>
-                        )}
-                        {course.status === "available" && (
-                          <span className="badge-available">Open</span>
-                        )}
-                        <ArrowRight className="h-4 w-4 text-[#1b3a8a] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
+          <CourseBrowser
+            upcoming={upcoming}
+            past={past}
+            initialTab={initialTab}
+            initialCategory={initialCategory}
+          />
         </div>
       </section>
 
