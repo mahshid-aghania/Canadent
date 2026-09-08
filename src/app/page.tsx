@@ -292,70 +292,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-
-            {/* Card 1 — Advanced Adhesive Dentistry */}
-            <ScrollReveal>
-              <div className="card overflow-hidden flex flex-col h-full">
-                <div className="relative w-full overflow-hidden" style={{ height: 0, paddingBottom: '125%' }}>
-                  <BlurImage
-                    src="/course-adhesive-dentistry-poster.jpeg"
-                    alt="Advanced Adhesive Dentistry: The Master Blueprint"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="p-6 lg:p-8 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="badge-sold-out">Sold Out</span>
-                  </div>
-                  <h3 className="font-heading text-xl font-bold text-[#0f2150] leading-snug mb-1">
-                    Advanced Adhesive Dentistry: The Master Blueprint
-                  </h3>
-                  <p className="text-xs text-[#1b3a8a]/70 mb-4 leading-relaxed">
-                    A comprehensive foundation in predictable, minimally invasive, and sensitivity-free restorative workflows.
-                  </p>
-                  <div className="space-y-1.5 text-xs text-[#1a1a2e]/60 mb-5">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      Sunday, September 6, 2026
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      265 Rimrock Rd, North York, ON
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <User className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      Dr. Amin Asadollahi
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <GraduationCap className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
-                      6 CE Credits · Hybrid (In-Person / Online)
-                    </div>
-                  </div>
-                  <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8 flex items-end justify-between gap-4">
-                    <div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-xs text-[#1a1a2e]/50 w-14 shrink-0">Online</span>
-                        <span className="font-heading text-lg font-bold text-[#0f2150]">$499</span>
-                        <span className="text-xs text-[#1a1a2e]/50">{TAX_SUFFIX}</span>
-                      </div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-xs text-[#1a1a2e]/50 w-14 shrink-0">In-Person</span>
-                        <span className="font-heading text-lg font-bold text-[#0f2150]">$799</span>
-                        <span className="text-xs text-[#1a1a2e]/50">{TAX_SUFFIX}</span>
-                      </div>
-                    </div>
-                    <Link
-                      href="/contact"
-                      className="btn-secondary"
-                    >
-                      Join Waitlist
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
+          <div className="max-w-md mx-auto">
 
             {/* Card 2 — Daily and Unique Orthodontic Techniques */}
             <ScrollReveal delay={80}>
