@@ -42,12 +42,11 @@ export function CourseCard({
         course.registrationOpen ? " ring-1 ring-[#c9a84c]/50" : ""
       }`}
     >
-      {/* Image — contained (never crops embedded poster text or faces) */}
+      {/* Image — contained (never crops embedded poster text or faces) and
+          capped to a compact, uniform height so the card stays scannable.
+          Portrait posters sit on the navy backdrop, which they blend into. */}
       {course.image ? (
-        <div
-          className="relative w-full overflow-hidden"
-          style={{ height: 0, paddingBottom: "125%" }}
-        >
+        <div className="relative w-full overflow-hidden h-56 sm:h-64 lg:h-72">
           <BlurImage src={course.image} alt={course.title} sizes={sizes} priority={priority} />
         </div>
       ) : (
