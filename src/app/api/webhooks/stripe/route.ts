@@ -5,6 +5,7 @@ import { getCourse } from "@/lib/courses";
 import type { Course } from "@/lib/courses";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
+import { buildSponsorshipEmail } from "@/lib/sponsorship-email";
 
 export const dynamic = "force-dynamic";
 
@@ -55,17 +56,23 @@ export async function POST(request: NextRequest) {
     });
 
     if (email && slug && title) {
+      const isSponsorship = session.metadata?.type === "sponsorship";
       const course = getCourse(slug);
       const { data, error } = await resend.emails.send({
         from: "CanaDent Education <noreply@canadent.net>",
+        // Same recipients as course registrations: the buyer, plus the CanaDent team.
         to: email,
         cc: ["ar.movasagh@confidentist.ca", "mahshid.aghania@gmail.com", "canadent.edu@gmail.com"],
-        subject: `Registration Confirmed — ${title}`,
-        html: buildEmail(name, title, amountTotal, course, amountSubtotal, amountTax, {
-          attendance,
-          phone,
-          regNumber,
-        }),
+        subject: isSponsorship
+          ? `Sponsorship Confirmed — ${title}`
+          : `Registration Confirmed — ${title}`,
+        html: isSponsorship
+          ? buildSponsorshipEmail(name, title, amountTotal, amountTax, { phone, regNumber })
+          : buildEmail(name, title, amountTotal, course, amountSubtotal, amountTax, {
+              attendance,
+              phone,
+              regNumber,
+            }),
       });
       if (error) {
         console.error("[webhook] Resend error:", error);
@@ -289,3 +296,4 @@ function buildEmail(
 </body>
 </html>`;
 }
+

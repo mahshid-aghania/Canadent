@@ -10,12 +10,23 @@ export type FunnelEvent =
   | "attendance_selected"
   | "registration_started"
   | "checkout_started"
-  | "payment_completed";
+  | "payment_completed"
+  // ── "Request This Course Again" demand funnel ──
+  | "request_card_viewed"
+  | "request_course_selected"
+  | "request_course_deselected"
+  | "request_form_started"
+  | "request_submitted"
+  | "request_form_abandoned";
 
 type FunnelPayload = {
   slug?: string;
   attendance?: "online" | "in-person";
   price?: number;
+  /** Number of courses selected in the request experience. */
+  count?: number;
+  /** Where the event originated, e.g. "courses" | "home" | "course-detail". */
+  surface?: string;
 };
 
 // Keys that must never appear in an analytics payload.

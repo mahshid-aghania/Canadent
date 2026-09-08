@@ -2,9 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { RegistrationPanel } from "@/components/RegistrationPanel";
+import { CourseRequestPanel } from "@/components/course-request/CourseRequestPanel";
 import { CourseViewed } from "@/components/CourseViewed";
 import { notFound } from "next/navigation";
 import { courses, getCourse } from "@/lib/courses";
+import { toCourseSummary } from "@/lib/course-requests";
 import { TAX_SUFFIX } from "@/lib/tax";
 import {
   Calendar,
@@ -285,13 +287,7 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
             )}
 
             {course.status === "sold-out" ? (
-              <div>
-                <div className="flex items-center gap-2 rounded-lg px-4 py-3 mb-3 text-sm" style={{ background: "#fee2e2", color: "#b91c1c" }}>
-                  <AlertCircle className="h-4 w-4 shrink-0" />
-                  This course is currently sold out.
-                </div>
-                <Link href="/contact" className="btn-secondary w-full text-center block">Join Waitlist / Contact Us</Link>
-              </div>
+              <CourseRequestPanel course={toCourseSummary(course)} />
             ) : course.isFree ? (
               <div>
                 <div className="mb-4"><span className="font-heading text-3xl font-bold text-[#0f2150]">Free</span></div>
