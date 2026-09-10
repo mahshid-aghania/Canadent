@@ -59,6 +59,13 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
     ? Math.min(...course.priceOptions.map((o) => o.price))
     : course.price;
 
+  // Original ("was") price to strike through in the hero, taken from the
+  // cheapest attendance option (or the single price) when a higher one is set.
+  const minOption = course.priceOptions
+    ? course.priceOptions.reduce((a, b) => (b.price < a.price ? b : a))
+    : null;
+  const minOriginalPrice = minOption?.originalPrice ?? course.originalPrice;
+
   const snapshot: { icon: React.ElementType; label: string }[] = [
     ...(course.date ? [{ icon: Calendar, label: course.date.replace(/^\w+day, /, "") }] : []),
     ...(course.time ? [{ icon: Clock, label: `${course.time} ET` }] : []),
@@ -113,7 +120,13 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                 <div className="flex flex-wrap items-center gap-3">
                   {minPrice != null && (
                     <span className="text-white/80 text-sm mr-1">
-                      From <span className="font-heading text-2xl font-bold text-white align-middle">${minPrice.toLocaleString()}</span>{" "}
+                      From{" "}
+                      {minOriginalPrice != null && minOriginalPrice > minPrice && (
+                        <span className="font-heading text-lg font-semibold text-white/45 line-through align-middle mr-1.5">
+                          ${minOriginalPrice.toLocaleString()}
+                        </span>
+                      )}
+                      <span className="font-heading text-2xl font-bold text-white align-middle">${minPrice.toLocaleString()}</span>{" "}
                       <span className="text-white/55">CAD {TAX_SUFFIX}</span>
                     </span>
                   )}
