@@ -153,11 +153,17 @@ export type CourseCardModel = {
   price: number | null;
   originalPrice: number | null;
   priceFrom: number | null;
+  /** Struck-through "was" price for the cheapest option, when discounted. */
+  originalPriceFrom: number | null;
   hasPriceOptions: boolean;
 };
 
 export function toCourseCard(course: Course, now: Date = new Date()): CourseCardModel {
   const timing = classifyCourse(course, now);
+  // Cheapest attendance option drives the "From" price and its original.
+  const cheapestOption = course.priceOptions
+    ? course.priceOptions.reduce((a, b) => (b.price < a.price ? b : a))
+    : null;
   return {
     slug: course.slug,
     title: course.title,
@@ -179,9 +185,8 @@ export function toCourseCard(course: Course, now: Date = new Date()): CourseCard
     isFree: Boolean(course.isFree),
     price: course.price,
     originalPrice: course.originalPrice ?? null,
-    priceFrom: course.priceOptions
-      ? Math.min(...course.priceOptions.map((o) => o.price))
-      : null,
+    priceFrom: cheapestOption ? cheapestOption.price : null,
+    originalPriceFrom: cheapestOption?.originalPrice ?? null,
     hasPriceOptions: Boolean(course.priceOptions),
   };
 }
