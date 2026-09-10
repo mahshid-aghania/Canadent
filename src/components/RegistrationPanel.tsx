@@ -147,7 +147,7 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
           <p className="text-sm text-[#1a1a2e]/55 mb-4">
             Select an option to continue. Prices are per person.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3" role="radiogroup" aria-label="Attendance option">
+          <div className="grid grid-cols-1 gap-3" role="radiogroup" aria-label="Attendance option">
             {options.map((opt) => {
               const mode = modes?.find((m) => m.label === opt.label);
               const isSel = selected === opt.label;
@@ -178,7 +178,7 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
                     </span>
                   </span>
                   {mode && <span className="block text-xs text-[#1a1a2e]/55 mt-1.5">{mode.summary}</span>}
-                  <span className="flex items-baseline gap-1.5 mt-3">
+                  <span className="flex flex-wrap items-baseline gap-1.5 mt-3">
                     {opt.originalPrice != null && opt.originalPrice > opt.price && (
                       <span className="font-heading text-lg font-semibold text-[#1a1a2e]/40 line-through">
                         ${money(opt.originalPrice)}
