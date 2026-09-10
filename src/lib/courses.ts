@@ -125,7 +125,6 @@ export const courses: Course[] = [
         summary: "Join the full live session remotely from anywhere in Canada.",
         includes: [
           "Live online access to the full 6-hour session",
-          "Session recording shared with you afterward",
           "6 CE Credits",
         ],
         access:
@@ -190,7 +189,6 @@ export const courses: Course[] = [
         summary: "Join the full live session remotely from anywhere in Canada.",
         includes: [
           "Live online access to the full 6-hour session",
-          "Session recording shared with you afterward",
           "6 CE Credits (PACE Approved)",
         ],
         access:
