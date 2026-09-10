@@ -179,6 +179,11 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
                   </span>
                   {mode && <span className="block text-xs text-[#1a1a2e]/55 mt-1.5">{mode.summary}</span>}
                   <span className="flex items-baseline gap-1.5 mt-3">
+                    {opt.originalPrice != null && opt.originalPrice > opt.price && (
+                      <span className="font-heading text-lg font-semibold text-[#1a1a2e]/40 line-through">
+                        ${money(opt.originalPrice)}
+                      </span>
+                    )}
                     <span className="font-heading text-2xl font-bold text-[#0f2150]">
                       ${money(opt.price)}
                     </span>
