@@ -148,12 +148,19 @@ function PriceBlock({ course }: { course: CourseCardModel }) {
 
   if (course.hasPriceOptions && course.priceFrom != null) {
     return (
-      <div>
-        <span className="text-xs text-[#1a1a2e]/45">From </span>
-        <span className="font-heading text-lg font-bold text-[#0f2150]">
-          ${course.priceFrom.toLocaleString()}
+      <div className="flex items-baseline gap-2">
+        <span>
+          <span className="text-xs text-[#1a1a2e]/45">From </span>
+          <span className="font-heading text-lg font-bold text-[#0f2150]">
+            ${course.priceFrom.toLocaleString()}
+          </span>
         </span>
-        <span className="text-xs text-[#1a1a2e]/45"> {TAX_SUFFIX}</span>
+        {course.originalPriceFrom != null && course.originalPriceFrom > course.priceFrom && (
+          <span className="text-xs text-[#1a1a2e]/35 line-through">
+            ${course.originalPriceFrom.toLocaleString()}
+          </span>
+        )}
+        <span className="text-xs text-[#1a1a2e]/45">{TAX_SUFFIX}</span>
       </div>
     );
   }
