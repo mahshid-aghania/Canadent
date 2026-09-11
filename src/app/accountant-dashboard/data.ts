@@ -5,6 +5,8 @@
 // Client/server-safe (no server-only imports) so both the list and the order
 // detail page can share it.
 
+import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
+
 export const COURSE = "Advanced Adhesive Dentistry: The Master Blueprint";
 export const COURSE_DATE = "September 6, 2026";
 export const DELIVERY = "Hybrid";
@@ -49,4 +51,17 @@ export function fmtDate(iso: string): string {
 
 export function initials(name: string): string {
   return name.replace(/\(.*?\)/g, "").trim().split(/\s+/).slice(0, 2).map((w) => w[0]?.toUpperCase() ?? "").join("");
+}
+
+// ── Ontario HST (13%) ────────────────────────────────────────────────────────
+// Course fees are treated as tax-exclusive (matching the site's checkout model).
+// Integer-cent math; exported label/rate kept in sync with the site's tax config.
+export { TAX_LABEL, TAX_PERCENTAGE };
+
+export function hstCents(subtotalCents: number): number {
+  return Math.round((subtotalCents * TAX_PERCENTAGE) / 100);
+}
+
+export function totalWithTaxCents(subtotalCents: number): number {
+  return subtotalCents + hstCents(subtotalCents);
 }

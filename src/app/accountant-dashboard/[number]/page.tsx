@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, User, Mail, Building2, GraduationCap, CalendarClock } from "lucide-react";
 import { formatCents } from "@/lib/accounting/money";
 import {
-  ORDERS, getOrder, fmtDate, initials,
-  COURSE, COURSE_DATE, DELIVERY, INSTRUCTOR, CE_CREDITS, LOCATION,
+  ORDERS, getOrder, fmtDate, initials, hstCents, totalWithTaxCents,
+  COURSE, COURSE_DATE, DELIVERY, INSTRUCTOR, CE_CREDITS, LOCATION, TAX_LABEL, TAX_PERCENTAGE,
 } from "../data";
 
 export const dynamic = "error"; // fully static; params come from generateStaticParams
@@ -63,12 +63,16 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ nu
               </tbody>
               <tfoot className="border-t border-[#dcdcde] text-sm">
                 <tr>
-                  <td className="px-5 py-2.5 text-right text-[#646970]" colSpan={2}>Subtotal</td>
+                  <td className="px-5 py-2.5 text-right text-[#646970]" colSpan={2}>Subtotal (excl. tax)</td>
                   <td className="px-5 py-2.5 text-right tabular-nums">{formatCents(order.totalCents)}</td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-2.5 text-right font-semibold text-[#1d2327]" colSpan={2}>Order total</td>
-                  <td className="px-5 py-3 text-right font-bold tabular-nums text-[#0f2150]">{formatCents(order.totalCents)}</td>
+                  <td className="px-5 py-1 text-right text-[#646970]" colSpan={2}>{TAX_LABEL} ({TAX_PERCENTAGE}%)</td>
+                  <td className="px-5 py-1 text-right tabular-nums">{formatCents(hstCents(order.totalCents))}</td>
+                </tr>
+                <tr>
+                  <td className="px-5 py-2.5 text-right font-semibold text-[#1d2327]" colSpan={2}>Order total (incl. {TAX_LABEL})</td>
+                  <td className="px-5 py-3 text-right font-bold tabular-nums text-[#0f2150]">{formatCents(totalWithTaxCents(order.totalCents))}</td>
                 </tr>
               </tfoot>
             </table>
@@ -76,7 +80,8 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ nu
 
           <p className="text-xs text-[#646970]">
             The order number and date are generated for display. Participant name, organization, email, fee and status
-            are from the source spreadsheet. The fee is shown as listed and is not proof of payment or of tax treatment.
+            are from the source spreadsheet. The fee is shown as listed and is not proof of payment; {TAX_LABEL} ({TAX_PERCENTAGE}%)
+            is calculated treating the listed fee as tax-exclusive (Ontario).
           </p>
         </div>
 

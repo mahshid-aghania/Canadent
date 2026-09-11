@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ShoppingBag, DollarSign, ClipboardList, Eye } from "lucide-react";
+import { ShoppingBag, DollarSign, ClipboardList, Receipt, Eye } from "lucide-react";
 import { formatCents } from "@/lib/accounting/money";
-import { ORDERS, COURSE, COURSE_DATE, DELIVERY, fmtDate, initials } from "./data";
+import {
+  ORDERS, COURSE, COURSE_DATE, DELIVERY, fmtDate, initials,
+  hstCents, totalWithTaxCents, TAX_LABEL, TAX_PERCENTAGE,
+} from "./data";
 
 // Hidden, no-login WooCommerce-style Orders view. Reachable only via its URL and
 // marked noindex — obscurity, not authentication. The secure view is /accountant.
@@ -13,7 +16,8 @@ export const metadata: Metadata = {
 
 export default function OrdersPage() {
   const grossCents = ORDERS.reduce((s, o) => s + o.totalCents, 0);
-  const avgCents = Math.round(grossCents / ORDERS.length);
+  const taxCents = hstCents(grossCents);
+  const grossWithTaxCents = totalWithTaxCents(grossCents);
 
   return (
     <main className="min-h-screen bg-[#f0f0f1] text-[#1d2327]">
@@ -32,9 +36,9 @@ export default function OrdersPage() {
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
         {/* Summary cards */}
         <div className="mb-5 grid gap-4 sm:grid-cols-3">
-          <SummaryCard icon={DollarSign} label="Gross sales" value={formatCents(grossCents)} tint="#065f46" bg="#ecfdf5" />
+          <SummaryCard icon={DollarSign} label="Gross sales (excl. tax)" value={formatCents(grossCents)} tint="#065f46" bg="#ecfdf5" />
           <SummaryCard icon={ClipboardList} label="Orders" value={String(ORDERS.length)} tint="#1e40af" bg="#eff6ff" />
-          <SummaryCard icon={DollarSign} label="Average order" value={formatCents(avgCents)} tint="#92400e" bg="#fef3c7" />
+          <SummaryCard icon={Receipt} label={`Total incl. ${TAX_LABEL} (${TAX_PERCENTAGE}%)`} value={formatCents(grossWithTaxCents)} sub={`${TAX_LABEL} ${formatCents(taxCents)}`} tint="#92400e" bg="#fef3c7" />
         </div>
 
         {/* Status tabs (WooCommerce style) */}
@@ -103,10 +107,20 @@ export default function OrdersPage() {
                   </tr>
                 ))}
               </tbody>
-              <tfoot>
-                <tr className="bg-[#f6f7f7] text-sm font-semibold text-[#1d2327]">
-                  <td className="px-4 py-3" colSpan={6}>Total ({ORDERS.length} orders)</td>
-                  <td className="px-4 py-3 text-right tabular-nums">{formatCents(grossCents)}</td>
+              <tfoot className="bg-[#f6f7f7] text-sm text-[#1d2327]">
+                <tr>
+                  <td className="px-4 pt-3 text-right text-[#646970]" colSpan={6}>Subtotal ({ORDERS.length} orders)</td>
+                  <td className="px-4 pt-3 text-right tabular-nums">{formatCents(grossCents)}</td>
+                  <td />
+                </tr>
+                <tr>
+                  <td className="px-4 py-1 text-right text-[#646970]" colSpan={6}>{TAX_LABEL} ({TAX_PERCENTAGE}%)</td>
+                  <td className="px-4 py-1 text-right tabular-nums">{formatCents(taxCents)}</td>
+                  <td />
+                </tr>
+                <tr className="font-semibold">
+                  <td className="px-4 pb-3 text-right" colSpan={6}>Total incl. {TAX_LABEL}</td>
+                  <td className="px-4 pb-3 text-right tabular-nums text-[#0f2150]">{formatCents(grossWithTaxCents)}</td>
                   <td />
                 </tr>
               </tfoot>
@@ -117,7 +131,8 @@ export default function OrdersPage() {
         <p className="mt-4 text-xs text-[#646970]">
           Order numbers and order dates on this page are generated for display. Participant names, organizations,
           emails, fees and status are taken from the source spreadsheet. Fees are shown as listed and are not proof of
-          payment or of tax treatment. This page is unlisted (noindex) and has no access control — anyone with the link
+          payment; {TAX_LABEL} ({TAX_PERCENTAGE}%) is calculated treating the listed fee as tax-exclusive (Ontario).
+          This page is unlisted (noindex) and has no access control — anyone with the link
           can view it. For access-controlled records, use the CanaDent Accountant Dashboard.
         </p>
       </div>
@@ -125,13 +140,14 @@ export default function OrdersPage() {
   );
 }
 
-function SummaryCard({ icon: Icon, label, value, tint, bg }: { icon: typeof DollarSign; label: string; value: string; tint: string; bg: string }) {
+function SummaryCard({ icon: Icon, label, value, sub, tint, bg }: { icon: typeof DollarSign; label: string; value: string; sub?: string; tint: string; bg: string }) {
   return (
     <div className="rounded-lg border border-[#dcdcde] bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-[11px] font-bold uppercase tracking-wide text-[#646970]">{label}</p>
           <p className="mt-1 font-heading text-2xl font-bold text-[#0f2150]">{value}</p>
+          {sub && <p className="mt-0.5 text-xs text-[#646970]">{sub}</p>}
         </div>
         <span className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: bg, color: tint }}>
           <Icon className="h-4 w-4" aria-hidden="true" />
