@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, User, Mail, Building2, GraduationCap, CalendarClock } from "lucide-react";
+import { ArrowLeft, User, Mail, Users, GraduationCap, CalendarClock, Building2 } from "lucide-react";
 import { formatCents } from "@/lib/accounting/money";
 import {
-  ORDERS, getOrder, fmtDate, initials, hstCents, totalWithTaxCents,
+  ORDERS, getOrder, fmtDate, initials, attendanceLabel, hstCents, totalWithTaxCents,
   COURSE, COURSE_DATE, DELIVERY, INSTRUCTOR, CE_CREDITS, LOCATION, TAX_LABEL, TAX_PERCENTAGE,
 } from "../data";
 
@@ -55,7 +55,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ nu
                   <td className="px-5 py-3">
                     <p className="font-medium text-[#1d2327]">{COURSE}</p>
                     <p className="text-xs text-[#646970]">{COURSE_DATE} · {DELIVERY} · {INSTRUCTOR}</p>
-                    <p className="text-xs text-[#a7aaad]">Attendance: Not specified</p>
+                    <p className="text-xs text-[#a7aaad]">Attendance: {attendanceLabel(order.attendance)}</p>
                   </td>
                   <td className="px-5 py-3 text-center text-[#50575e]">1</td>
                   <td className="px-5 py-3 text-right tabular-nums">{formatCents(order.totalCents)}</td>
@@ -99,8 +99,8 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ nu
             </div>
             <dl className="space-y-2 text-sm text-[#50575e]">
               <Row icon={User} label="Name" value={order.name} />
-              <Row icon={Building2} label="Organization" value={order.organization ?? "—"} />
               <Row icon={Mail} label="Email" value={order.email ?? "No email provided"} danger={!order.email} />
+              <Row icon={Users} label="Attendance" value={attendanceLabel(order.attendance)} />
             </dl>
           </section>
 
