@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ShoppingBag, DollarSign, ClipboardList, Receipt, Eye } from "lucide-react";
 import { formatCents } from "@/lib/accounting/money";
 import {
-  ORDERS, COURSE, COURSE_DATE, DELIVERY, fmtDate, initials,
+  ORDERS, COURSE, COURSE_DATE, DELIVERY, fmtDate, initials, attendanceLabel,
   hstCents, totalWithTaxCents, TAX_LABEL, TAX_PERCENTAGE,
 } from "./data";
 
@@ -59,7 +59,7 @@ export default function OrdersPage() {
                   <th className="px-4 py-3">Date</th>
                   <th className="px-4 py-3">Status</th>
                   <th className="px-4 py-3">Billing</th>
-                  <th className="px-4 py-3">Ship to</th>
+                  <th className="px-4 py-3">Attendance</th>
                   <th className="px-4 py-3 text-right">Total</th>
                   <th className="px-4 py-3 text-right">Actions</th>
                 </tr>
@@ -90,9 +90,12 @@ export default function OrdersPage() {
                     <td className="px-4 py-3 text-[#50575e]">
                       {o.email ?? <span className="text-[#b32d2e]">No email provided</span>}
                     </td>
-                    <td className="px-4 py-3 text-[#50575e]">
-                      {o.organization ?? <span className="text-[#a7aaad]">—</span>}
-                      <span className="block text-xs text-[#a7aaad]">Attendance: Not specified</span>
+                    <td className="px-4 py-3">
+                      <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                        o.attendance === "in_person" ? "bg-[#eff6ff] text-[#1e40af]" : "bg-[#f3e8ff] text-[#6b21a8]"
+                      }`}>
+                        {attendanceLabel(o.attendance)}
+                      </span>
                     </td>
                     <td className="px-4 py-3 text-right font-semibold tabular-nums text-[#1d2327]">{formatCents(o.totalCents)}</td>
                     <td className="px-4 py-3 text-right">
