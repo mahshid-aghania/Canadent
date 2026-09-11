@@ -1,62 +1,23 @@
 import type { Metadata } from "next";
-import { ShoppingBag, DollarSign, ClipboardList, Eye } from "lucide-react";
+import Link from "next/link";
+import { ShoppingBag, DollarSign, ClipboardList, Receipt, Eye } from "lucide-react";
 import { formatCents } from "@/lib/accounting/money";
+import {
+  ORDERS, COURSE, COURSE_DATE, DELIVERY, fmtDate, initials,
+  hstCents, totalWithTaxCents, TAX_LABEL, TAX_PERCENTAGE,
+} from "./data";
 
-// ── Hidden, no-login WooCommerce-style Orders view ───────────────────────────
-// Seeded from CanaDent_Advanced_Adhesive_Dentistry_Registrants (1) (1).xlsx
-// (worksheet "Registrants"). Order numbers and order dates are GENERATED for
-// this display; names, organizations, emails, fees and status are taken from
-// the spreadsheet verbatim. Reachable only via its unguessable URL and marked
-// noindex — obscurity, not authentication. The secure view is /accountant.
+// Hidden, no-login WooCommerce-style Orders view. Reachable only via its URL and
+// marked noindex — obscurity, not authentication. The secure view is /accountant.
 export const metadata: Metadata = {
   title: "Orders",
   robots: { index: false, follow: false, nocache: true },
 };
 
-const COURSE = "Advanced Adhesive Dentistry: The Master Blueprint";
-const COURSE_DATE = "September 6, 2026";
-const DELIVERY = "Hybrid";
-
-type Order = {
-  number: number;
-  date: string; // generated order date (ISO)
-  name: string;
-  organization: string | null;
-  email: string | null;
-  totalCents: number;
-  status: "Confirmed";
-};
-
-// Sequential order numbers (#1001+) and generated placement dates, WooCommerce-
-// style. Fees/emails/orgs are exactly as imported.
-const ORDERS: Order[] = [
-  { number: 1001, date: "2026-07-02", name: "Neda Khebreh", organization: null, email: "neda_khebreh@yahoo.com", totalCents: 69900, status: "Confirmed" },
-  { number: 1002, date: "2026-07-06", name: "Bita Bondari", organization: null, email: "bitabondari@yahoo.com", totalCents: 69900, status: "Confirmed" },
-  { number: 1003, date: "2026-07-10", name: "Elaheh (Eli) Hashemi", organization: null, email: "elihashemi2@yahoo.com", totalCents: 69900, status: "Confirmed" },
-  { number: 1004, date: "2026-07-14", name: "Parastoo Afghari", organization: null, email: "parastoo.afghari@gmail.com", totalCents: 69900, status: "Confirmed" },
-  { number: 1005, date: "2026-07-18", name: "Leila Hosseini", organization: null, email: "leila.hsn@outlook.com", totalCents: 69900, status: "Confirmed" },
-  { number: 1006, date: "2026-07-22", name: "Niousha Zerafatjou", organization: null, email: "ddszerafatjou.niousha@gmail.com", totalCents: 59900, status: "Confirmed" },
-  { number: 1007, date: "2026-07-26", name: "Sahar Ghareghashi", organization: null, email: "sahar.ghareghashi@gmail.com", totalCents: 49900, status: "Confirmed" },
-  { number: 1008, date: "2026-07-30", name: "Katayoon Shojaei", organization: null, email: "katayoon.shojaei@gmail.com", totalCents: 69900, status: "Confirmed" },
-  { number: 1009, date: "2026-08-03", name: "Roula Skaff", organization: null, email: "roula_skaf@hotmail.com", totalCents: 49900, status: "Confirmed" },
-  { number: 1010, date: "2026-08-07", name: "Maria Eva Sayas", organization: null, email: "dentev_a@hotmail.com", totalCents: 49900, status: "Confirmed" },
-  { number: 1011, date: "2026-08-11", name: "Najmeh Showraki", organization: null, email: "nshowraki@gmail.com", totalCents: 24950, status: "Confirmed" },
-  { number: 1012, date: "2026-08-15", name: "Dr. Neda Kadivar", organization: "DPC", email: null, totalCents: 69900, status: "Confirmed" },
-];
-
-function fmtDate(iso: string): string {
-  return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-CA", {
-    year: "numeric", month: "short", day: "numeric",
-  });
-}
-
-function initials(name: string): string {
-  return name.replace(/\(.*?\)/g, "").trim().split(/\s+/).slice(0, 2).map((w) => w[0]?.toUpperCase() ?? "").join("");
-}
-
 export default function OrdersPage() {
   const grossCents = ORDERS.reduce((s, o) => s + o.totalCents, 0);
-  const avgCents = Math.round(grossCents / ORDERS.length);
+  const taxCents = hstCents(grossCents);
+  const grossWithTaxCents = totalWithTaxCents(grossCents);
 
   return (
     <main className="min-h-screen bg-[#f0f0f1] text-[#1d2327]">
@@ -75,9 +36,9 @@ export default function OrdersPage() {
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
         {/* Summary cards */}
         <div className="mb-5 grid gap-4 sm:grid-cols-3">
-          <SummaryCard icon={DollarSign} label="Gross sales" value={formatCents(grossCents)} tint="#065f46" bg="#ecfdf5" />
+          <SummaryCard icon={DollarSign} label="Gross sales (excl. tax)" value={formatCents(grossCents)} tint="#065f46" bg="#ecfdf5" />
           <SummaryCard icon={ClipboardList} label="Orders" value={String(ORDERS.length)} tint="#1e40af" bg="#eff6ff" />
-          <SummaryCard icon={DollarSign} label="Average order" value={formatCents(avgCents)} tint="#92400e" bg="#fef3c7" />
+          <SummaryCard icon={Receipt} label={`Total incl. ${TAX_LABEL} (${TAX_PERCENTAGE}%)`} value={formatCents(grossWithTaxCents)} sub={`${TAX_LABEL} ${formatCents(taxCents)}`} tint="#92400e" bg="#fef3c7" />
         </div>
 
         {/* Status tabs (WooCommerce style) */}
@@ -113,7 +74,9 @@ export default function OrdersPage() {
                           {initials(o.name)}
                         </span>
                         <div className="min-w-0">
-                          <p className="font-semibold text-[#2271b1]">#{o.number} {o.name}</p>
+                          <Link href={`/accountant-dashboard/${o.number}`} className="font-semibold text-[#2271b1] hover:underline">
+                            #{o.number} {o.name}
+                          </Link>
                           <p className="truncate text-xs text-[#646970]">{COURSE} × 1</p>
                         </div>
                       </div>
@@ -133,17 +96,31 @@ export default function OrdersPage() {
                     </td>
                     <td className="px-4 py-3 text-right font-semibold tabular-nums text-[#1d2327]">{formatCents(o.totalCents)}</td>
                     <td className="px-4 py-3 text-right">
-                      <span className="inline-flex items-center gap-1 rounded-md border border-[#dcdcde] px-2 py-1 text-xs text-[#2271b1]">
+                      <Link
+                        href={`/accountant-dashboard/${o.number}`}
+                        className="inline-flex items-center gap-1 rounded-md border border-[#dcdcde] px-2 py-1 text-xs text-[#2271b1] hover:bg-[#f6f7f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2271b1]"
+                        aria-label={`View order #${o.number}`}
+                      >
                         <Eye className="h-3.5 w-3.5" aria-hidden="true" /> View
-                      </span>
+                      </Link>
                     </td>
                   </tr>
                 ))}
               </tbody>
-              <tfoot>
-                <tr className="bg-[#f6f7f7] text-sm font-semibold text-[#1d2327]">
-                  <td className="px-4 py-3" colSpan={6}>Total ({ORDERS.length} orders)</td>
-                  <td className="px-4 py-3 text-right tabular-nums">{formatCents(grossCents)}</td>
+              <tfoot className="bg-[#f6f7f7] text-sm text-[#1d2327]">
+                <tr>
+                  <td className="px-4 pt-3 text-right text-[#646970]" colSpan={6}>Subtotal ({ORDERS.length} orders)</td>
+                  <td className="px-4 pt-3 text-right tabular-nums">{formatCents(grossCents)}</td>
+                  <td />
+                </tr>
+                <tr>
+                  <td className="px-4 py-1 text-right text-[#646970]" colSpan={6}>{TAX_LABEL} ({TAX_PERCENTAGE}%)</td>
+                  <td className="px-4 py-1 text-right tabular-nums">{formatCents(taxCents)}</td>
+                  <td />
+                </tr>
+                <tr className="font-semibold">
+                  <td className="px-4 pb-3 text-right" colSpan={6}>Total incl. {TAX_LABEL}</td>
+                  <td className="px-4 pb-3 text-right tabular-nums text-[#0f2150]">{formatCents(grossWithTaxCents)}</td>
                   <td />
                 </tr>
               </tfoot>
@@ -154,7 +131,8 @@ export default function OrdersPage() {
         <p className="mt-4 text-xs text-[#646970]">
           Order numbers and order dates on this page are generated for display. Participant names, organizations,
           emails, fees and status are taken from the source spreadsheet. Fees are shown as listed and are not proof of
-          payment or of tax treatment. This page is unlisted (noindex) and has no access control — anyone with the link
+          payment; {TAX_LABEL} ({TAX_PERCENTAGE}%) is calculated treating the listed fee as tax-exclusive (Ontario).
+          This page is unlisted (noindex) and has no access control — anyone with the link
           can view it. For access-controlled records, use the CanaDent Accountant Dashboard.
         </p>
       </div>
@@ -162,13 +140,14 @@ export default function OrdersPage() {
   );
 }
 
-function SummaryCard({ icon: Icon, label, value, tint, bg }: { icon: typeof DollarSign; label: string; value: string; tint: string; bg: string }) {
+function SummaryCard({ icon: Icon, label, value, sub, tint, bg }: { icon: typeof DollarSign; label: string; value: string; sub?: string; tint: string; bg: string }) {
   return (
     <div className="rounded-lg border border-[#dcdcde] bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-[11px] font-bold uppercase tracking-wide text-[#646970]">{label}</p>
           <p className="mt-1 font-heading text-2xl font-bold text-[#0f2150]">{value}</p>
+          {sub && <p className="mt-0.5 text-xs text-[#646970]">{sub}</p>}
         </div>
         <span className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ background: bg, color: tint }}>
           <Icon className="h-4 w-4" aria-hidden="true" />
