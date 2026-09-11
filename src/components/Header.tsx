@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, Phone, ShoppingCart, User } from "lucide-react";
+import { AccountantNavLink } from "@/components/AccountantNavLink";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -92,6 +93,7 @@ export default function Header() {
 
           {/* Icons */}
           <div className="flex items-center gap-3">
+            <AccountantNavLink variant="icon" />
             <Link
               href="/my-account"
               className="hidden lg:flex text-white/70 hover:text-white transition-colors"
@@ -137,6 +139,7 @@ export default function Header() {
                 </Link>
               );
             })}
+            <AccountantNavLink variant="menu" />
           </div>
         )}
       </div>
