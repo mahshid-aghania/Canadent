@@ -55,12 +55,24 @@ export default function ArticlesPage() {
               {articles.map((article) => (
                 <article key={article.slug} className="card overflow-hidden flex flex-col group">
                   <Link href={`/articles/${article.slug}`} className="block relative w-full aspect-[16/9] overflow-hidden bg-[#f0ece2]">
+                    {article.heroFit === "contain" && (
+                      <Image
+                        src={article.heroImage}
+                        alt=""
+                        aria-hidden
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover scale-110 blur-xl opacity-70"
+                      />
+                    )}
                     <Image
                       src={article.heroImage}
                       alt={article.heroImageAlt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className={`transition-transform duration-500 group-hover:scale-105 ${
+                        article.heroFit === "contain" ? "object-contain" : "object-cover"
+                      }`}
                     />
                   </Link>
 

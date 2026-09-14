@@ -10,6 +10,12 @@ export type Article = {
   category: string;
   heroImage: string;
   heroImageAlt: string;
+  /**
+   * How the hero image fills its frame. Defaults to "cover" (landscape images).
+   * Use "contain" for portrait / poster-style images so they are shown in full
+   * without being cropped; a blurred copy fills the surrounding frame.
+   */
+  heroFit?: "cover" | "contain";
   bodyHtml: string;
 };
 
@@ -37,6 +43,7 @@ export const articles: Article[] = [
     heroImage: "/article-improve-google-reviews-hero.png",
     heroImageAlt:
       "How Dental Practices Can Improve Their Google Reviews",
+    heroFit: "contain",
     bodyHtml: `
 <h2>Introduction</h2>
 <p>Google reviews have become an important part of how people choose their dentist. Before booking an appointment, potential patients often look at the dentist's Google profile to see what previous patients think about the practice. A large number of positive and recent reviews can make a dental practice appear trustworthy and professional. For this reason, dental practices should have a clear strategy for encouraging patients to leave honest feedback. Improving Google reviews is not simply about asking for five-star ratings; it is about identifying satisfied patients, making the review process simple, and involving the entire dental team.</p>
@@ -77,6 +84,7 @@ export const articles: Article[] = [
     heroImage: "/article-attract-more-patients-hero.png",
     heroImageAlt:
       "How Dental Practices Can Attract More Patients",
+    heroFit: "contain",
     bodyHtml: `
 <h2>Introduction</h2>
 <p>Attracting new patients is an important part of growing a dental practice. Providing good dental care is essential, but it is not always enough to bring new people into the office. Patients also consider how they are treated, how easy it is to contact the practice, and whether they feel comfortable and respected. Dental clinics can use different strategies to attract new patients, including building relationships in the community, improving communication, using marketing, and creating a positive patient experience. By combining these strategies, a dental practice can build trust and develop long-term relationships with its patients.</p>
@@ -121,6 +129,7 @@ export const articles: Article[] = [
     heroImage: "/article-plan-successful-practice-hero.png",
     heroImageAlt:
       "How to Plan a Successful Dental Practice",
+    heroFit: "contain",
     bodyHtml: `
 <h2>Introduction</h2>
 <p>Starting a dental practice is a major decision that requires careful planning. Being a skilled dentist is important, but running a successful practice also requires knowledge of the market, finances, location, equipment, staff, and patient needs. Before opening an office, dentists should understand the community they want to serve and create a clear plan for how the practice will operate. Good preparation can reduce financial risks and help the practice grow over time.</p>
