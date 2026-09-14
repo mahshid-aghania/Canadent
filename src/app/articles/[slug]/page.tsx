@@ -130,14 +130,28 @@ export default async function ArticleDetailPage({ params }: Props) {
       </div>
 
       {/* ── Hero image ── */}
-      <div className="w-full relative" style={{ height: "clamp(260px, 45vw, 560px)" }}>
+      <div
+        className="w-full relative overflow-hidden"
+        style={{ height: "clamp(260px, 45vw, 560px)", background: "#0f2150" }}
+      >
+        {article.heroFit === "contain" && (
+          <Image
+            src={article.heroImage}
+            alt=""
+            aria-hidden
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover scale-110 blur-2xl opacity-60"
+          />
+        )}
         <Image
           src={article.heroImage}
           alt={article.heroImageAlt}
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className={article.heroFit === "contain" ? "object-contain" : "object-cover"}
         />
         <div
           className="absolute inset-0"
