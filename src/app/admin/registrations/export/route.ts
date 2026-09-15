@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { isAdminAuthed } from "@/lib/admin-auth";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
+import { applyRegistrationFilters, parseRegistrationFilters } from "@/lib/registrations";
 
 export const dynamic = "force-dynamic";
 
@@ -32,7 +33,7 @@ function csvCell(value: unknown): string {
   return /[",\n]/.test(safe) ? `"${safe.replace(/"/g, '""')}"` : safe;
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   if (!(await isAdminAuthed())) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
@@ -42,9 +43,14 @@ export async function GET() {
     return new NextResponse("Datastore not provisioned", { status: 503 });
   }
 
-  const { data, error } = await supabase
-    .from("registrations")
-    .select("*")
+  const filters = parseRegistrationFilters(
+    Object.fromEntries(new URL(request.url).searchParams)
+  );
+
+  const { data, error } = await applyRegistrationFilters(
+    supabase.from("registrations").select("*"),
+    filters
+  )
     .order("created_at", { ascending: false })
     .limit(5000);
 

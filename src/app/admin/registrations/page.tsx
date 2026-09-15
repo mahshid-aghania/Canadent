@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
-import { Lock, Download, LogOut, Users, AlertCircle, Inbox } from "lucide-react";
+import { Lock, Download, LogOut, Users, AlertCircle, Inbox, Filter, X } from "lucide-react";
 import { isAdminAuthed, adminTokenConfigured } from "@/lib/admin-auth";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
+import { courses } from "@/lib/courses";
+import {
+  applyRegistrationFilters,
+  filtersToQuery,
+  hasActiveFilters,
+  parseRegistrationFilters,
+} from "@/lib/registrations";
 import { AdminLoginForm } from "../AdminLoginForm";
 import { logout } from "../actions";
 
@@ -47,7 +54,11 @@ function Shell({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default async function AdminRegistrationsPage() {
+type Props = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function AdminRegistrationsPage({ searchParams }: Props) {
   // ── Gate 1: no token configured → area is closed ──
   if (!adminTokenConfigured()) {
     return (
@@ -97,22 +108,67 @@ export default async function AdminRegistrationsPage() {
     );
   }
 
-  const { data, error } = await supabase
-    .from("registrations")
-    .select("id, created_at, course_title, attendance, student_name, student_email, student_phone, amount_total_cents, currency, stripe_payment_intent, utm")
+  const filters = parseRegistrationFilters(await searchParams);
+
+  const { data, error } = await applyRegistrationFilters(
+    supabase
+      .from("registrations")
+      .select("id, created_at, course_slug, course_title, attendance, student_name, student_email, student_phone, amount_total_cents, currency, stripe_payment_intent, utm"),
+    filters
+  )
     .order("created_at", { ascending: false })
     .limit(500);
 
   const rows = (data ?? []) as Registration[];
+  const filtered = hasActiveFilters(filters);
+
+  // Courses that actually have registrations aren't known without a second
+  // query, so offer the full catalogue as filter options (value = slug).
+  const courseOptions = courses.map((c) => ({ slug: c.slug, title: c.title }));
 
   return (
     <Shell>
+      {/* Filters */}
+      <form method="get" className="card p-4 mb-5">
+        <div className="flex flex-wrap items-end gap-3">
+          <div className="flex-1 min-w-[200px]">
+            <label htmlFor="f-course" className="block text-xs font-semibold text-[#0f2150] mb-1.5">Course</label>
+            <select id="f-course" name="course" defaultValue={filters.course ?? ""} className="w-full rounded-lg border border-[#e2e8f0] px-3 py-2.5 text-sm bg-white focus:border-[#1b3a8a] focus:outline-none focus:ring-2 focus:ring-[#1b3a8a]/20">
+              <option value="">All courses</option>
+              {courseOptions.map((c) => (
+                <option key={c.slug} value={c.slug}>{c.title}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="f-from" className="block text-xs font-semibold text-[#0f2150] mb-1.5">From</label>
+            <input id="f-from" name="from" type="date" defaultValue={filters.from ?? ""} className="rounded-lg border border-[#e2e8f0] px-3 py-2.5 text-sm focus:border-[#1b3a8a] focus:outline-none focus:ring-2 focus:ring-[#1b3a8a]/20" />
+          </div>
+          <div>
+            <label htmlFor="f-to" className="block text-xs font-semibold text-[#0f2150] mb-1.5">To</label>
+            <input id="f-to" name="to" type="date" defaultValue={filters.to ?? ""} className="rounded-lg border border-[#e2e8f0] px-3 py-2.5 text-sm focus:border-[#1b3a8a] focus:outline-none focus:ring-2 focus:ring-[#1b3a8a]/20" />
+          </div>
+          <button type="submit" className="btn-primary text-sm" style={{ padding: "0.6rem 1.2rem" }}>
+            <Filter className="h-4 w-4" />
+            Apply
+          </button>
+          {filtered && (
+            <a href="/admin/registrations" className="inline-flex items-center gap-1.5 text-sm text-[#1a1a2e]/55 hover:text-[#0f2150] transition-colors py-2.5">
+              <X className="h-4 w-4" />
+              Clear
+            </a>
+          )}
+        </div>
+      </form>
+
       <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
         <p className="text-sm text-[#1a1a2e]/60">
-          {rows.length} registration{rows.length === 1 ? "" : "s"}{rows.length === 500 ? " (showing latest 500)" : ""}
+          {rows.length} registration{rows.length === 1 ? "" : "s"}
+          {rows.length === 500 ? " (showing latest 500)" : ""}
+          {filtered ? " matching filters" : ""}
         </p>
         <div className="flex items-center gap-3">
-          <a href="/admin/registrations/export" className="btn-secondary text-sm" style={{ padding: "0.5rem 1rem" }}>
+          <a href={`/admin/registrations/export${filtersToQuery(filters)}`} className="btn-secondary text-sm" style={{ padding: "0.5rem 1rem" }}>
             <Download className="h-4 w-4" />
             Export CSV
           </a>
@@ -132,7 +188,9 @@ export default async function AdminRegistrationsPage() {
       ) : rows.length === 0 ? (
         <div className="card p-10 text-center">
           <Inbox className="h-8 w-8 mx-auto mb-3" style={{ color: "#94a3b8" }} />
-          <p className="text-sm text-[#1a1a2e]/55">No registrations yet. New paid registrations will appear here.</p>
+          <p className="text-sm text-[#1a1a2e]/55">
+            {filtered ? "No registrations match these filters." : "No registrations yet. New paid registrations will appear here."}
+          </p>
         </div>
       ) : (
         <div className="card overflow-x-auto">
