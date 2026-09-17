@@ -11,7 +11,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/courses", label: "Courses" },
   { href: "/articles", label: "Articles" },
-  { href: "/sponsorship", label: "Sponsorship" },
   { href: "/my-account", label: "My Account" },
   { href: "/enrolment-agreement", label: "Enrolment Agreement" },
   { href: "/cart", label: "Cart" },
