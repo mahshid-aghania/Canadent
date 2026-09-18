@@ -61,7 +61,7 @@ export const courses: Course[] = [
     duration: "6 hours",
     location: "Hybrid — Online + In-Person (265 Rimrock Rd, North York, ON)",
     ceCredits: "6 CE Credits",
-    status: "sold-out",
+    status: "available",
     category: "Restorative Dentistry",
     format: "Hybrid (In-Person / Online)",
     image: "/course-adhesive-dentistry-poster.jpeg",
