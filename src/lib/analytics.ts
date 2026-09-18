@@ -10,6 +10,7 @@ export type FunnelEvent =
   | "attendance_selected"
   | "registration_started"
   | "checkout_started"
+  | "coupon_applied"
   | "payment_completed"
   // ── "Request This Course Again" demand funnel ──
   | "request_card_viewed"
@@ -27,6 +28,8 @@ type FunnelPayload = {
   count?: number;
   /** Where the event originated, e.g. "courses" | "home" | "course-detail". */
   surface?: string;
+  /** Normalised coupon code applied at checkout, e.g. "SAVE50". Never PII. */
+  code?: string;
 };
 
 // Keys that must never appear in an analytics payload.

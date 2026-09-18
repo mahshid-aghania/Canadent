@@ -4,6 +4,50 @@ import { redirect } from "next/navigation";
 import { getCourse } from "@/lib/courses";
 import { getHstTaxRateId } from "@/lib/stripe-tax";
 import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
+import { applyCoupon, type CouponResult } from "@/lib/coupons";
+
+/** Recompute the tax-exclusive fee for a course + optional attendance option. */
+function resolveCoursePrice(
+  slug: string,
+  optionLabel?: string | null
+):
+  | { ok: true; price: number; title: string }
+  | { ok: false; error: string } {
+  const course = getCourse(slug);
+  if (!course) return { ok: false, error: "This course could not be found." };
+
+  let price: number | null | undefined;
+  if (course.priceOptions) {
+    const option = optionLabel
+      ? course.priceOptions.find((o) => o.label === optionLabel)
+      : undefined;
+    if (!option) {
+      return { ok: false, error: "Please choose how you would like to attend." };
+    }
+    price = option.price;
+  } else {
+    price = course.price;
+  }
+
+  if (!price || price <= 0) {
+    return { ok: false, error: "This course is not available for online payment." };
+  }
+  return { ok: true, price, title: course.title };
+}
+
+/**
+ * Validate a coupon for the live order summary without starting a payment.
+ * Codes live server-side (see lib/coupons.ts) so they never reach the browser.
+ */
+export async function previewCoupon(
+  code: string,
+  slug: string,
+  optionLabel?: string | null
+): Promise<CouponResult> {
+  const resolved = resolveCoursePrice(slug, optionLabel);
+  if (!resolved.ok) return { ok: false, error: resolved.error };
+  return applyCoupon(code, resolved.price, slug);
+}
 
 // Constructed lazily: instantiating at module scope crashes the entire server
 // action on import when STRIPE_SECRET_KEY is absent, which surfaces as an
@@ -19,29 +63,25 @@ export async function createCheckoutSession(
   title: string,
   priceCAD: number,
   optionLabel?: string | null,
-  utm?: Record<string, string>
+  utm?: Record<string, string>,
+  couponCode?: string | null
 ): Promise<{ error: string } | never> {
   // Never trust the client-supplied amount — always recompute from course data.
-  const course = getCourse(slug);
-  if (!course) {
-    return { error: "This course could not be found." };
-  }
+  const resolved = resolveCoursePrice(slug, optionLabel);
+  if (!resolved.ok) return { error: resolved.error };
 
-  let resolvedPrice: number | null | undefined;
-  if (course.priceOptions) {
-    const option = optionLabel
-      ? course.priceOptions.find((o) => o.label === optionLabel)
-      : undefined;
-    if (!option) {
-      return { error: "Please choose how you would like to attend." };
-    }
-    resolvedPrice = option.price;
-  } else {
-    resolvedPrice = course.price;
-  }
+  let resolvedPrice = resolved.price;
+  const course = { title: resolved.title };
 
-  if (!resolvedPrice || resolvedPrice <= 0) {
-    return { error: "This course is not available for online payment." };
+  // Apply an in-app coupon (if any) to the tax-exclusive fee before Stripe, so
+  // HST is charged on the discounted amount. Re-validated here server-side —
+  // the client preview is never trusted.
+  let appliedCoupon: Extract<CouponResult, { ok: true }> | null = null;
+  if (couponCode && couponCode.trim()) {
+    const result = applyCoupon(couponCode, resolvedPrice, slug);
+    if (!result.ok) return { error: result.error };
+    resolvedPrice = result.finalPrice;
+    appliedCoupon = result;
   }
 
   const stripe = getStripe();
@@ -84,16 +124,21 @@ export async function createCheckoutSession(
             currency: "cad",
             product_data: {
               name: optionLabel ? `${course.title} — ${optionLabel}` : course.title,
-              description: `CanaDent Education Center — Continuing Education Course (plus ${TAX_PERCENTAGE}% ${TAX_LABEL})`,
+              description: appliedCoupon
+                ? `CanaDent Education Center — Continuing Education Course · ${appliedCoupon.label} (code ${appliedCoupon.code}) applied (plus ${TAX_PERCENTAGE}% ${TAX_LABEL})`
+                : `CanaDent Education Center — Continuing Education Course (plus ${TAX_PERCENTAGE}% ${TAX_LABEL})`,
             },
-            unit_amount: resolvedPrice * 100,
+            // resolvedPrice is already the discounted, tax-exclusive fee.
+            unit_amount: Math.round(resolvedPrice * 100),
           },
           quantity: 1,
           tax_rates: [taxRateId],
         },
       ],
       mode: "payment",
-      allow_promotion_codes: true,
+      // In-app coupons discount the price directly, so disable Stripe's promo
+      // box when one is applied to prevent a second, stacked discount.
+      allow_promotion_codes: !appliedCoupon,
       billing_address_collection: "auto",
       // Collect a mobile number for essential course communication. Stripe's
       // hosted field handles country code, formatting, keypad, validation, and
@@ -104,6 +149,13 @@ export async function createCheckoutSession(
         slug,
         title: course.title,
         ...(optionLabel ? { attendance: optionLabel } : {}),
+        ...(appliedCoupon
+          ? {
+              coupon_code: appliedCoupon.code,
+              coupon_label: appliedCoupon.label,
+              coupon_discount_cad: appliedCoupon.discountAmount.toFixed(2),
+            }
+          : {}),
         ...utmMetadata,
       },
       // {CHECKOUT_SESSION_ID} is substituted by Stripe on redirect so the
