@@ -158,7 +158,7 @@ export const courses: Course[] = [
     price: 399,
     priceOptions: [
       { label: "Online Attendance", price: 399, originalPrice: 450 },
-      { label: "In-Person Attendance", price: 799, originalPrice: 999 },
+      { label: "In-Person Attendance", price: 599, originalPrice: 999 },
     ],
     date: "Sunday, September 27, 2026",
     time: "9:00 AM – 4:00 PM",
@@ -166,7 +166,6 @@ export const courses: Course[] = [
     location: "Hybrid — Online + In-Person (265 Rimrock Rd, North York, ON)",
     ceCredits: "6 CE Credits (PACE Approved)",
     status: "available",
-    earlyBirdDeadline: "September 17, 2026",
     category: "Orthodontics",
     format: "Hybrid (In-Person / Online)",
     image: "/course-orthodontic-prosthodontics-poster.jpeg",

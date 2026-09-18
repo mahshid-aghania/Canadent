@@ -28,7 +28,7 @@ export function AnnouncementBar() {
           Orthodontic Techniques — Sept 27
         </Link>
         <span className="opacity-60 mx-1 text-[#0f2150] font-normal hidden sm:inline">
-          (Early Bird until Sep 10)
+          (Revised fee: from $399)
         </span>
       </p>
       <button
