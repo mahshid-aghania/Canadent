@@ -2,7 +2,10 @@
 import { useEffect, useRef, useState, useTransition } from "react";
 import { createPortal } from "react-dom";
 import { AlertCircle, Check, MapPin, Video, GraduationCap } from "lucide-react";
-import { createCheckoutSession } from "@/app/actions/checkout";
+import { createCheckoutSession, previewCoupon } from "@/app/actions/checkout";
+// Type-only import — erased at build time, so the coupon codes in lib/coupons
+// are never bundled into the client.
+import type { CouponResult } from "@/lib/coupons";
 import { track } from "@/lib/analytics";
 import { TAX_NOTE, TAX_PERCENTAGE, TAX_SUFFIX, totalWithTax } from "@/lib/tax";
 
@@ -48,6 +51,12 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null); // never pre-select
+  const [couponInput, setCouponInput] = useState("");
+  const [couponApplied, setCouponApplied] = useState<
+    Extract<CouponResult, { ok: true }> | null
+  >(null);
+  const [couponError, setCouponError] = useState<string | null>(null);
+  const [couponPending, startCouponTransition] = useTransition();
   const [mounted, setMounted] = useState(false);
   const [panelInView, setPanelInView] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -82,12 +91,47 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
   const selectedOption = options?.find((o) => o.label === selected) ?? null;
   const selectedMode = modes?.find((m) => m.label === selected) ?? null;
   const activePrice = options ? (selectedOption?.price ?? null) : price;
+  // The fee actually charged: discounted when a coupon is applied.
+  const effectivePrice = couponApplied ? couponApplied.finalPrice : activePrice;
   const canRegister = options ? selected !== null : true;
-  const total = activePrice != null ? totalWithTax(activePrice) : null;
+  const total = effectivePrice != null ? totalWithTax(effectivePrice) : null;
+
+  // A coupon is validated against a specific fee, so drop it if the attendance
+  // option (and therefore the price) changes — the visitor can re-apply.
+  function clearCoupon() {
+    setCouponApplied(null);
+    setCouponError(null);
+    setCouponInput("");
+  }
+
+  function applyCouponCode() {
+    if (options && !selected) {
+      setCouponError("Please choose an attendance option first.");
+      return;
+    }
+    const code = couponInput.trim();
+    if (!code) {
+      setCouponError("Please enter a discount code.");
+      return;
+    }
+    setCouponError(null);
+    startCouponTransition(async () => {
+      const result = await previewCoupon(code, slug, selected);
+      if (result.ok) {
+        setCouponApplied(result);
+        setCouponError(null);
+        track("coupon_applied", { slug, code: result.code });
+      } else {
+        setCouponApplied(null);
+        setCouponError(result.error);
+      }
+    });
+  }
 
   function selectOption(opt: PriceOption) {
     setSelected(opt.label);
     setError(null);
+    if (couponApplied) clearCoupon();
     const kind = modes?.find((m) => m.label === opt.label)?.kind;
     track("attendance_selected", { slug, attendance: kind, price: opt.price });
   }
@@ -114,7 +158,8 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
         title,
         activePrice,
         selected,
-        readUtm()
+        readUtm(),
+        couponApplied?.code ?? null
       );
       if (result && "error" in result) setError(result.error);
     });
@@ -231,10 +276,16 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
               <span className="text-[#1a1a2e]/60">Course fee</span>
               <span className="font-semibold text-[#0f2150]">${money(activePrice)} CAD</span>
             </div>
+            {couponApplied && (
+              <div className="flex items-center justify-between" style={{ color: "#16a34a" }}>
+                <span>Discount ({couponApplied.code})</span>
+                <span className="font-semibold">−${money(couponApplied.discountAmount)} CAD</span>
+              </div>
+            )}
             <div className="flex items-center justify-between">
               <span className="text-[#1a1a2e]/60">{TAX_PERCENTAGE}% HST (at checkout)</span>
               <span className="text-[#1a1a2e]/70">
-                ${money(totalWithTax(activePrice) - activePrice)} CAD
+                ${money(total! - effectivePrice!)} CAD
               </span>
             </div>
             <div className="flex items-center justify-between pt-1.5 border-t border-[#e2e8f0] font-bold text-base">
@@ -244,6 +295,72 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
           </div>
         )}
       </div>
+
+      {activePrice != null && (
+        <div className="mb-4">
+          {couponApplied ? (
+            <div
+              className="flex items-center justify-between rounded-lg px-3 py-2 text-sm"
+              style={{ background: "#ecfdf5", border: "1px solid #a7f3d0" }}
+            >
+              <span className="flex items-center gap-1.5 font-medium" style={{ color: "#15803d" }}>
+                <Check className="h-4 w-4" strokeWidth={3} aria-hidden="true" />
+                {couponApplied.label} applied ({couponApplied.code})
+              </span>
+              <button
+                type="button"
+                onClick={clearCoupon}
+                className="text-xs font-semibold underline"
+                style={{ color: "#15803d" }}
+              >
+                Remove
+              </button>
+            </div>
+          ) : (
+            <div>
+              <label htmlFor="coupon" className="block text-xs font-medium text-[#1a1a2e]/60 mb-1.5">
+                Have a discount code?
+              </label>
+              <div className="flex gap-2">
+                <input
+                  id="coupon"
+                  type="text"
+                  value={couponInput}
+                  onChange={(e) => {
+                    setCouponInput(e.target.value);
+                    if (couponError) setCouponError(null);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      applyCouponCode();
+                    }
+                  }}
+                  placeholder="Enter code"
+                  autoComplete="off"
+                  autoCapitalize="characters"
+                  spellCheck={false}
+                  className="flex-1 min-w-0 rounded-lg border border-[#e2e8f0] px-3 py-2 text-sm uppercase tracking-wide focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/50"
+                />
+                <button
+                  type="button"
+                  onClick={applyCouponCode}
+                  disabled={couponPending || !couponInput.trim()}
+                  className="shrink-0 rounded-lg px-4 py-2 text-sm font-semibold text-[#0f2150] border border-[#c9a84c] disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ background: "#faf5e6" }}
+                >
+                  {couponPending ? "Checking…" : "Apply"}
+                </button>
+              </div>
+              {couponError && (
+                <p className="mt-1.5 text-xs" style={{ color: "#b91c1c" }} role="alert">
+                  {couponError}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       <button
         onClick={register}
