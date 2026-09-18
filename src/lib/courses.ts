@@ -51,9 +51,9 @@ export const courses: Course[] = [
     subtitle:
       "How to obtain a comprehensive understanding of predictable, minimally invasive, and long-lasting restorative workflows with zero post-operative sensitivity.",
     instructor: "Dr. Amin Asadollahi",
-    price: 499,
+    price: 600,
     priceOptions: [
-      { label: "Online Attendance", price: 499 },
+      { label: "Online Attendance", price: 600 },
       { label: "In-Person Attendance", price: 799 },
     ],
     date: "Sunday, September 6, 2026",
