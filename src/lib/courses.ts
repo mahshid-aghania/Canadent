@@ -46,6 +46,86 @@ export type Course = {
 
 export const courses: Course[] = [
   {
+    slug: "things-i-wish-someone-had-told-me-series-01",
+    title: "Things I Wish Someone Had Told Me – Series 01",
+    subtitle: "A New Dentist's Guide to the Real World",
+    instructor: "Dr. Fatemeh Hosseinkhani",
+    price: 50,
+    date: "Friday, October 23, 2026",
+    time: "2:00 PM – 5:00 PM",
+    duration: "3 hours",
+    location: "265 Rimrock Road, North York, ON",
+    ceCredits: "2 CE Credits",
+    status: "available",
+    category: "Practice Management",
+    format: "In-Person",
+    image: "/course-things-i-wish.jpeg",
+    description:
+      "Starting a dental career in Canada involves much more than clinical knowledge. New dentists must learn how dental offices operate, how associates are compensated, how to communicate with patients and team members, and how to manage the professional and financial responsibilities that come with practice.\n\nDesigned for newly licensed dentists and internationally trained dentists entering Canadian practice, this practical course provides an overview of the real-world situations dentists commonly encounter during the early stages of their careers. Dr. Fatemeh Hosseinkhani draws on her experience as an associate dentist, practice owner, educator, and internationally trained dentist to share lessons that are rarely covered in dental school or licensing preparation programs.\n\nParticipants will explore the structure of dental practice in Ontario, the responsibilities of different team members, associate agreements, office culture, insurance and billing, patient communication, informed consent, record keeping, referrals, and professional boundaries. The course also addresses how to recognize the right workplace, respond to difficult situations, manage mistakes and complications, and protect personal well-being.\n\nThe session concludes with practical guidance on financial planning, taxes, insurance, debt management, disability protection, and sustainable career development. Real examples and common workplace scenarios will help participants enter practice with clearer expectations and greater confidence.",
+    highlights: [
+      "Understand how dental practices operate and how responsibilities are divided among dentists, hygienists, dental assistants, administrators, and treatment coordinators.",
+      "Evaluate potential associate positions by considering office culture, clinical systems, scheduling expectations, safety procedures, compensation, and workplace conditions.",
+      "Understand common associate compensation arrangements, including billings, collections, assignment and non-assignment practices, and professional expenses.",
+      "Communicate more effectively with patients, dental assistants, hygienists, reception staff, office managers, and practice owners.",
+      "Explain treatment options, costs, risks, and expectations in clear, patient-friendly language.",
+      "Apply the basic principles of informed consent, confidentiality, professional boundaries, and accurate record keeping.",
+      "Recognize when to decline treatment, seek support, consult a mentor, or refer a patient to another provider.",
+      "Respond professionally to complaints, clinical complications, workplace conflict, and difficult conversations.",
+      "Identify key considerations in associate agreements, including termination clauses, payment holdbacks, non-solicitation terms, and restrictive covenants.",
+      "Plan for taxes, professional fees, insurance, debt repayment, income interruptions, and long-term financial security.",
+      "Develop healthier strategies for managing workload, stress, physical demands, and burnout.",
+    ],
+    outcomeIntro:
+      "Designed for newly licensed and internationally trained dentists entering Canadian practice, this practical session covers the real-world lessons rarely taught in dental school. By the end of the course you will be able to:",
+    audience: [
+      "Newly licensed dentists beginning clinical practice in Canada",
+      "Internationally trained dentists transitioning into the Canadian dental system",
+      "Dental students and candidates approaching the final stages of licensing",
+      "Associate dentists seeking a clearer understanding of workplace expectations",
+      "Dentists planning their first major career move or associate agreement",
+    ],
+    modules: [
+      {
+        title: "The Canadian Dental Practice Environment",
+        detail:
+          "The roles of the RCDSO, ODA, and other professional organizations; the structure of private dental practices and dental service organizations; the responsibilities of associates, owners, hygienists, assistants, and administrative staff; and regulatory certificates, office protocols, and professional obligations.",
+      },
+      {
+        title: "Finding the Right Associate Position",
+        detail:
+          "Small practices, group practices, and dental service organizations; rural opportunities versus the Greater Toronto Area; office culture, staff turnover, cleanliness, scheduling, and clinical systems; questions to ask before accepting a position; and the signs of a supportive, professionally managed workplace.",
+      },
+      {
+        title: "Working as Part of the Dental Team",
+        detail:
+          "Communicating with reception staff, assistants, hygienists, and practice owners; setting clear expectations for scheduling and clinical support; respecting working hours, breaks, responsibilities, and workplace boundaries; and building strong relationships within a multicultural dental team.",
+      },
+      {
+        title: "Patient Communication and Professionalism",
+        detail:
+          "Understanding patient expectations in Canadian dental practice; discussing prevention, treatment options, insurance, and out-of-pocket costs; using clear language without unnecessary clinical terminology; confidentiality, cultural awareness, and professional boundaries; and managing unrealistic expectations and inappropriate requests.",
+      },
+      {
+        title: "Clinical Decision-Making and Risk Management",
+        detail:
+          "Understanding personal clinical limits; knowing when to say no or refer; informed consent and documentation; record-keeping fundamentals; managing complications and mistakes; responding to complaints and challenging patient interactions; and maintaining respectful relationships with colleagues and specialists.",
+      },
+      {
+        title: "Career and Financial Planning",
+        detail:
+          "Associate income and common compensation models; taxes, professional fees, and business expenses; emergency savings and income protection; disability and life insurance considerations; debt repayment, investing, and long-term planning; and preventing burnout to build a sustainable career.",
+      },
+    ],
+    instructorTitle: "Dentist · Educator · Practice Owner",
+    instructorBio:
+      "Dr. Fatemeh Hosseinkhani graduated in dentistry from Tehran University of Medical Sciences in 2014. After moving to Canada, she successfully completed the NDEB equivalency process and board examinations in 2018. She subsequently entered the University of Toronto's International Dentist Advanced Placement Program before choosing to continue her career in clinical practice.\n\nDr. Hosseinkhani has worked as an associate dentist in several practices, including offices in downtown Toronto and Yellowknife. In 2021, she opened her own dental practice and developed it from the ground up.\n\nTeaching has remained an important part of her professional career. She has taught ACS and AFK preparation courses and served as an instructor with the University of Toronto's IDAPP prosthodontics team for four years. Her combined experience as an internationally trained dentist, associate, educator, and practice owner gives her a practical understanding of the challenges dentists face when entering the Canadian workplace.",
+    calendar: {
+      startUtc: "2026-10-23T18:00:00Z",
+      endUtc: "2026-10-23T21:00:00Z",
+      timezone: "America/Toronto",
+    },
+  },
+  {
     slug: "advanced-adhesive-dentistry-master-blueprint",
     title: "Advanced Adhesive Dentistry: The Master Blueprint",
     subtitle:
