@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Lock, Download, LogOut, Users, AlertCircle, Inbox, Filter, X } from "lucide-react";
+import { Lock, Download, LogOut, Users, AlertCircle, Inbox, Filter, X, DollarSign, BookOpen, Database, CreditCard } from "lucide-react";
 import { isAdminAuthed, adminTokenConfigured } from "@/lib/admin-auth";
-import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { courses } from "@/lib/courses";
 import {
-  applyRegistrationFilters,
   filtersToQuery,
   hasActiveFilters,
   parseRegistrationFilters,
 } from "@/lib/registrations";
+import { loadRegistrations, summarize } from "@/lib/registrations-source";
 import { AdminLoginForm } from "../AdminLoginForm";
 import { logout } from "../actions";
 
@@ -17,20 +16,6 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Registrations — Admin",
   robots: { index: false, follow: false },
-};
-
-type Registration = {
-  id: string;
-  created_at: string;
-  course_title: string;
-  attendance: string | null;
-  student_name: string | null;
-  student_email: string;
-  student_phone: string | null;
-  amount_total_cents: number | null;
-  currency: string | null;
-  stripe_payment_intent: string | null;
-  utm: Record<string, string> | null;
 };
 
 function money(cents: number | null, currency: string | null): string {
@@ -92,35 +77,27 @@ export default async function AdminRegistrationsPage({ searchParams }: Props) {
   }
 
   // ── Signed in ──
-  const supabase = getSupabaseAdmin();
-  if (!supabase) {
+  const filters = parseRegistrationFilters(await searchParams);
+  const { rows, source, error } = await loadRegistrations(filters, 500);
+
+  if (source === "none") {
     return (
       <Shell>
         <div className="card p-8 max-w-md mx-auto text-center">
           <AlertCircle className="h-8 w-8 mx-auto mb-4" style={{ color: "#b45309" }} />
           <h2 className="font-heading text-xl font-bold text-[#0f2150] mb-2">Datastore not provisioned</h2>
           <p className="text-sm text-[#1a1a2e]/60">
-            Add the Supabase environment variables and run <code className="text-xs bg-[#f5f7fb] px-1.5 py-0.5 rounded">supabase/schema.sql</code> to
-            start collecting registrations.
+            Add the Supabase environment variables (or a <code className="text-xs bg-[#f5f7fb] px-1.5 py-0.5 rounded">STRIPE_SECRET_KEY</code>) to
+            start showing registrations.
           </p>
         </div>
       </Shell>
     );
   }
 
-  const filters = parseRegistrationFilters(await searchParams);
-
-  const { data, error } = await applyRegistrationFilters(
-    supabase
-      .from("registrations")
-      .select("id, created_at, course_slug, course_title, attendance, student_name, student_email, student_phone, amount_total_cents, currency, stripe_payment_intent, utm"),
-    filters
-  )
-    .order("created_at", { ascending: false })
-    .limit(500);
-
-  const rows = (data ?? []) as Registration[];
   const filtered = hasActiveFilters(filters);
+  const summary = summarize(rows);
+  const maxCount = Math.max(1, ...summary.byCourse.map((c) => c.count));
 
   // Courses that actually have registrations aren't known without a second
   // query, so offer the full catalogue as filter options (value = slug).
@@ -128,6 +105,80 @@ export default async function AdminRegistrationsPage({ searchParams }: Props) {
 
   return (
     <Shell>
+      {/* Data source badge */}
+      <div className="mb-5">
+        <span
+          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
+          style={
+            source === "supabase"
+              ? { background: "#e6f4ea", color: "#256b3e" }
+              : { background: "#fef3e2", color: "#b45309" }
+          }
+        >
+          {source === "supabase" ? <Database className="h-3.5 w-3.5" /> : <CreditCard className="h-3.5 w-3.5" />}
+          {source === "supabase" ? "Live from Supabase" : "Live from Stripe (no datastore yet)"}
+        </span>
+      </div>
+
+      {/* Summary stat cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+        <div className="card p-5 flex items-center gap-4">
+          <div className="rounded-xl p-3" style={{ background: "#eaf0fb" }}>
+            <Users className="h-6 w-6" style={{ color: "#1b3a8a" }} />
+          </div>
+          <div>
+            <p className="text-2xl font-heading font-bold text-[#0f2150]">{summary.total}</p>
+            <p className="text-xs text-[#1a1a2e]/55">Registration{summary.total === 1 ? "" : "s"}{filtered ? " (filtered)" : ""}</p>
+          </div>
+        </div>
+        <div className="card p-5 flex items-center gap-4">
+          <div className="rounded-xl p-3" style={{ background: "#e6f4ea" }}>
+            <DollarSign className="h-6 w-6" style={{ color: "#256b3e" }} />
+          </div>
+          <div>
+            <p className="text-2xl font-heading font-bold text-[#0f2150]">{money(summary.revenueCents, summary.currency)}</p>
+            <p className="text-xs text-[#1a1a2e]/55">Total revenue</p>
+          </div>
+        </div>
+        <div className="card p-5 flex items-center gap-4">
+          <div className="rounded-xl p-3" style={{ background: "#f3ecfb" }}>
+            <BookOpen className="h-6 w-6" style={{ color: "#6b3fa0" }} />
+          </div>
+          <div>
+            <p className="text-2xl font-heading font-bold text-[#0f2150]">{summary.byCourse.length}</p>
+            <p className="text-xs text-[#1a1a2e]/55">Course{summary.byCourse.length === 1 ? "" : "s"} with sign-ups</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Registrations by course — lightweight bar chart */}
+      {summary.byCourse.length > 0 && (
+        <div className="card p-5 mb-5">
+          <h2 className="text-sm font-semibold text-[#0f2150] mb-4">Registrations by course</h2>
+          <ul className="space-y-3">
+            {summary.byCourse.map((c) => (
+              <li key={c.title}>
+                <div className="flex items-baseline justify-between gap-3 mb-1">
+                  <span className="text-sm text-[#1a1a2e]/75 truncate">{c.title}</span>
+                  <span className="text-xs text-[#1a1a2e]/55 whitespace-nowrap">
+                    {c.count} · {money(c.revenueCents, summary.currency)}
+                  </span>
+                </div>
+                <div className="h-2.5 rounded-full" style={{ background: "#eef1f6" }}>
+                  <div
+                    className="h-2.5 rounded-full"
+                    style={{
+                      width: `${Math.max(6, (c.count / maxCount) * 100)}%`,
+                      background: "linear-gradient(90deg, #1b3a8a, #c9a84c)",
+                    }}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Filters */}
       <form method="get" className="card p-4 mb-5">
         <div className="flex flex-wrap items-end gap-3">
@@ -183,7 +234,7 @@ export default async function AdminRegistrationsPage({ searchParams }: Props) {
 
       {error ? (
         <div className="card p-6 text-sm" style={{ color: "#b91c1c" }}>
-          Could not load registrations: {error.message}
+          Could not load registrations: {error}
         </div>
       ) : rows.length === 0 ? (
         <div className="card p-10 text-center">

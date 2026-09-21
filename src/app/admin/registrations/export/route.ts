@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { isAdminAuthed } from "@/lib/admin-auth";
-import { getSupabaseAdmin } from "@/lib/supabase/admin";
-import { applyRegistrationFilters, parseRegistrationFilters } from "@/lib/registrations";
+import { parseRegistrationFilters } from "@/lib/registrations";
+import { loadRegistrations } from "@/lib/registrations-source";
 
 export const dynamic = "force-dynamic";
 
@@ -38,27 +38,18 @@ export async function GET(request: NextRequest) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
-  const supabase = getSupabaseAdmin();
-  if (!supabase) {
-    return new NextResponse("Datastore not provisioned", { status: 503 });
-  }
-
   const filters = parseRegistrationFilters(
     Object.fromEntries(new URL(request.url).searchParams)
   );
 
-  const { data, error } = await applyRegistrationFilters(
-    supabase.from("registrations").select("*"),
-    filters
-  )
-    .order("created_at", { ascending: false })
-    .limit(5000);
+  const { rows, source, error } = await loadRegistrations(filters, 5000);
 
-  if (error) {
-    return new NextResponse(`Export failed: ${error.message}`, { status: 500 });
+  if (source === "none") {
+    return new NextResponse("Datastore not provisioned", { status: 503 });
   }
-
-  const rows = data ?? [];
+  if (error) {
+    return new NextResponse(`Export failed: ${error}`, { status: 500 });
+  }
   const lines = [COLUMNS.join(",")];
   for (const r of rows) {
     const utm = (r.utm ?? {}) as Record<string, string>;
