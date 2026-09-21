@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Lock, Download, LogOut, Users, AlertCircle, Inbox, Filter, X, DollarSign, BookOpen, Database, CreditCard } from "lucide-react";
-import { isAdminAuthed, adminTokenConfigured } from "@/lib/admin-auth";
+import { isAdminAuthed, adminAuthConfigured } from "@/lib/admin-auth";
 import { courses } from "@/lib/courses";
 import {
   filtersToQuery,
@@ -45,15 +45,16 @@ type Props = {
 
 export default async function AdminRegistrationsPage({ searchParams }: Props) {
   // ── Gate 1: no token configured → area is closed ──
-  if (!adminTokenConfigured()) {
+  if (!adminAuthConfigured()) {
     return (
       <Shell>
         <div className="card p-8 max-w-md mx-auto text-center">
           <Lock className="h-8 w-8 mx-auto mb-4" style={{ color: "#1b3a8a" }} />
           <h2 className="font-heading text-xl font-bold text-[#0f2150] mb-2">Admin area not configured</h2>
           <p className="text-sm text-[#1a1a2e]/60">
-            Set an <code className="text-xs bg-[#f5f7fb] px-1.5 py-0.5 rounded">ADMIN_ACCESS_TOKEN</code> environment
-            variable to enable this page.
+            Set <code className="text-xs bg-[#f5f7fb] px-1.5 py-0.5 rounded">ADMIN_USERNAME</code> and{" "}
+            <code className="text-xs bg-[#f5f7fb] px-1.5 py-0.5 rounded">ADMIN_PASSWORD_HASH</code> environment
+            variables to enable this page.
           </p>
         </div>
       </Shell>

@@ -9,8 +9,23 @@ export function AdminLoginForm() {
   return (
     <form action={formAction} className="space-y-4">
       <div>
+        <label htmlFor="admin-username" className="block text-sm font-medium text-[#1a1a2e]/70 mb-1.5">
+          Username
+        </label>
+        <input
+          id="admin-username"
+          name="username"
+          type="text"
+          autoComplete="username"
+          autoCapitalize="none"
+          spellCheck={false}
+          required
+          className="w-full rounded-lg border border-[#e2e8f0] px-4 py-3 text-sm focus:border-[#1b3a8a] focus:outline-none focus:ring-2 focus:ring-[#1b3a8a]/20 transition-colors"
+        />
+      </div>
+      <div>
         <label htmlFor="admin-password" className="block text-sm font-medium text-[#1a1a2e]/70 mb-1.5">
-          Admin password
+          Password
         </label>
         <input
           id="admin-password"

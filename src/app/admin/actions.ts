@@ -1,18 +1,19 @@
 "use server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { ADMIN_COOKIE, verifyAdminToken } from "@/lib/admin-auth";
+import { ADMIN_COOKIE, verifyCredentials, createSession } from "@/lib/admin-auth";
 
 export async function login(
   _prev: string | null,
   formData: FormData
 ): Promise<string | null> {
+  const username = String(formData.get("username") ?? "").trim();
   const password = String(formData.get("password") ?? "");
-  if (!verifyAdminToken(password)) {
-    // Deliberately vague; do not reveal whether a token is configured.
-    return "Incorrect password.";
+  if (!verifyCredentials(username, password)) {
+    // Deliberately vague; do not reveal which field was wrong.
+    return "Incorrect username or password.";
   }
-  (await cookies()).set(ADMIN_COOKIE, password, {
+  (await cookies()).set(ADMIN_COOKIE, createSession(username), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
