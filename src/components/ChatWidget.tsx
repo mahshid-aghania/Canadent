@@ -36,7 +36,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/endo|root canal|endodontic|apex|pulp|bakhtiar|hengameh|precision endo/i],
     response:
-      "Our Precision Endo: From Access to Apex course with Dr. Hengameh Bakhtiar, FRCD(C) is currently sold out.\n\nTo be added to the waitlist and notified about the next session, reach us at:\n📞 1.437.370.0122\n✉️ canadent.edu@gmail.com",
+      "Our Precision Endo: From Access to Apex course with Dr. Hengameh Bakhtiar, FRCD(C) is currently sold out.\n\nTo be added to the waitlist and notified about the next session, reach us at:\n📞 1.437.370.0122\n✉️ admin@canadent.net",
   },
   {
     patterns: [/early bird|discount|deal|save|promotion|\$200/i],
@@ -46,22 +46,22 @@ const INTENTS: Intent[] = [
   {
     patterns: [/price|cost|how much|fee|pay|pricing|\$/i],
     response:
-      "Fall 2026 course pricing:\n\n• Advanced Adhesive Dentistry — Hybrid: $600 online / $799 in-person\n• Daily & Unique Orthodontic Techniques — Hybrid: $399 online / $599 in-person\n\nAll prices exclude 13% HST, which is added at checkout.\n\nPayment is handled securely online during registration. Questions? Email canadent.edu@gmail.com",
+      "Fall 2026 course pricing:\n\n• Advanced Adhesive Dentistry — Hybrid: $600 online / $799 in-person\n• Daily & Unique Orthodontic Techniques — Hybrid: $399 online / $599 in-person\n\nAll prices exclude 13% HST, which is added at checkout.\n\nPayment is handled securely online during registration. Questions? Email admin@canadent.net",
   },
   {
     patterns: [/register|enroll|enrol|sign up|book|reserve|seat|spot/i],
     response:
-      "You can register directly on each course page:\n\n• Advanced Adhesive Dentistry (Sept 6):\n  canadent.net/courses/advanced-adhesive-dentistry-master-blueprint\n\n• Orthodontic Techniques (Sept 27):\n  canadent.net/courses/daily-unique-orthodontic-techniques\n\nNeed help? Call 1.437.370.0122 or email canadent.edu@gmail.com",
+      "You can register directly on each course page:\n\n• Advanced Adhesive Dentistry (Sept 6):\n  canadent.net/courses/advanced-adhesive-dentistry-master-blueprint\n\n• Orthodontic Techniques (Sept 27):\n  canadent.net/courses/daily-unique-orthodontic-techniques\n\nNeed help? Call 1.437.370.0122 or email admin@canadent.net",
   },
   {
     patterns: [/where|location|address|venue|rimrock|north york|parking|campus|directions/i],
     response:
-      "Both Fall 2026 courses are held at our North York campus:\n\n265 Rimrock Road, Unit 209\nNorth York, ON M3J 3A6\n\nFor parking details or directions, email canadent.edu@gmail.com or call 1.437.370.0122 — we're happy to help!",
+      "Both Fall 2026 courses are held at our North York campus:\n\n265 Rimrock Road, Unit 209\nNorth York, ON M3J 3A6\n\nFor parking details or directions, email admin@canadent.net or call 1.437.370.0122 — we're happy to help!",
   },
   {
     patterns: [/contact|reach|email|phone|call|get in touch|talk to someone|office hour/i],
     response:
-      "You can reach our team at:\n\n📞 1.437.370.0122\n✉️ canadent.edu@gmail.com\n🕐 Monday–Friday, 10:00 AM – 4:00 PM (Eastern)\n\nOr visit canadent.net/contact and we'll get back to you the same day.",
+      "You can reach our team at:\n\n📞 1.437.370.0122\n✉️ admin@canadent.net\n🕐 Monday–Friday, 10:00 AM – 4:00 PM (Eastern)\n\nOr visit canadent.net/contact and we'll get back to you the same day.",
   },
   {
     patterns: [/ce credit|credit|cda|pace|rcdc|continuing education|accredited/i],
@@ -76,7 +76,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/cancel|refund|policy|enrolment agreement|withdraw|transfer/i],
     response:
-      "For our cancellation policy, refund terms, and enrolment agreement, please visit:\ncanadent.net/enrolment-agreement\n\nIf you have specific questions, our team is happy to help:\n📞 1.437.370.0122 · ✉️ canadent.edu@gmail.com",
+      "For our cancellation policy, refund terms, and enrolment agreement, please visit:\ncanadent.net/enrolment-agreement\n\nIf you have specific questions, our team is happy to help:\n📞 1.437.370.0122 · ✉️ admin@canadent.net",
   },
   {
     patterns: [/about canadent|who are you|what is canadent|tell me about canadent/i],
@@ -91,12 +91,12 @@ const INTENTS: Intent[] = [
   {
     patterns: [/merci|je voudrais|en fran|bonjour|comment/i],
     response:
-      "Bien sûr ! Je suis Denta, l'assistante virtuelle de CanaDent. Posez-moi vos questions sur nos cours, les prix, les inscriptions ou nos coordonnées — je suis là pour vous aider !\n\nPour toute question, vous pouvez aussi nous joindre au 1.437.370.0122 ou par courriel à canadent.edu@gmail.com.",
+      "Bien sûr ! Je suis Denta, l'assistante virtuelle de CanaDent. Posez-moi vos questions sur nos cours, les prix, les inscriptions ou nos coordonnées — je suis là pour vous aider !\n\nPour toute question, vous pouvez aussi nous joindre au 1.437.370.0122 ou par courriel à admin@canadent.net.",
   },
 ];
 
 const FALLBACK =
-  "That's a great question! I don't have that specific information on hand, but our team does.\n\n📞 1.437.370.0122\n✉️ canadent.edu@gmail.com\n🕐 Monday–Friday, 10:00 AM – 4:00 PM\n\nOr visit canadent.net/contact — we typically respond the same day.";
+  "That's a great question! I don't have that specific information on hand, but our team does.\n\n📞 1.437.370.0122\n✉️ admin@canadent.net\n🕐 Monday–Friday, 10:00 AM – 4:00 PM\n\nOr visit canadent.net/contact — we typically respond the same day.";
 
 function getResponse(input: string): string {
   for (const intent of INTENTS) {

@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
         from: "CanaDent Education <noreply@canadent.net>",
         // Same recipients as course registrations: the buyer, plus the CanaDent team.
         to: email,
-        cc: ["ar.movasagh@confidentist.ca", "mahshid.aghania@gmail.com", "canadent.edu@gmail.com"],
+        cc: ["ar.movasagh@confidentist.ca", "mahshid.aghania@gmail.com", "admin@canadent.net"],
         subject: isSponsorship
           ? `Sponsorship Confirmed — ${title}`
           : `Registration Confirmed — ${title}`,
@@ -275,7 +275,7 @@ function buildEmail(
 
             <p style="margin:0 0 8px;font-size:14px;color:#555;">Questions? We're here to help:</p>
             <p style="margin:0 0 4px;font-size:14px;color:#1b3a8a;">📞 <a href="tel:14373700122" style="color:#1b3a8a;text-decoration:none;">1.437.370.0122</a></p>
-            <p style="margin:0 0 24px;font-size:14px;color:#1b3a8a;">✉️ <a href="mailto:canadent.edu@gmail.com" style="color:#1b3a8a;text-decoration:none;">canadent.edu@gmail.com</a></p>
+            <p style="margin:0 0 24px;font-size:14px;color:#1b3a8a;">✉️ <a href="mailto:admin@canadent.net" style="color:#1b3a8a;text-decoration:none;">admin@canadent.net</a></p>
 
             <p style="margin:0;font-size:14px;color:#1a1a2e;">We look forward to welcoming you,<br><strong style="color:#0f2150;">The CanaDent Team</strong></p>
           </td>

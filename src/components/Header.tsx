@@ -39,10 +39,10 @@ export default function Header() {
               1.437.370.0122
             </a>
             <a
-              href="mailto:canadent.edu@gmail.com"
+              href="mailto:admin@canadent.net"
               className="hidden sm:block hover:text-[#c9a84c] transition-colors"
             >
-              canadent.edu@gmail.com
+              admin@canadent.net
             </a>
           </div>
           <div className="flex items-center gap-4 text-white/60 text-xs">

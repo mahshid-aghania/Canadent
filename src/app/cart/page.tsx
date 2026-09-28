@@ -85,7 +85,7 @@ export default function CartPage() {
             Need help? Call us at{" "}
             <a href="tel:14373700122" className="underline">1.437.370.0122</a>{" "}
             or email{" "}
-            <a href="mailto:canadent.edu@gmail.com" className="underline">canadent.edu@gmail.com</a>
+            <a href="mailto:admin@canadent.net" className="underline">admin@canadent.net</a>
           </p>
         </div>
       </section>

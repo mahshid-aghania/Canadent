@@ -337,8 +337,8 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
               <a href="tel:14373700122" className="flex items-center gap-2 text-xs text-[#1a1a2e]/55 hover:text-[#1b3a8a] transition-colors mb-1.5">
                 <Phone className="h-3.5 w-3.5" style={{ color: "#c9a84c" }} />1.437.370.0122
               </a>
-              <a href="mailto:canadent.edu@gmail.com" className="flex items-center gap-2 text-xs text-[#1a1a2e]/55 hover:text-[#1b3a8a] transition-colors mb-1.5">
-                <Mail className="h-3.5 w-3.5" style={{ color: "#c9a84c" }} />canadent.edu@gmail.com
+              <a href="mailto:admin@canadent.net" className="flex items-center gap-2 text-xs text-[#1a1a2e]/55 hover:text-[#1b3a8a] transition-colors mb-1.5">
+                <Mail className="h-3.5 w-3.5" style={{ color: "#c9a84c" }} />admin@canadent.net
               </a>
               <p className="text-xs text-[#1a1a2e]/45">Monday–Friday, 10:00 AM–4:00 PM ET</p>
             </div>

@@ -72,8 +72,8 @@ export default function ContactPage() {
                     icon: Mail,
                     label: "Email",
                     content: (
-                      <a href="mailto:canadent.edu@gmail.com" className="text-sm text-[#1a1a2e]/60 hover:text-[#1b3a8a] transition-colors break-all">
-                        canadent.edu@gmail.com
+                      <a href="mailto:admin@canadent.net" className="text-sm text-[#1a1a2e]/60 hover:text-[#1b3a8a] transition-colors break-all">
+                        admin@canadent.net
                       </a>
                     ),
                   },
