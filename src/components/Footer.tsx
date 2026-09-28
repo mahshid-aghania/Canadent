@@ -103,11 +103,11 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="mailto:canadent.edu@gmail.com"
+                href="mailto:admin@canadent.net"
                 className="flex items-center gap-3 text-sm text-white/60 hover:text-[#c9a84c] transition-colors"
               >
                 <Mail className="h-4 w-4 shrink-0 text-[#c9a84c]" />
-                canadent.edu@gmail.com
+                admin@canadent.net
               </a>
             </li>
             <li className="flex items-start gap-3">

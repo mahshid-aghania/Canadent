@@ -113,9 +113,9 @@ function Shell({ children }: { children: React.ReactNode }) {
 function SupportRow() {
   return (
     <div className="flex flex-col sm:flex-row gap-3">
-      <a href="mailto:canadent.edu@gmail.com" className="flex items-center gap-2 text-sm text-[#1a1a2e]/60 hover:text-[#1b3a8a] transition-colors">
+      <a href="mailto:admin@canadent.net" className="flex items-center gap-2 text-sm text-[#1a1a2e]/60 hover:text-[#1b3a8a] transition-colors">
         <Mail className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />
-        canadent.edu@gmail.com
+        admin@canadent.net
       </a>
       <a href="tel:14373700122" className="flex items-center gap-2 text-sm text-[#1a1a2e]/60 hover:text-[#1b3a8a] transition-colors">
         <Phone className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />

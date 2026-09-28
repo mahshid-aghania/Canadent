@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 const ADMIN_RECIPIENTS = [
   "ar.movasagh@confidentist.ca",
   "mahshid.aghania@gmail.com",
-  "canadent.edu@gmail.com",
+  "admin@canadent.net",
 ];
 
 export async function POST(request: NextRequest) {

@@ -120,10 +120,10 @@ export default function EnrolmentAgreementPage() {
             without prior notice. The most current version is always available on this page. If you
             have questions, please contact us at{" "}
             <a
-              href="mailto:canadent.edu@gmail.com"
+              href="mailto:admin@canadent.net"
               className="underline hover:text-[#1b3a8a]"
             >
-              canadent.edu@gmail.com
+              admin@canadent.net
             </a>{" "}
             or call{" "}
             <a href="tel:14373700122" className="underline hover:text-[#1b3a8a]">
