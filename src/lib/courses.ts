@@ -51,14 +51,18 @@ export const courses: Course[] = [
     subtitle: "A New Dentist's Guide to the Real World",
     instructor: "Dr. Fatemeh Hosseinkhani",
     price: 50,
+    priceOptions: [
+      { label: "Online Attendance", price: 50 },
+      { label: "In-Person Attendance", price: 50 },
+    ],
     date: "Friday, October 23, 2026",
     time: "2:00 PM – 5:00 PM",
     duration: "3 hours",
-    location: "265 Rimrock Road, North York, ON",
+    location: "Hybrid — Online + In-Person (265 Rimrock Rd, North York, ON)",
     ceCredits: "2 CE Credits",
     status: "available",
     category: "Practice Management",
-    format: "In-Person",
+    format: "Hybrid (In-Person / Online)",
     image: "/course-things-i-wish.jpeg",
     description:
       "Starting a dental career in Canada involves much more than clinical knowledge. New dentists must learn how dental offices operate, how associates are compensated, how to communicate with patients and team members, and how to manage the professional and financial responsibilities that come with practice.\n\nDesigned for newly licensed dentists and internationally trained dentists entering Canadian practice, this practical course provides an overview of the real-world situations dentists commonly encounter during the early stages of their careers. Dr. Fatemeh Hosseinkhani draws on her experience as an associate dentist, practice owner, educator, and internationally trained dentist to share lessons that are rarely covered in dental school or licensing preparation programs.\n\nParticipants will explore the structure of dental practice in Ontario, the responsibilities of different team members, associate agreements, office culture, insurance and billing, patient communication, informed consent, record keeping, referrals, and professional boundaries. The course also addresses how to recognize the right workplace, respond to difficult situations, manage mistakes and complications, and protect personal well-being.\n\nThe session concludes with practical guidance on financial planning, taxes, insurance, debt management, disability protection, and sustainable career development. Real examples and common workplace scenarios will help participants enter practice with clearer expectations and greater confidence.",
@@ -119,6 +123,30 @@ export const courses: Course[] = [
     instructorTitle: "Dentist · Educator · Practice Owner",
     instructorBio:
       "Dr. Fatemeh Hosseinkhani graduated in dentistry from Tehran University of Medical Sciences in 2014. After moving to Canada, she successfully completed the NDEB equivalency process and board examinations in 2018. She subsequently entered the University of Toronto's International Dentist Advanced Placement Program before choosing to continue her career in clinical practice.\n\nDr. Hosseinkhani has worked as an associate dentist in several practices, including offices in downtown Toronto and Yellowknife. In 2021, she opened her own dental practice and developed it from the ground up.\n\nTeaching has remained an important part of her professional career. She has taught ACS and AFK preparation courses and served as an instructor with the University of Toronto's IDAPP prosthodontics team for four years. Her combined experience as an internationally trained dentist, associate, educator, and practice owner gives her a practical understanding of the challenges dentists face when entering the Canadian workplace.",
+    attendanceModes: [
+      {
+        label: "Online Attendance",
+        kind: "online",
+        summary: "Join the full live session remotely from anywhere in Canada.",
+        includes: [
+          "Live online access to the full 3-hour session",
+          "2 CE Credits",
+        ],
+        access:
+          "Your joining link and access details are emailed to you before the course date.",
+      },
+      {
+        label: "In-Person Attendance",
+        kind: "in-person",
+        summary: "Attend on-site with the instructor at our North York facility.",
+        location: "265 Rimrock Road, North York, Ontario",
+        includes: [
+          "On-site attendance with the instructor",
+          "2 CE Credits",
+        ],
+        access: "Please plan to arrive 15 minutes early to check in.",
+      },
+    ],
     calendar: {
       startUtc: "2026-10-23T18:00:00Z",
       endUtc: "2026-10-23T21:00:00Z",
