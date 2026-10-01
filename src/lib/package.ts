@@ -69,16 +69,15 @@ export const threeCoursePackage: CoursePackage = {
       confirmed: true,
     },
     {
-      // Development placeholder — the supplied third-course URL duplicated
-      // course 2, so the real course is pending confirmation. Do not invent it.
-      slug: null,
-      title: "Third course — to be confirmed",
-      instructor: null,
-      image: null,
-      summary: null,
+      slug: "daily-unique-orthodontic-techniques",
+      title: "Daily and Unique Orthodontic Techniques for Prosthodontics",
+      instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
+      image: "/course-orthodontic-prosthodontics-poster.jpeg",
+      summary:
+        "A clinical blueprint for advanced clear-aligner therapy — covering evidence-based biomechanics, the JV Supercorrection Rx, digital treatment planning, and modern auxiliaries for predictable, efficient outcomes across complex orthodontic and interdisciplinary prosthodontic cases.",
       allocationCAD: 300,
-      href: null,
-      confirmed: false,
+      href: "/courses/daily-unique-orthodontic-techniques",
+      confirmed: true,
     },
   ],
 };
