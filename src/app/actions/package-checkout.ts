@@ -3,15 +3,10 @@ import Stripe from "stripe";
 import { redirect } from "next/navigation";
 import { getHstTaxRateId } from "@/lib/stripe-tax";
 import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
-import { threeCoursePackage, isPackageComplete } from "@/lib/package";
+import { getPackage, isPackageComplete } from "@/lib/package";
 
-// Fixed, TAX-EXCLUSIVE package price. The advertised total is $850 CAD plus
-// 13% HST, matching the course-catalogue convention. The amount is hard-coded
-// here and NEVER accepted from the client; Stripe adds HST on top as its own
-// line via the exclusive tax rate.
-const PACKAGE_TOTAL_CENTS = threeCoursePackage.totalCAD * 100; // $850.00 CAD, +HST
-const PACKAGE_SLUG = threeCoursePackage.slug;
-const PACKAGE_TITLE = "CanaDent Three-Course Package";
+// Human-readable count words for the Stripe product name (e.g. "Four-Course").
+const COUNT_WORDS = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven"];
 
 function getStripe(): Stripe | null {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -20,11 +15,28 @@ function getStripe(): Stripe | null {
 }
 
 export async function createPackageCheckout(
+  slug: string,
   utm?: Record<string, string>
 ): Promise<{ error: string } | never> {
-  // Hard stop: never create a payment while the bundle is unfinished (the third
-  // course is still a placeholder). This keeps the preview from ever charging.
-  if (!isPackageComplete(threeCoursePackage)) {
+  // Resolve the bundle by slug. Amounts come from the server-side definition and
+  // are NEVER accepted from the client; Stripe adds HST as its own exclusive line.
+  const pkg = getPackage(slug);
+  if (!pkg) {
+    return {
+      error:
+        "This package could not be found. Please call 1.437.370.0122 or email admin@canadent.net.",
+    };
+  }
+
+  // Fixed, TAX-EXCLUSIVE package price (e.g. $900 CAD plus 13% HST).
+  const PACKAGE_TOTAL_CENTS = pkg.totalCAD * 100;
+  const PACKAGE_SLUG = pkg.slug;
+  const countWord = COUNT_WORDS[pkg.courses.length] ?? String(pkg.courses.length);
+  const PACKAGE_TITLE = `CanaDent ${countWord}-Course Package`;
+
+  // Hard stop: never create a payment while a bundle is unfinished (a course is
+  // still a placeholder). This keeps any preview bundle from ever charging.
+  if (!isPackageComplete(pkg)) {
     return {
       error:
         "This package is not yet available for online registration. Please call 1.437.370.0122 or email admin@canadent.net.",
@@ -55,7 +67,7 @@ export async function createPackageCheckout(
   }
   const utmQuery = new URLSearchParams(utmMetadata).toString();
 
-  const includedSlugs = threeCoursePackage.courses
+  const includedSlugs = pkg.courses
     .map((c) => c.slug)
     .filter((s): s is string => Boolean(s))
     .join(",");
@@ -73,7 +85,7 @@ export async function createPackageCheckout(
             currency: "cad",
             product_data: {
               name: PACKAGE_TITLE,
-              description: `Three continuing-education courses in one package — $${threeCoursePackage.totalCAD} CAD (plus ${TAX_PERCENTAGE}% ${TAX_LABEL}).`,
+              description: `${countWord} continuing-education courses in one package — $${pkg.totalCAD} CAD (plus ${TAX_PERCENTAGE}% ${TAX_LABEL}).`,
             },
             unit_amount: PACKAGE_TOTAL_CENTS,
           },
@@ -93,7 +105,7 @@ export async function createPackageCheckout(
         ...utmMetadata,
       },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}${threeCoursePackage.route}?cancelled=true${utmQuery ? `&${utmQuery}` : ""}`,
+      cancel_url: `${baseUrl}${pkg.route}?cancelled=true${utmQuery ? `&${utmQuery}` : ""}`,
     });
 
     checkoutUrl = session.url!;

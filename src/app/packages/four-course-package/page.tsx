@@ -3,25 +3,20 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowRight,
-  BookOpen,
   Check,
   ChevronLeft,
   Phone,
   Mail,
   User,
-  AlertCircle,
 } from "lucide-react";
 import { PackageRegisterButton } from "@/components/PackageRegisterButton";
 import {
-  threeCoursePackage,
+  fourCoursePackage,
   allocationSum,
-  isPackageComplete,
 } from "@/lib/package";
 import { TAX_PERCENTAGE, TAX_SUFFIX, taxOn, totalWithTax } from "@/lib/tax";
 
-const pkg = threeCoursePackage;
-const complete = isPackageComplete(pkg);
-const confirmedCourses = pkg.courses.filter((c) => c.confirmed);
+const pkg = fourCoursePackage;
 
 function money(n: number) {
   return n.toLocaleString("en-CA", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
@@ -32,14 +27,14 @@ function money2(n: number) {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.canadent.net"),
-  title: "Three-Course Package",
+  title: "Four-Course Package",
   description:
-    "Explore three CanaDent dental continuing education courses in one convenient package for $850 CAD (plus HST).",
+    "Explore four CanaDent dental continuing education courses in one convenient package for $900 CAD (plus HST).",
   alternates: { canonical: pkg.route },
   openGraph: {
-    title: "Three Courses. One Complete Learning Package. | CanaDent Education Center",
+    title: "Four Courses. One Complete Learning Package. | CanaDent Education Center",
     description:
-      "Three CanaDent dental continuing education courses in one package — $850 CAD (plus HST).",
+      "Four CanaDent dental continuing education courses in one package — $900 CAD (plus HST).",
     url: pkg.route,
     type: "website",
     images: [
@@ -48,14 +43,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Three Courses. One Complete Learning Package. | CanaDent",
-    description: "Three CanaDent dental CE courses in one package — $850 CAD (plus HST).",
+    title: "Four Courses. One Complete Learning Package. | CanaDent",
+    description: "Four CanaDent dental CE courses in one package — $900 CAD (plus HST).",
     images: ["/course-adhesive-dentistry-poster.jpeg"],
   },
 };
 
-// Structured data — confirmed facts only (breadcrumb trail). The bundle is not
-// yet purchasable and the third course is unconfirmed, so no Product/Offer.
+// Structured data — breadcrumb trail plus a Product/Offer, since every course is
+// confirmed and the bundle is purchasable online at the advertised price.
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -65,7 +60,24 @@ const breadcrumbJsonLd = {
   ],
 };
 
-export default function ThreeCoursePackagePage() {
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "CanaDent Four-Course Package",
+  description:
+    "Four CanaDent dental continuing education courses bundled into one package for a single price.",
+  brand: { "@type": "Brand", name: "CanaDent Education Center" },
+  url: `https://www.canadent.net${pkg.route}`,
+  offers: {
+    "@type": "Offer",
+    price: String(pkg.totalCAD),
+    priceCurrency: "CAD",
+    availability: "https://schema.org/InStock",
+    url: `https://www.canadent.net${pkg.route}`,
+  },
+};
+
+export default function FourCoursePackagePage() {
   const subtotal = pkg.totalCAD;
   const tax = taxOn(subtotal);
   const grandTotal = totalWithTax(subtotal);
@@ -76,6 +88,10 @@ export default function ThreeCoursePackagePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
 
       {/* ── Hero ── */}
@@ -94,7 +110,7 @@ export default function ThreeCoursePackagePage() {
                 {pkg.title}
               </h1>
               <p className="text-white/75 text-lg leading-relaxed max-w-2xl mb-7">
-                Explore three dental education courses in one convenient package.
+                Explore four dental education courses in one convenient package.
               </p>
 
               <div className="flex flex-wrap items-end gap-x-4 gap-y-1 mb-2">
@@ -103,7 +119,7 @@ export default function ThreeCoursePackagePage() {
                 </span>
                 <span className="text-white/60 text-sm pb-1.5">{TAX_SUFFIX}</span>
               </div>
-              <p className="text-[#c9a84c] font-medium mb-8">Includes all three courses</p>
+              <p className="text-[#c9a84c] font-medium mb-8">Includes all four courses</p>
 
               <div className="flex flex-wrap items-center gap-3">
                 <a href="#register" className="btn-primary">Register for the Package</a>
@@ -122,7 +138,7 @@ export default function ThreeCoursePackagePage() {
                 <div className="text-white/55 text-sm mt-1">{TAX_SUFFIX} · {TAX_PERCENTAGE}% at checkout</div>
                 <div className="h-px my-4" style={{ background: "rgba(255,255,255,0.12)" }} aria-hidden="true" />
                 <ul className="text-sm text-white/75 space-y-2 text-left">
-                  <li className="flex items-center gap-2"><Check className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} aria-hidden="true" />Three courses, one package</li>
+                  <li className="flex items-center gap-2"><Check className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} aria-hidden="true" />Four courses, one package</li>
                   <li className="flex items-center gap-2"><Check className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} aria-hidden="true" />One single payment</li>
                   <li className="flex items-center gap-2"><Check className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} aria-hidden="true" />Secure Stripe checkout</li>
                 </ul>
@@ -131,21 +147,6 @@ export default function ThreeCoursePackagePage() {
           </div>
         </div>
       </section>
-
-      {/* ── Preview notice (shown only while incomplete) ── */}
-      {!complete && (
-        <section className="px-4" style={{ background: "#fffaf0", borderBottom: "1px solid #f0dc9d" }}>
-          <div className="max-w-7xl mx-auto py-4 flex items-start gap-3 text-sm" style={{ color: "#92400e" }}>
-            <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" aria-hidden="true" />
-            <p>
-              <strong>Preview —</strong> this package is being finalized. The third course is still being
-              confirmed, so online registration is temporarily disabled. To reserve your place now, contact us at{" "}
-              <a href="tel:14373700122" className="underline font-semibold">1.437.370.0122</a> or{" "}
-              <a href="mailto:admin@canadent.net" className="underline font-semibold">admin@canadent.net</a>.
-            </p>
-          </div>
-        </section>
-      )}
 
       {/* ── Combined banner composition ── */}
       <section className="px-4 py-16" style={{ background: "#f5f7fb" }}>
@@ -156,35 +157,29 @@ export default function ThreeCoursePackagePage() {
               style={{ background: "#0f2150", color: "#fff" }}
             >
               <span className="pulse-dot" aria-hidden="true" />
-              3 Courses • ${money(pkg.totalCAD)} CAD
+              4 Courses • ${money(pkg.totalCAD)} CAD
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {pkg.courses.map((course, i) => (
               <figure key={i} className="flex flex-col">
                 <div
                   className="relative w-full rounded-2xl overflow-hidden"
                   style={{ aspectRatio: "4 / 5", background: "#0f2150", boxShadow: "0 18px 50px rgba(15,33,80,0.22)" }}
                 >
-                  {course.image ? (
+                  {course.image && (
                     <Image
                       src={course.image}
                       alt={`${course.title} course poster`}
                       fill
                       className="object-contain"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
-                  ) : (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                      <BookOpen className="h-10 w-10 mb-3" style={{ color: "#c9a84c" }} aria-hidden="true" />
-                      <div className="text-white font-heading text-lg font-bold">Third Course</div>
-                      <div className="text-white/60 text-sm mt-1">Banner to be confirmed</div>
-                    </div>
                   )}
                 </div>
                 <figcaption className="mt-3 text-center text-sm font-medium text-[#0f2150]/70 px-2">
-                  {course.confirmed ? course.title : "Third course — to be confirmed"}
+                  {course.title}
                 </figcaption>
               </figure>
             ))}
@@ -198,34 +193,28 @@ export default function ThreeCoursePackagePage() {
           <div className="text-center mb-12">
             <span className="section-label">What&apos;s Included</span>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#0f2150] mt-2">
-              The Three Included Courses
+              The Four Included Courses
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {pkg.courses.map((course, i) => (
               <article key={i} className="card overflow-hidden flex flex-col">
                 <div className="relative w-full" style={{ aspectRatio: "4 / 5", background: "#0f2150" }}>
-                  {course.image ? (
+                  {course.image && (
                     <Image
                       src={course.image}
                       alt={`${course.title} course poster`}
                       fill
                       className="object-contain"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
-                  ) : (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                      <BookOpen className="h-10 w-10 mb-3" style={{ color: "#c9a84c" }} aria-hidden="true" />
-                      <div className="text-white font-heading text-lg font-bold">Third Course</div>
-                      <div className="text-white/60 text-sm mt-1">To be confirmed</div>
-                    </div>
                   )}
                 </div>
 
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-heading text-lg font-bold text-[#0f2150] leading-snug mb-2">
-                    {course.confirmed ? course.title : "Third course — to be confirmed"}
+                    {course.title}
                   </h3>
 
                   {course.instructor && (
@@ -235,12 +224,8 @@ export default function ThreeCoursePackagePage() {
                     </div>
                   )}
 
-                  {course.summary ? (
+                  {course.summary && (
                     <p className="text-sm text-[#1a1a2e]/70 leading-relaxed mb-5">{course.summary}</p>
-                  ) : (
-                    <p className="text-sm text-[#1a1a2e]/50 italic leading-relaxed mb-5">
-                      Course details will be published once the third course is confirmed.
-                    </p>
                   )}
 
                   <div className="mt-auto pt-4 border-t border-[#1a1a2e]/8">
@@ -250,17 +235,13 @@ export default function ThreeCoursePackagePage() {
                     <div className="font-heading text-2xl font-bold text-[#0f2150] mb-4">
                       ${money(course.allocationCAD)} <span className="text-sm font-normal text-[#1a1a2e]/50">CAD</span>
                     </div>
-                    {course.href ? (
+                    {course.href && (
                       <Link
                         href={course.href}
                         className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1b3a8a] hover:text-[#0f2150] transition-colors"
                       >
                         View Course Details <ArrowRight className="h-4 w-4" />
                       </Link>
-                    ) : (
-                      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#1a1a2e]/35">
-                        Details coming soon
-                      </span>
                     )}
                   </div>
                 </div>
@@ -288,7 +269,7 @@ export default function ThreeCoursePackagePage() {
                   className="flex items-start justify-between gap-4 py-4 border-b border-[#1a1a2e]/8"
                 >
                   <span className="text-[15px] text-[#1a1a2e]/75 leading-snug">
-                    {course.confirmed ? course.title : "Third course — to be confirmed"}
+                    {course.title}
                   </span>
                   <span className="font-heading text-lg font-bold text-[#0f2150] whitespace-nowrap">
                     ${money(course.allocationCAD)} CAD
@@ -342,7 +323,7 @@ export default function ThreeCoursePackagePage() {
               ${money2(grandTotal)} CAD total including {TAX_PERCENTAGE}% HST · one single payment
             </p>
 
-            <PackageRegisterButton slug={pkg.slug} priceCAD={pkg.totalCAD} enabled={complete} />
+            <PackageRegisterButton slug={pkg.slug} priceCAD={pkg.totalCAD} enabled />
 
             <div className="mt-6 pt-6 border-t border-[#1a1a2e]/8 text-left">
               <div className="text-xs font-semibold text-[#0f2150] mb-2">Questions about registration?</div>
@@ -375,14 +356,13 @@ export default function ThreeCoursePackagePage() {
               </summary>
               <div className="text-sm text-[#1a1a2e]/70 leading-relaxed mt-3">
                 The package includes{" "}
-                {confirmedCourses.map((c, i) => (
+                {pkg.courses.map((c, i) => (
                   <span key={i}>
                     <strong>{c.title}</strong>
-                    {i < confirmedCourses.length - 1 ? ", " : ""}
+                    {i < pkg.courses.length - 1 ? (i === pkg.courses.length - 2 ? ", and " : ", ") : ""}
                   </span>
                 ))}
-                , plus a third course that is currently being confirmed. Full details for the third
-                course will be published here before online registration opens.
+                .
               </div>
             </details>
 
@@ -393,7 +373,7 @@ export default function ThreeCoursePackagePage() {
               </summary>
               <div className="text-sm text-[#1a1a2e]/70 leading-relaxed mt-3">
                 The complete package is <strong>${money(pkg.totalCAD)} CAD</strong> (plus HST). You are charged
-                once for all three courses together — not per course.
+                once for all four courses together — not per course.
               </div>
             </details>
 
