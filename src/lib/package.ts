@@ -82,6 +82,45 @@ export const threeCoursePackage: CoursePackage = {
   ],
 };
 
+// ── Four-Course Package ────────────────────────────────────────────────────
+// The same three confirmed courses as above, plus a fourth confirmed course
+// ("Things I Wish Someone Had Told Me – Series 01"). Bundled for one combined
+// price of $900 CAD (tax-exclusive). Every course is confirmed, so this package
+// is complete and purchasable immediately.
+export const fourCoursePackage: CoursePackage = {
+  slug: "four-course-package",
+  route: "/packages/four-course-package",
+  title: "Four Courses. One Complete Learning Package.",
+  eyebrow: "CanaDent Course Package",
+  totalCAD: 900,
+  courses: [
+    // Reuse the three confirmed courses verbatim (same supplied allocations).
+    ...threeCoursePackage.courses,
+    {
+      slug: "things-i-wish-someone-had-told-me-series-01",
+      title: "Things I Wish Someone Had Told Me – Series 01",
+      instructor: "Dr. Fatemeh Hosseinkhani",
+      image: "/course-things-i-wish.jpeg",
+      summary:
+        "A practical guide for newly licensed and internationally trained dentists entering Canadian practice — how dental offices operate, associate agreements and compensation, patient and team communication, informed consent and record keeping, and financial planning for a sustainable career.",
+      allocationCAD: 50,
+      href: "/courses/things-i-wish-someone-had-told-me-series-01",
+      confirmed: true,
+    },
+  ],
+};
+
+/** Every bundle, keyed for lookup by the checkout action and pages. */
+export const coursePackages: CoursePackage[] = [
+  threeCoursePackage,
+  fourCoursePackage,
+];
+
+/** Find a bundle by its slug (used by the server checkout action). */
+export function getPackage(slug: string): CoursePackage | undefined {
+  return coursePackages.find((p) => p.slug === slug);
+}
+
 /** Sum of the per-course allocations — must equal totalCAD. */
 export function allocationSum(pkg: CoursePackage): number {
   return pkg.courses.reduce((sum, c) => sum + c.allocationCAD, 0);

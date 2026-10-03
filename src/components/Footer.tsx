@@ -6,7 +6,7 @@ import { NewsletterForm } from "@/components/ContactForm";
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/courses", label: "Courses" },
-  { href: "/packages/three-course-package", label: "Course Packages" },
+  { href: "/packages/four-course-package", label: "Course Packages" },
   { href: "/my-account", label: "My Account" },
   { href: "/enrolment-agreement", label: "Enrolment Agreement" },
   { href: "/contact", label: "Contact Us" },

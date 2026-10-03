@@ -21,16 +21,18 @@ function money(n: number) {
 }
 
 interface Props {
+  /** Package slug — identifies which bundle to check out (server-side priced). */
+  slug: string;
   /** Tax-exclusive package total in CAD. */
   priceCAD: number;
   /**
-   * When false, the package is still a preview (third course unconfirmed) and
+   * When false, the package is still a preview (a course is unconfirmed) and
    * purchasing is disabled — no checkout can be started.
    */
   enabled: boolean;
 }
 
-export function PackageRegisterButton({ priceCAD, enabled }: Props) {
+export function PackageRegisterButton({ slug, priceCAD, enabled }: Props) {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [cancelled, setCancelled] = useState(false);
@@ -44,7 +46,7 @@ export function PackageRegisterButton({ priceCAD, enabled }: Props) {
   function buy() {
     setError(null);
     startTransition(async () => {
-      const result = await createPackageCheckout(readUtm());
+      const result = await createPackageCheckout(slug, readUtm());
       if (result && "error" in result) setError(result.error);
     });
   }
