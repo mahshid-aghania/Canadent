@@ -21,7 +21,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/all courses|what courses|upcoming|what do you offer|catalog|list.*course|course.*list/i],
     response:
-      "We have two courses enrolling now for Fall 2026:\n\n• Advanced Adhesive Dentistry: The Master Blueprint — Sept 6 · Hybrid: $600 online / $799 in-person · 6 CE credits · Dr. Amin Asadollahi\n\n• Daily and Unique Orthodontic Techniques — Sept 27 · Hybrid: $399 online / $599 in-person · 6 PACE CE credits · Dr. John Voudouris\n\nAll prices exclude 13% HST, which is added at checkout.\n\nAsk me about either one, or browse the full catalog at canadent.net/courses",
+      "We have two courses enrolling now for Fall 2026:\n\n• Advanced Adhesive Dentistry: The Master Blueprint — Sept 6 · Hybrid: $600 online / $799 in-person · 6 CE credits · Dr. Amin Asadollahi\n\n• Daily and Unique Orthodontic Techniques — Nov 22 · Hybrid: $399 online / $599 in-person · 6 PACE CE credits · Dr. John Voudouris\n\nAll prices exclude 13% HST, which is added at checkout.\n\nAsk me about either one, or browse the full catalog at canadent.net/courses",
   },
   {
     patterns: [/adhesive|composite|bonding|master blueprint|asadollahi|restorative|ids|dme|rubber dam|dentin|amin/i],
@@ -31,7 +31,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/ortho|orthodontic|aligner|voudouris|clear aligner|brackets|biomechanics|deep bite|open bite|class ii|class iii|supercorrection/i],
     response:
-      "Daily and Unique Orthodontic Techniques\n\nInstructor: Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)\nDate: Sunday, September 27, 2026\nLocation: 265 Rimrock Rd, North York, ON\nFormat: Hybrid — online or in-person, with hands-on demos · 6 hours · 6 PACE CE credits\nPrice: $399 online · $599 in-person. Prices exclude 13% HST, added at checkout.\n\nCovers evidence-based aligner therapy, JV Supercorrection Rx, deep bite, open bite, Class II/III, and hands-on auxiliary demos.\n\nReserve your seat:\ncanadent.net/courses/daily-unique-orthodontic-techniques",
+      "Daily and Unique Orthodontic Techniques\n\nInstructor: Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)\nDate: Sunday, November 22, 2026\nLocation: 265 Rimrock Rd, North York, ON\nFormat: Hybrid — online or in-person, with hands-on demos · 6 hours · 6 PACE CE credits\nPrice: $399 online · $599 in-person. Prices exclude 13% HST, added at checkout.\n\nCovers evidence-based aligner therapy, JV Supercorrection Rx, deep bite, open bite, Class II/III, and hands-on auxiliary demos.\n\nReserve your seat:\ncanadent.net/courses/daily-unique-orthodontic-techniques",
   },
   {
     patterns: [/endo|root canal|endodontic|apex|pulp|bakhtiar|hengameh|precision endo/i],
@@ -51,7 +51,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/register|enroll|enrol|sign up|book|reserve|seat|spot/i],
     response:
-      "You can register directly on each course page:\n\n• Advanced Adhesive Dentistry (Sept 6):\n  canadent.net/courses/advanced-adhesive-dentistry-master-blueprint\n\n• Orthodontic Techniques (Sept 27):\n  canadent.net/courses/daily-unique-orthodontic-techniques\n\nNeed help? Call 1.437.370.0122 or email admin@canadent.net",
+      "You can register directly on each course page:\n\n• Advanced Adhesive Dentistry (Sept 6):\n  canadent.net/courses/advanced-adhesive-dentistry-master-blueprint\n\n• Orthodontic Techniques (Nov 22):\n  canadent.net/courses/daily-unique-orthodontic-techniques\n\nNeed help? Call 1.437.370.0122 or email admin@canadent.net",
   },
   {
     patterns: [/where|location|address|venue|rimrock|north york|parking|campus|directions/i],
@@ -71,7 +71,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/instructor|teacher|faculty|who teaches|presenter|speaker|\bdr\b/i],
     response:
-      "Our Fall 2026 instructors:\n\n• Dr. Amin Asadollahi — Restorative Specialist\n  (Advanced Adhesive Dentistry, Sept 6)\n\n• Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)\n  (Orthodontic Techniques, Sept 27)\n\nOur faculty includes FRCD(C)-certified specialists, university professors, and internationally recognized clinicians.",
+      "Our Fall 2026 instructors:\n\n• Dr. Amin Asadollahi — Restorative Specialist\n  (Advanced Adhesive Dentistry, Sept 6)\n\n• Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)\n  (Orthodontic Techniques, Nov 22)\n\nOur faculty includes FRCD(C)-certified specialists, university professors, and internationally recognized clinicians.",
   },
   {
     patterns: [/cancel|refund|policy|enrolment agreement|withdraw|transfer/i],
