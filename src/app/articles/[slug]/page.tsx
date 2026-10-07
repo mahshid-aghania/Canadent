@@ -37,14 +37,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: article.publishDate,
       authors: [article.author],
-      images: [
-        {
-          url: `${SITE_URL}${article.heroImage}`,
-          width: 1200,
-          height: 630,
-          alt: article.heroImageAlt,
-        },
-      ],
+      images: article.heroImage
+        ? [
+            {
+              url: `${SITE_URL}${article.heroImage}`,
+              width: 1200,
+              height: 630,
+              alt: article.heroImageAlt ?? article.title,
+            },
+          ]
+        : undefined,
     },
   };
 }
@@ -106,7 +108,7 @@ export default async function ArticleDetailPage({ params }: Props) {
       url: SITE_URL,
     },
     datePublished: article.publishDate,
-    image: `${SITE_URL}${article.heroImage}`,
+    ...(article.heroImage ? { image: `${SITE_URL}${article.heroImage}` } : {}),
     url: articleUrl,
   };
 
@@ -134,25 +136,34 @@ export default async function ArticleDetailPage({ params }: Props) {
         className="w-full relative overflow-hidden"
         style={{ height: "clamp(260px, 45vw, 560px)", background: "#0f2150" }}
       >
-        {article.heroFit === "contain" && (
-          <Image
-            src={article.heroImage}
-            alt=""
-            aria-hidden
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover scale-110 blur-2xl opacity-60"
+        {article.heroImage ? (
+          <>
+            {article.heroFit === "contain" && (
+              <Image
+                src={article.heroImage}
+                alt=""
+                aria-hidden
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover scale-110 blur-2xl opacity-60"
+              />
+            )}
+            <Image
+              src={article.heroImage}
+              alt={article.heroImageAlt ?? article.title}
+              fill
+              priority
+              sizes="100vw"
+              className={article.heroFit === "contain" ? "object-contain" : "object-cover"}
+            />
+          </>
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(135deg, #0f2150 0%, #1b3a8a 100%)" }}
           />
         )}
-        <Image
-          src={article.heroImage}
-          alt={article.heroImageAlt}
-          fill
-          priority
-          sizes="100vw"
-          className={article.heroFit === "contain" ? "object-contain" : "object-cover"}
-        />
         <div
           className="absolute inset-0"
           style={{

@@ -55,25 +55,38 @@ export default function ArticlesPage() {
               {articles.map((article) => (
                 <article key={article.slug} className="card overflow-hidden flex flex-col group">
                   <Link href={`/articles/${article.slug}`} className="block relative w-full aspect-[16/9] overflow-hidden bg-[#f0ece2]">
-                    {article.heroFit === "contain" && (
-                      <Image
-                        src={article.heroImage}
-                        alt=""
-                        aria-hidden
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover scale-110 blur-xl opacity-70"
-                      />
+                    {article.heroImage ? (
+                      <>
+                        {article.heroFit === "contain" && (
+                          <Image
+                            src={article.heroImage}
+                            alt=""
+                            aria-hidden
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover scale-110 blur-xl opacity-70"
+                          />
+                        )}
+                        <Image
+                          src={article.heroImage}
+                          alt={article.heroImageAlt ?? article.title}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className={`transition-transform duration-500 group-hover:scale-105 ${
+                            article.heroFit === "contain" ? "object-contain" : "object-cover"
+                          }`}
+                        />
+                      </>
+                    ) : (
+                      <div
+                        className="absolute inset-0 flex items-center justify-center p-5 text-center transition-transform duration-500 group-hover:scale-105"
+                        style={{ background: "linear-gradient(135deg, #0f2150 0%, #1b3a8a 100%)" }}
+                      >
+                        <span className="font-heading text-base font-bold text-white/90 leading-snug line-clamp-4">
+                          {article.title}
+                        </span>
+                      </div>
                     )}
-                    <Image
-                      src={article.heroImage}
-                      alt={article.heroImageAlt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className={`transition-transform duration-500 group-hover:scale-105 ${
-                        article.heroFit === "contain" ? "object-contain" : "object-cover"
-                      }`}
-                    />
                   </Link>
 
                   <div className="p-6 flex flex-col flex-1">

@@ -1,3 +1,5 @@
+import { dentalHealthArticles } from "./articles-dental-health";
+
 export type Article = {
   slug: string;
   title: string;
@@ -8,8 +10,13 @@ export type Article = {
   authorPhoto?: string;
   publishDate: string; // "YYYY-MM-DD"
   category: string;
-  heroImage: string;
-  heroImageAlt: string;
+  /**
+   * Optional hero image. When omitted, the article renders a branded navy/gold
+   * gradient header instead of an <Image>, so text-first articles don't need a
+   * bespoke image file.
+   */
+  heroImage?: string;
+  heroImageAlt?: string;
   /**
    * How the hero image fills its frame. Defaults to "cover" (landscape images).
    * Use "contain" for portrait / poster-style images so they are shown in full
@@ -462,6 +469,7 @@ export const articles: Article[] = [
 </ol>
 `,
   },
+  ...dentalHealthArticles,
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
