@@ -15,10 +15,10 @@ export function AnnouncementBar() {
       <p className="text-sm font-semibold text-[#0f2150] leading-snug">
         <span className="font-normal opacity-75">Now enrolling: </span>
         <Link
-          href="/courses/advanced-adhesive-dentistry-master-blueprint"
+          href="/courses/things-i-wish-someone-had-told-me-series-01"
           className="underline underline-offset-2 hover:opacity-70 transition-opacity"
         >
-          Advanced Adhesive Dentistry — Sept 6
+          Things I Wish Someone Had Told Me — Oct 23
         </Link>
         <span className="opacity-40 mx-2 hidden sm:inline">·</span>
         <Link
