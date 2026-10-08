@@ -265,8 +265,8 @@ export const courses: Course[] = [
     instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
     price: 399,
     priceOptions: [
-      { label: "Online Attendance", price: 399, originalPrice: 450 },
       { label: "In-Person Attendance", price: 599, originalPrice: 999 },
+      { label: "Online Attendance", price: 399, originalPrice: 450 },
     ],
     date: "Sunday, November 22, 2026",
     time: "9:00 AM – 4:00 PM",
@@ -289,18 +289,48 @@ export const courses: Course[] = [
       "Interpret current scientific evidence supporting modern aligner biomechanics and evidence-based clinical protocols.",
       "Apply practical clinical tips and treatment strategies that can be immediately incorporated into daily orthodontic and interdisciplinary practice.",
     ],
-    attendanceModes: [
+    outcomeIntro:
+      "This intensive 6-hour course provides a comprehensive foundation and clinical blueprint for advanced aligner therapy, built on biological principles, evidence-based biomechanics, and real finished cases. By the end of the session you will be able to:",
+    audience: [
+      "General dentists incorporating clear aligner therapy into their practice",
+      "Orthodontists seeking advanced, evidence-based aligner biomechanics",
+      "Prosthodontists managing interdisciplinary orthodontic–restorative cases",
+      "Clinicians who want to improve aligner predictability and reduce refinements",
+    ],
+    modules: [
       {
-        label: "Online Attendance",
-        kind: "online",
-        summary: "Join the full live session remotely from anywhere in Canada.",
-        includes: [
-          "Live online access to the full 6-hour session",
-          "6 CE Credits (PACE Approved)",
-        ],
-        access:
-          "Your joining link and access details are emailed to you before the course date.",
+        title: "Biomechanical Foundations of Aligner Therapy",
+        detail:
+          "The biological principles and biomechanical concepts that underpin predictable tooth movement with clear aligners, and why modern aligner orthodontics is a comprehensive, rapidly evolving discipline rather than a single-day technique.",
       },
+      {
+        title: "Evidence-Based Attachment Design & the JV Supercorrection Rx",
+        detail:
+          "The rationale behind evidence-based attachment design and the JV Supercorrection Rx, used to improve treatment accuracy and minimize the number of refinements.",
+      },
+      {
+        title: "Digital Treatment Planning & Workflows",
+        detail:
+          "Digital diagnosis, treatment planning, and aligner prescription, with efficient workflows and decision-making that can be incorporated directly into everyday practice.",
+      },
+      {
+        title: "Managing Complex Malocclusions",
+        detail:
+          "Practical solutions from numerous finished clinical cases: deep bite, open bite, Class II and Class III malocclusions, transverse discrepancies, impacted teeth, and complex interdisciplinary orthodontic–prosthodontic cases.",
+      },
+      {
+        title: "Modern Auxiliaries & Hands-On Demonstrations",
+        detail:
+          "Hands-on demonstrations of innovative orthodontic auxiliaries — the U2 Seater, Molar Intruder™, Anterior Intruder™, and the Experience® low-profile self-ligating bracket system — and when to integrate them with aligner treatment.",
+      },
+      {
+        title: "Reference & Continued Learning",
+        detail:
+          "The opportunity to obtain the full-colour hardcover textbook Excellence and Efficiency, an extensive evidence-based reference for continued clinical learning after the course.",
+      },
+    ],
+    instructorTitle: "Orthodontist · Course Instructor",
+    attendanceModes: [
       {
         label: "In-Person Attendance",
         kind: "in-person",
@@ -313,7 +343,23 @@ export const courses: Course[] = [
         ],
         access: "Please plan to arrive 15 minutes early to check in.",
       },
+      {
+        label: "Online Attendance",
+        kind: "online",
+        summary: "Join the full live session remotely from anywhere in Canada.",
+        includes: [
+          "Live online access to the full 6-hour session",
+          "6 CE Credits (PACE Approved)",
+        ],
+        access:
+          "Your joining link and access details are emailed to you before the course date.",
+      },
     ],
+    calendar: {
+      startUtc: "2026-11-22T14:00:00Z",
+      endUtc: "2026-11-22T21:00:00Z",
+      timezone: "America/Toronto",
+    },
   },
   {
     slug: "endo-course-for-general-dentists",
