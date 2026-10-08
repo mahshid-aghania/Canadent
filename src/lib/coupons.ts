@@ -23,6 +23,10 @@ export type Coupon = {
 export const COUPONS: Record<string, Coupon> = {
   SAVE50: { type: "percent", value: 50, label: "50% off" },
   FALL100: { type: "fixed", value: 100, label: "$100 off" },
+  "CONFI-10": { type: "percent", value: 10, label: "10% off" },
+  "CONFI-20": { type: "percent", value: 20, label: "20% off" },
+  "CONFI-50": { type: "percent", value: 50, label: "50% off" },
+  "CONFI-100": { type: "percent", value: 100, label: "100% off" },
 };
 
 // Stripe rejects card charges below ~$0.50 CAD; keep a small floor so a coupon
