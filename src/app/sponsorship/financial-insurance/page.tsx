@@ -49,19 +49,23 @@ const PACKAGE_INCLUDES: string[] = [
 ];
 
 // Pricing table — verbatim figures.
-const PRICING: { tier: string; events: string; course: string; total: string }[] = [
+const PRICING: { tier: string; events: string; course: string }[] = [
   {
-    tier: "10 attendees or fewer",
-    events: "$750 per event × 2",
-    course: "$3,000",
-    total: "$4,500",
+    tier: "10 to 15 attendees",
+    events: "$750 per event",
+    course: "$2,000",
   },
   {
-    tier: "More than 10 attendees",
-    events: "$1,000 per event × 2",
-    course: "$4,000",
-    total: "$6,000",
+    tier: "More than 15 attendees",
+    events: "$1,000 per event",
+    course: "$2,500",
   },
+];
+
+// Partnership terms shown in the contact box.
+const PARTNER_TERMS: string[] = [
+  "The Sponsor must attend two events as a sponsor at locations determined by CANADENT.",
+  "For any Financial or Insurance course in which the Sponsor serves as the presenter, the event may be held at the Sponsor’s location, subject to mutual agreement.",
 ];
 
 const PAYMENT =
@@ -171,11 +175,8 @@ export default function FinancialInsurancePartnershipPage() {
                     <th className="py-3 px-4 text-[13px] font-semibold uppercase tracking-wide text-[#0f2150]">
                       2 In-Person CE Events
                     </th>
-                    <th className="py-3 px-4 text-[13px] font-semibold uppercase tracking-wide text-[#0f2150]">
-                      Dedicated Financial / Insurance Course
-                    </th>
                     <th className="py-3 pl-4 text-[13px] font-semibold uppercase tracking-wide text-[#0f2150]">
-                      Total Partnership
+                      Dedicated Financial / Insurance Course
                     </th>
                   </tr>
                 </thead>
@@ -184,8 +185,7 @@ export default function FinancialInsurancePartnershipPage() {
                     <tr key={row.tier} className="border-b border-[#1a1a2e]/8 align-top">
                       <td className="py-4 pr-4 text-[15px] font-medium text-[#0f2150]">{row.tier}</td>
                       <td className="py-4 px-4 text-[15px] text-[#1a1a2e]/75">{row.events}</td>
-                      <td className="py-4 px-4 text-[15px] text-[#1a1a2e]/75">{row.course}</td>
-                      <td className="py-4 pl-4 text-[15px] font-bold text-[#0f2150]">{row.total}</td>
+                      <td className="py-4 pl-4 text-[15px] text-[#1a1a2e]/75">{row.course}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -210,6 +210,14 @@ export default function FinancialInsurancePartnershipPage() {
             <h2 className="font-heading text-2xl font-bold text-white leading-snug mb-3">
               Interested in becoming a CANADENT Financial &amp; Insurance Partner?
             </h2>
+            <div
+              className="text-left max-w-2xl mx-auto mb-6 rounded-xl p-5 space-y-2"
+              style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.18)" }}
+            >
+              {PARTNER_TERMS.map((t) => (
+                <p key={t} className="text-white/80 text-[15px] leading-relaxed">{t}</p>
+              ))}
+            </div>
             <p className="text-white/70 leading-relaxed mb-6 max-w-2xl mx-auto">
               For more information or to discuss sponsorship opportunities, please email us at
               admin@canadent.net or text us at 437-962-2020.
