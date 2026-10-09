@@ -218,11 +218,11 @@ export default function FinancialInsurancePartnershipPage() {
 
             {/* Sponsor terms */}
             <div
-              className="mt-4 rounded-xl p-6 space-y-3"
-              style={{ background: "#1b2a52", border: "1px solid #1b2a52" }}
+              className="mt-4 rounded-xl p-5 space-y-2"
+              style={{ background: "#fff", border: "1px solid #f0dc9d" }}
             >
               {PARTNER_TERMS.map((t) => (
-                <p key={t} className="text-white/85 text-[15px] leading-relaxed">{t}</p>
+                <p key={t} className="text-[15px] text-[#1a1a2e]/75 leading-relaxed">{t}</p>
               ))}
             </div>
           </div>
