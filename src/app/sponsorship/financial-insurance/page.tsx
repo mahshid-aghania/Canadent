@@ -206,6 +206,7 @@ export default function FinancialInsurancePartnershipPage() {
               className="mt-4 rounded-xl p-5 space-y-2"
               style={{ background: "#fff", border: "1px solid #f0dc9d" }}
             >
+              <h3 className="font-heading text-lg font-bold text-[#0f2150] mb-2">Event Participation &amp; Venue</h3>
               {PARTNER_TERMS.map((t) => (
                 <p key={t} className="text-[15px] text-[#1a1a2e]/75 leading-relaxed">{t}</p>
               ))}
