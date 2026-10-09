@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle, BadgeCheck, Mail, MessageSquare } from "lucide-react";
+import { FinancialInsuranceCheckoutButton } from "@/components/FinancialInsuranceCheckoutButton";
 
 export const metadata: Metadata = {
   title: "Financial & Insurance Sponsorship Partnership",
@@ -199,6 +200,7 @@ export default function FinancialInsurancePartnershipPage() {
             >
               <h3 className="font-heading text-lg font-bold text-[#0f2150] mb-2">Payment:</h3>
               <p className="text-[15px] text-[#1a1a2e]/75 leading-relaxed">{PAYMENT}</p>
+              <FinancialInsuranceCheckoutButton />
             </div>
 
             {/* Sponsor terms */}
