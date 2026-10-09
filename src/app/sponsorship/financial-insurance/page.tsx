@@ -200,6 +200,21 @@ export default function FinancialInsurancePartnershipPage() {
               <h3 className="font-heading text-lg font-bold text-[#0f2150] mb-2">Payment:</h3>
               <p className="text-[15px] text-[#1a1a2e]/75 leading-relaxed">{PAYMENT}</p>
             </div>
+
+            {/* Registration link */}
+            <div
+              className="mt-4 rounded-xl p-5"
+              style={{ background: "#fff", border: "1px solid #f0dc9d" }}
+            >
+              <h3 className="font-heading text-lg font-bold text-[#0f2150] mb-2">Registration Link:</h3>
+              <a
+                href="https://www.canadent.net/sponsorship/financial-insurance"
+                className="text-[15px] font-medium leading-relaxed underline underline-offset-2 break-all"
+                style={{ color: "#1b3a8a" }}
+              >
+                https://www.canadent.net/sponsorship/financial-insurance
+              </a>
+            </div>
           </div>
 
           {/* Contact CTA */}
