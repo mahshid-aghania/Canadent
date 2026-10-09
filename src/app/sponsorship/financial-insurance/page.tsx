@@ -215,6 +215,16 @@ export default function FinancialInsurancePartnershipPage() {
                 https://www.canadent.net/sponsorship/financial-insurance
               </a>
             </div>
+
+            {/* Sponsor terms */}
+            <div
+              className="mt-4 rounded-xl p-6 space-y-3"
+              style={{ background: "#1b2a52", border: "1px solid #1b2a52" }}
+            >
+              {PARTNER_TERMS.map((t) => (
+                <p key={t} className="text-white/85 text-[15px] leading-relaxed">{t}</p>
+              ))}
+            </div>
           </div>
 
           {/* Contact CTA */}
@@ -225,14 +235,6 @@ export default function FinancialInsurancePartnershipPage() {
             <h2 className="font-heading text-2xl font-bold text-white leading-snug mb-3">
               Interested in becoming a CANADENT Financial &amp; Insurance Partner?
             </h2>
-            <div
-              className="text-left max-w-2xl mx-auto mb-6 rounded-xl p-5 space-y-2"
-              style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.18)" }}
-            >
-              {PARTNER_TERMS.map((t) => (
-                <p key={t} className="text-white/80 text-[15px] leading-relaxed">{t}</p>
-              ))}
-            </div>
             <p className="text-white/70 leading-relaxed mb-6 max-w-2xl mx-auto">
               For more information or to discuss sponsorship opportunities, please email us at
               admin@canadent.net or text us at 437-962-2020.
