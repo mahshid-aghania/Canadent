@@ -2,6 +2,13 @@ import { dentalHealthArticles } from "./articles-dental-health";
 import { smileMarkhamArticles } from "./articles-smile-markham";
 
 export type Article = {
+  /**
+   * When true, the article is NOT shown in listing surfaces (the /articles
+   * index, homepage "latest"), but its page is still statically generated and
+   * reachable at /articles/<slug>. Used for off-site editorial content that
+   * should stay live and crawlable without appearing in the main feed.
+   */
+  unlisted?: boolean;
   slug: string;
   title: string;
   excerpt: string;
@@ -471,7 +478,9 @@ export const articles: Article[] = [
 `,
   },
   ...dentalHealthArticles,
-  ...smileMarkhamArticles,
+  // Off-site editorial set: kept live and statically generated, but hidden
+  // from the /articles listing (see `unlisted`).
+  ...smileMarkhamArticles.map((a) => ({ ...a, unlisted: true })),
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -482,8 +491,18 @@ export function getArticle(slug: string): ArticleWithMeta | undefined {
   return { ...article, readTimeMinutes: estimateReadTime(article.bodyHtml) };
 }
 
+/** Listing surfaces: excludes unlisted (off-site editorial) articles. */
 export function getAllArticles(): ArticleWithMeta[] {
   return articles
+    .filter((a) => !a.unlisted)
     .map((a) => ({ ...a, readTimeMinutes: estimateReadTime(a.bodyHtml) }))
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+}
+
+/**
+ * Every article slug, including unlisted ones — used by generateStaticParams
+ * so unlisted pages are still built and reachable by direct URL.
+ */
+export function getAllArticleParams(): { slug: string }[] {
+  return articles.map((a) => ({ slug: a.slug }));
 }
