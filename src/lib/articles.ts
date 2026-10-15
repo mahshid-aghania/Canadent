@@ -477,9 +477,10 @@ export const articles: Article[] = [
 </ol>
 `,
   },
-  ...dentalHealthArticles,
-  // Off-site editorial set: kept live and statically generated, but hidden
-  // from the /articles listing (see `unlisted`).
+  // Off-site editorial sets: kept live and statically generated, but hidden
+  // from the /articles listing (see `unlisted`). Only the faculty articles
+  // above remain visible in the feed.
+  ...dentalHealthArticles.map((a) => ({ ...a, unlisted: true })),
   ...smileMarkhamArticles.map((a) => ({ ...a, unlisted: true })),
 ];
 
