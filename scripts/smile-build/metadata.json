@@ -1,0 +1,2041 @@
+[
+  {
+    "n": 1,
+    "slug": "implant-treatment-planning-clinical-guide",
+    "title": "Dental Implant Treatment Planning: A Complete Clinical Guide",
+    "category": "Implantology",
+    "metaTitle": "Dental Implant Treatment Planning: Clinical Guide",
+    "metaDescription": "A clinical guide to dental implant treatment planning: patient assessment, imaging, site evaluation, prosthetic design, risk factors and staged workflow.",
+    "primaryKeyword": "dental implant treatment planning",
+    "secondaryKeywords": [
+      "implant site assessment",
+      "CBCT for dental implants",
+      "prosthetically driven implant planning",
+      "implant treatment sequence",
+      "bone quality classification",
+      "surgical guide implant placement"
+    ],
+    "publishDate": "2026-10-13",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "are-dental-x-rays-safe",
+      "bone-grafting-before-dental-implants",
+      "single-tooth-implant-vs-bridge",
+      "immediate-vs-delayed-implant-placement",
+      "osseointegration-implant-healing-explained"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-implants",
+      "anchorText": "dental implant treatment information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the surgical sequencing section as a complementary patient-facing resource on implant treatment, contextually relevant to the healing and restorative timeline discussion."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on oral health and treatment planning",
+      "Royal College of Dental Surgeons of Ontario standards of practice and recordkeeping guidance",
+      "American Academy of Periodontology clinical guidance on peri-implant health",
+      "American Academy of Implant Dentistry general clinical information on implant dentistry",
+      "Health Canada / Government of Canada guidance on radiation safety in dental imaging"
+    ],
+    "suggestedImageFilename": "dental-implant-treatment-planning-cbct.jpg"
+  },
+  {
+    "n": 2,
+    "slug": "dental-implant-surgery-stages",
+    "title": "Dental Implant Surgery: Understanding Every Stage",
+    "category": "Implantology",
+    "metaTitle": "Dental Implant Surgery: Every Stage Explained",
+    "metaDescription": "A clinical, stage-by-stage guide to dental implant surgery: planning, placement, osseointegration, restoration, risks, and recovery.",
+    "primaryKeyword": "dental implant surgery",
+    "secondaryKeywords": [
+      "dental implant procedure stages",
+      "osseointegration healing",
+      "implant placement surgery",
+      "single tooth implant",
+      "implant recovery timeline",
+      "bone grafting for implants",
+      "dental implant risks"
+    ],
+    "publishDate": "2026-10-11",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "implant-treatment-planning-clinical-guide",
+      "bone-grafting-before-dental-implants",
+      "osseointegration-implant-healing-explained",
+      "peri-implantitis-causes-prevention-treatment",
+      "caring-for-your-dental-implants"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-implants/procedure",
+      "anchorText": "dental implant procedure overview from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Placed naturally in the implant placement section as a complementary patient-facing walkthrough of the procedure steps."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "American Academy of Periodontology guidance on implants and peri-implant health",
+      "American Academy of Implant Dentistry educational resources",
+      "Health Canada / Government of Canada oral health and medical device information"
+    ],
+    "suggestedImageFilename": "dental-implant-surgery-stages.jpg"
+  },
+  {
+    "n": 3,
+    "slug": "titanium-vs-zirconia-dental-implants",
+    "title": "Titanium vs Zirconia Dental Implants: Materials and Clinical Considerations",
+    "category": "Implantology",
+    "metaTitle": "Titanium vs Zirconia Dental Implants Compared",
+    "metaDescription": "A clinical look at titanium vs zirconia dental implants: materials, osseointegration, aesthetics, indications, and limitations for Canadian dental professionals and patients.",
+    "primaryKeyword": "titanium vs zirconia dental implants",
+    "secondaryKeywords": [
+      "zirconia implant material",
+      "titanium dental implant biocompatibility",
+      "ceramic dental implants",
+      "metal-free dental implants",
+      "implant material selection",
+      "one-piece zirconia implant",
+      "implant osseointegration"
+    ],
+    "publishDate": "2026-10-10",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "osseointegration-implant-healing-explained",
+      "peri-implantitis-causes-prevention-treatment",
+      "implant-treatment-planning-clinical-guide",
+      "dental-implants-vs-dentures",
+      "caring-for-your-dental-implants"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-implants",
+      "anchorText": "implant options at Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the aesthetics section as a contextually relevant example of where patients discuss implant material options."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on tooth replacement and implant therapy",
+      "Royal College of Dental Surgeons of Ontario standards of practice and patient consent guidance",
+      "Ontario Dental Association patient education resources on dental implants",
+      "American Academy of Implant Dentistry general information on implant materials and treatment",
+      "Health Canada / Government of Canada information on regulated medical devices, including dental implants"
+    ],
+    "suggestedImageFilename": "titanium-vs-zirconia-dental-implants.jpg"
+  },
+  {
+    "n": 4,
+    "slug": "bone-grafting-before-dental-implants",
+    "title": "Bone Grafting Before Dental Implant Placement",
+    "category": "Implantology",
+    "metaTitle": "Bone Grafting for Dental Implants: A Clinical Guide",
+    "metaDescription": "A clinical, evidence-informed guide to bone grafting for dental implants: graft types, procedures, healing, risks, and what Ontario patients can expect.",
+    "primaryKeyword": "bone grafting for dental implants",
+    "secondaryKeywords": [
+      "dental bone graft",
+      "sinus lift surgery",
+      "ridge augmentation",
+      "guided bone regeneration",
+      "socket preservation",
+      "alveolar bone loss implants",
+      "autograft vs allograft dental"
+    ],
+    "publishDate": "2026-10-08",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "implant-treatment-planning-clinical-guide",
+      "tooth-extraction-aftercare",
+      "immediate-vs-delayed-implant-placement",
+      "managing-dental-anxiety",
+      "caring-for-your-dental-implants"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-implants/bone-grafting",
+      "anchorText": "bone grafting information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the risks and limitations section as an additional patient-facing resource on how grafting fits within a complete implant plan."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "American Academy of Periodontology patient resources",
+      "American Academy of Implant Dentistry patient education"
+    ],
+    "suggestedImageFilename": "bone-grafting-dental-implants.jpg"
+  },
+  {
+    "n": 5,
+    "slug": "immediate-vs-delayed-implant-placement",
+    "title": "Immediate vs Delayed Dental Implant Placement",
+    "category": "Implantology",
+    "metaTitle": "Immediate vs Delayed Dental Implant Placement",
+    "metaDescription": "A clinical, evidence-informed comparison of immediate vs delayed implant placement protocols, including timing, indications, risks, and patient selection.",
+    "primaryKeyword": "immediate vs delayed implant placement",
+    "secondaryKeywords": [
+      "immediate implant placement",
+      "delayed implant placement",
+      "implant placement timing",
+      "immediate implant loading",
+      "extraction socket implant",
+      "implant placement protocols",
+      "dental implant timing protocols"
+    ],
+    "publishDate": "2026-10-07",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "osseointegration-implant-healing-explained",
+      "implant-treatment-planning-clinical-guide",
+      "bone-grafting-before-dental-implants",
+      "peri-implantitis-causes-prevention-treatment",
+      "dental-implants-vs-dentures"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-implants/same-day",
+      "anchorText": "same-day implant information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the loading section where same-day protocols are discussed, giving readers a relevant orientation resource on same-day implants."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Royal College of Dental Surgeons of Ontario standards and guidelines",
+      "American Academy of Implant Dentistry resources",
+      "American Academy of Periodontology guidance"
+    ],
+    "suggestedImageFilename": "immediate-vs-delayed-implant-placement.jpg"
+  },
+  {
+    "n": 6,
+    "slug": "osseointegration-implant-healing-explained",
+    "title": "Dental Implant Healing and Osseointegration Explained",
+    "category": "Implantology",
+    "metaTitle": "Osseointegration & Dental Implant Healing Explained",
+    "metaDescription": "A clinical guide to osseointegration and dental implant healing: the biology, timelines, influencing factors, risks, and what supports predictable integration.",
+    "primaryKeyword": "osseointegration",
+    "secondaryKeywords": [
+      "dental implant healing",
+      "implant healing stages",
+      "bone-to-implant contact",
+      "implant osseointegration timeline",
+      "factors affecting implant integration",
+      "implant stability"
+    ],
+    "publishDate": "2026-10-05",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "dental-implants-vs-dentures",
+      "immediate-vs-delayed-implant-placement",
+      "bone-grafting-before-dental-implants",
+      "titanium-vs-zirconia-dental-implants",
+      "implant-treatment-planning-clinical-guide"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "American Academy of Implant Dentistry educational resources",
+      "Health Canada medical device information"
+    ],
+    "suggestedImageFilename": "osseointegration-implant-healing.jpg"
+  },
+  {
+    "n": 7,
+    "slug": "single-tooth-implant-vs-bridge",
+    "title": "Single Tooth Implants vs Dental Bridges",
+    "category": "Implantology",
+    "metaTitle": "Single Tooth Implant vs Bridge: A Clinical Guide",
+    "metaDescription": "Compare single tooth implants and dental bridges for one missing tooth: indications, longevity, bone health, cost, and risks in an Ontario context.",
+    "primaryKeyword": "single tooth implant vs bridge",
+    "secondaryKeywords": [
+      "replacing a single missing tooth",
+      "implant supported crown",
+      "fixed dental bridge",
+      "tooth replacement options Ontario",
+      "implant vs bridge cost",
+      "single tooth restoration"
+    ],
+    "publishDate": "2026-10-04",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "osseointegration-implant-healing-explained",
+      "dental-bridges-explained",
+      "bone-grafting-before-dental-implants",
+      "peri-implantitis-causes-prevention-treatment",
+      "caring-for-your-dental-implants"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-implants/single-tooth",
+      "anchorText": "single tooth implant information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Links to a contextually relevant single tooth implant patient resource within the section discussing when an implant is favoured for single tooth replacement."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on tooth replacement and restorative care",
+      "Ontario Dental Association patient resources on dental implants and fixed prosthodontics",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "American Academy of Periodontology guidance on dental implants and peri-implant health",
+      "American Academy of Implant Dentistry general information on single tooth implant treatment"
+    ],
+    "suggestedImageFilename": "single-tooth-implant-vs-bridge.jpg"
+  },
+  {
+    "n": 8,
+    "slug": "peri-implantitis-causes-prevention-treatment",
+    "title": "Peri-Implantitis: Causes, Prevention, and Treatment Principles",
+    "category": "Implantology",
+    "metaTitle": "Peri-Implantitis: Causes, Prevention & Treatment",
+    "metaDescription": "A clinical guide to peri-implantitis: what causes it, how to spot early signs, prevention strategies, and current treatment principles for implants.",
+    "primaryKeyword": "peri-implantitis",
+    "secondaryKeywords": [
+      "peri-implant mucositis",
+      "dental implant infection",
+      "peri-implant disease",
+      "implant bone loss",
+      "peri-implantitis treatment",
+      "implant maintenance",
+      "peri-implantitis prevention"
+    ],
+    "publishDate": "2026-10-02",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "caring-for-your-dental-implants",
+      "gum-disease-warning-signs",
+      "implant-treatment-planning-clinical-guide",
+      "periodontal-maintenance-explained",
+      "bone-grafting-before-dental-implants"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/periodontics",
+      "anchorText": "periodontal and implant care at Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "The maintenance section naturally references an Ontario clinic offering coordinated periodontal and implant care, relevant to the article's focus on individualized maintenance schedules."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association resources",
+      "American Academy of Periodontology clinical guidance",
+      "Royal College of Dental Surgeons of Ontario professional guidance"
+    ],
+    "suggestedImageFilename": "peri-implantitis-bone-loss-implant.jpg"
+  },
+  {
+    "n": 9,
+    "slug": "full-mouth-rehabilitation-dental-implants",
+    "title": "Full-Mouth Dental Rehabilitation With Implants",
+    "category": "Implantology",
+    "metaTitle": "Full Mouth Dental Implants: Rehabilitation Guide",
+    "metaDescription": "A clinical guide to full mouth dental implants: treatment concepts, fixed vs removable options, phases, risks, and what Ontario patients should expect.",
+    "primaryKeyword": "full mouth dental implants",
+    "secondaryKeywords": [
+      "full-arch implant rehabilitation",
+      "All-on-4 implants",
+      "implant-supported denture",
+      "fixed full-arch prosthesis",
+      "edentulous treatment options",
+      "full mouth reconstruction with implants"
+    ],
+    "publishDate": "2026-10-01",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "bone-grafting-before-dental-implants",
+      "implant-treatment-planning-clinical-guide",
+      "osseointegration-implant-healing-explained",
+      "peri-implantitis-causes-prevention-treatment",
+      "caring-for-your-dental-implants"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-implants/all-on-4",
+      "anchorText": "full-arch implant solutions from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "The link appears in the section describing fixed full-arch concepts, giving readers a real-world example of what fixed full-arch treatment involves."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on tooth replacement and implant dentistry",
+      "Royal College of Dental Surgeons of Ontario standards of practice and professional guidance",
+      "American Academy of Periodontology guidance on dental implants and peri-implant health",
+      "American Academy of Implant Dentistry patient education resources"
+    ],
+    "suggestedImageFilename": "full-mouth-dental-implants-rehabilitation.jpg"
+  },
+  {
+    "n": 10,
+    "slug": "dental-implant-maintenance-complications",
+    "title": "Dental Implant Maintenance and Long-Term Complications",
+    "category": "Implantology",
+    "metaTitle": "Dental Implant Maintenance & Long-Term Care",
+    "metaDescription": "A clinical guide to dental implant maintenance, home care, professional recall, and how to recognize and manage long-term implant complications in Ontario.",
+    "primaryKeyword": "dental implant maintenance",
+    "secondaryKeywords": [
+      "implant home care",
+      "peri-implant mucositis",
+      "implant recall intervals",
+      "implant complications",
+      "peri-implantitis prevention",
+      "implant-supported prosthesis care",
+      "long-term implant survival"
+    ],
+    "publishDate": "2026-09-29",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "osseointegration-implant-healing-explained",
+      "peri-implantitis-causes-prevention-treatment",
+      "full-mouth-rehabilitation-dental-implants",
+      "periodontal-maintenance-explained",
+      "personalized-dental-recall-intervals"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-implants/faq",
+      "anchorText": "dental implant questions answered by Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed naturally in the biological complications section where patients commonly have questions about implant warning signs, providing a relevant patient-facing FAQ resource."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association patient education resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "American Academy of Periodontology clinical guidance",
+      "American Academy of Implant Dentistry educational resources"
+    ],
+    "suggestedImageFilename": "dental-implant-maintenance-recall.jpg"
+  },
+  {
+    "n": 11,
+    "slug": "invisalign-vs-braces-clinical-comparison",
+    "title": "Invisalign vs Traditional Braces: Clinical Comparison",
+    "category": "Orthodontics",
+    "metaTitle": "Invisalign vs Braces: Clinical Comparison",
+    "metaDescription": "A clinical comparison of Invisalign vs braces covering indications, mechanics, treatment time, oral hygiene, costs, and limitations for Canadian patients.",
+    "primaryKeyword": "invisalign vs braces",
+    "secondaryKeywords": [
+      "clear aligners vs braces",
+      "Invisalign treatment",
+      "fixed orthodontic appliances",
+      "orthodontic tooth movement",
+      "adult orthodontics Ontario",
+      "choosing orthodontic treatment",
+      "clear aligner limitations"
+    ],
+    "publishDate": "2026-09-28",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "how-clear-aligners-move-teeth",
+      "invisalign-for-adults-indications-limitations",
+      "caring-for-teeth-with-braces",
+      "orthodontic-retention-after-clear-aligners",
+      "understanding-dental-insurance-canada"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/invisalign-in-markham",
+      "anchorText": "Invisalign treatment information in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the oral hygiene section as a contextually relevant example of a local practice resource for patients considering an aligner consultation in the GTA."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on orthodontic and preventive oral health care",
+      "Ontario Dental Association patient resources on orthodontic treatment and dental coverage",
+      "Royal College of Dental Surgeons of Ontario standards of practice and professional guidance",
+      "Health Canada and Government of Canada oral health information resources"
+    ],
+    "suggestedImageFilename": "invisalign-vs-braces-clinical-comparison.jpg"
+  },
+  {
+    "n": 12,
+    "slug": "how-clear-aligners-move-teeth",
+    "title": "How Clear Aligners Move Teeth: The Science Explained",
+    "category": "Orthodontics",
+    "metaTitle": "How Clear Aligners Move Teeth: The Science",
+    "metaDescription": "An evidence-informed look at how clear aligners move teeth: biomechanics, attachments, treatment staging and limitations for Ontario patients.",
+    "primaryKeyword": "how clear aligners move teeth",
+    "secondaryKeywords": [
+      "clear aligner biomechanics",
+      "do clear aligners work",
+      "orthodontic tooth movement",
+      "clear aligner attachments",
+      "aligner treatment staging",
+      "invisalign science"
+    ],
+    "publishDate": "2026-09-26",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "invisalign-vs-braces-clinical-comparison",
+      "clear-aligner-attachments-explained",
+      "invisalign-treatment-planning-digital-orthodontics",
+      "complex-orthodontic-cases-clear-aligners",
+      "orthodontic-retention-after-clear-aligners"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on orthodontics and oral health",
+      "Royal College of Dental Surgeons of Ontario standards and guidance on patient assessment and treatment supervision",
+      "Ontario Dental Association patient education resources on orthodontic care",
+      "Health Canada / Government of Canada information on dental devices and oral health"
+    ],
+    "suggestedImageFilename": "clear-aligner-biomechanics-tooth-movement.jpg"
+  },
+  {
+    "n": 13,
+    "slug": "invisalign-treatment-planning-digital-orthodontics",
+    "title": "Invisalign Treatment Planning and Digital Orthodontics",
+    "category": "Orthodontics",
+    "metaTitle": "Invisalign Treatment Planning & Digital Orthodontics",
+    "metaDescription": "A clinical guide to Invisalign treatment planning and digital orthodontics: intraoral scanning, ClinCheck staging, attachments, and case selection.",
+    "primaryKeyword": "invisalign treatment planning",
+    "secondaryKeywords": [
+      "digital orthodontics",
+      "clear aligner treatment planning",
+      "ClinCheck software",
+      "intraoral scanning orthodontics",
+      "aligner attachments",
+      "orthodontic case selection",
+      "digital treatment simulation"
+    ],
+    "publishDate": "2026-09-25",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "digital-scanning-3d-orthodontics",
+      "clear-aligner-attachments-explained",
+      "how-clear-aligners-move-teeth",
+      "invisalign-vs-braces-for-adults",
+      "orthodontic-retention-after-clear-aligners"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/invisalign-in-markham",
+      "anchorText": "Invisalign planning information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed in a paragraph about how an Ontario practice structures the aligner planning process, giving readers a locally relevant clinical reference point."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "Health Canada / Government of Canada oral health and medical device information"
+    ],
+    "suggestedImageFilename": "invisalign-treatment-planning-digital-orthodontics.jpg"
+  },
+  {
+    "n": 14,
+    "slug": "clear-aligner-attachments-explained",
+    "title": "Clear Aligner Attachments: Function and Clinical Applications",
+    "category": "Orthodontics",
+    "metaTitle": "Clear Aligner Attachments: Function & Clinical Use",
+    "metaDescription": "A clinical guide to clear aligner attachments: how these composite features aid tooth movement, their types, placement, and limitations.",
+    "primaryKeyword": "clear aligner attachments",
+    "secondaryKeywords": [
+      "aligner composite attachments",
+      "Invisalign attachments",
+      "tooth movement with aligners",
+      "attachment placement orthodontics",
+      "optimized attachments",
+      "aligner auxiliaries"
+    ],
+    "publishDate": "2026-09-23",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "how-clear-aligners-move-teeth",
+      "complex-orthodontic-cases-clear-aligners",
+      "invisalign-treatment-planning-digital-orthodontics",
+      "invisalign-vs-braces-clinical-comparison",
+      "caring-for-teeth-with-braces"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/invisalign-in-markham",
+      "anchorText": "clear aligner treatment information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the planning and placement section as a contextually relevant local Ontario practice reference for how aligner-based care is delivered."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association patient information",
+      "Royal College of Dental Surgeons of Ontario standards of practice"
+    ],
+    "suggestedImageFilename": "clear-aligner-attachments-close-up.jpg"
+  },
+  {
+    "n": 15,
+    "slug": "invisalign-for-adults-indications-limitations",
+    "title": "Invisalign for Adults: Indications and Limitations",
+    "category": "Orthodontics",
+    "metaTitle": "Invisalign for Adults: Indications & Limitations",
+    "metaDescription": "A clinical guide to Invisalign for adults: suitable malocclusions, case selection, limitations, risks, and how clear aligners compare to fixed braces.",
+    "primaryKeyword": "invisalign for adults",
+    "secondaryKeywords": [
+      "clear aligners for adults",
+      "adult orthodontic treatment",
+      "invisalign case selection",
+      "invisalign limitations",
+      "clear aligner candidacy",
+      "adult malocclusion treatment",
+      "invisalign vs braces adults"
+    ],
+    "publishDate": "2026-09-22",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "how-clear-aligners-move-teeth",
+      "invisalign-treatment-planning-digital-orthodontics",
+      "invisalign-vs-braces-clinical-comparison",
+      "complex-orthodontic-cases-clear-aligners",
+      "orthodontic-retention-after-clear-aligners"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/invisalign-in-markham",
+      "anchorText": "Invisalign for adults information in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Placed within the risks/periodontal-considerations paragraph as a contextual reference to a local Markham treatment pathway, consistent with the article's clinical discussion."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on orthodontic care and oral health",
+      "Ontario Dental Association patient resources on orthodontic treatment options",
+      "Royal College of Dental Surgeons of Ontario standards of practice and professional guidelines",
+      "Health Canada / Government of Canada information on dental devices and oral health"
+    ],
+    "suggestedImageFilename": "invisalign-for-adults-clear-aligner-consultation.jpg"
+  },
+  {
+    "n": 16,
+    "slug": "orthodontic-retention-after-clear-aligners",
+    "title": "Orthodontic Retention After Clear Aligner Treatment",
+    "category": "Orthodontics",
+    "metaTitle": "Orthodontic Retention After Clear Aligners",
+    "metaDescription": "A clinical guide to orthodontic retention after Invisalign and clear aligner treatment: retainer types, wear protocols, relapse risks and long-term care.",
+    "primaryKeyword": "orthodontic retention after invisalign",
+    "secondaryKeywords": [
+      "clear aligner retainers",
+      "retention after clear aligner treatment",
+      "Vivera retainers",
+      "fixed bonded retainers",
+      "orthodontic relapse prevention",
+      "how long to wear retainers",
+      "post-orthodontic retention protocol"
+    ],
+    "publishDate": "2026-09-20",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "invisalign-treatment-planning-digital-orthodontics",
+      "how-to-floss-properly",
+      "invisalign-vs-braces-clinical-comparison",
+      "how-often-should-you-see-dentist",
+      "what-happens-during-professional-cleaning"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/invisalign-in-markham",
+      "anchorText": "Invisalign and retention information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "The retention discussion naturally connects to a Markham clinic offering Invisalign and retainer services, giving readers a relevant local resource."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association patient resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "Health Canada / Government of Canada oral health information"
+    ],
+    "suggestedImageFilename": "orthodontic-retention-clear-aligner.jpg"
+  },
+  {
+    "n": 17,
+    "slug": "complex-orthodontic-cases-clear-aligners",
+    "title": "Managing Complex Orthodontic Cases With Clear Aligners",
+    "category": "Orthodontics",
+    "metaTitle": "Complex Cases With Clear Aligners: Clinical Guide",
+    "metaDescription": "How clear aligners manage complex orthodontic cases: indications, limitations, attachments, auxiliaries, and when fixed appliances may be preferable.",
+    "primaryKeyword": "complex cases clear aligners",
+    "secondaryKeywords": [
+      "clear aligner limitations",
+      "aligner attachments and auxiliaries",
+      "tooth movement with aligners",
+      "clear aligners vs braces complex",
+      "aligner treatment planning",
+      "orthodontic case selection",
+      "aligner refinement"
+    ],
+    "publishDate": "2026-09-19",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "how-clear-aligners-move-teeth",
+      "clear-aligner-attachments-explained",
+      "invisalign-for-adults-indications-limitations",
+      "invisalign-vs-braces-clinical-comparison",
+      "orthodontic-retention-after-clear-aligners"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/invisalign-in-markham",
+      "anchorText": "clear aligner treatment in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the appliance-comparison section where a reader weighing complex-case options would naturally seek a qualified local provider for assessment."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association patient education resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "Health Canada / Government of Canada oral health information"
+    ],
+    "suggestedImageFilename": "complex-orthodontic-cases-clear-aligners.jpg"
+  },
+  {
+    "n": 18,
+    "slug": "digital-scanning-3d-orthodontics",
+    "title": "Digital Scanning and 3D Technology in Orthodontics",
+    "category": "Orthodontics",
+    "metaTitle": "Digital Scanning & 3D Tech in Orthodontics",
+    "metaDescription": "How intraoral digital scanning and 3D technology support orthodontic diagnosis, treatment planning, and clear aligner and appliance workflows in Canada.",
+    "primaryKeyword": "digital scanning orthodontics",
+    "secondaryKeywords": [
+      "intraoral scanner",
+      "3D orthodontic treatment planning",
+      "digital impressions braces",
+      "clear aligner scanning",
+      "CBCT orthodontics",
+      "digital workflow orthodontics"
+    ],
+    "publishDate": "2026-09-17",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "how-clear-aligners-move-teeth",
+      "invisalign-treatment-planning-digital-orthodontics",
+      "orthodontic-retention-after-clear-aligners",
+      "invisalign-vs-braces-clinical-comparison",
+      "future-of-digital-dentistry-canada"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Royal College of Dental Surgeons of Ontario practice standards",
+      "Ontario Dental Association patient and professional resources",
+      "Health Canada guidance on dental radiography"
+    ],
+    "suggestedImageFilename": "digital-scanning-3d-orthodontics.jpg"
+  },
+  {
+    "n": 19,
+    "slug": "porcelain-veneers-vs-composite-bonding",
+    "title": "Porcelain Veneers vs Composite Bonding",
+    "category": "Cosmetic Dentistry",
+    "metaTitle": "Porcelain Veneers vs Composite Bonding Compared",
+    "metaDescription": "A clinical comparison of porcelain veneers vs composite bonding: materials, longevity, tooth preparation, cost in Ontario, and how to choose between them.",
+    "primaryKeyword": "porcelain veneers vs composite bonding",
+    "secondaryKeywords": [
+      "composite bonding vs porcelain veneers cost",
+      "porcelain veneer longevity",
+      "direct composite bonding",
+      "cosmetic dentistry Ontario",
+      "minimally invasive veneers",
+      "dental veneer tooth preparation"
+    ],
+    "publishDate": "2026-09-16",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "dental-bonding-adhesive-techniques",
+      "minimally-invasive-restorative-dentistry",
+      "teeth-grinding-bruxism-and-night-guards",
+      "smile-makeover-options",
+      "choosing-a-cosmetic-dentist"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cosmetic-dentistry/porcelain-veneers",
+      "anchorText": "porcelain veneers information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "The cost and access section discusses how clinics present porcelain veneers, making a real-world clinic reference contextually relevant and non-promotional."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on restorative and cosmetic dental care",
+      "Ontario Dental Association patient resources on cosmetic and restorative treatment options",
+      "Royal College of Dental Surgeons of Ontario standards of practice and informed consent guidance",
+      "Health Canada / Government of Canada oral health information for the public"
+    ],
+    "suggestedImageFilename": "porcelain-veneers-vs-composite-bonding.jpg"
+  },
+  {
+    "n": 20,
+    "slug": "digital-smile-design-cosmetic-dentistry",
+    "title": "Digital Smile Design and Modern Cosmetic Dentistry",
+    "category": "Cosmetic Dentistry",
+    "metaTitle": "Digital Smile Design in Modern Cosmetic Dentistry",
+    "metaDescription": "How digital smile design guides modern cosmetic dentistry: workflow, benefits, limitations, and what Ontario patients and clinicians should know.",
+    "primaryKeyword": "digital smile design",
+    "secondaryKeywords": [
+      "cosmetic dentistry workflow",
+      "smile makeover planning",
+      "digital mock-up dentistry",
+      "intraoral scanning cosmetic",
+      "aesthetic treatment planning",
+      "smile design software",
+      "DSD protocol"
+    ],
+    "publishDate": "2026-09-14",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "digital-scanning-3d-orthodontics",
+      "porcelain-veneers-vs-composite-bonding",
+      "dental-aesthetics-smile-proportions",
+      "gum-disease-warning-signs",
+      "smile-makeover-options"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cosmetic-dentistry",
+      "anchorText": "cosmetic dentistry resources at Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "The link gives readers a real-world clinical example of how cosmetic planning and restorative aesthetics are applied, directly reinforcing the article's section on interdisciplinary coordination."
+    },
+    "references": [
+      "Royal College of Dental Surgeons of Ontario (RCDSO) standards and guidance",
+      "Canadian Dental Association (CDA) clinical guidance",
+      "Ontario Dental Association (ODA) patient resources",
+      "Health Canada / Government of Canada dental materials and device information"
+    ],
+    "suggestedImageFilename": "digital-smile-design-workflow.jpg"
+  },
+  {
+    "n": 21,
+    "slug": "teeth-whitening-clinical-methods-safety",
+    "title": "Teeth Whitening: Clinical Methods and Safety",
+    "category": "Cosmetic Dentistry",
+    "metaTitle": "Teeth Whitening: Clinical Methods & Safety",
+    "metaDescription": "A clinical overview of teeth whitening methods, from in-office and take-home systems to over-the-counter products, with evidence-informed safety guidance.",
+    "primaryKeyword": "teeth whitening clinical methods",
+    "secondaryKeywords": [
+      "professional teeth whitening",
+      "in-office whitening",
+      "take-home whitening trays",
+      "hydrogen peroxide tooth bleaching",
+      "tooth sensitivity after whitening",
+      "whitening safety",
+      "carbamide peroxide"
+    ],
+    "publishDate": "2026-09-13",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "teeth-whitening-options-explained",
+      "what-causes-stained-teeth",
+      "smile-makeover-options",
+      "tooth-sensitivity-causes-and-relief",
+      "signs-you-need-to-see-a-dentist"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cosmetic-dentistry/zoom-teeth-whitening",
+      "anchorText": "professional teeth whitening information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the safety section to illustrate how a supervised in-office whitening protocol is organized, which is directly relevant to the clinical-methods focus of the article."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on cosmetic and tooth whitening procedures",
+      "Ontario Dental Association patient resources on cosmetic dental treatment",
+      "Royal College of Dental Surgeons of Ontario standards of practice for regulated dental care",
+      "Health Canada / Government of Canada consumer information on tooth whitening products and peroxide-based agents"
+    ],
+    "suggestedImageFilename": "teeth-whitening-clinical-methods-safety.jpg"
+  },
+  {
+    "n": 22,
+    "slug": "zirconia-vs-porcelain-crowns",
+    "title": "Zirconia vs Porcelain Dental Crowns",
+    "category": "Cosmetic Dentistry",
+    "metaTitle": "Zirconia vs Porcelain Crowns: A Clinical Guide",
+    "metaDescription": "Compare zirconia vs porcelain crowns: strength, aesthetics, tooth preparation, and clinical indications for Canadian dental patients and professionals.",
+    "primaryKeyword": "zirconia vs porcelain crowns",
+    "secondaryKeywords": [
+      "zirconia dental crowns",
+      "porcelain dental crowns",
+      "all-ceramic crowns",
+      "porcelain-fused-to-metal crowns",
+      "monolithic zirconia",
+      "tooth crown materials",
+      "crown aesthetics vs strength"
+    ],
+    "publishDate": "2026-09-11",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "dental-crowns-vs-fillings",
+      "minimally-invasive-restorative-dentistry",
+      "teeth-grinding-bruxism-and-night-guards",
+      "gum-disease-warning-signs",
+      "dental-crown-aftercare"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cosmetic-dentistry/porcelain-crowns-caps",
+      "anchorText": "porcelain crown information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the aesthetics indications section where porcelain crown patient context is directly relevant to the material discussion."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on restorative and prosthodontic care",
+      "Ontario Dental Association patient resources on dental restorations",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "Health Canada / Government of Canada oral health information"
+    ],
+    "suggestedImageFilename": "zirconia-vs-porcelain-crowns.jpg"
+  },
+  {
+    "n": 23,
+    "slug": "minimally-invasive-restorative-dentistry",
+    "title": "Minimally Invasive Restorative Dentistry",
+    "category": "Restorative Dentistry",
+    "metaTitle": "Minimally Invasive Dentistry: Clinical Guide",
+    "metaDescription": "A clinical overview of minimally invasive dentistry: tissue-preserving diagnosis, adhesive materials, and modern restorative techniques for Ontario patients.",
+    "primaryKeyword": "minimally invasive dentistry",
+    "secondaryKeywords": [
+      "tooth-preserving restorations",
+      "adhesive dentistry",
+      "remineralization therapy",
+      "tissue-conserving fillings",
+      "conservative cavity treatment",
+      "early caries management",
+      "composite restorations"
+    ],
+    "publishDate": "2026-09-10",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "dental-caries-prevention-evidence-based",
+      "fluoride-remineralization-modern-dentistry",
+      "risk-based-preventive-dentistry",
+      "dental-sealants-for-children",
+      "dental-bonding-adhesive-techniques"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/restorations",
+      "anchorText": "restorative dentistry services at Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "The link appears in the adhesive restorative materials section as a concrete Ontario example of how conservative restorations fit into clinical care."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on dental caries management and preventive care",
+      "Ontario Dental Association patient and practice resources on restorative and preventive dentistry",
+      "Royal College of Dental Surgeons of Ontario standards of practice for diagnosis and treatment planning",
+      "Health Canada / Government of Canada public resources on oral health and fluoride use"
+    ],
+    "suggestedImageFilename": "minimally-invasive-restorative-dentistry.jpg"
+  },
+  {
+    "n": 24,
+    "slug": "dental-bonding-adhesive-techniques",
+    "title": "Dental Bonding Techniques and Adhesive Dentistry",
+    "category": "Cosmetic Dentistry",
+    "metaTitle": "Dental Bonding and Adhesive Dentistry Explained",
+    "metaDescription": "A clinical overview of dental bonding and adhesive dentistry: composite materials, etch-and-rinse vs. self-etch systems, technique, and longevity.",
+    "primaryKeyword": "dental bonding adhesive dentistry",
+    "secondaryKeywords": [
+      "composite bonding",
+      "dental adhesive systems",
+      "total-etch vs self-etch",
+      "direct composite restoration",
+      "tooth bonding procedure",
+      "composite veneers",
+      "enamel and dentin bonding"
+    ],
+    "publishDate": "2026-09-08",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "porcelain-veneers-vs-composite-bonding",
+      "chipped-tooth-what-to-do",
+      "minimally-invasive-restorative-dentistry",
+      "smile-makeover-options",
+      "teeth-grinding-bruxism-and-night-guards"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cosmetic-dentistry/bonding",
+      "anchorText": "dental bonding information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Offers readers a complementary plain-language overview of the bonding procedure within a section explaining the clinical technique."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "Ontario Dental Association educational resources"
+    ],
+    "suggestedImageFilename": "dental-bonding-adhesive-dentistry.jpg"
+  },
+  {
+    "n": 25,
+    "slug": "full-mouth-rehabilitation-planning",
+    "title": "Full-Mouth Rehabilitation: Clinical Planning Principles",
+    "category": "Restorative Dentistry",
+    "metaTitle": "Full-Mouth Rehabilitation: Clinical Planning Guide",
+    "metaDescription": "A clinical guide to full mouth rehabilitation planning: diagnosis, occlusion, vertical dimension, treatment sequencing, and risk management.",
+    "primaryKeyword": "full mouth rehabilitation",
+    "secondaryKeywords": [
+      "full mouth rehabilitation planning",
+      "occlusal vertical dimension",
+      "full mouth reconstruction",
+      "treatment sequencing in restorative dentistry",
+      "centric relation records",
+      "complex restorative dentistry",
+      "diagnostic wax-up"
+    ],
+    "publishDate": "2026-09-07",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "teeth-grinding-bruxism-and-night-guards",
+      "new-dental-patient-what-to-expect",
+      "periodontal-maintenance-explained",
+      "digital-smile-design-cosmetic-dentistry",
+      "dental-implants-vs-dentures"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/restorations",
+      "anchorText": "full-mouth restoration information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "The implant and restorative options section is a contextually relevant place to point patients to a patient-facing overview of full-mouth restoration services."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on comprehensive and restorative care",
+      "Royal College of Dental Surgeons of Ontario standards of practice and record-keeping guidance",
+      "American Academy of Periodontology guidance on periodontal health and maintenance",
+      "Ontario Dental Association patient resources on restorative treatment and oral health"
+    ],
+    "suggestedImageFilename": "full-mouth-rehabilitation-planning.jpg"
+  },
+  {
+    "n": 26,
+    "slug": "dental-aesthetics-smile-proportions",
+    "title": "Dental Aesthetics: Understanding Smile Proportions and Tooth Shape",
+    "category": "Cosmetic Dentistry",
+    "metaTitle": "Dental Aesthetics: Smile Proportions & Tooth Shape",
+    "metaDescription": "A clinical guide to dental aesthetics smile proportions, tooth shape, symmetry, and the principles that guide evidence-informed cosmetic treatment planning.",
+    "primaryKeyword": "dental aesthetics smile proportions",
+    "secondaryKeywords": [
+      "golden proportion teeth",
+      "smile design principles",
+      "tooth shape and personality",
+      "gingival display and smile",
+      "dental midline and symmetry",
+      "width to length ratio teeth",
+      "cosmetic smile analysis"
+    ],
+    "publishDate": "2026-09-05",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "gum-disease-warning-signs",
+      "periodontal-maintenance-explained",
+      "smile-makeover-options",
+      "digital-smile-design-cosmetic-dentistry",
+      "invisalign-vs-braces-for-adults"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cosmetic-dentistry",
+      "anchorText": "cosmetic dentistry information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the treatment-approach section as a relevant Ontario reference for patients comparing the range of cosmetic dentistry services."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice"
+    ],
+    "suggestedImageFilename": "dental-aesthetics-smile-proportions.jpg"
+  },
+  {
+    "n": 27,
+    "slug": "modern-root-canal-treatment-techniques",
+    "title": "Modern Root Canal Treatment: Techniques and Technology",
+    "category": "Endodontics",
+    "metaTitle": "Modern Root Canal Treatment: Techniques & Tech",
+    "metaDescription": "How modern root canal treatment uses rotary instruments, CBCT imaging, magnification, and improved sealers to clean, shape, and seal root canals.",
+    "primaryKeyword": "modern root canal treatment",
+    "secondaryKeywords": [
+      "endodontic therapy techniques",
+      "rotary endodontics",
+      "CBCT in endodontics",
+      "root canal technology",
+      "nickel-titanium files",
+      "apex locators",
+      "root canal success factors"
+    ],
+    "publishDate": "2026-09-04",
+    "priority": "High",
+    "internalLinkSlugs": [
+      "endodontic-diagnosis-pulpal-periapical",
+      "root-canal-vs-tooth-extraction",
+      "are-dental-x-rays-safe",
+      "cbct-in-endodontics-applications",
+      "rotary-vs-reciprocating-endodontics"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/endodontics/root-canal-therapy",
+      "anchorText": "root canal therapy information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed naturally in the disinfection/irrigation section as a supplementary patient-facing resource that complements the treating clinician's own explanation."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "American Association of Endodontists clinical resources",
+      "Health Canada dental radiography and radiation safety guidance"
+    ],
+    "suggestedImageFilename": "modern-root-canal-treatment-techniques.jpg"
+  },
+  {
+    "n": 28,
+    "slug": "endodontic-diagnosis-pulpal-periapical",
+    "title": "Endodontic Diagnosis: Understanding Pulpal and Periapical Disease",
+    "category": "Endodontics",
+    "metaTitle": "Endodontic Diagnosis: Pulpal & Periapical Disease",
+    "metaDescription": "A clinical guide to endodontic diagnosis in Canada: pulpal and periapical disease classifications, pulp testing, radiographic signs, and treatment planning.",
+    "primaryKeyword": "endodontic diagnosis",
+    "secondaryKeywords": [
+      "pulpal disease classification",
+      "periapical disease",
+      "irreversible pulpitis",
+      "apical periodontitis",
+      "pulp vitality testing",
+      "endodontic diagnosis in Ontario",
+      "symptomatic vs asymptomatic pulpitis"
+    ],
+    "publishDate": "2026-09-02",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "toothache-causes-when-to-worry",
+      "tooth-sensitivity-causes-and-relief",
+      "dental-abscess-symptoms-treatment",
+      "cbct-in-endodontics-applications",
+      "root-canal-vs-tooth-extraction"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "American Association of Endodontists clinical guidance on endodontic diagnostic terminology.",
+      "Canadian Dental Association clinical and patient resources on dental pain and oral health.",
+      "Royal College of Dental Surgeons of Ontario standards of practice and practice advisories.",
+      "Ontario Dental Association patient education resources on dental care."
+    ],
+    "suggestedImageFilename": "endodontic-diagnosis-pulpal-periapical.jpg"
+  },
+  {
+    "n": 29,
+    "slug": "root-canal-retreatment-indications",
+    "title": "Root Canal Retreatment: Indications and Challenges",
+    "category": "Endodontics",
+    "metaTitle": "Root Canal Retreatment: Indications & Challenges",
+    "metaDescription": "A clinical guide to root canal retreatment: when it is indicated, how non-surgical and surgical options compare, technical challenges, and realistic outcomes.",
+    "primaryKeyword": "root canal retreatment",
+    "secondaryKeywords": [
+      "endodontic retreatment",
+      "failed root canal treatment",
+      "persistent apical periodontitis",
+      "non-surgical retreatment",
+      "apical surgery vs retreatment",
+      "retreatment vs extraction"
+    ],
+    "publishDate": "2026-09-01",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "modern-root-canal-treatment-techniques",
+      "endodontic-diagnosis-pulpal-periapical",
+      "cbct-in-endodontics-applications",
+      "root-canal-vs-tooth-extraction",
+      "rotary-vs-reciprocating-endodontics"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/endodontics/root-canal-retreatment",
+      "anchorText": "root canal retreatment information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the section comparing non-surgical and surgical options as a relevant external patient resource on retreatment."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "American Association of Endodontists clinical guidance"
+    ],
+    "suggestedImageFilename": "root-canal-retreatment-indications.jpg"
+  },
+  {
+    "n": 30,
+    "slug": "rotary-vs-reciprocating-endodontics",
+    "title": "Rotary vs Reciprocating Endodontic Instrumentation",
+    "category": "Endodontics",
+    "metaTitle": "Rotary vs Reciprocating Endodontics: A Clinical Guide",
+    "metaDescription": "A clinical, evidence-informed comparison of rotary vs reciprocating endodontics, covering kinematics, canal shaping, file fracture risk, and case selection.",
+    "primaryKeyword": "rotary vs reciprocating endodontics",
+    "secondaryKeywords": [
+      "continuous rotation endodontic files",
+      "reciprocating file systems",
+      "NiTi file fracture",
+      "root canal instrumentation techniques",
+      "single-file endodontics",
+      "canal shaping systems",
+      "glide path preparation"
+    ],
+    "publishDate": "2026-08-30",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "modern-root-canal-treatment-techniques",
+      "endodontic-diagnosis-pulpal-periapical",
+      "cbct-in-endodontics-applications",
+      "root-canal-retreatment-indications",
+      "root-canal-vs-tooth-extraction"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "American Association of Endodontists clinical resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "Ontario Dental Association professional practice information"
+    ],
+    "suggestedImageFilename": "rotary-vs-reciprocating-endodontic-files.jpg"
+  },
+  {
+    "n": 31,
+    "slug": "cbct-in-endodontics-applications",
+    "title": "CBCT in Endodontics: Clinical Applications",
+    "category": "Endodontics",
+    "metaTitle": "CBCT in Endodontics: Clinical Applications",
+    "metaDescription": "How cone beam CT (CBCT) supports endodontic diagnosis, canal anatomy, trauma and retreatment decisions, plus radiation dose and limits in Ontario practice.",
+    "primaryKeyword": "cbct in endodontics",
+    "secondaryKeywords": [
+      "cone beam CT dental imaging",
+      "endodontic diagnosis imaging",
+      "limited field of view CBCT",
+      "periapical lesion imaging",
+      "root canal anatomy 3D",
+      "CBCT radiation dose dental"
+    ],
+    "publishDate": "2026-08-29",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "endodontic-diagnosis-pulpal-periapical",
+      "modern-root-canal-treatment-techniques",
+      "rotary-vs-reciprocating-endodontics",
+      "root-canal-retreatment-indications",
+      "are-dental-x-rays-safe"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on diagnostic imaging and radiation safety in dentistry",
+      "Health Canada / Government of Canada guidance on radiation protection and dental radiographic equipment",
+      "Royal College of Dental Surgeons of Ontario standards of practice on dental radiography and CBCT",
+      "American Association of Endodontists guidance on the use of CBCT in endodontics"
+    ],
+    "suggestedImageFilename": "cbct-endodontics-imaging.jpg"
+  },
+  {
+    "n": 32,
+    "slug": "root-canal-vs-tooth-extraction",
+    "title": "Root Canal Treatment vs Tooth Extraction",
+    "category": "Endodontics",
+    "metaTitle": "Root Canal vs Extraction: Clinical Comparison",
+    "metaDescription": "An evidence-informed comparison of root canal treatment vs extraction: indications, success factors, risks, costs, and tooth replacement options.",
+    "primaryKeyword": "root canal vs extraction",
+    "secondaryKeywords": [
+      "save tooth or extract",
+      "root canal treatment indications",
+      "tooth extraction indications",
+      "endodontic treatment outcomes",
+      "replacing an extracted tooth",
+      "deciding between root canal and extraction"
+    ],
+    "publishDate": "2026-08-27",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "modern-root-canal-treatment-techniques",
+      "tooth-extractions-indications-recovery",
+      "root-canal-retreatment-indications",
+      "dental-implants-vs-dentures",
+      "understanding-dental-insurance-canada"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/endodontics/root-canal-therapy",
+      "anchorText": "root canal therapy resource from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Links to a relevant patient-facing root canal therapy explainer within the section discussing endodontic outcomes and the procedure itself."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on endodontic care and tooth preservation",
+      "American Association of Endodontists patient and practitioner resources on root canal treatment and treatment planning",
+      "Ontario Dental Association general guidance on restorative and surgical dental care",
+      "Royal College of Dental Surgeons of Ontario standards of practice for dental treatment and informed consent"
+    ],
+    "suggestedImageFilename": "root-canal-vs-tooth-extraction.jpg"
+  },
+  {
+    "n": 33,
+    "slug": "regenerative-endodontics-research",
+    "title": "Regenerative Endodontics: Current Research and Limitations",
+    "category": "Endodontics",
+    "metaTitle": "Regenerative Endodontics: Research & Limits",
+    "metaDescription": "An evidence-informed overview of regenerative endodontics: indications, biological concepts, outcomes, and current limitations in Ontario.",
+    "primaryKeyword": "regenerative endodontics",
+    "secondaryKeywords": [
+      "regenerative endodontic procedures",
+      "revascularization dental",
+      "immature permanent teeth treatment",
+      "pulp regeneration",
+      "apexification vs revascularization",
+      "stem cells of the apical papilla"
+    ],
+    "publishDate": "2026-08-26",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "endodontic-diagnosis-pulpal-periapical",
+      "modern-root-canal-treatment-techniques",
+      "cbct-in-endodontics-applications",
+      "root-canal-vs-tooth-extraction",
+      "choosing-a-dental-clinic-ontario"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "American Association of Endodontists clinical considerations and guidance on regenerative endodontic procedures",
+      "Canadian Dental Association clinical and patient education resources on endodontic care",
+      "Royal College of Dental Surgeons of Ontario standards of practice and scope of practice guidance",
+      "Ontario Dental Association professional and public information on dental treatment"
+    ],
+    "suggestedImageFilename": "regenerative-endodontics-immature-tooth.jpg"
+  },
+  {
+    "n": 34,
+    "slug": "risk-based-preventive-dentistry",
+    "title": "Risk-Based Preventive Dentistry",
+    "category": "Preventive Care",
+    "metaTitle": "Risk-Based Preventive Dentistry: A Clinical Guide",
+    "metaDescription": "How risk-based preventive dentistry uses caries and periodontal risk assessment to personalize recall intervals, fluoride, and prevention for each patient.",
+    "primaryKeyword": "risk-based preventive dentistry",
+    "secondaryKeywords": [
+      "caries risk assessment",
+      "periodontal risk assessment",
+      "personalized recall intervals",
+      "individualized preventive care",
+      "dental risk stratification",
+      "evidence-based prevention",
+      "preventive dentistry Ontario"
+    ],
+    "publishDate": "2026-08-24",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "how-often-should-you-see-dentist",
+      "personalized-dental-recall-intervals",
+      "benefits-of-preventive-dentistry",
+      "diet-and-tooth-decay",
+      "dry-mouth-causes-and-management"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cleanings-prevention",
+      "anchorText": "preventive dental care at Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed naturally in the everyday preventive levers section where ongoing clinic-based cleanings and prevention are discussed for Ontario patients."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on preventive oral health care and recall intervals",
+      "Ontario Dental Association patient information on preventive dentistry and regular dental visits",
+      "Royal College of Dental Surgeons of Ontario standards of practice relevant to examination, diagnosis, and recall",
+      "American Academy of Periodontology guidance on periodontal risk assessment and maintenance",
+      "Health Canada / Government of Canada oral health information on fluoride and caries prevention"
+    ],
+    "suggestedImageFilename": "risk-based-preventive-dentistry.jpg"
+  },
+  {
+    "n": 35,
+    "slug": "professional-cleaning-periodontal-maintenance",
+    "title": "Professional Dental Cleaning and Periodontal Maintenance",
+    "category": "Preventive Care",
+    "metaTitle": "Professional Cleaning & Periodontal Maintenance",
+    "metaDescription": "How professional dental cleaning and periodontal maintenance differ, what each visit involves, recommended intervals, and why ongoing care aids gums.",
+    "primaryKeyword": "periodontal maintenance",
+    "secondaryKeywords": [
+      "professional dental cleaning",
+      "dental prophylaxis",
+      "scaling and root planing",
+      "periodontal recall",
+      "gum disease management",
+      "supragingival and subgingival calculus",
+      "dental hygiene appointment"
+    ],
+    "publishDate": "2026-08-23",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "benefits-of-preventive-dentistry",
+      "gum-disease-warning-signs",
+      "periodontal-maintenance-explained",
+      "personalized-dental-recall-intervals",
+      "periodontal-disease-systemic-health"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/periodontics/prophylaxis-teeth-cleaning",
+      "anchorText": "professional cleaning information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "The link appears in a paragraph discussing what a cleaning visit involves, offering a relevant patient-facing clinic resource on prophylaxis."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "American Academy of Periodontology guidance on periodontal maintenance",
+      "Ontario Dental Association preventive care resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice"
+    ],
+    "suggestedImageFilename": "professional-cleaning-periodontal-maintenance.jpg"
+  },
+  {
+    "n": 36,
+    "slug": "dental-caries-prevention-evidence-based",
+    "title": "Dental Caries Prevention: Evidence-Based Approaches",
+    "category": "Preventive Care",
+    "metaTitle": "Dental Caries Prevention: Evidence-Based Methods",
+    "metaDescription": "An evidence-informed guide to dental caries prevention for Canadian patients and professionals: fluoride, diet, risk assessment and sealants.",
+    "primaryKeyword": "dental caries prevention",
+    "secondaryKeywords": [
+      "preventing tooth decay",
+      "caries risk assessment",
+      "fluoride for cavity prevention",
+      "dental sealants",
+      "remineralization",
+      "oral hygiene and cavities",
+      "diet and tooth decay"
+    ],
+    "publishDate": "2026-08-21",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "benefits-of-preventive-dentistry",
+      "risk-based-preventive-dentistry",
+      "fluoride-benefits-explained",
+      "diet-and-tooth-decay",
+      "dental-sealants-for-children"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cleanings-prevention",
+      "anchorText": "cavity prevention resources from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed naturally in the lifespan section where home-based cavity prevention guidance complements the in-office preventive care discussed."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on preventive dentistry and caries management",
+      "Health Canada / Government of Canada guidance on fluoride use and community water fluoridation",
+      "Ontario Dental Association patient resources on oral health and cavity prevention",
+      "Royal College of Dental Surgeons of Ontario professional standards and practice guidance"
+    ],
+    "suggestedImageFilename": "dental-caries-prevention-evidence-based.jpg"
+  },
+  {
+    "n": 37,
+    "slug": "fluoride-remineralization-modern-dentistry",
+    "title": "Fluoride and Remineralization in Modern Dentistry",
+    "category": "Preventive Care",
+    "metaTitle": "Fluoride & Remineralization in Modern Dentistry",
+    "metaDescription": "How fluoride remineralization works, its clinical role in preventive care, delivery methods, safety, and limitations for Canadian dental patients.",
+    "primaryKeyword": "fluoride remineralization",
+    "secondaryKeywords": [
+      "how fluoride works on teeth",
+      "tooth remineralization",
+      "fluoride varnish",
+      "topical fluoride treatment",
+      "demineralization and remineralization",
+      "preventing early caries",
+      "fluoride safety Canada"
+    ],
+    "publishDate": "2026-08-20",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "diet-and-tooth-decay",
+      "preventing-cavities-in-adults",
+      "fluoride-benefits-explained",
+      "benefits-of-preventive-dentistry",
+      "how-to-floss-properly"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cleanings-prevention/fluoride-treatment",
+      "anchorText": "fluoride treatment information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "The link appears in the professional applications subsection to show patients how a clinic frames fluoride within a cleaning and prevention visit, which is directly contextually relevant."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on fluoride use and caries prevention",
+      "Health Canada / Government of Canada guidance on fluoride and community water fluoridation",
+      "Ontario Dental Association public information on preventive dental care"
+    ],
+    "suggestedImageFilename": "fluoride-remineralization-enamel.jpg"
+  },
+  {
+    "n": 38,
+    "slug": "periodontal-disease-systemic-health",
+    "title": "Periodontal Disease and Systemic Health",
+    "category": "Preventive Care",
+    "metaTitle": "Periodontal Disease and Systemic Health | CanaDent",
+    "metaDescription": "Explore the evidence-informed links between periodontal disease and systemic health, including diabetes, heart health and pregnancy, plus prevention.",
+    "primaryKeyword": "periodontal disease systemic health",
+    "secondaryKeywords": [
+      "gum disease and overall health",
+      "periodontitis and diabetes",
+      "oral-systemic connection",
+      "periodontal inflammation",
+      "gum disease heart health",
+      "periodontal disease pregnancy"
+    ],
+    "publishDate": "2026-08-18",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "gum-disease-warning-signs",
+      "oral-health-during-pregnancy",
+      "periodontal-maintenance-explained",
+      "how-to-floss-properly",
+      "risk-based-preventive-dentistry"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/periodontics",
+      "anchorText": "periodontal care information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Placed naturally in the clinical management section to point readers toward a real-world example of how periodontal services are organised within a dental practice."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "American Academy of Periodontology guidance",
+      "Ontario Dental Association public resources",
+      "Royal College of Dental Surgeons of Ontario professional standards",
+      "Health Canada / Government of Canada oral health information"
+    ],
+    "suggestedImageFilename": "periodontal-disease-systemic-health.jpg"
+  },
+  {
+    "n": 39,
+    "slug": "oral-health-across-life-stages",
+    "title": "Oral Health Across Different Life Stages",
+    "category": "Preventive Care",
+    "metaTitle": "Oral Health Across Different Life Stages | CanaDent",
+    "metaDescription": "How oral health needs change from infancy to older adulthood: an evidence-informed guide to the oral health life stages for Canadian patients.",
+    "primaryKeyword": "oral health life stages",
+    "secondaryKeywords": [
+      "oral health by age",
+      "dental care for children",
+      "dental care for seniors",
+      "oral health in pregnancy",
+      "age-related dental changes",
+      "lifelong preventive dentistry",
+      "dental care across lifespan"
+    ],
+    "publishDate": "2026-08-17",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "childs-first-dental-visit",
+      "dental-sealants-for-children",
+      "preventing-cavities-in-adults",
+      "oral-health-during-pregnancy",
+      "dental-care-for-seniors"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "Canadian Dental Association clinical and public oral health guidance",
+      "Ontario Dental Association patient and preventive care resources",
+      "Royal College of Dental Surgeons of Ontario professional standards and guidelines",
+      "Health Canada / Government of Canada oral health information"
+    ],
+    "suggestedImageFilename": "oral-health-life-stages.jpg"
+  },
+  {
+    "n": 40,
+    "slug": "personalized-dental-recall-intervals",
+    "title": "Personalized Dental Recall Intervals and Preventive Care",
+    "category": "Preventive Care",
+    "metaTitle": "Personalized Dental Recall Intervals Explained",
+    "metaDescription": "How dental recall intervals are tailored to individual risk, what factors shape your recall schedule, and why personalized preventive care matters in Ontario.",
+    "primaryKeyword": "dental recall intervals",
+    "secondaryKeywords": [
+      "how often to see the dentist",
+      "risk-based dental recall",
+      "personalized preventive dental care",
+      "dental hygiene recall schedule",
+      "caries risk assessment",
+      "periodontal maintenance interval",
+      "recall interval factors"
+    ],
+    "publishDate": "2026-08-15",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "risk-based-preventive-dentistry",
+      "periodontal-maintenance-explained",
+      "gum-disease-warning-signs",
+      "signs-you-need-to-see-a-dentist",
+      "how-often-should-you-see-dentist"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/cleanings-prevention/complete-oral-exam-cleanings",
+      "anchorText": "dental exam and recall information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed in the assessment-visit section where patients comparing how a personalized recall schedule fits their needs would find external exam and recall information contextually relevant."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Ontario Dental Association preventive dentistry resources",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "Government of Canada / Health Canada oral health information"
+    ],
+    "suggestedImageFilename": "personalized-dental-recall-intervals.jpg"
+  },
+  {
+    "n": 41,
+    "slug": "dental-emergencies-triage-management",
+    "title": "Dental Emergencies: Diagnosis, Triage, and Management",
+    "category": "Emergency Care",
+    "metaTitle": "Dental Emergencies: Diagnosis, Triage & Management",
+    "metaDescription": "A clinical guide to dental emergencies management: how to diagnose, triage, and manage toothache, trauma, abscess, and avulsion in Ontario.",
+    "primaryKeyword": "dental emergencies management",
+    "secondaryKeywords": [
+      "dental emergency triage",
+      "avulsed tooth first aid",
+      "dental abscess treatment",
+      "toothache emergency",
+      "dental trauma management",
+      "when to see an emergency dentist",
+      "acute dental pain assessment"
+    ],
+    "publishDate": "2026-08-14",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "what-to-do-dental-emergency",
+      "toothache-causes-when-to-worry",
+      "dental-abscess-symptoms-treatment",
+      "managing-dental-trauma-avulsed-teeth",
+      "finding-an-emergency-dentist"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/dental-emergencies",
+      "anchorText": "emergency dental care information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Cited as a real-world example of how a local Ontario practice structures same-day access to emergency dental care, directly supporting the section on accessing care."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on dental emergencies and urgent care",
+      "Royal College of Dental Surgeons of Ontario standards and professional guidance",
+      "Ontario Dental Association general public guidance on accessing dental care",
+      "American Association of Endodontists general guidance on traumatic dental injuries and endodontic emergencies"
+    ],
+    "suggestedImageFilename": "dental-emergency-triage-diagnosis.jpg"
+  },
+  {
+    "n": 42,
+    "slug": "dental-abscess-symptoms-treatment",
+    "title": "Dental Abscesses: Symptoms, Risks, and Treatment Principles",
+    "category": "Emergency Care",
+    "metaTitle": "Dental Abscess Treatment: Symptoms & Risks",
+    "metaDescription": "A clinical guide to dental abscess treatment: recognizing symptoms, understanding periapical and periodontal types, drainage, antibiotics, and serious risks.",
+    "primaryKeyword": "dental abscess treatment",
+    "secondaryKeywords": [
+      "periapical abscess",
+      "periodontal abscess",
+      "dental abscess symptoms",
+      "tooth abscess drainage",
+      "swollen gum infection",
+      "dental emergency infection"
+    ],
+    "publishDate": "2026-08-12",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "gum-disease-warning-signs",
+      "toothache-causes-when-to-worry",
+      "what-to-do-dental-emergency",
+      "root-canal-vs-tooth-extraction",
+      "finding-an-emergency-dentist"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/dental-emergencies",
+      "anchorText": "urgent dental care information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "The anchor is placed in the section discussing when a patient should seek urgent in-person assessment, directing readers to a clinic resource on dental emergencies in a non-promotional, contextually relevant way."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on dental emergencies and infection management",
+      "American Association of Endodontists guidance on endodontic diagnosis and the management of odontogenic infections",
+      "American Academy of Periodontology guidance on periodontal infections and abscesses",
+      "Royal College of Dental Surgeons of Ontario standards of practice and guidance on prescribing and infection control",
+      "Health Canada / Government of Canada information on antibiotic stewardship"
+    ],
+    "suggestedImageFilename": "dental-abscess-symptoms-treatment.jpg"
+  },
+  {
+    "n": 43,
+    "slug": "cracked-tooth-syndrome-diagnosis",
+    "title": "Cracked Tooth Syndrome: Diagnosis and Treatment Planning",
+    "category": "Emergency Care",
+    "metaTitle": "Cracked Tooth Syndrome: Diagnosis & Treatment",
+    "metaDescription": "A clinical guide to cracked tooth syndrome: recognizing symptoms, diagnostic methods, crack classification, and treatment planning.",
+    "primaryKeyword": "cracked tooth syndrome",
+    "secondaryKeywords": [
+      "cracked tooth symptoms",
+      "diagnosing tooth fractures",
+      "bite test cracked tooth",
+      "treatment for cracked teeth",
+      "incomplete tooth fracture",
+      "transillumination dental diagnosis",
+      "cracked tooth crown or root canal"
+    ],
+    "publishDate": "2026-08-11",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "teeth-grinding-bruxism-and-night-guards",
+      "toothache-causes-when-to-worry",
+      "endodontic-diagnosis-pulpal-periapical",
+      "dental-crowns-vs-fillings",
+      "root-canal-vs-tooth-extraction"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/restorations",
+      "anchorText": "restorative care information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "Placed naturally in the restorative options section where patients weighing filling versus crown decisions benefit from additional general restorative care context."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "American Association of Endodontists resources on cracked teeth and endodontic diagnosis",
+      "Royal College of Dental Surgeons of Ontario standards and guidelines",
+      "Health Canada guidance on dental radiography"
+    ],
+    "suggestedImageFilename": "cracked-tooth-syndrome-diagnosis.jpg"
+  },
+  {
+    "n": 44,
+    "slug": "managing-dental-trauma-avulsed-teeth",
+    "title": "Managing Dental Trauma and Avulsed Teeth",
+    "category": "Emergency Care",
+    "metaTitle": "Managing Dental Trauma and Avulsed Teeth",
+    "metaDescription": "A clinical guide to managing dental trauma and avulsed teeth: first-aid steps, storage media, reimplantation timing, and follow-up care in an Ontario context.",
+    "primaryKeyword": "dental trauma avulsed teeth",
+    "secondaryKeywords": [
+      "knocked out tooth first aid",
+      "tooth reimplantation",
+      "avulsed tooth storage",
+      "dental luxation injuries",
+      "emergency dental trauma",
+      "tooth avulsion management",
+      "dental injury Ontario"
+    ],
+    "publishDate": "2026-08-09",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "chipped-tooth-what-to-do",
+      "dental-emergencies-triage-management",
+      "caring-for-baby-teeth",
+      "finding-an-emergency-dentist",
+      "modern-root-canal-treatment-techniques"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/dental-emergencies",
+      "anchorText": "dental trauma care information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "The link is placed in the monitoring-and-complications section as an additional local-practice perspective on handling urgent dental injuries, which is contextually relevant to readers in Ontario."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on dental emergencies and traumatic injuries",
+      "Ontario Dental Association public resources on urgent dental care",
+      "Royal College of Dental Surgeons of Ontario standards of practice and patient-safety guidance",
+      "American Association of Endodontists clinical guidance on traumatic dental injuries and endodontic management",
+      "Health Canada / Government of Canada general oral health information"
+    ],
+    "suggestedImageFilename": "managing-dental-trauma-avulsed-teeth.jpg"
+  },
+  {
+    "n": 45,
+    "slug": "tooth-extractions-indications-recovery",
+    "title": "Tooth Extractions: Clinical Indications and Recovery",
+    "category": "Oral Surgery",
+    "metaTitle": "Tooth Extraction Indications and Recovery Guide",
+    "metaDescription": "A clinical overview of tooth extraction indications, simple vs surgical techniques, risks, and recovery for Ontario dental patients.",
+    "primaryKeyword": "tooth extraction indications",
+    "secondaryKeywords": [
+      "simple vs surgical extraction",
+      "dry socket prevention",
+      "tooth extraction healing timeline",
+      "reasons to extract a tooth",
+      "post-extraction care",
+      "alveolar osteitis",
+      "tooth removal recovery"
+    ],
+    "publishDate": "2026-08-08",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "root-canal-vs-tooth-extraction",
+      "wisdom-teeth-removal-what-to-expect",
+      "single-tooth-implant-vs-bridge",
+      "tooth-extraction-aftercare",
+      "what-to-do-dental-emergency"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services/oral-surgery/simple-tooth-extractions",
+      "anchorText": "tooth extraction information from Smile Dental Arts Centre",
+      "rel": "nofollow noopener",
+      "reason": "The link supports the simple versus surgical extraction section with an accessible patient-facing description of the simple extraction process."
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance on oral surgery and patient care",
+      "Royal College of Dental Surgeons of Ontario (RCDSO) standards of practice and dental radiography guidance",
+      "Ontario Dental Association patient education resources",
+      "Health Canada / Government of Canada oral health information resources"
+    ],
+    "suggestedImageFilename": "tooth-extraction-clinical-indications-recovery.jpg"
+  },
+  {
+    "n": 46,
+    "slug": "dental-treatment-costs-ontario",
+    "title": "Understanding Dental Treatment Costs in Ontario",
+    "category": "Patient Education",
+    "metaTitle": "Dental Treatment Costs in Ontario: A Clear Guide",
+    "metaDescription": "A clinical, plain-language guide to dental treatment costs in Ontario: what drives fees, how fee guides work, insurance, and questions to ask your dentist.",
+    "primaryKeyword": "dental treatment costs ontario",
+    "secondaryKeywords": [
+      "ontario dental fee guide",
+      "dental cost estimate ontario",
+      "cost of dental treatment canada",
+      "dental insurance ontario coverage",
+      "dental treatment plan costs",
+      "paying for dental care ontario"
+    ],
+    "publishDate": "2026-08-06",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "dental-crowns-vs-fillings",
+      "benefits-of-preventive-dentistry",
+      "dental-implants-vs-dentures",
+      "understanding-dental-insurance-canada",
+      "canadian-dental-care-plan-coverage"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/dental-services",
+      "anchorText": "dental services and fee information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "The link appears in the section on estimates and payment as a real-world example of how a practice organizes treatment categories and communicates cost expectations."
+    },
+    "references": [
+      "Ontario Dental Association suggested fee guide and patient resources",
+      "Royal College of Dental Surgeons of Ontario professional standards and guidance on informed consent",
+      "Canadian Dental Association clinical and patient-education guidance",
+      "Government of Canada information on the Canadian Dental Care Plan and public dental coverage"
+    ],
+    "suggestedImageFilename": "dental-treatment-costs-ontario.jpg"
+  },
+  {
+    "n": 47,
+    "slug": "canadian-dental-care-plan-coverage",
+    "title": "Canadian Dental Care Plan Coverage: What It Includes",
+    "category": "Patient Education",
+    "metaTitle": "Canadian Dental Care Plan Coverage Explained",
+    "metaDescription": "A clear guide to Canadian Dental Care Plan coverage: who qualifies, what services are included, how co-payments work, and how to use the CDCP.",
+    "primaryKeyword": "canadian dental care plan coverage",
+    "secondaryKeywords": [
+      "cdcp eligibility",
+      "canadian dental care plan services covered",
+      "cdcp dental coverage canada",
+      "who qualifies for cdcp",
+      "federal dental coverage canada",
+      "cdcp co-payment"
+    ],
+    "publishDate": "2026-08-05",
+    "priority": "Medium",
+    "internalLinkSlugs": [
+      "benefits-of-preventive-dentistry",
+      "understanding-dental-insurance-canada",
+      "what-happens-during-professional-cleaning",
+      "dental-implants-vs-dentures",
+      "dental-treatment-costs-ontario"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/canadian-dental-care-plan-cdcp",
+      "anchorText": "Canadian Dental Care Plan information from Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "The link appears in the section on using the plan at a dental office as a real-world example of how a practice explains enrolment, covered services, and co-payments to patients."
+    },
+    "references": [
+      "Government of Canada information on the Canadian Dental Care Plan, including eligibility, covered services, and co-payments",
+      "Canadian Dental Association clinical and patient-education guidance",
+      "Royal College of Dental Surgeons of Ontario professional standards and guidance on informed consent",
+      "Ontario Dental Association patient resources on dental coverage and treatment planning"
+    ],
+    "suggestedImageFilename": "canadian-dental-care-plan-coverage.jpg"
+  },
+  {
+    "n": 48,
+    "slug": "choosing-a-dental-clinic-ontario",
+    "title": "Choosing a Dental Clinic in Ontario: What Patients Should Evaluate",
+    "category": "Patient Education",
+    "metaTitle": "Choosing a Dental Clinic in Ontario: A Guide",
+    "metaDescription": "A practical, evidence-informed guide to choosing a dental clinic in Ontario, covering licensing, credentials, services, costs, and continuity of care.",
+    "primaryKeyword": "choosing a dental clinic ontario",
+    "secondaryKeywords": [
+      "how to find a dentist in ontario",
+      "RCDSO licensed dentist",
+      "dental clinic credentials",
+      "evaluating a dental office",
+      "questions to ask a new dentist",
+      "dental fees ontario",
+      "continuity of dental care"
+    ],
+    "publishDate": "2026-08-03",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "choosing-a-family-dentist",
+      "are-dental-x-rays-safe",
+      "how-often-should-you-see-dentist",
+      "understanding-dental-insurance-canada",
+      "new-dental-patient-what-to-expect"
+    ],
+    "smile": {
+      "included": true,
+      "url": "https://www.smiledentalartscentre.com/family-dentist-markham",
+      "anchorText": "family dental care at Smile Dental Arts Centre in Markham",
+      "rel": "nofollow noopener",
+      "reason": "Cited naturally as a GTA example when discussing how proximity and scope of services factor into choosing a family practice."
+    },
+    "references": [
+      "Royal College of Dental Surgeons of Ontario (RCDSO) clinical and practice standards",
+      "Canadian Dental Association (CDA) clinical guidance",
+      "Ontario Dental Association (ODA) fee guide and public information",
+      "Government of Canada / Health Canada oral health program information"
+    ],
+    "suggestedImageFilename": "choosing-dental-clinic-ontario.jpg"
+  },
+  {
+    "n": 49,
+    "slug": "dental-anxiety-patient-centred-care",
+    "title": "Dental Anxiety and Patient-Centred Care",
+    "category": "Patient Education",
+    "metaTitle": "Dental Anxiety and Patient-Centred Care | CanaDent",
+    "metaDescription": "How dental anxiety develops and how patient-centred care, communication, and behavioural and clinical strategies help Ontario patients access care.",
+    "primaryKeyword": "dental anxiety patient-centred care",
+    "secondaryKeywords": [
+      "dental fear management",
+      "dental phobia treatment",
+      "fear of the dentist",
+      "coping with dental anxiety",
+      "communication in dentistry",
+      "sedation for anxious patients"
+    ],
+    "publishDate": "2026-08-02",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "benefits-of-preventive-dentistry",
+      "new-dental-patient-what-to-expect",
+      "choosing-a-family-dentist",
+      "managing-dental-anxiety",
+      "root-canal-myths-and-facts"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "Canadian Dental Association clinical and patient guidance",
+      "Royal College of Dental Surgeons of Ontario standards of practice (sedation and anaesthesia; professional communication)",
+      "Ontario Dental Association public information",
+      "Health Canada / Government of Canada oral health resources"
+    ],
+    "suggestedImageFilename": "dental-anxiety-patient-centred-care.jpg"
+  },
+  {
+    "n": 50,
+    "slug": "future-of-digital-dentistry-canada",
+    "title": "The Future of Digital Dentistry in Canadian Dental Practices",
+    "category": "Patient Education",
+    "metaTitle": "Digital Dentistry Canada: The Future of Dental Care",
+    "metaDescription": "How digital dentistry is reshaping Canadian dental practices: intraoral scanners, CAD/CAM, CBCT, AI and teledentistry explained for patients and clinicians.",
+    "primaryKeyword": "digital dentistry canada",
+    "secondaryKeywords": [
+      "intraoral scanners",
+      "CAD/CAM dentistry",
+      "CBCT imaging",
+      "digital workflow dentistry",
+      "teledentistry Ontario",
+      "AI in dentistry",
+      "3D printing dental"
+    ],
+    "publishDate": "2026-07-31",
+    "priority": "Low",
+    "internalLinkSlugs": [
+      "digital-scanning-3d-orthodontics",
+      "digital-smile-design-cosmetic-dentistry",
+      "cbct-in-endodontics-applications",
+      "are-dental-x-rays-safe",
+      "choosing-a-dental-clinic-ontario"
+    ],
+    "smile": {
+      "included": false,
+      "url": "",
+      "anchorText": "",
+      "rel": "nofollow noopener",
+      "reason": ""
+    },
+    "references": [
+      "Canadian Dental Association clinical guidance",
+      "Royal College of Dental Surgeons of Ontario standards of practice",
+      "Ontario Dental Association resources",
+      "Health Canada medical device and radiation-emitting equipment guidance"
+    ],
+    "suggestedImageFilename": "digital-dentistry-canada-intraoral-scanner.jpg"
+  }
+]
