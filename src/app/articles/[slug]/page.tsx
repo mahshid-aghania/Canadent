@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllArticles, getArticle } from "@/lib/articles";
+import { getAllArticleParams, getArticle } from "@/lib/articles";
 import {
   ArrowRight,
   Calendar,
@@ -18,7 +18,7 @@ type Props = {
 const SITE_URL = "https://www.canadent.net";
 
 export async function generateStaticParams() {
-  return getAllArticles().map((a) => ({ slug: a.slug }));
+  return getAllArticleParams();
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
