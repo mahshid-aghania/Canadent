@@ -1,4 +1,5 @@
 import { dentalHealthArticles } from "./articles-dental-health";
+import { smileMarkhamArticles } from "./articles-smile-markham";
 
 export type Article = {
   slug: string;
@@ -470,6 +471,7 @@ export const articles: Article[] = [
 `,
   },
   ...dentalHealthArticles,
+  ...smileMarkhamArticles,
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
