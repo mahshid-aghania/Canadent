@@ -1,5 +1,6 @@
 import { dentalHealthArticles } from "./articles-dental-health";
 import { smileMarkhamArticles } from "./articles-smile-markham";
+import { aestheticTrainingArticles } from "./articles-aesthetic-training";
 
 export type Article = {
   /**
@@ -482,6 +483,7 @@ export const articles: Article[] = [
   // above remain visible in the feed.
   ...dentalHealthArticles.map((a) => ({ ...a, unlisted: true })),
   ...smileMarkhamArticles.map((a) => ({ ...a, unlisted: true })),
+  ...aestheticTrainingArticles.map((a) => ({ ...a, unlisted: true })),
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
