@@ -1,0 +1,15 @@
+# CanaDent Education Center — robots.txt
+User-agent: *
+Allow: /
+
+# Non-public application areas (never intended for indexing)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /accountant/
+Disallow: /accountant-dashboard/
+Disallow: /my-account
+Disallow: /cart
+Disallow: /success
+Disallow: /enrolment-agreement
+
+Sitemap: https://www.canadent.net/sitemap-aesthetic.xml
