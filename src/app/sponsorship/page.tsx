@@ -15,10 +15,14 @@ const INTRO =
   "With our strong and growing network of dentists, dental professionals, instructors, and industry partners across the GTA and Canada, our events provide an excellent opportunity for companies looking to increase brand visibility, introduce their products and services, and build meaningful relationships with practicing dentists.";
 
 const EVENT = {
-  title: "Advanced Adhesive Dentistry: The Master Blueprint",
-  meta: ["📅 September 6, 2026", "📍 265 Rimrock Road, Toronto, ON", "⏱ 6-Hour In-Person CE Course"],
+  title: "Things I Wish Someone Had Told Me – Series 01",
+  meta: [
+    "📅 October 23, 2026",
+    "📍 265 Rimrock Road, North York, ON",
+    "⏱ Hybrid CE Course (In-Person / Online) · 2 CE Credits",
+  ],
   description:
-    "This intensive clinical course brings together dentists interested in modern adhesive and restorative dentistry, providing sponsors with direct access to an engaged and professionally relevant audience.",
+    "A New Dentist's Guide to the Real World, presented by Dr. Fatemeh Hosseinkhani. This practice-management session brings together newly licensed and internationally trained dentists entering Canadian practice, giving sponsors direct access to an engaged and professionally relevant audience.",
 };
 
 // `lead` is an existing opening phrase that may be emphasised; `rest` is the
@@ -104,7 +108,7 @@ export default function SponsorshipPage() {
           {/* Sponsorship Package — heading, price, and benefits (moved below) */}
           <div className="card p-8" style={{ background: "#fffdf7", border: "1px solid #f0dc9d" }}>
             <h2 className="font-heading text-2xl font-bold text-[#0f2150] leading-snug mb-5">
-              Sponsorship Package — $500 CAD (Tax Included)
+              Sponsorship Package — $250 CAD (Tax Included)
             </h2>
             <dl
               className="rounded-xl p-5 mb-8"
@@ -112,15 +116,15 @@ export default function SponsorshipPage() {
             >
               <div className="flex items-baseline justify-between gap-3 py-1">
                 <dt className="text-[#1a1a2e]/70 text-[15px]">Sponsorship Fee</dt>
-                <dd className="text-[#1a1a2e]/80 text-[15px] font-medium">$442.48</dd>
+                <dd className="text-[#1a1a2e]/80 text-[15px] font-medium">$221.24</dd>
               </div>
               <div className="flex items-baseline justify-between gap-3 py-1 pb-3 mb-3 border-b border-[#1a1a2e]/8">
                 <dt className="text-[#1a1a2e]/70 text-[15px]">HST (13%)</dt>
-                <dd className="text-[#1a1a2e]/80 text-[15px] font-medium">+ $57.52</dd>
+                <dd className="text-[#1a1a2e]/80 text-[15px] font-medium">+ $28.76</dd>
               </div>
               <div className="flex items-baseline justify-between gap-3">
                 <dt className="font-heading text-lg font-bold text-[#0f2150]">Total</dt>
-                <dd className="font-heading text-2xl font-bold text-[#0f2150]">$500 CAD</dd>
+                <dd className="font-heading text-2xl font-bold text-[#0f2150]">$250 CAD</dd>
               </div>
             </dl>
 
@@ -162,7 +166,7 @@ export default function SponsorshipPage() {
               </li>
             </ul>
 
-            {/* Purchase — Stripe Checkout (tax-inclusive $500 CAD) */}
+            {/* Purchase — Stripe Checkout (tax-inclusive $250 CAD) */}
             <SponsorshipCheckoutButton />
           </div>
         </div>
