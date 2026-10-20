@@ -68,13 +68,13 @@ export function SponsorshipCheckoutButton() {
         ) : (
           <>
             <Lock className="h-4 w-4" aria-hidden="true" />
-            Buy Sponsorship — $500 CAD
+            Buy Sponsorship — $250 CAD
           </>
         )}
       </button>
 
       <p className="text-xs text-center text-[#1a1a2e]/55 mt-2.5">
-        Secure checkout · $500 CAD total, HST included ($442.48 + $57.52 HST)
+        Secure checkout · $250 CAD total, HST included ($221.24 + $28.76 HST)
       </p>
 
       {error && (

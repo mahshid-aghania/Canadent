@@ -4,14 +4,14 @@ import { redirect } from "next/navigation";
 import { getHstInclusiveTaxRateId } from "@/lib/stripe-tax";
 import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
 
-// Fixed, TAX-INCLUSIVE sponsorship price. The advertised total is $500 CAD
-// (Tax Included) = $442.48 net + $57.52 HST. The amount is hard-coded here and
+// Fixed, TAX-INCLUSIVE sponsorship price. The advertised total is $250 CAD
+// (Tax Included) = $221.24 net + $28.76 HST. The amount is hard-coded here and
 // never accepted from the client, and HST is applied as an INCLUSIVE rate so
-// Stripe never adds 13% on top of $500.
-const SPONSORSHIP_TOTAL_CENTS = 50000; // $500.00 CAD, HST included
-const SPONSORSHIP_SLUG = "sponsorship-advanced-adhesive-dentistry";
+// Stripe never adds 13% on top of $250.
+const SPONSORSHIP_TOTAL_CENTS = 25000; // $250.00 CAD, HST included
+const SPONSORSHIP_SLUG = "sponsorship-things-i-wish-series-01";
 const SPONSORSHIP_TITLE =
-  "CANADENT Sponsorship — Advanced Adhesive Dentistry: The Master Blueprint";
+  "CANADENT Sponsorship — Things I Wish Someone Had Told Me – Series 01";
 
 function getStripe(): Stripe | null {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -48,7 +48,7 @@ export async function createSponsorshipCheckout(
 
   let checkoutUrl: string;
   try {
-    // Inclusive HST: the $500 already contains the tax; Stripe shows the HST
+    // Inclusive HST: the $250 already contains the tax; Stripe shows the HST
     // portion but does not add it on top.
     const taxRateId = await getHstInclusiveTaxRateId(stripe);
 
@@ -60,7 +60,7 @@ export async function createSponsorshipCheckout(
             currency: "cad",
             product_data: {
               name: SPONSORSHIP_TITLE,
-              description: `Event sponsorship package — $500 CAD total, includes ${TAX_PERCENTAGE}% ${TAX_LABEL}.`,
+              description: `Event sponsorship package — $250 CAD total, includes ${TAX_PERCENTAGE}% ${TAX_LABEL}.`,
             },
             unit_amount: SPONSORSHIP_TOTAL_CENTS,
           },

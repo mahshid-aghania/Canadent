@@ -1,6 +1,6 @@
 // Confirmation email for a sponsorship purchase. Same branding and recipients
 // as a course registration, but with sponsorship-appropriate copy and a
-// tax-INCLUSIVE price breakdown ($500 total = net + HST, not net + HST on top).
+// tax-INCLUSIVE price breakdown ($250 total = net + HST, not net + HST on top).
 // Extracted from the Stripe webhook so it can be reused (e.g. by a test route).
 import { TAX_LABEL, TAX_PERCENTAGE } from "@/lib/tax";
 
@@ -84,8 +84,8 @@ export function buildSponsorshipEmail(
               <div style="font-size:13px;font-weight:700;color:#c9a84c;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Sponsorship Details</div>
               <table width="100%" cellpadding="0" cellspacing="0">
                 ${regRow}
-                <tr><td style="${rowLabel}">📅 Date</td><td style="${rowValue}">September 6, 2026</td></tr>
-                <tr><td style="${rowLabel}">📍 Location</td><td style="${rowValue}">265 Rimrock Road, Toronto, ON</td></tr>
+                <tr><td style="${rowLabel}">📅 Date</td><td style="${rowValue}">October 23, 2026</td></tr>
+                <tr><td style="${rowLabel}">📍 Location</td><td style="${rowValue}">265 Rimrock Road, North York, ON</td></tr>
                 ${taxRows}
                 <tr><td style="padding:10px 0;color:#555;font-size:14px;">💳 Total Paid</td><td style="padding:10px 0;font-weight:600;color:#0f2150;font-size:14px;">$${total} CAD (Tax Included)</td></tr>
               </table>
