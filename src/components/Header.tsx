@@ -10,7 +10,6 @@ import { AccountantNavLink } from "@/components/AccountantNavLink";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/courses", label: "Courses" },
-  { href: "/packages/four-course-package", label: "Course Packages" },
   { href: "/articles", label: "Articles" },
   { href: "/my-account", label: "My Account" },
   { href: "/enrolment-agreement", label: "Enrolment Agreement" },
