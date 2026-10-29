@@ -25,7 +25,7 @@ export function AnnouncementBar() {
           href="/courses/daily-unique-orthodontic-techniques"
           className="underline underline-offset-2 hover:opacity-70 transition-opacity hidden sm:inline"
         >
-          Orthodontic Techniques — Nov 22
+          Orthodontic Techniques — Mar 21, 2027
         </Link>
         <span className="opacity-60 mx-1 text-[#0f2150] font-normal hidden sm:inline">
           (Revised fee: from $399)
