@@ -189,8 +189,10 @@ function buildEmail(
     attendance = null,
     phone = null,
     regNumber,
-    firstName = null,
-    lastName = null,
+    // Aliased to avoid colliding with the greeting's `lastName`, which is
+    // derived from the cardholder name below.
+    firstName: givenName = null,
+    lastName: familyName = null,
     address = null,
   } = extra;
   const isOnline = (attendance ?? "").toLowerCase().includes("online");
@@ -261,13 +263,13 @@ function buildEmail(
   // collected at checkout. Gives the registrant (and the CanaDent team on CC) a
   // single record of the name, phone, and mailing address on file.
   const registrantRows = [
-    firstName ? `<tr><td style="${rowLabel}">First name</td><td style="${rowValue}">${firstName}</td></tr>` : "",
-    lastName ? `<tr><td style="${rowLabel}">Last (family) name</td><td style="${rowValue}">${lastName}</td></tr>` : "",
+    givenName ? `<tr><td style="${rowLabel}">First name</td><td style="${rowValue}">${givenName}</td></tr>` : "",
+    familyName ? `<tr><td style="${rowLabel}">Last (family) name</td><td style="${rowValue}">${familyName}</td></tr>` : "",
     phone ? `<tr><td style="${rowLabel}">Phone</td><td style="${rowValue}">${phone}</td></tr>` : "",
     address ? `<tr><td style="${rowLabel}">Address</td><td style="${rowValue}">${address}</td></tr>` : "",
   ].join("");
   const registrantDetails =
-    firstName || lastName || address
+    givenName || familyName || address
       ? `
             <div style="background:#f9f7f2;border-radius:12px;padding:24px;border-left:4px solid #1b3a8a;margin-bottom:28px;">
               <div style="font-size:13px;font-weight:700;color:#1b3a8a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Registrant Details</div>
