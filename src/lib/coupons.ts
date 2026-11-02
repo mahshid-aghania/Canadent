@@ -27,6 +27,14 @@ export const COUPONS: Record<string, Coupon> = {
   "CONFI-20": { type: "percent", value: 20, label: "20% off" },
   "CONFI-50": { type: "percent", value: 50, label: "50% off" },
   "CONFI-100": { type: "percent", value: 100, label: "100% off" },
+  // Complimentary (100% off) access to the Fill Every Chair masterclass only.
+  // Restricted to that course so the code can't comp any other registration.
+  "FEC-VIP": {
+    type: "percent",
+    value: 100,
+    label: "Complimentary — 100% off",
+    courses: ["fill-every-chair"],
+  },
 };
 
 // Stripe rejects card charges below ~$0.50 CAD; keep a small floor so a coupon
@@ -43,6 +51,10 @@ export type CouponResult =
       discountAmount: number;
       /** Course fee after the discount, rounded to the cent (pre-tax). */
       finalPrice: number;
+      /** True when the code fully covers the fee (finalPrice === 0). The
+       *  checkout handles this as a $0 "comped" registration — Stripe still
+       *  collects the attendee's details but never asks for a card. */
+      isFree: boolean;
     }
   | { ok: false; error: string };
 
@@ -85,7 +97,13 @@ export function applyCoupon(
   const discountAmount = Math.round(Math.min(rawDiscount, price) * 100) / 100;
   const finalPrice = Math.round((price - discountAmount) * 100) / 100;
 
-  if (finalPrice < MIN_CHARGE_CAD) {
+  // A code that fully covers the fee is a comped registration ($0). The
+  // checkout handles this with a $0 Stripe session, so it's allowed.
+  const isFree = finalPrice <= 0;
+
+  // The awkward middle band — above $0 but below Stripe's ~$0.50 card minimum —
+  // can't be charged online, so it's still rejected.
+  if (!isFree && finalPrice < MIN_CHARGE_CAD) {
     return {
       ok: false,
       error:
@@ -93,5 +111,12 @@ export function applyCoupon(
     };
   }
 
-  return { ok: true, code, label: coupon.label, discountAmount, finalPrice };
+  return {
+    ok: true,
+    code,
+    label: coupon.label,
+    discountAmount,
+    finalPrice: isFree ? 0 : finalPrice,
+    isFree,
+  };
 }

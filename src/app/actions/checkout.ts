@@ -70,7 +70,11 @@ export async function createCheckoutSession(
   const resolved = resolveCoursePrice(slug, optionLabel);
   if (!resolved.ok) return { error: resolved.error };
 
-  let resolvedPrice = resolved.price;
+  // The tax-exclusive fee before any discount — always kept so a 100% ("free")
+  // coupon can be expressed as a Stripe discount on the full price rather than a
+  // $0 line item, which Stripe's payment mode rejects.
+  const basePrice = resolved.price;
+  let resolvedPrice = basePrice;
   const course = { title: resolved.title };
 
   // Apply an in-app coupon (if any) to the tax-exclusive fee before Stripe, so
@@ -83,6 +87,11 @@ export async function createCheckoutSession(
     resolvedPrice = result.finalPrice;
     appliedCoupon = result;
   }
+
+  // A fully comped registration ($0): Stripe can't charge $0 via a reduced line
+  // item, so instead we keep the full price and attach a 100%-off Stripe coupon.
+  // Checkout then collects every attendee detail but never asks for a card.
+  const isFree = appliedCoupon?.isFree === true;
 
   const stripe = getStripe();
   if (!stripe) {
@@ -116,7 +125,26 @@ export async function createCheckoutSession(
     // Course prices are tax-exclusive — Stripe adds HST as its own line.
     const taxRateId = await getHstTaxRateId(stripe);
 
-    const session = await stripe.checkout.sessions.create({
+    // For a comped ($0) registration, charge the full price on the line item
+    // and attach a one-time 100%-off Stripe coupon. The attendee pays nothing
+    // and is never asked for a card, but still completes the full form.
+    let discounts: Stripe.Checkout.SessionCreateParams.Discount[] | undefined;
+    if (isFree) {
+      const freeCoupon = await stripe.coupons.create({
+        percent_off: 100,
+        duration: "once",
+        max_redemptions: 1,
+        name: appliedCoupon!.label,
+        metadata: { slug, code: appliedCoupon!.code },
+      });
+      discounts = [{ coupon: freeCoupon.id }];
+    }
+
+    // This course collects full attendee details: given + family name as their
+    // own required fields, a required mailing address, and a phone number.
+    const requiresFullDetails = slug === "fill-every-chair";
+
+    const params: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ["card"],
       line_items: [
         {
@@ -128,18 +156,17 @@ export async function createCheckoutSession(
                 ? `CanaDent Education Center — Continuing Education Course · ${appliedCoupon.label} (code ${appliedCoupon.code}) applied (plus ${TAX_PERCENTAGE}% ${TAX_LABEL})`
                 : `CanaDent Education Center — Continuing Education Course (plus ${TAX_PERCENTAGE}% ${TAX_LABEL})`,
             },
-            // resolvedPrice is already the discounted, tax-exclusive fee.
-            unit_amount: Math.round(resolvedPrice * 100),
+            // For a paid order this is the discounted fee; for a comped order it
+            // is the full fee, zeroed out by the 100%-off coupon below.
+            unit_amount: Math.round((isFree ? basePrice : resolvedPrice) * 100),
           },
           quantity: 1,
           tax_rates: [taxRateId],
         },
       ],
       mode: "payment",
-      // In-app coupons discount the price directly, so disable Stripe's promo
-      // box when one is applied to prevent a second, stacked discount.
-      allow_promotion_codes: !appliedCoupon,
-      billing_address_collection: "auto",
+      // Full mailing address is required for this course; others keep "auto".
+      billing_address_collection: requiresFullDetails ? "required" : "auto",
       // Collect a mobile number for essential course communication. Stripe's
       // hosted field handles country code, formatting, keypad, validation, and
       // accessibility; the number lands on the order + Dashboard, never in our
@@ -154,6 +181,7 @@ export async function createCheckoutSession(
               coupon_code: appliedCoupon.code,
               coupon_label: appliedCoupon.label,
               coupon_discount_cad: appliedCoupon.discountAmount.toFixed(2),
+              ...(isFree ? { comped: "true" } : {}),
             }
           : {}),
         ...utmMetadata,
@@ -164,7 +192,37 @@ export async function createCheckoutSession(
       cancel_url: `${baseUrl}/courses/${slug}?cancelled=true${
         optionLabel ? `&attendance=${encodeURIComponent(optionLabel)}` : ""
       }${utmQuery ? `&${utmQuery}` : ""}`,
-    });
+    };
+
+    // Stripe rejects `discounts` and `allow_promotion_codes` together, so set
+    // exactly one. A comped order carries the 100%-off coupon; otherwise offer
+    // Stripe's promo box only when no in-app coupon is already applied.
+    if (discounts) {
+      params.discounts = discounts;
+    } else {
+      params.allow_promotion_codes = !appliedCoupon;
+    }
+
+    // Collect given and family name as distinct required fields so the attendee
+    // record carries both, not just a single "name on card" string.
+    if (requiresFullDetails) {
+      params.custom_fields = [
+        {
+          key: "firstname",
+          label: { type: "custom", custom: "First name" },
+          type: "text",
+          optional: false,
+        },
+        {
+          key: "lastname",
+          label: { type: "custom", custom: "Last (family) name" },
+          type: "text",
+          optional: false,
+        },
+      ];
+    }
+
+    const session = await stripe.checkout.sessions.create(params);
 
     checkoutUrl = session.url!;
   } catch (err: unknown) {
