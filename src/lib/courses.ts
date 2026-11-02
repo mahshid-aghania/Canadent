@@ -46,6 +46,55 @@ export type Course = {
 
 export const courses: Course[] = [
   {
+    slug: "fill-every-chair",
+    title: "Fill Every Chair: Dental Practice Growth Evening Masterclass",
+    subtitle: "The hidden revenue already sitting in your schedule, your recall list, and your front desk.",
+    instructor: "Mona Vahab, MSc, MSc",
+    price: 399,
+    date: "Tuesday, November 24, 2026",
+    time: "6:00 PM – 9:00 PM",
+    duration: "3 hours",
+    location: "1500 Don Mills Road, Toronto, ON",
+    ceCredits: "3 CE Credits",
+    status: "available",
+    category: "Practice Management",
+    format: "In-Person Evening Masterclass",
+    image: "/course-fill-every-chair.jpeg",
+    description:
+      "A full schedule does not always mean your practice is reaching its potential. Patients fall out of recall, calls go unanswered, and production opportunities can slip away unnoticed.\n\nFill Every Chair is a three-hour evening masterclass for dentists and practice owners who want to better understand their practice data and turn those insights into practical action. Based on insights from 100+ dental practices, this session explores the opportunities hidden in your schedule, patient records, and front-desk workflows.\n\nJoin Mona Vahab, MSc, MSc, Dental AI & Practice Intelligence Strategist, to discover what your practice software can reveal — and how to use that information to build a focused 90-day plan. Most offices never look at the answers already waiting in their software; this evening, we will. Together we will work through four questions: Who are the patients you have already lost, and why hasn't anyone noticed? How can a schedule that looks full still be leaving production on the table? What really happens to the calls your front desk can't pick up? And which few numbers in your software quietly predict next year's growth?\n\nThe evening includes networking, light refreshments, open Q&A, and a CE certificate. Presented by CanaDent, DentiCE, and World AI Group.",
+    highlights: [
+      "Recognize production gaps: understand how a schedule that looks full can still leave revenue opportunities unexplored.",
+      "Identify patients who have not returned: explore where to find them in your practice data and what can encourage them to reconnect.",
+      "Improve front-desk productivity: examine missed calls, everyday workflows, and where AI can support your team.",
+      "Focus on meaningful numbers: discover which practice metrics can help you understand performance and plan for growth.",
+      "Turn insights into action: bring your learning together in a practical 90-day plan.",
+    ],
+    outcomeIntro:
+      "An evening masterclass for dentists and practice owners who want to read their own practice data and turn it into focused action. By the end of the session you will be able to:",
+    audience: [
+      "Dentists looking to understand the growth opportunities hidden in their own data",
+      "Practice owners who want a clearer picture of production, recall, and front-desk performance",
+      "Practice managers and team leads responsible for scheduling and patient flow",
+    ],
+    schedule: [
+      { day: "6:00 PM", topic: "Welcome & Networking — Meet fellow practice owners over light refreshments." },
+      { day: "6:15 PM", topic: "The Leaky Bucket — Where does production slip away when no one is watching?" },
+      { day: "6:55 PM", topic: "The Patients Who Never Came Back — Who they are, where to find them, and what brings them back." },
+      { day: "7:35 PM", topic: "Break" },
+      { day: "7:45 PM", topic: "Your Front Desk, Reimagined — What separates a busy front desk from a productive one, and where AI fits." },
+      { day: "8:25 PM", topic: "The Numbers That Matter — Reading your practice data and developing a 90-day plan." },
+      { day: "8:50 PM", topic: "Open Q&A & CE Certificates — Bring your toughest practice question." },
+    ],
+    instructorTitle: "Dental AI & Practice Intelligence Strategist",
+    instructorBio:
+      "Mona Vahab, MSc, MSc, is a Dental AI & Practice Intelligence Strategist who helps dental teams turn the data already in their practice software into clear, practical decisions. Her work draws on insights gathered from more than 100 dental practices, focusing on recall, scheduling, front-desk workflows, and the handful of metrics that most influence growth.",
+    calendar: {
+      startUtc: "2026-11-24T23:00:00Z",
+      endUtc: "2026-11-25T02:00:00Z",
+      timezone: "America/Toronto",
+    },
+  },
+  {
     slug: "things-i-wish-someone-had-told-me-series-01",
     title: "Things I Wish Someone Had Told Me – Series 01",
     subtitle: "A New Dentist's Guide to the Real World",
