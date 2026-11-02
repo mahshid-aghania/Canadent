@@ -34,6 +34,16 @@ export async function POST(request: NextRequest) {
     const phone = session.customer_details?.phone ?? null;
     const slug = session.metadata?.slug;
     const title = session.metadata?.title;
+
+    // Full registrant details (collected as required fields on courses that ask
+    // for them). Given + family name come from Checkout custom fields; the
+    // mailing address comes from the billing address Stripe collected.
+    const customFields = session.custom_fields ?? [];
+    const fieldValue = (key: string) =>
+      customFields.find((f) => f.key === key)?.text?.value?.trim() || null;
+    const firstName = fieldValue("firstname");
+    const lastName = fieldValue("lastname");
+    const address = formatAddress(session.customer_details?.address ?? null);
     const attendance = session.metadata?.attendance ?? null;
     const amountTotal = session.amount_total ?? 0;
     const amountSubtotal = session.amount_subtotal ?? 0;
@@ -72,6 +82,9 @@ export async function POST(request: NextRequest) {
               attendance,
               phone,
               regNumber,
+              firstName,
+              lastName,
+              address,
             }),
       });
       if (error) {
@@ -126,6 +139,20 @@ function maskLast4(phone: string | null): string | null {
   return digits.length >= 4 ? digits.slice(-4) : null;
 }
 
+/** Render a Stripe billing address as a single readable line, or null. */
+function formatAddress(address: Stripe.Address | null): string | null {
+  if (!address) return null;
+  const parts = [
+    address.line1,
+    address.line2,
+    address.city,
+    address.state,
+    address.postal_code,
+    address.country,
+  ].filter((p): p is string => Boolean(p && p.trim()));
+  return parts.length ? parts.join(", ") : null;
+}
+
 function compactUtc(iso: string): string {
   return iso.replace(/[-:]/g, "").replace(/\.\d+/, "");
 }
@@ -149,9 +176,23 @@ function buildEmail(
   course: Course | undefined,
   amountSubtotal = 0,
   amountTax = 0,
-  extra: { attendance?: string | null; phone?: string | null; regNumber?: string } = {}
+  extra: {
+    attendance?: string | null;
+    phone?: string | null;
+    regNumber?: string;
+    firstName?: string | null;
+    lastName?: string | null;
+    address?: string | null;
+  } = {}
 ): string {
-  const { attendance = null, phone = null, regNumber } = extra;
+  const {
+    attendance = null,
+    phone = null,
+    regNumber,
+    firstName = null,
+    lastName = null,
+    address = null,
+  } = extra;
   const isOnline = (attendance ?? "").toLowerCase().includes("online");
   const last4 = maskLast4(phone);
   const calLink = calendarUrl(course);
@@ -216,6 +257,24 @@ function buildEmail(
     ? `<p style="margin:0 0 20px;font-size:13px;color:#777;">We&rsquo;ll use the mobile number ending in <strong>${last4}</strong> only for important course-related updates.</p>`
     : "";
 
+  // Registrant details block — rendered only when the full details were
+  // collected at checkout. Gives the registrant (and the CanaDent team on CC) a
+  // single record of the name, phone, and mailing address on file.
+  const registrantRows = [
+    firstName ? `<tr><td style="${rowLabel}">First name</td><td style="${rowValue}">${firstName}</td></tr>` : "",
+    lastName ? `<tr><td style="${rowLabel}">Last (family) name</td><td style="${rowValue}">${lastName}</td></tr>` : "",
+    phone ? `<tr><td style="${rowLabel}">Phone</td><td style="${rowValue}">${phone}</td></tr>` : "",
+    address ? `<tr><td style="${rowLabel}">Address</td><td style="${rowValue}">${address}</td></tr>` : "",
+  ].join("");
+  const registrantDetails =
+    firstName || lastName || address
+      ? `
+            <div style="background:#f9f7f2;border-radius:12px;padding:24px;border-left:4px solid #1b3a8a;margin-bottom:28px;">
+              <div style="font-size:13px;font-weight:700;color:#1b3a8a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Registrant Details</div>
+              <table width="100%" cellpadding="0" cellspacing="0">${registrantRows}</table>
+            </div>`
+      : "";
+
   const calendarButton = calLink
     ? `<div style="text-align:center;margin:0 0 28px;"><a href="${calLink}" style="display:inline-block;background:#1b3a8a;color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:12px 24px;border-radius:8px;">📅 Add to Calendar</a></div>`
     : "";
@@ -261,6 +320,8 @@ function buildEmail(
                 ${details}
               </table>
             </div>
+
+            ${registrantDetails}
 
             <!-- What happens next -->
             <div style="background:#f0f4ff;border-radius:12px;padding:20px 24px;margin-bottom:20px;">
