@@ -194,12 +194,17 @@ export async function createCheckoutSession(
       }${utmQuery ? `&${utmQuery}` : ""}`,
     };
 
+    // This course hides Stripe's own promo box so discount codes are entered
+    // only on the CanaDent page before checkout — never again on the final
+    // Stripe payment page. Other courses keep Stripe's box.
+    const hideStripePromoBox = slug === "fill-every-chair";
+
     // Stripe rejects `discounts` and `allow_promotion_codes` together, so set
-    // exactly one. A comped order carries the 100%-off coupon; otherwise offer
-    // Stripe's promo box only when no in-app coupon is already applied.
+    // at most one. A comped order carries the 100%-off coupon; otherwise offer
+    // Stripe's promo box only when it isn't hidden and no in-app coupon applies.
     if (discounts) {
       params.discounts = discounts;
-    } else {
+    } else if (!hideStripePromoBox) {
       params.allow_promotion_codes = !appliedCoupon;
     }
 
