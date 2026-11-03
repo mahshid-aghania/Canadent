@@ -95,6 +95,129 @@ export const courses: Course[] = [
     },
   },
   {
+    slug: "botulinum-neurotoxin-for-dentists",
+    title: "Botulinum Neurotoxin for Dentists",
+    subtitle:
+      "Learn when toxin belongs in the treatment of bruxism, masticatory muscle pain and TMD, when it doesn't, and how to deliver it safely.",
+    instructor: "Babak Hajiloo",
+    price: 599,
+    priceOptions: [
+      { label: "Online Attendance", price: 599 },
+      { label: "In-Person (Hands-on) Attendance", price: 999 },
+    ],
+    date: "Saturday, November 21, 2026",
+    time: "9:00 AM – 4:00 PM",
+    duration: "Full day",
+    location: "Hybrid — Online + In-Person (265 Rimrock Rd, North York, ON)",
+    ceCredits: "6 CE Credits",
+    status: "available",
+    category: "Orofacial Pain & Therapeutics",
+    format: "Hybrid (Online Lectures + In-Person Hands-on)",
+    image: "/course-botulinum-neurotoxin.jpeg",
+    description:
+      "Dentists are often the first to see the signs of masticatory muscle overactivity: worn teeth, failed restorations, tender muscles and morning temporal headaches. This course shows you where botulinum toxin fits in that care, starting with diagnosis and not with injection points.\n\nThe main focus is therapeutic use around the jaw and face. You'll study the masseter and temporalis by function, assess bruxism and TMD, work through reconstitution and dose calculation, and learn the danger zones and complications that shape safe technique. Gummy smile is taught through a decision pathway that separates muscular causes from those toxin can't fix.\n\nTheory is delivered online, so the hands-on sessions can concentrate on preparing toxin, palpating and marking muscles, and practising technique under guidance. A shorter module introduces facial aesthetics, for dentists whose regulators permit it.\n\nThis course teaches toxin as an adjunct, not a cure. It reduces muscle activity and force — it does not remove the cause of bruxism or replace splints and behavioural care. Trials in bruxism and TMD remain small and mixed, with no agreed dose, and these are generally off-label uses. You'll learn to work within those limits, explain them to patients, and document consent and treatment properly.\n\nBefore you register: this course is for licensed dentists. Rules on who may inject toxin, and for which purposes, differ between countries and regulators — please check what yours permits, including for aesthetic use. Completing this course does not change your scope of practice.",
+    highlights: [
+      "Explain how botulinum toxin works and compare the main type A products.",
+      "Reconstitute, handle and calculate doses safely.",
+      "Identify the masticatory and facial muscles by function.",
+      "Assess bruxism, masseter hypertrophy, TMD and gummy smile before choosing treatment.",
+      "Recognise when toxin isn't appropriate and when to refer.",
+      "Recognise, prevent and manage complications and emergencies.",
+      "Document consent, off-label use and treatment details.",
+    ],
+    outcomeIntro:
+      "A therapeutic, diagnosis-first course on botulinum toxin around the jaw and face for licensed dentists. By the end of the course you will be able to:",
+    audience: [
+      "General dentists who manage patients with bruxism, tooth wear or jaw muscle pain.",
+      "Dentists with an interest in TMD and orofacial pain who want to understand toxin as an adjunct.",
+      "Restorative dentists concerned about high muscle forces on their work.",
+      "Dentists assessing gummy smile who want a clear way to choose the right treatment.",
+    ],
+    modules: [
+      {
+        title: "Module 1 — How the Toxin Works",
+        detail:
+          "Mechanism of action, onset and duration, product differences, treatment failure and antibodies.",
+      },
+      {
+        title: "Module 2 — Preparation and Safe Technique",
+        detail:
+          "Storage, reconstitution, dose calculation, injection principles, patient selection, contraindications, drug interactions, consent and records.",
+      },
+      {
+        title: "Module 3 — Safety and Emergencies",
+        detail:
+          "Neurovascular danger zones, adverse effects, anaphylaxis, distant spread and when to refer.",
+      },
+      {
+        title: "Module 4 — Masticatory Muscles and Bruxism",
+        detail:
+          "Masseter and temporalis anatomy, types and causes of bruxism, clinical assessment, the evidence, injection technique, masseter hypertrophy and complications.",
+      },
+      {
+        title: "Module 5 — TMD and Myofascial Pain",
+        detail:
+          "Diagnosis with DC/TMD, the treatment ladder, when imaging is needed and the place of toxin in refractory myalgia.",
+      },
+      {
+        title: "Module 6 — Gummy Smile",
+        detail:
+          "Smile anatomy, classification and causes, measurement, a treatment decision pathway, technique and complications.",
+      },
+      {
+        title: "Module 7 — Other Therapeutic Uses",
+        detail:
+          "Sialorrhea, chronic migraine, dystonia and other conditions: what to recognise and who to refer to.",
+      },
+      {
+        title: "Module 8 — Foundations of Facial Aesthetics",
+        detail:
+          "Facial muscle balance, common treatment areas, danger zones and whole-face assessment.",
+      },
+      {
+        title: "Module 9 — Hands-on Stations (In Person)",
+        detail:
+          "Reconstitution, palpating and marking, masseter and temporalis, smile assessment and upper-face patterns. Modules 1 to 8 are taught online; Module 9 brings the skills together in person.",
+      },
+    ],
+    instructorTitle: "Course Instructor",
+    instructorBio:
+      "Babak Hajiloo leads CanaDent's Botulinum Neurotoxin for Dentists program, teaching the therapeutic use of toxin around the jaw and face — bruxism, masticatory muscle pain, TMD and gummy smile — with an emphasis on diagnosis, safe technique and realistic, evidence-based expectations.",
+    attendanceModes: [
+      {
+        label: "Online Attendance",
+        kind: "online",
+        summary: "Join the online lecture program (Modules 1–8) from anywhere.",
+        includes: [
+          "Live online access to Modules 1 to 8",
+          "Course booklet",
+          "Knowledge checks",
+          "Does not include the supervised hands-on practice (Module 9)",
+        ],
+        access:
+          "Your joining link and access details are emailed to you before the course date.",
+      },
+      {
+        label: "In-Person (Hands-on) Attendance",
+        kind: "in-person",
+        summary:
+          "Attend the full program, including the supervised hands-on stations on-site.",
+        location: "265 Rimrock Road, North York, Ontario",
+        includes: [
+          "All online lectures (Modules 1 to 8)",
+          "Module 9 hands-on stations with the instructor",
+          "6 CE Credits",
+        ],
+        access: "Please plan to arrive 15 minutes early to check in.",
+      },
+    ],
+    calendar: {
+      startUtc: "2026-11-21T14:00:00Z",
+      endUtc: "2026-11-21T21:00:00Z",
+      timezone: "America/Toronto",
+    },
+  },
+  {
     slug: "things-i-wish-someone-had-told-me-series-01",
     title: "Things I Wish Someone Had Told Me – Series 01",
     subtitle: "A New Dentist's Guide to the Real World",
