@@ -264,7 +264,7 @@ export default function HomePage() {
             <div className={upcomingGridClass}>
               {upcomingCourses.map((course, i) => (
                 <ScrollReveal key={course.slug} delay={Math.min(i, 2) * 80}>
-                  <CourseCard course={course} priority={i === 0} />
+                  <CourseCard course={course} priority={i === 0} emphasizeDateTime />
                 </ScrollReveal>
               ))}
             </div>

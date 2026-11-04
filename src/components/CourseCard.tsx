@@ -27,10 +27,14 @@ export function CourseCard({
   course,
   priority = false,
   sizes = DEFAULT_SIZES,
+  emphasizeDateTime = false,
 }: {
   course: CourseCardModel;
   priority?: boolean;
   sizes?: string;
+  /** When true (homepage), show the time beside the date and render the
+   *  date/time bold + black for extra prominence. */
+  emphasizeDateTime?: boolean;
 }) {
   const isPast = course.timing === "past";
   const action = isPast ? "View Course Details" : "View Course";
@@ -97,7 +101,10 @@ export function CourseCard({
           <div className="flex items-center gap-2">
             <Calendar className="h-3.5 w-3.5 shrink-0" style={{ color: "#c9a84c" }} />
             <span>
-              {course.date}
+              <span className={emphasizeDateTime ? "font-bold text-black" : undefined}>
+                {course.date}
+                {emphasizeDateTime && course.time ? ` · ${course.time}` : null}
+              </span>
               {course.format ? <span className="text-[#1a1a2e]/40"> · {course.format}</span> : null}
             </span>
           </div>
