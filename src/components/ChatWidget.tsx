@@ -31,7 +31,7 @@ const INTENTS: Intent[] = [
   {
     patterns: [/ortho|orthodontic|aligner|voudouris|clear aligner|brackets|biomechanics|deep bite|open bite|class ii|class iii|supercorrection/i],
     response:
-      "Daily and Unique Orthodontic Techniques\n\nInstructor: Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)\nDate: Sunday, March 21, 2027\nLocation: 265 Rimrock Rd, North York, ON\nFormat: Hybrid — online or in-person, with hands-on demos · 6 hours · 6 PACE CE credits\nPrice: $399 online · $599 in-person. Prices exclude 13% HST, added at checkout.\n\nCovers evidence-based aligner therapy, JV Supercorrection Rx, deep bite, open bite, Class II/III, and hands-on auxiliary demos.\n\nReserve your seat:\ncanadent.net/courses/daily-unique-orthodontic-techniques",
+      "Daily and Unique Orthodontic Techniques\n\nInstructor: Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)\nDate: Sunday, March 7, 2027\nLocation: 265 Rimrock Rd, North York, ON\nFormat: Hybrid — online or in-person, with hands-on demos · 6 hours · 6 PACE CE credits\nPrice: $399 online · $599 in-person. Prices exclude 13% HST, added at checkout.\n\nCovers evidence-based aligner therapy, JV Supercorrection Rx, deep bite, open bite, Class II/III, and hands-on auxiliary demos.\n\nReserve your seat:\ncanadent.net/courses/daily-unique-orthodontic-techniques",
   },
   {
     patterns: [/endo|root canal|endodontic|apex|pulp|bakhtiar|hengameh|precision endo/i],
