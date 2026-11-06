@@ -194,13 +194,11 @@ export async function createCheckoutSession(
       }${utmQuery ? `&${utmQuery}` : ""}`,
     };
 
-    // Stripe rejects `discounts` and `allow_promotion_codes` together, so set
-    // exactly one. A comped order carries the 100%-off coupon; otherwise offer
-    // Stripe's promo box only when no in-app coupon is already applied.
+    // Comped orders carry a 100%-off coupon via `discounts`. The Stripe promo
+    // code box is intentionally not offered on the hosted checkout page, so
+    // `allow_promotion_codes` is never set.
     if (discounts) {
       params.discounts = discounts;
-    } else {
-      params.allow_promotion_codes = !appliedCoupon;
     }
 
     // Collect given and family name as distinct required fields so the attendee
