@@ -98,40 +98,57 @@ export const courses: Course[] = [
     slug: "botulinum-neurotoxin-for-dentists",
     title: "Botulinum Neurotoxin for Dentists",
     subtitle:
-      "Learn when toxin belongs in the treatment of bruxism, masticatory muscle pain and TMD, when it doesn't, and how to deliver it safely.",
-    instructor: "Babak Hajiloo",
+      "Learn therapeutic use for bruxism and gummy smile, from diagnosis to safe injection, with a bonus module on facial aesthetics.",
+    instructor: "Babak Hajilou",
     price: 599,
     priceOptions: [
       { label: "Online Attendance", price: 599 },
-      { label: "In-Person (Hands-on) Attendance", price: 999 },
+      { label: "In-Person (Hands-on) Attendance", price: 1499 },
     ],
     date: "Saturday, November 21, 2026",
-    time: "9:00 AM – 4:00 PM",
+    time: "9:00 AM – 5:00 PM",
     duration: "Full day",
     location: "Hybrid — Online + In-Person (265 Rimrock Rd, North York, ON)",
     ceCredits: "6 CE Credits",
     status: "available",
     category: "Orofacial Pain & Therapeutics",
     format: "Hybrid (Online Lectures + In-Person Hands-on)",
-    image: "/course-botulinum-neurotoxin.jpeg",
+    image: "/course-botulinum-neurotoxin.png",
     description:
-      "Dentists are often the first to see the signs of masticatory muscle overactivity: worn teeth, failed restorations, tender muscles and morning temporal headaches. This course shows you where botulinum toxin fits in that care, starting with diagnosis and not with injection points.\n\nThe main focus is therapeutic use around the jaw and face. You'll study the masseter and temporalis by function, assess bruxism and TMD, work through reconstitution and dose calculation, and learn the danger zones and complications that shape safe technique. Gummy smile is taught through a decision pathway that separates muscular causes from those toxin can't fix.\n\nTheory is delivered online, so the hands-on sessions can concentrate on preparing toxin, palpating and marking muscles, and practising technique under guidance. A shorter module introduces facial aesthetics, for dentists whose regulators permit it.\n\nThis course teaches toxin as an adjunct, not a cure. It reduces muscle activity and force — it does not remove the cause of bruxism or replace splints and behavioural care. Trials in bruxism and TMD remain small and mixed, with no agreed dose, and these are generally off-label uses. You'll learn to work within those limits, explain them to patients, and document consent and treatment properly.\n\nBefore you register: this course is for licensed dentists. Rules on who may inject toxin, and for which purposes, differ between countries and regulators — please check what yours permits, including for aesthetic use. Completing this course does not change your scope of practice.",
+      "Dentists are often the first to see the signs of masticatory muscle overactivity: worn teeth, failed restorations, tender muscles and morning temporal headaches. This course shows you where botulinum toxin fits in that care, starting with diagnosis and not with injection points.\n\nThe main focus is therapeutic use, especially bruxism and gummy smile. You'll study the masseter and temporalis by function, work through reconstitution and dose calculation, and learn the danger zones and complications that shape safe technique. Gummy smile is taught through a decision pathway that separates muscular causes from those toxin can't fix.\n\nAs a bonus, the course also introduces facial aesthetics, including the muscles involved, common treatment areas and how to avoid complications.\n\nThis course teaches toxin as an adjunct, not a cure. It treats the muscle, not the cause: it can reduce muscle activity and force, but it does not remove the cause of bruxism or replace splints and behavioural care. The evidence has limits — trials in bruxism are small and mixed, with no agreed dose — so you'll learn to use toxin as an adjunct and explain those limits to patients. Bruxism and gummy smile are generally off-label uses; you'll learn how to discuss that in consent and document each treatment properly.\n\nBefore you register: this course is for licensed dentists. Completing it does not change your scope of practice, and what you may offer depends on your regulator — please check what yours permits, including for aesthetic use, before you register.",
     highlights: [
       "Explain how botulinum toxin works and compare the main type A products.",
       "Reconstitute, handle and calculate doses safely.",
       "Identify the masticatory and facial muscles by function.",
-      "Assess bruxism, masseter hypertrophy, TMD and gummy smile before choosing treatment.",
+      "Assess bruxism, masseter hypertrophy and gummy smile before choosing treatment.",
       "Recognise when toxin isn't appropriate and when to refer.",
       "Recognise, prevent and manage complications and emergencies.",
       "Document consent, off-label use and treatment details.",
+      "Describe the principles and danger zones of common aesthetic treatments.",
     ],
     outcomeIntro:
-      "A therapeutic, diagnosis-first course on botulinum toxin around the jaw and face for licensed dentists. By the end of the course you will be able to:",
+      "A therapeutic, diagnosis-first course on botulinum toxin for licensed dentists, focused on bruxism and gummy smile with a bonus module on facial aesthetics. By the end of the course you will be able to:",
     audience: [
-      "General dentists who manage patients with bruxism, tooth wear or jaw muscle pain.",
-      "Dentists with an interest in TMD and orofacial pain who want to understand toxin as an adjunct.",
+      "General dentists who manage patients with bruxism or tooth wear.",
       "Restorative dentists concerned about high muscle forces on their work.",
       "Dentists assessing gummy smile who want a clear way to choose the right treatment.",
+      "Dentists who want an introduction to facial aesthetics.",
+    ],
+    schedule: [
+      {
+        day: "9:00 AM – 12:00 PM",
+        topic:
+          "Theory — Modules 1 to 7, taught live. Join in the classroom or online.",
+      },
+      {
+        day: "12:00 PM – 2:00 PM",
+        topic: "Lunch — Online attendance ends before lunch.",
+      },
+      {
+        day: "2:00 PM – 5:00 PM",
+        topic:
+          "Hands-on — Module 8, for in-person attendees only, in North York.",
+      },
     ],
     modules: [
       {
@@ -155,44 +172,40 @@ export const courses: Course[] = [
           "Masseter and temporalis anatomy, types and causes of bruxism, clinical assessment, the evidence, injection technique, masseter hypertrophy and complications.",
       },
       {
-        title: "Module 5 — TMD and Myofascial Pain",
-        detail:
-          "Diagnosis with DC/TMD, the treatment ladder, when imaging is needed and the place of toxin in refractory myalgia.",
-      },
-      {
-        title: "Module 6 — Gummy Smile",
+        title: "Module 5 — Gummy Smile",
         detail:
           "Smile anatomy, classification and causes, measurement, a treatment decision pathway, technique and complications.",
       },
       {
-        title: "Module 7 — Other Therapeutic Uses",
+        title: "Module 6 — Other Therapeutic Uses",
         detail:
           "Sialorrhea, chronic migraine, dystonia and other conditions: what to recognise and who to refer to.",
       },
       {
-        title: "Module 8 — Foundations of Facial Aesthetics",
+        title: "Module 7 · Bonus — Facial Aesthetics",
         detail:
           "Facial muscle balance, common treatment areas, danger zones and whole-face assessment.",
       },
       {
-        title: "Module 9 — Hands-on Stations (In Person)",
+        title: "Module 8 · In Person — Hands-on Stations",
         detail:
-          "Reconstitution, palpating and marking, masseter and temporalis, smile assessment and upper-face patterns. Modules 1 to 8 are taught online; Module 9 brings the skills together in person.",
+          "Reconstitution, palpating and marking, masseter and temporalis, smile assessment and upper-face patterns. Modules 1 to 7 are taught online; Module 8 brings the skills together in person.",
       },
     ],
-    instructorTitle: "Course Instructor",
+    instructorTitle: "International Medical Graduate · Instructor, Izenca Academy",
     instructorBio:
-      "Babak Hajiloo leads CanaDent's Botulinum Neurotoxin for Dentists program, teaching the therapeutic use of toxin around the jaw and face — bruxism, masticatory muscle pain, TMD and gummy smile — with an emphasis on diagnosis, safe technique and realistic, evidence-based expectations.",
+      "Babak Hajilou is an international medical graduate and instructor at Izenca Academy, with extensive experience in botulinum toxin injection. He has trained medical graduates in injectable procedures, including Botox, PRP and mesotherapy, and his teaching emphasises diagnosis, safe technique and realistic expectations.",
     attendanceModes: [
       {
         label: "Online Attendance",
         kind: "online",
-        summary: "Join the online lecture program (Modules 1–8) from anywhere.",
+        summary:
+          "Join the live online theory program (Modules 1 to 7) from anywhere.",
         includes: [
-          "Live online access to Modules 1 to 8",
+          "Live online access to the morning theory, Modules 1 to 7",
           "Course booklet",
           "Knowledge checks",
-          "Does not include the supervised hands-on practice (Module 9)",
+          "Does not include the afternoon hands-on session",
         ],
         access:
           "Your joining link and access details are emailed to you before the course date.",
@@ -201,11 +214,12 @@ export const courses: Course[] = [
         label: "In-Person (Hands-on) Attendance",
         kind: "in-person",
         summary:
-          "Attend the full program, including the supervised hands-on stations on-site.",
+          "Attend the full program — the morning theory in the classroom and the afternoon hands-on stations with the instructor.",
         location: "265 Rimrock Road, North York, Ontario",
         includes: [
-          "All online lectures (Modules 1 to 8)",
-          "Module 9 hands-on stations with the instructor",
+          "Morning theory in the classroom, Modules 1 to 7",
+          "Afternoon hands-on stations with the instructor",
+          "Course booklet",
           "6 CE Credits",
         ],
         access: "Please plan to arrive 15 minutes early to check in.",
@@ -213,7 +227,7 @@ export const courses: Course[] = [
     ],
     calendar: {
       startUtc: "2026-11-21T14:00:00Z",
-      endUtc: "2026-11-21T21:00:00Z",
+      endUtc: "2026-11-21T22:00:00Z",
       timezone: "America/Toronto",
     },
   },
