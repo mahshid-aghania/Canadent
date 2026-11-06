@@ -29,6 +29,8 @@ export const COUPONS: Record<string, Coupon> = {
   "CONFI-20": { type: "percent", value: 20, label: "20% off" },
   "CONFI-50": { type: "percent", value: 50, label: "50% off" },
   "CONFI-100": { type: "percent", value: 100, label: "100% off" },
+  // Complimentary (100% off) across every course — customer types "free".
+  FREE: { type: "percent", value: 100, label: "Complimentary — 100% off" },
   // Complimentary (100% off) access to the Fill Every Chair masterclass only.
   // Restricted to that course so the code can't comp any other registration.
   "FEC-VIP": {
