@@ -106,7 +106,7 @@ export const courses: Course[] = [
       { label: "In-Person (Hands-on) Attendance", price: 1499 },
     ],
     date: "Saturday, November 21, 2026",
-    time: "9:00 AM – 5:00 PM",
+    time: "9:00 AM – 4:00 PM",
     duration: "Full day",
     location: "Hybrid — Online + In-Person (265 Rimrock Rd, North York, ON)",
     ceCredits: "6 CE Credits",
@@ -141,11 +141,11 @@ export const courses: Course[] = [
           "Theory — Modules 1 to 7, taught live. Join in the classroom or online.",
       },
       {
-        day: "12:00 PM – 2:00 PM",
+        day: "12:00 PM – 1:00 PM",
         topic: "Lunch — Online attendance ends before lunch.",
       },
       {
-        day: "2:00 PM – 5:00 PM",
+        day: "1:00 PM – 4:00 PM",
         topic:
           "Hands-on — Module 8, for in-person attendees only, in North York.",
       },
@@ -227,7 +227,7 @@ export const courses: Course[] = [
     ],
     calendar: {
       startUtc: "2026-11-21T14:00:00Z",
-      endUtc: "2026-11-21T22:00:00Z",
+      endUtc: "2026-11-21T21:00:00Z",
       timezone: "America/Toronto",
     },
   },
