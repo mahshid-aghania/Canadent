@@ -99,7 +99,7 @@ export const courses: Course[] = [
     title: "Botulinum Neurotoxin for Dentists",
     subtitle:
       "Learn when toxin belongs in the treatment of bruxism, masticatory muscle pain and TMD, when it doesn't, and how to deliver it safely.",
-    instructor: "Babak Hajiloo",
+    instructor: "Babak Hajilou",
     price: 599,
     priceOptions: [
       { label: "Online Attendance", price: 599 },
@@ -113,7 +113,7 @@ export const courses: Course[] = [
     status: "available",
     category: "Orofacial Pain & Therapeutics",
     format: "Hybrid (Online Lectures + In-Person Hands-on)",
-    image: "/course-botulinum-neurotoxin.jpeg",
+    image: "/course-botulinum-neurotoxin.png",
     description:
       "Dentists are often the first to see the signs of masticatory muscle overactivity: worn teeth, failed restorations, tender muscles and morning temporal headaches. This course shows you where botulinum toxin fits in that care, starting with diagnosis and not with injection points.\n\nThe main focus is therapeutic use around the jaw and face. You'll study the masseter and temporalis by function, assess bruxism and TMD, work through reconstitution and dose calculation, and learn the danger zones and complications that shape safe technique. Gummy smile is taught through a decision pathway that separates muscular causes from those toxin can't fix.\n\nTheory is delivered online, so the hands-on sessions can concentrate on preparing toxin, palpating and marking muscles, and practising technique under guidance. A shorter module introduces facial aesthetics, for dentists whose regulators permit it.\n\nThis course teaches toxin as an adjunct, not a cure. It reduces muscle activity and force — it does not remove the cause of bruxism or replace splints and behavioural care. Trials in bruxism and TMD remain small and mixed, with no agreed dose, and these are generally off-label uses. You'll learn to work within those limits, explain them to patients, and document consent and treatment properly.\n\nBefore you register: this course is for licensed dentists. Rules on who may inject toxin, and for which purposes, differ between countries and regulators — please check what yours permits, including for aesthetic use. Completing this course does not change your scope of practice.",
     highlights: [
@@ -182,7 +182,7 @@ export const courses: Course[] = [
     ],
     instructorTitle: "Course Instructor",
     instructorBio:
-      "Babak Hajiloo leads CanaDent's Botulinum Neurotoxin for Dentists program, teaching the therapeutic use of toxin around the jaw and face — bruxism, masticatory muscle pain, TMD and gummy smile — with an emphasis on diagnosis, safe technique and realistic, evidence-based expectations.",
+      "Babak Hajilou leads CanaDent's Botulinum Neurotoxin for Dentists program, teaching the therapeutic use of toxin around the jaw and face — bruxism, masticatory muscle pain, TMD and gummy smile — with an emphasis on diagnosis, safe technique and realistic, evidence-based expectations.",
     attendanceModes: [
       {
         label: "Online Attendance",
