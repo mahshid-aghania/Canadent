@@ -1,0 +1,38 @@
+{
+  "n": 18,
+  "slug": "x-rays-before-after-root-canal",
+  "title": "Why Dentists Take X-rays Before and After a Root Canal",
+  "metaTitle": "Root Canal X-rays: Why They Matter and Safety",
+  "metaDescription": "Why do dentists take X-rays before and after a root canal, and are they safe? Learn how imaging guides treatment and what Health Canada says about radiation.",
+  "primaryKeyword": "root canal x-ray",
+  "secondaryKeywords": [
+    "dental x-ray safety",
+    "root canal imaging",
+    "are dental x-rays safe",
+    "x-rays before root canal"
+  ],
+  "excerpt": "Dentists use X-rays to diagnose, guide, and confirm a root canal because the roots cannot be seen otherwise. Here is their role and what Health Canada says about safety.",
+  "category": "Root Canal Treatment",
+  "heroImageAlt": "A digital dental X-ray displayed on a monitor showing the roots of a tooth.",
+  "suggestedImageFilename": "x-rays-before-after-root-canal.jpg",
+  "bodyHtml": "<p>Dentists take X-rays before and after a root canal because they cannot see inside a tooth or its roots any other way, and the images are essential for diagnosing the problem, guiding treatment, and confirming the result. As for safety, dental X-rays use very low doses of radiation, and Canadian guidance from Health Canada emphasizes keeping exposure as low as reasonably achievable with protective measures and clinical justification. In everyday terms, the small amount of radiation involved is weighed carefully against the clear benefit of treating your tooth correctly.</p><h2>Why X-rays are needed before treatment</h2><p>Before a root canal, radiographs give the dentist information that is impossible to gather by looking at the tooth alone. They reveal the number, length, and curvature of the canals inside the roots, show how far decay or a crack extends, and highlight any infection in the bone around the root tip. This picture helps the dentist plan the treatment, anticipate tricky anatomy, and confirm that a root canal is the right choice in the first place.</p><h2>X-rays during the procedure</h2><p>During treatment, a dentist may take one or more images to check the working length, meaning how far the instruments reach toward the end of the root. Getting this depth right is important: cleaning and filling the canal to the correct point helps seal it properly without over-extending. These mid-treatment images are a quality check that guides the dentist in real time.</p><h2>X-rays after treatment</h2><p>Once the canals are filled and sealed, a final X-ray confirms that the filling material reaches the appropriate length and that the canals appear well sealed. Later, at follow-up visits, additional images can show whether the bone around the root is healing as expected. This is how dentists verify, over time, that treatment is doing its job. Without these comparison images, it would be far harder to tell whether a previously infected tooth is recovering.</p><h2>Are dental X-rays safe?</h2><p>Dental radiographs are among the lower-dose imaging procedures in health care, and modern digital sensors have reduced exposure further compared with older film. Health Canada provides radiation-protection guidance for dental radiography built around the principle of using radiation only when justified and keeping doses as low as reasonably achievable. In practice, that means your dental team takes images when they add real diagnostic value, uses protective equipment where appropriate, and avoids unnecessary repeat exposures. If you are pregnant or may be, tell your dentist so that timing and precautions can be considered.</p><h3>How much radiation is in a dental X-ray?</h3><p>The dose from a routine dental X-ray is very small, far lower than many people expect and a fraction of the natural background radiation we all receive over time. Your dentist takes images based on clinical need rather than routine, which keeps overall exposure low.</p><h3>Can I refuse X-rays and still have a root canal?</h3><p>X-rays are considered essential for safe, accurate root canal treatment because the roots cannot be assessed without them. If you have concerns, discuss them with your dentist, who can explain why each image is needed and how exposure is minimized. Declining necessary imaging may make it unsafe to proceed.</p><h3>Why so many images for one tooth?</h3><p>Each image answers a different question: one to diagnose, sometimes one or more to guide treatment, and one to confirm the result. Together they make the treatment more precise, which protects the tooth and supports a better long-term outcome.</p><h2>Your questions answered in Markham</h2><p>If you want to understand why imaging is part of your treatment, it is always reasonable to ask. Dr. Neda Kadivar, a general and family dentist with over 20 years of experience, provides root canal treatment in Markham and can explain how X-rays guide each stage and how exposure is kept low. You can read more about the practice at <a href=\"https://www.smiledentalartscentre.com/\" target=\"_blank\" rel=\"nofollow noopener\">Smile Dental Arts Centre</a>, and their page on <a href=\"https://www.smiledentalartscentre.com/dental-services/endodontics/root-canal-therapy\" target=\"_blank\" rel=\"nofollow noopener\">root canal therapy</a> provides further detail. For patients across the GTA, including North York residents considering care in Markham, X-rays are best understood not as an extra, but as the tool that lets a dentist treat the part of your tooth no one can see.</p><p class=\"article-disclaimer\"><em>This article is general information and not a substitute for professional dental advice, diagnosis, or treatment. Always speak with a licensed dentist about your specific situation.</em></p>",
+  "internalLinkSlugs": [],
+  "smile": {
+    "included": true,
+    "url": "https://www.smiledentalartscentre.com/",
+    "anchorText": "Smile Dental Arts Centre",
+    "rel": "nofollow noopener",
+    "reason": "Homepage link in the closing Markham CTA paragraph."
+  },
+  "secondarySmileLink": {
+    "url": "https://www.smiledentalartscentre.com/dental-services/endodontics/root-canal-therapy",
+    "anchorText": "root canal therapy"
+  },
+  "references": [
+    "Health Canada radiation protection guidance for dental radiography",
+    "Canadian Dental Association patient resources",
+    "American Association of Endodontists patient resources"
+  ],
+  "editorialNote": "Confirm current Health Canada dental radiography guidance wording/figures at publish time; article keeps claims general and does not cite a specific dose number.",
+  "priority": "Medium"
+}
