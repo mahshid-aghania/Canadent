@@ -1,6 +1,7 @@
 import { dentalHealthArticles } from "./articles-dental-health";
 import { smileMarkhamArticles } from "./articles-smile-markham";
 import { aestheticTrainingArticles } from "./articles-aesthetic-training";
+import { smileRootCanalArticles } from "./articles-smile-rootcanal";
 
 export type Article = {
   /**
@@ -484,6 +485,7 @@ export const articles: Article[] = [
   ...dentalHealthArticles.map((a) => ({ ...a, unlisted: true })),
   ...smileMarkhamArticles.map((a) => ({ ...a, unlisted: true })),
   ...aestheticTrainingArticles.map((a) => ({ ...a, unlisted: true })),
+  ...smileRootCanalArticles.map((a) => ({ ...a, unlisted: true })),
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
