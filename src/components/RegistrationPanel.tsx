@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import { createPortal } from "react-dom";
 import { AlertCircle, Check, MapPin, Video, GraduationCap } from "lucide-react";
 import { createCheckoutSession, previewCoupon } from "@/app/actions/checkout";
+import { registerFree } from "@/app/actions/free-registration";
 // Type-only import — erased at build time, so the coupon codes in lib/coupons
 // are never bundled into the client.
 import type { CouponResult } from "@/lib/coupons";
@@ -61,6 +62,22 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
   const [panelInView, setPanelInView] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
+  // $0 ("free") registration — handled entirely on the front end, no Stripe.
+  const [freeForm, setFreeForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    line1: "",
+    line2: "",
+    city: "",
+    province: "",
+    postalCode: "",
+  });
+  const [freeErrors, setFreeErrors] = useState<Record<string, string>>({});
+  const [freeSubmitting, startFreeTransition] = useTransition();
+  const [freeSuccess, setFreeSuccess] = useState<{ regNumber: string; email: string } | null>(null);
+
   // Portals need the client DOM; gate on mount to stay SSR/hydration-safe.
   // Also restore the visitor's own prior choice if they cancelled at Stripe and
   // came back with ?attendance= — this is their selection, not a silent default.
@@ -95,6 +112,9 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
   const effectivePrice = couponApplied ? couponApplied.finalPrice : activePrice;
   const canRegister = options ? selected !== null : true;
   const total = effectivePrice != null ? totalWithTax(effectivePrice) : null;
+  // A coupon that fully covers the fee ($0 total): we skip Stripe and collect
+  // the attendee's details here on the front end instead.
+  const isFree = couponApplied?.isFree === true;
 
   // A coupon is validated against a specific fee, so drop it if the attendance
   // option (and therefore the price) changes — the visitor can re-apply.
@@ -102,6 +122,56 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
     setCouponApplied(null);
     setCouponError(null);
     setCouponInput("");
+    setFreeErrors({});
+    setFreeSuccess(null);
+  }
+
+  function updateFree(key: keyof typeof freeForm, value: string) {
+    setFreeForm((f) => ({ ...f, [key]: value }));
+    if (freeErrors[key]) {
+      setFreeErrors((e) => {
+        const next = { ...e };
+        delete next[key];
+        return next;
+      });
+    }
+  }
+
+  function submitFree() {
+    if (!couponApplied?.isFree) return;
+    if (options && !selected) {
+      setError("Please choose how you would like to attend.");
+      return;
+    }
+    setError(null);
+    startFreeTransition(async () => {
+      const result = await registerFree({
+        slug,
+        couponCode: couponApplied.code,
+        firstName: freeForm.firstName,
+        lastName: freeForm.lastName,
+        email: freeForm.email,
+        phone: freeForm.phone,
+        address: {
+          line1: freeForm.line1,
+          line2: freeForm.line2,
+          city: freeForm.city,
+          province: freeForm.province,
+          postalCode: freeForm.postalCode,
+          country: "Canada",
+        },
+        optionLabel: selected,
+        utm: readUtm(),
+      });
+      if (result.ok) {
+        track("free_registration_completed", { slug, code: couponApplied.code });
+        setFreeErrors({});
+        setFreeSuccess({ regNumber: result.regNumber, email: freeForm.email.trim() });
+      } else {
+        setFreeErrors(result.fieldErrors ?? {});
+        setError(result.error);
+      }
+    });
   }
 
   function applyCouponCode() {
@@ -180,6 +250,34 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 100 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z" />
     </svg>
+  );
+
+  const freeField = (
+    key: keyof typeof freeForm,
+    label: string,
+    autoComplete: string,
+    type: string = "text"
+  ) => (
+    <div>
+      <label htmlFor={`free-${key}`} className="block text-xs font-medium text-[#1a1a2e]/60 mb-1">
+        {label}
+      </label>
+      <input
+        id={`free-${key}`}
+        type={type}
+        value={freeForm[key]}
+        autoComplete={autoComplete}
+        onChange={(e) => updateFree(key, e.target.value)}
+        aria-invalid={Boolean(freeErrors[key])}
+        className="w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/50"
+        style={{ borderColor: freeErrors[key] ? "#fca5a5" : "#e2e8f0" }}
+      />
+      {freeErrors[key] && (
+        <p className="mt-1 text-xs" style={{ color: "#b91c1c" }} role="alert">
+          {freeErrors[key]}
+        </p>
+      )}
+    </div>
   );
 
   return (
@@ -362,22 +460,87 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
         </div>
       )}
 
-      <button
-        onClick={register}
-        disabled={isPending || !canRegister}
-        aria-disabled={isPending || !canRegister}
-        className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {isPending ? (
-          <>
-            {spinner}
-            Redirecting to secure payment…
-          </>
-        ) : (
-          ctaLabel
-        )}
-      </button>
-      <p className="text-xs text-center text-[#1a1a2e]/50 mt-2.5">{TAX_NOTE}</p>
+      {freeSuccess ? (
+        <div
+          role="status"
+          className="rounded-xl p-5 text-center"
+          style={{ background: "#ecfdf5", border: "1px solid #a7f3d0" }}
+        >
+          <div
+            className="flex items-center justify-center gap-2 font-heading text-lg font-bold"
+            style={{ color: "#15803d" }}
+          >
+            <Check className="h-5 w-5" strokeWidth={3} aria-hidden="true" />
+            You&rsquo;re registered!
+          </div>
+          <p className="mt-2 text-sm text-[#1a1a2e]/70">
+            Your complimentary seat for <strong className="text-[#0f2150]">{title}</strong> is
+            confirmed.
+          </p>
+          <p className="mt-1 text-sm text-[#1a1a2e]/70">
+            Registration #<strong className="text-[#0f2150]">{freeSuccess.regNumber}</strong>
+          </p>
+          <p className="mt-2 text-xs text-[#1a1a2e]/55">
+            A confirmation email is on its way to <strong>{freeSuccess.email}</strong>.
+          </p>
+        </div>
+      ) : isFree ? (
+        <div className="space-y-3">
+          <p className="text-sm font-semibold text-[#0f2150]">
+            Complete your complimentary registration
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {freeField("firstName", "First name", "given-name")}
+            {freeField("lastName", "Last (family) name", "family-name")}
+          </div>
+          {freeField("email", "Email address", "email", "email")}
+          {freeField("phone", "Phone number", "tel", "tel")}
+          {freeField("line1", "Street address", "address-line1")}
+          {freeField("line2", "Apartment, suite (optional)", "address-line2")}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {freeField("city", "City", "address-level2")}
+            {freeField("province", "Province", "address-level1")}
+            {freeField("postalCode", "Postal code", "postal-code")}
+          </div>
+          <button
+            onClick={submitFree}
+            disabled={freeSubmitting}
+            aria-disabled={freeSubmitting}
+            className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {freeSubmitting ? (
+              <>
+                {spinner}
+                Registering…
+              </>
+            ) : (
+              "Complete free registration — $0 CAD"
+            )}
+          </button>
+          <p className="text-xs text-center text-[#1a1a2e]/50">
+            No payment required. We&rsquo;ll email your confirmation.
+          </p>
+        </div>
+      ) : (
+        <>
+          <button
+            onClick={register}
+            disabled={isPending || !canRegister}
+            aria-disabled={isPending || !canRegister}
+            className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isPending ? (
+              <>
+                {spinner}
+                Redirecting to secure payment…
+              </>
+            ) : (
+              ctaLabel
+            )}
+          </button>
+          <p className="text-xs text-center text-[#1a1a2e]/50 mt-2.5">{TAX_NOTE}</p>
+        </>
+      )}
 
       {selectedMode && (
         <p className="text-xs text-center text-[#1a1a2e]/55 mt-2 flex items-center justify-center gap-1.5">
@@ -419,11 +582,11 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
                 )}
               </div>
               <button
-                onClick={selected ? register : scrollToPanel}
+                onClick={selected && !isFree ? register : scrollToPanel}
                 disabled={isPending}
                 className="btn-primary shrink-0 disabled:opacity-50"
               >
-                {isPending ? spinner : selected ? "Continue" : "Choose Attendance"}
+                {isPending ? spinner : isFree ? "Complete Registration" : selected ? "Continue" : "Choose Attendance"}
               </button>
             </div>
           </div>,
