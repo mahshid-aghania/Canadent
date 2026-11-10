@@ -138,7 +138,8 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
   }
 
   function submitFree() {
-    if (!couponApplied?.isFree) return;
+    const applied = couponApplied;
+    if (!applied?.isFree) return;
     if (options && !selected) {
       setError("Please choose how you would like to attend.");
       return;
@@ -147,7 +148,7 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
     startFreeTransition(async () => {
       const result = await registerFree({
         slug,
-        couponCode: couponApplied.code,
+        couponCode: applied.code,
         firstName: freeForm.firstName,
         lastName: freeForm.lastName,
         email: freeForm.email,
@@ -164,7 +165,7 @@ export function RegistrationPanel({ slug, title, price, options, modes }: Props)
         utm: readUtm(),
       });
       if (result.ok) {
-        track("free_registration_completed", { slug, code: couponApplied.code });
+        track("free_registration_completed", { slug, code: applied.code });
         setFreeErrors({});
         setFreeSuccess({ regNumber: result.regNumber, email: freeForm.email.trim() });
       } else {

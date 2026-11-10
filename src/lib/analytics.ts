@@ -12,6 +12,7 @@ export type FunnelEvent =
   | "checkout_started"
   | "coupon_applied"
   | "payment_completed"
+  | "free_registration_completed"
   // ── "Request This Course Again" demand funnel ──
   | "request_card_viewed"
   | "request_course_selected"
