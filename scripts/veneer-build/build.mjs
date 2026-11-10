@@ -1029,9 +1029,76 @@ ${rows}
 </body></html>`;
 fs.writeFileSync(OUT_HTML, reportHtml);
 
+// ── Full-content HTML (source for the full-articles PDF) ───────────────────
+const OUT_FULL = path.join(ROOT, "scripts/veneer-build/veneer-articles-full.html");
+const toc = articles
+  .map((a) => `<li><a href="#a${a.n}">${a.title}</a></li>`)
+  .join("\n");
+const sections = articles
+  .map(
+    (a) => `<article id="a${a.n}">
+  <div class="kicker">Article ${a.n} of 50 · ${a.category}</div>
+  <h1>${a.title}</h1>
+  <div class="amETA"><a href="${SITE}/articles/${a.slug}">${SITE}/articles/${a.slug}</a> · published ${a.publishDate}</div>
+  <div class="bodycopy">${a.bodyHtml}</div>
+</article>`
+  )
+  .join("\n");
+
+const fullHtml = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>CanaDent — 50 Dental Veneer Articles</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #22242b; line-height: 1.6; margin: 0; font-size: 12.5px; }
+  .cover { text-align: center; padding: 120px 0 60px; page-break-after: always; }
+  .brand { font-size: 40px; font-weight: 700; color: #0f2150; letter-spacing: 1px; }
+  .brand span { color: #c9a84c; }
+  .csub { font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #6b7280; margin-top: 8px; }
+  .ctitle { font-size: 26px; color: #0f2150; margin-top: 48px; }
+  .cmeta { font-size: 13px; color: #6b7280; margin-top: 10px; }
+  .cnote { max-width: 440px; margin: 28px auto 0; font-size: 11.5px; color: #6b7280; font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.5; }
+  .tocpage { page-break-after: always; }
+  .tocpage h2 { font-size: 20px; color: #0f2150; border-bottom: 2px solid #c9a84c; padding-bottom: 8px; }
+  .tocpage ol { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size: 12px; columns: 2; column-gap: 28px; padding-left: 20px; }
+  .tocpage li { margin-bottom: 6px; break-inside: avoid; }
+  .tocpage a { color: #1b3a8a; text-decoration: none; }
+  article { page-break-before: always; }
+  .kicker { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #c9a84c; font-weight: 700; }
+  article h1 { font-size: 21px; color: #0f2150; margin: 6px 0 6px; line-height: 1.25; }
+  .amETA { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size: 10.5px; color: #9299a6; margin-bottom: 14px; }
+  .amETA a { color: #1b3a8a; text-decoration: none; word-break: break-all; }
+  .bodycopy h2 { font-size: 15px; color: #0f2150; margin: 18px 0 6px; font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  .bodycopy h3 { font-size: 13px; color: #1b3a8a; margin: 12px 0 2px; font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  .bodycopy p { margin: 0 0 10px; }
+  .bodycopy a { color: #1b3a8a; }
+  .bodycopy em { color: #6b7280; }
+</style></head>
+<body>
+  <div class="cover">
+    <div class="brand">Cana<span>Dent</span></div>
+    <div class="csub">Education Center</div>
+    <div class="ctitle">Dental Veneers — 50-Article Library</div>
+    <div class="cmeta">Patient education · canadent.net/articles · ${new Date().toISOString().slice(0, 10)}</div>
+    <div class="cnote">A 50-article patient-education series on dental veneers. Each piece references
+      Dr. Neda Kadivar / Smile Dental Arts Centre (cosmetic dentistry, Markham, ON) and links to
+      ${CLINIC_URL} with rel="nofollow sponsored noopener".</div>
+  </div>
+  <div class="tocpage">
+    <h2>Contents</h2>
+    <ol>
+${toc}
+    </ol>
+  </div>
+${sections}
+</body></html>`;
+fs.writeFileSync(OUT_FULL, fullHtml);
+
 console.log(`Wrote ${articles.length} articles -> ${OUT_TS}`);
 console.log(`Wrote metadata -> ${OUT_META}`);
 console.log(`Wrote link report -> ${OUT_HTML}`);
+console.log(`Wrote full-content HTML -> ${OUT_FULL}`);
 if (problems.length) {
   console.log("\nPROBLEMS:\n" + problems.map((p) => " - " + p).join("\n"));
   process.exitCode = 2;
