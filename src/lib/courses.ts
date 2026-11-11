@@ -10,6 +10,8 @@ export type Course = {
   time?: string;
   duration?: string;
   location: string;
+  /** Optional Google Maps link for the venue; when set, the location becomes clickable. */
+  mapUrl?: string;
   ceCredits?: string;
   status: "sold-out" | "available" | "upcoming";
   category: string;
@@ -54,8 +56,9 @@ export const courses: Course[] = [
     date: "Tuesday, November 24, 2026",
     time: "6:00 PM – 9:00 PM",
     duration: "3 hours",
-    location: "1500 Don Mills Road, Toronto, ON",
-    ceCredits: "3 CE Credits",
+    location: "Hilton Toronto/Markham Suites Conference Centre & Spa, Markham, ON",
+    mapUrl: "https://www.google.com/maps/place/Hilton+Toronto%2FMarkham+Suites+Conference+Centre+%26+Spa/@43.8543126,-79.3352124,17z/data=!3m1!4b1!4m9!3m8!1s0x89d4d45793893775:0xaf557b4f59971e83!5m2!4m1!1i2!8m2!3d43.8543126!4d-79.3352124",
+    ceCredits: "2 CE Credits",
     status: "available",
     category: "Practice Management",
     format: "In-Person Evening Masterclass",
