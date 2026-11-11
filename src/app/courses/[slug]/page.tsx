@@ -325,7 +325,7 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
                   {course.time && <div className="text-xs">{course.time} ET</div>}
                 </div>
               </li>
-              <li className="flex items-start gap-3"><MapPin className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} /><span>{course.location}</span></li>
+              <li className="flex items-start gap-3"><MapPin className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#c9a84c" }} />{course.mapUrl ? <a href={course.mapUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-[#c9a84c]/40 underline-offset-2 hover:text-[#0f2150] hover:decoration-[#c9a84c] transition-colors">{course.location}</a> : <span>{course.location}</span>}</li>
               {course.ceCredits && (
                 <li className="flex items-center gap-3"><GraduationCap className="h-4 w-4 shrink-0" style={{ color: "#c9a84c" }} />{course.ceCredits}</li>
               )}
