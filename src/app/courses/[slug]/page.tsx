@@ -118,29 +118,51 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
 
               {course.status !== "sold-out" && (
                 <div className="flex flex-wrap items-center gap-3">
-                  {minPrice != null && (
-                    <span className="text-white/80 text-sm mr-1">
-                      From{" "}
-                      {minOriginalPrice != null && minOriginalPrice > minPrice && (
-                        <span className="font-heading text-lg font-semibold text-white/45 line-through align-middle mr-1.5">
-                          ${minOriginalPrice.toLocaleString()}
+                  {course.externalUrl ? (
+                    <>
+                      <span className="font-heading text-2xl font-bold text-white align-middle mr-1">Free</span>
+                      <a href={course.externalUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">Register for Free</a>
+                    </>
+                  ) : (
+                    <>
+                      {minPrice != null && (
+                        <span className="text-white/80 text-sm mr-1">
+                          From{" "}
+                          {minOriginalPrice != null && minOriginalPrice > minPrice && (
+                            <span className="font-heading text-lg font-semibold text-white/45 line-through align-middle mr-1.5">
+                              ${minOriginalPrice.toLocaleString()}
+                            </span>
+                          )}
+                          <span className="font-heading text-2xl font-bold text-white align-middle">${minPrice.toLocaleString()}</span>{" "}
+                          <span className="text-white/55">CAD {TAX_SUFFIX}</span>
                         </span>
                       )}
-                      <span className="font-heading text-2xl font-bold text-white align-middle">${minPrice.toLocaleString()}</span>{" "}
-                      <span className="text-white/55">CAD {TAX_SUFFIX}</span>
-                    </span>
+                      <a href="#register" className="btn-primary">Choose Your Attendance</a>
+                      <a href="#curriculum" className="btn-outline-white">View Course Curriculum</a>
+                    </>
                   )}
-                  <a href="#register" className="btn-primary">Choose Your Attendance</a>
-                  <a href="#curriculum" className="btn-outline-white">View Course Curriculum</a>
                 </div>
               )}
             </div>
 
             {course.image && (
               <div className="w-full max-w-[260px] mx-auto lg:mx-0 lg:w-[260px] shrink-0">
-                <div className="relative w-full rounded-2xl overflow-hidden" style={{ paddingBottom: "125%", background: "#0f2150", boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.25)" }}>
-                  <Image src={course.image} alt={`${course.title} course poster`} fill priority className="object-contain z-10" sizes="(max-width: 1024px) 260px, 260px" />
-                </div>
+                {course.externalUrl ? (
+                  <a
+                    href={course.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Register for ${course.title}`}
+                    className="block relative w-full rounded-2xl overflow-hidden transition-transform duration-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2"
+                    style={{ paddingBottom: "125%", background: "#0f2150", boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.25)" }}
+                  >
+                    <Image src={course.image} alt={`${course.title} course poster`} fill priority className="object-contain z-10" sizes="(max-width: 1024px) 260px, 260px" />
+                  </a>
+                ) : (
+                  <div className="relative w-full rounded-2xl overflow-hidden" style={{ paddingBottom: "125%", background: "#0f2150", boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.25)" }}>
+                    <Image src={course.image} alt={`${course.title} course poster`} fill priority className="object-contain z-10" sizes="(max-width: 1024px) 260px, 260px" />
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -301,6 +323,21 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
 
             {course.status === "sold-out" ? (
               <CourseRequestPanel course={toCourseSummary(course)} />
+            ) : course.externalUrl ? (
+              <div>
+                <div className="mb-4"><span className="font-heading text-3xl font-bold text-[#0f2150]">Free</span></div>
+                <a
+                  href={course.externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary w-full"
+                >
+                  Register for Free
+                </a>
+                <p className="mt-3 text-center text-xs text-[#1a1a2e]/55">
+                  Secure your spot — registration opens in a new tab.
+                </p>
+              </div>
             ) : course.isFree ? (
               <div>
                 <div className="mb-4"><span className="font-heading text-3xl font-bold text-[#0f2150]">Free</span></div>
