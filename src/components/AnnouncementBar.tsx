@@ -3,9 +3,22 @@ import { useState } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
 
-export function AnnouncementBar() {
+export type AnnouncementItem = {
+  slug: string;
+  /** Short label shown in the bar. */
+  label: string;
+  /** Short date, e.g. "Nov 24" or "Mar 7, 2027". */
+  dateLabel: string;
+};
+
+/**
+ * The gold "Now enrolling" bar. Items are the real upcoming courses (soonest
+ * first), computed server-side in the root layout, so the bar never advertises
+ * a course whose date has passed.
+ */
+export function AnnouncementBar({ items }: { items: AnnouncementItem[] }) {
   const [dismissed, setDismissed] = useState(false);
-  if (dismissed) return null;
+  if (dismissed || items.length === 0) return null;
 
   return (
     <div
@@ -14,22 +27,17 @@ export function AnnouncementBar() {
     >
       <p className="text-sm font-semibold text-[#0f2150] leading-snug">
         <span className="font-normal opacity-75">Now enrolling: </span>
-        <Link
-          href="/courses/things-i-wish-someone-had-told-me-series-01"
-          className="underline underline-offset-2 hover:opacity-70 transition-opacity"
-        >
-          Things I Wish Someone Had Told Me — Oct 23
-        </Link>
-        <span className="opacity-40 mx-2 hidden sm:inline">·</span>
-        <Link
-          href="/courses/daily-unique-orthodontic-techniques"
-          className="underline underline-offset-2 hover:opacity-70 transition-opacity hidden sm:inline"
-        >
-          Orthodontic Techniques — Mar 21, 2027
-        </Link>
-        <span className="opacity-60 mx-1 text-[#0f2150] font-normal hidden sm:inline">
-          (Revised fee: from $399)
-        </span>
+        {items.map((item, i) => (
+          <span key={item.slug} className={i === 0 ? "" : "hidden sm:inline"}>
+            {i > 0 && <span className="opacity-40 mx-2">·</span>}
+            <Link
+              href={`/courses/${item.slug}`}
+              className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+            >
+              {item.label} — {item.dateLabel}
+            </Link>
+          </span>
+        ))}
       </p>
       <button
         onClick={() => setDismissed(true)}

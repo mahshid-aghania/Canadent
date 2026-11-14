@@ -1,6 +1,8 @@
 export type Course = {
   slug: string;
   title: string;
+  /** Short label for the gold announcement bar; falls back to the title. */
+  navLabel?: string;
   subtitle?: string;
   instructor: string;
   price: number | null;
@@ -57,6 +59,7 @@ export const courses: Course[] = [
   {
     slug: "immediate-implant-placement-esthetic-zone",
     title: "Immediate Implant Placement in the Esthetic Zone",
+    navLabel: "Immediate Implant Placement",
     subtitle: "10 Essential Considerations for General Dentists",
     instructor: "Dr. Mehdi Adibrad",
     price: 0,
@@ -262,8 +265,8 @@ export const courses: Course[] = [
       },
     ],
     calendar: {
-      startUtc: "2026-11-21T14:00:00Z",
-      endUtc: "2026-11-21T21:00:00Z",
+      startUtc: "2026-12-06T15:00:00Z",
+      endUtc: "2026-12-06T22:00:00Z",
       timezone: "America/Toronto",
     },
   },
@@ -482,6 +485,7 @@ export const courses: Course[] = [
   {
     slug: "daily-unique-orthodontic-techniques",
     title: "Daily and Unique Orthodontic Techniques for Prosthodontics",
+    navLabel: "Orthodontic Techniques",
     subtitle:
       "How to obtain a comprehensive understanding of evidence-based aligner therapy, advanced biomechanics, and efficient clinical workflows for predictable treatment outcomes.",
     instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
