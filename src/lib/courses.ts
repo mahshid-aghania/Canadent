@@ -19,6 +19,13 @@ export type Course = {
   image?: string;
   posterImage?: string;
   instructorPhoto?: string;
+  /**
+   * External registration URL. When set, the course is registered off-site
+   * (e.g. a Constant Contact landing page) rather than through Stripe: the
+   * poster becomes a link to this URL and the sidebar shows an external
+   * "Register" button instead of the in-app RegistrationPanel.
+   */
+  externalUrl?: string;
   description: string;
   highlights?: string[];
   schedule?: { day: string; topic: string }[];
@@ -47,6 +54,32 @@ export type Course = {
 };
 
 export const courses: Course[] = [
+  {
+    slug: "immediate-implant-placement-esthetic-zone",
+    title: "Immediate Implant Placement in the Esthetic Zone",
+    subtitle: "10 Essential Considerations for General Dentists",
+    instructor: "Dr. Mehdi Adibrad",
+    price: 0,
+    isFree: true,
+    date: "Sunday, December 13, 2026",
+    time: "11:00 AM – 12:30 PM",
+    duration: "1.5 hours",
+    location: "Webinar via Zoom",
+    ceCredits: "2 CE Credits",
+    status: "available",
+    category: "Implant Dentistry",
+    format: "Online Webinar",
+    image: "/course-immediate-implant-adibrad.jpeg",
+    posterImage: "/course-immediate-implant-adibrad.jpeg",
+    externalUrl:
+      "https://lp.constantcontactpages.com/sl/TXTUYV2/NewlyGraduatedDentists",
+    instructorTitle:
+      "Dental Surgeon · Practice limited to periodontics and implant dentistry",
+    instructorBio:
+      "Dr. Mehdi Adibrad is a dental surgeon whose practice is limited to periodontics and implant dentistry. He holds a Master of Science in Periodontics and Implantology and treats periodontal and implant cases, including implant therapy in the esthetic zone.",
+    description:
+      "Immediate implant placement in the esthetic zone can shorten treatment time and help preserve the surrounding tissues, but it also carries specific risks that general dentists should understand before recommending or performing it. In this free 90-minute webinar, Dr. Mehdi Adibrad reviews ten essential considerations — spanning case selection, the condition of the extraction socket, soft-tissue management, provisionalization, and knowing when to refer — so general dentists can make informed decisions in everyday practice.\n\nThe session is presented by ConfiDentist and CanaDent and is delivered live via Zoom. Participants earn 2 CE Credits. ConfiDentist Grp. is a Nationally Approved PACE Program Provider for FAGD/MAGD credit (Provider ID# 420454; approval 10/1/2025 to 9/30/2027). Approval does not imply acceptance by any regulatory authority or AGD endorsement.\n\nRegistration is free and handled through our registration page — click the poster or the Register button to sign up.",
+  },
   {
     slug: "fill-every-chair",
     title: "Fill Every Chair: Dental Practice Growth Evening Masterclass",
