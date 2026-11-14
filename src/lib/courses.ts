@@ -139,7 +139,7 @@ export const courses: Course[] = [
     price: 599,
     priceOptions: [
       { label: "Online Attendance", price: 599 },
-      { label: "In-Person (Hands-on) Attendance", price: 1499 },
+      { label: "In-Person (Hands-on) Attendance", price: 1299, originalPrice: 1499 },
     ],
     date: "Sunday, December 6, 2026",
     time: "10:00 AM – 5:00 PM",
@@ -149,7 +149,7 @@ export const courses: Course[] = [
     status: "available",
     category: "Orofacial Pain & Therapeutics",
     format: "Hybrid (Online Lectures + In-Person Hands-on)",
-    image: "/course-botulinum-neurotoxin.png",
+    image: "/course-botulinum-neurotoxin-hajilou.jpeg",
     description:
       "Dentists are often the first to see the signs of masticatory muscle overactivity: worn teeth, failed restorations, tender muscles and morning temporal headaches. This course shows you where botulinum toxin fits in that care, starting with diagnosis and not with injection points.\n\nThe main focus is therapeutic use, especially bruxism and gummy smile. You'll study the masseter and temporalis by function, work through reconstitution and dose calculation, and learn the danger zones and complications that shape safe technique. Gummy smile is taught through a decision pathway that separates muscular causes from those toxin can't fix.\n\nAs a bonus, the course also introduces facial aesthetics, including the muscles involved, common treatment areas and how to avoid complications.\n\nThis course teaches toxin as an adjunct, not a cure. It treats the muscle, not the cause: it can reduce muscle activity and force, but it does not remove the cause of bruxism or replace splints and behavioural care. The evidence has limits — trials in bruxism are small and mixed, with no agreed dose — so you'll learn to use toxin as an adjunct and explain those limits to patients. Bruxism and gummy smile are generally off-label uses; you'll learn how to discuss that in consent and document each treatment properly.\n\nBefore you register: this course is for licensed dentists. Completing it does not change your scope of practice, and what you may offer depends on your regulator — please check what yours permits, including for aesthetic use, before you register.",
     highlights: [
