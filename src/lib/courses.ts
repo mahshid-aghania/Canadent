@@ -134,7 +134,7 @@ export const courses: Course[] = [
     slug: "botulinum-neurotoxin-for-dentists",
     title: "Botulinum Neurotoxin for Dentists",
     subtitle:
-      "Learn therapeutic use for bruxism and gummy smile, from diagnosis to safe injection, with a bonus module on facial aesthetics.",
+      "Learn when toxin belongs in the treatment of bruxism, masticatory muscle pain and TMD, when it doesn't, and how to deliver it safely.",
     instructor: "Babak Hajilou",
     price: 599,
     priceOptions: [
@@ -151,24 +151,24 @@ export const courses: Course[] = [
     format: "Hybrid (Online Lectures + In-Person Hands-on)",
     image: "/course-botulinum-neurotoxin-hajilou.jpeg",
     description:
-      "Dentists are often the first to see the signs of masticatory muscle overactivity: worn teeth, failed restorations, tender muscles and morning temporal headaches. This course shows you where botulinum toxin fits in that care, starting with diagnosis and not with injection points.\n\nThe main focus is therapeutic use, especially bruxism and gummy smile. You'll study the masseter and temporalis by function, work through reconstitution and dose calculation, and learn the danger zones and complications that shape safe technique. Gummy smile is taught through a decision pathway that separates muscular causes from those toxin can't fix.\n\nAs a bonus, the course also introduces facial aesthetics, including the muscles involved, common treatment areas and how to avoid complications.\n\nThis course teaches toxin as an adjunct, not a cure. It treats the muscle, not the cause: it can reduce muscle activity and force, but it does not remove the cause of bruxism or replace splints and behavioural care. The evidence has limits — trials in bruxism are small and mixed, with no agreed dose — so you'll learn to use toxin as an adjunct and explain those limits to patients. Bruxism and gummy smile are generally off-label uses; you'll learn how to discuss that in consent and document each treatment properly.\n\nBefore you register: this course is for licensed dentists. Completing it does not change your scope of practice, and what you may offer depends on your regulator — please check what yours permits, including for aesthetic use, before you register.",
+      "Dentists are often the first to see the signs of masticatory muscle overactivity: worn teeth, failed restorations, tender muscles and morning temporal headaches. This course shows you where botulinum toxin fits in that care — starting with diagnosis, not with injection points.\n\nThe focus is therapeutic: bruxism, masticatory muscle pain and temporomandibular disorders (TMD). You'll learn when toxin genuinely belongs in that treatment, when it doesn't, and how to deliver it safely. You'll study the masseter and temporalis by function, work through reconstitution and dose calculation, and learn the danger zones and complications that shape safe technique.\n\nThis course teaches toxin as an adjunct, not a cure. It treats the muscle, not the cause: it can reduce muscle activity and force, but it does not remove the cause of bruxism or replace splints and behavioural care. The evidence has limits — trials in bruxism and TMD are small and mixed, with no agreed dose — so you'll learn to use toxin as an adjunct and explain those limits to patients. These are generally off-label uses; you'll learn how to discuss that in consent and document each treatment properly.\n\nBefore you register: this course is for licensed dentists. Completing it does not change your scope of practice, and what you may offer depends on your regulator — please check what yours permits before you register.",
     highlights: [
       "Explain how botulinum toxin works and compare the main type A products.",
       "Reconstitute, handle and calculate doses safely.",
       "Identify the masticatory and facial muscles by function.",
-      "Assess bruxism, masseter hypertrophy and gummy smile before choosing treatment.",
+      "Assess bruxism, masseter hypertrophy, masticatory muscle pain and TMD before choosing treatment.",
       "Recognise when toxin isn't appropriate and when to refer.",
       "Recognise, prevent and manage complications and emergencies.",
       "Document consent, off-label use and treatment details.",
-      "Describe the principles and danger zones of common aesthetic treatments.",
+      "Explain the role, limits and safe delivery of toxin in TMD and masticatory muscle pain.",
     ],
     outcomeIntro:
-      "A therapeutic, diagnosis-first course on botulinum toxin for licensed dentists, focused on bruxism and gummy smile with a bonus module on facial aesthetics. By the end of the course you will be able to:",
+      "A therapeutic, diagnosis-first course on botulinum toxin for licensed dentists, focused on bruxism, masticatory muscle pain and TMD. By the end of the course you will be able to:",
     audience: [
       "General dentists who manage patients with bruxism or tooth wear.",
       "Restorative dentists concerned about high muscle forces on their work.",
-      "Dentists assessing gummy smile who want a clear way to choose the right treatment.",
-      "Dentists who want an introduction to facial aesthetics.",
+      "Dentists managing masticatory muscle pain or TMD who want a clear, evidence-based approach.",
+      "Dentists who want to know when toxin belongs in that care — and when it doesn't.",
     ],
     schedule: [
       {
