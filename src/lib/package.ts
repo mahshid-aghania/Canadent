@@ -115,19 +115,34 @@ const financialStepsCourse: PackageCourse = {
   confirmed: true,
 };
 
+// Surgical/periodontal course — part of the Complete Learning Package.
+const postExtractionCourse: PackageCourse = {
+  slug: "post-extraction-site-management",
+  title: "Post-Extraction Site Management",
+  instructor: "Clinical Periodontist & Biomaterials Specialist",
+  image: "/course-post-extraction.jpeg",
+  summary:
+    "An evidence-based program on socket grafting and alveolar ridge preservation for implant site preparation — covering bone graft biomaterials, barrier membranes, guided bone regeneration, ridge augmentation, suturing, and complication management.",
+  allocationCAD: 150,
+  href: "/courses/post-extraction-site-management",
+  confirmed: true,
+};
+
 // ── Complete Learning Package ───────────────────────────────────────────────
-// Four confirmed courses bundled for one combined price of $650 CAD
-// (tax-exclusive). Lives at /packages/complete-learning-package; the former
-// /packages/three-course-package URL permanently redirects here.
-export const completeLearningPackage: CoursePackage = {
-  slug: "complete-learning-package",
-  route: "/packages/complete-learning-package",
-  title: "Four Courses. One Complete Learning Package.",
+// Five confirmed courses bundled for one combined price of $800 CAD
+// (tax-exclusive). Lives at /packages/five-course-package; the former
+// /packages/complete-learning-package and /packages/three-course-package URLs
+// permanently redirect here.
+export const fiveCoursePackage: CoursePackage = {
+  slug: "five-course-package",
+  route: "/packages/five-course-package",
+  title: "Five Courses. One Complete Learning Package.",
   eyebrow: "CanaDent Course Package",
-  totalCAD: 650,
+  totalCAD: 800,
   courses: [
     adhesiveCourse,
     endodonticsCourse,
+    postExtractionCourse,
     fillEveryChairCourse,
     financialStepsCourse,
   ],
@@ -153,7 +168,7 @@ export const fourCoursePackage: CoursePackage = {
 
 /** Every bundle, keyed for lookup by the checkout action and pages. */
 export const coursePackages: CoursePackage[] = [
-  completeLearningPackage,
+  fiveCoursePackage,
   fourCoursePackage,
 ];
 
