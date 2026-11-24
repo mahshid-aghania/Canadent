@@ -1,16 +1,15 @@
-// ── Single source of truth for the Three-Course Package ────────────────────
-// The package bundles three continuing-education courses for one combined
-// price. Allocations below are the SUPPLIED package prices for this bundle —
-// they are intentionally different from (and do not change) the individual
-// course prices in `courses.ts`.
+// ── Course package definitions ──────────────────────────────────────────────
+// Each package bundles continuing-education courses for one combined price.
+// The allocations below are the SUPPLIED package prices for each bundle — they
+// are intentionally different from (and do not change) the individual course
+// prices in `courses.ts`.
 //
-// Like every course fee, the package total is stored TAX-EXCLUSIVE: Ontario
-// HST (13%) is added on top at checkout. See `lib/tax.ts`.
+// Like every course fee, package totals are stored TAX-EXCLUSIVE: Ontario HST
+// (13%) is added on top at checkout. See `lib/tax.ts`.
 //
-// The third course is unconfirmed, so `isComplete` is false and purchasing is
-// disabled site-wide until it is supplied. The server action in
-// `actions/package-checkout.ts` refuses to create a Stripe session while the
-// package is incomplete, so the preview can never take a real payment.
+// A package is purchasable only when every course is `confirmed`. The server
+// action in `actions/package-checkout.ts` refuses to create a Stripe session
+// while a package is incomplete, so a preview can never take a real payment.
 
 export type PackageCourse = {
   /** Course slug in `courses.ts`, when this course is a real catalogue entry. */
@@ -39,54 +38,105 @@ export type CoursePackage = {
   courses: PackageCourse[];
 };
 
-export const threeCoursePackage: CoursePackage = {
-  slug: "three-course-package",
-  route: "/packages/three-course-package",
-  title: "Three Courses. One Complete Learning Package.",
+// ── Shared course entries (reused across bundles) ───────────────────────────
+const adhesiveCourse: PackageCourse = {
+  slug: "advanced-adhesive-dentistry-master-blueprint",
+  title: "Advanced Adhesive Dentistry: The Master Blueprint",
+  instructor: "Dr. Amin Asadollahi",
+  image: "/course-adhesive-dentistry-poster.jpeg",
+  summary:
+    "A foundational blueprint mapping the full landscape of modern adhesive, biomimetic, and minimally invasive restorative dentistry — covering advanced isolation, bonding chemistry, Immediate Dentin Sealing and Deep Margin Elevation, and polymerization-stress control.",
+  allocationCAD: 300,
+  href: "/courses/advanced-adhesive-dentistry-master-blueprint",
+  confirmed: true,
+};
+
+const endodonticsCourse: PackageCourse = {
+  slug: "overcoming-severe-curvatures-and-ledges-in-endodontics",
+  title: "Overcoming Severe Curvatures and Ledges in Endodontics",
+  instructor: "Dr. Kalantar Motamedi",
+  image: "/course-overcoming-curvatures.jpeg",
+  summary:
+    "A practical, case-based lecture on managing some of the most challenging situations in endodontics — severely curved canals and ledged root canal systems — including hybrid and crown-down shaping and an innovative ledge-bypass method.",
+  allocationCAD: 250,
+  href: "/courses/overcoming-severe-curvatures-and-ledges-in-endodontics",
+  confirmed: true,
+};
+
+// Clinical orthodontics course — part of the Four-Course Package only.
+const orthodonticCourse: PackageCourse = {
+  slug: "daily-unique-orthodontic-techniques",
+  title: "Daily and Unique Orthodontic Techniques for Prosthodontics",
+  instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
+  image: "/course-orthodontic-prosthodontics-poster.jpeg",
+  summary:
+    "A clinical blueprint for advanced clear-aligner therapy — covering evidence-based biomechanics, the JV Supercorrection Rx, digital treatment planning, and modern auxiliaries for predictable, efficient outcomes across complex orthodontic and interdisciplinary prosthodontic cases.",
+  allocationCAD: 300,
+  href: "/courses/daily-unique-orthodontic-techniques",
+  confirmed: true,
+};
+
+// New-to-practice course — part of the Four-Course Package only.
+const thingsIWishCourse: PackageCourse = {
+  slug: "things-i-wish-someone-had-told-me-series-01",
+  title: "Things I Wish Someone Had Told Me – Series 01",
+  instructor: "Dr. Fatemeh Hosseinkhani",
+  image: "/course-things-i-wish.jpeg",
+  summary:
+    "A practical guide for newly licensed and internationally trained dentists entering Canadian practice — how dental offices operate, associate agreements and compensation, patient and team communication, informed consent and record keeping, and financial planning for a sustainable career.",
+  allocationCAD: 50,
+  href: "/courses/things-i-wish-someone-had-told-me-series-01",
+  confirmed: true,
+};
+
+// Practice-growth masterclass — part of the Complete Learning Package.
+const fillEveryChairCourse: PackageCourse = {
+  slug: "fill-every-chair",
+  title: "Fill Every Chair: Dental Practice Growth Evening Masterclass",
+  instructor: "Mona Vahab, MSc, MSc",
+  image: "/course-fill-every-chair.jpeg",
+  summary:
+    "An evening masterclass for dentists and practice owners who want to better understand their practice data and turn those insights into practical action — uncovering the hidden revenue already sitting in your schedule, recall list, and front desk.",
+  allocationCAD: 100,
+  href: "/courses/fill-every-chair",
+  confirmed: true,
+};
+
+// New-dentist financial session — part of the Complete Learning Package.
+const financialStepsCourse: PackageCourse = {
+  slug: "your-first-financial-steps-as-a-dentist",
+  title: "Your First Financial Steps as a New Dentist",
+  instructor: "Mohammad Hossein Mohammadi",
+  image: "/course-financial-steps.png",
+  summary:
+    "A practical, insight-driven session focused on the real financial decisions dentists face in their first years entering practice as associates.",
+  allocationCAD: 0,
+  href: "/courses/your-first-financial-steps-as-a-dentist",
+  confirmed: true,
+};
+
+// ── Complete Learning Package ───────────────────────────────────────────────
+// Four confirmed courses bundled for one combined price of $650 CAD
+// (tax-exclusive). Lives at /packages/complete-learning-package; the former
+// /packages/three-course-package URL permanently redirects here.
+export const completeLearningPackage: CoursePackage = {
+  slug: "complete-learning-package",
+  route: "/packages/complete-learning-package",
+  title: "Four Courses. One Complete Learning Package.",
   eyebrow: "CanaDent Course Package",
-  totalCAD: 850,
+  totalCAD: 650,
   courses: [
-    {
-      slug: "advanced-adhesive-dentistry-master-blueprint",
-      title: "Advanced Adhesive Dentistry: The Master Blueprint",
-      instructor: "Dr. Amin Asadollahi",
-      image: "/course-adhesive-dentistry-poster.jpeg",
-      summary:
-        "A foundational blueprint mapping the full landscape of modern adhesive, biomimetic, and minimally invasive restorative dentistry — covering advanced isolation, bonding chemistry, Immediate Dentin Sealing and Deep Margin Elevation, and polymerization-stress control.",
-      allocationCAD: 300,
-      href: "/courses/advanced-adhesive-dentistry-master-blueprint",
-      confirmed: true,
-    },
-    {
-      slug: "overcoming-severe-curvatures-and-ledges-in-endodontics",
-      title: "Overcoming Severe Curvatures and Ledges in Endodontics",
-      instructor: "Dr. Kalantar Motamedi",
-      image: "/course-overcoming-curvatures.jpeg",
-      summary:
-        "A practical, case-based lecture on managing some of the most challenging situations in endodontics — severely curved canals and ledged root canal systems — including hybrid and crown-down shaping and an innovative ledge-bypass method.",
-      allocationCAD: 250,
-      href: "/courses/overcoming-severe-curvatures-and-ledges-in-endodontics",
-      confirmed: true,
-    },
-    {
-      slug: "daily-unique-orthodontic-techniques",
-      title: "Daily and Unique Orthodontic Techniques for Prosthodontics",
-      instructor: "Dr. John C. Voudouris, DDS, D.Ortho, MSc.(D)",
-      image: "/course-orthodontic-prosthodontics-poster.jpeg",
-      summary:
-        "A clinical blueprint for advanced clear-aligner therapy — covering evidence-based biomechanics, the JV Supercorrection Rx, digital treatment planning, and modern auxiliaries for predictable, efficient outcomes across complex orthodontic and interdisciplinary prosthodontic cases.",
-      allocationCAD: 300,
-      href: "/courses/daily-unique-orthodontic-techniques",
-      confirmed: true,
-    },
+    adhesiveCourse,
+    endodonticsCourse,
+    fillEveryChairCourse,
+    financialStepsCourse,
   ],
 };
 
-// ── Four-Course Package ────────────────────────────────────────────────────
-// The same three confirmed courses as above, plus a fourth confirmed course
-// ("Things I Wish Someone Had Told Me – Series 01"). Bundled for one combined
-// price of $900 CAD (tax-exclusive). Every course is confirmed, so this package
-// is complete and purchasable immediately.
+// ── Four-Course Package ─────────────────────────────────────────────────────
+// A separate, clinically focused bundle: Adhesive, Endodontics, Orthodontic
+// Techniques, and "Things I Wish Someone Had Told Me – Series 01", for one
+// combined price of $900 CAD (tax-exclusive). Every course is confirmed.
 export const fourCoursePackage: CoursePackage = {
   slug: "four-course-package",
   route: "/packages/four-course-package",
@@ -94,25 +144,16 @@ export const fourCoursePackage: CoursePackage = {
   eyebrow: "CanaDent Course Package",
   totalCAD: 900,
   courses: [
-    // Reuse the three confirmed courses verbatim (same supplied allocations).
-    ...threeCoursePackage.courses,
-    {
-      slug: "things-i-wish-someone-had-told-me-series-01",
-      title: "Things I Wish Someone Had Told Me – Series 01",
-      instructor: "Dr. Fatemeh Hosseinkhani",
-      image: "/course-things-i-wish.jpeg",
-      summary:
-        "A practical guide for newly licensed and internationally trained dentists entering Canadian practice — how dental offices operate, associate agreements and compensation, patient and team communication, informed consent and record keeping, and financial planning for a sustainable career.",
-      allocationCAD: 50,
-      href: "/courses/things-i-wish-someone-had-told-me-series-01",
-      confirmed: true,
-    },
+    adhesiveCourse,
+    endodonticsCourse,
+    orthodonticCourse,
+    thingsIWishCourse,
   ],
 };
 
 /** Every bundle, keyed for lookup by the checkout action and pages. */
 export const coursePackages: CoursePackage[] = [
-  threeCoursePackage,
+  completeLearningPackage,
   fourCoursePackage,
 ];
 
