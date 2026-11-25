@@ -55,6 +55,11 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
   const course = getCourse(slug);
   if (!course) notFound();
 
+  // Price not yet set (e.g. "Registration Fee: To Be Announced"): show a
+  // TBA state instead of a $0 checkout.
+  const feeTba =
+    course.price == null && !course.priceOptions && !course.isFree && !course.externalUrl;
+
   const minPrice = course.priceOptions
     ? Math.min(...course.priceOptions.map((o) => o.price))
     : course.price;
@@ -118,7 +123,13 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
 
               {course.status !== "sold-out" && (
                 <div className="flex flex-wrap items-center gap-3">
-                  {course.externalUrl ? (
+                  {feeTba ? (
+                    <>
+                      <span className="text-white/80 text-sm mr-1">Registration fee to be announced</span>
+                      <Link href="/contact" className="btn-primary">Contact Us</Link>
+                      <a href="#curriculum" className="btn-outline-white">View Course Curriculum</a>
+                    </>
+                  ) : course.externalUrl ? (
                     <>
                       <span className="font-heading text-2xl font-bold text-white align-middle mr-1">Free</span>
                       <a href={course.externalUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">Register for Free</a>
@@ -323,6 +334,15 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
 
             {course.status === "sold-out" ? (
               <CourseRequestPanel course={toCourseSummary(course)} />
+            ) : feeTba ? (
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: "#c9a84c" }}>Registration Fee</div>
+                <div className="mb-4"><span className="font-heading text-2xl font-bold text-[#0f2150]">To Be Announced</span></div>
+                <Link href="/contact" className="btn-primary w-full">Contact Us</Link>
+                <p className="mt-3 text-center text-xs text-[#1a1a2e]/55">
+                  Registration opens once the fee is announced.
+                </p>
+              </div>
             ) : course.externalUrl ? (
               <div>
                 <div className="mb-4"><span className="font-heading text-3xl font-bold text-[#0f2150]">Free</span></div>

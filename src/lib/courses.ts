@@ -57,6 +57,69 @@ export type Course = {
 
 export const courses: Course[] = [
   {
+    slug: "where-should-canadian-dentists-invest-2027",
+    title: "Where Should Canadian Dentists Invest in 2027?",
+    navLabel: "Financial Masterclass 2027",
+    subtitle: "Earn Smarter. Keep More. Build Wealth.",
+    instructor: "Fahimeh Sarvestani & Hesam Khasseh",
+    price: null,
+    date: "Saturday, January 16, 2027",
+    time: "2:00 PM – 5:00 PM",
+    duration: "3 hours",
+    location: "ConfiDentist Conference Hall, 265 Rimrock Road, Unit 204, North York, ON",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=265+Rimrock+Road+Unit+204+North+York+ON",
+    ceCredits: "2 CE Credits",
+    status: "upcoming",
+    category: "Practice Management",
+    format: "In Person & Live Online",
+    instructorTitle: "Experior Financial Group",
+    instructorBio:
+      "Fahimeh Sarvestani and Hesam Khasseh are financial professionals with Experior Financial Group. In this masterclass they walk Canadian dentists through corporate investment, business expense optimization, and debt and expansion planning, and participants can connect with them afterwards for personalized consultations.",
+    description:
+      "Clinical excellence is only one part of a successful dental career. Understanding how to manage, protect, and grow your income is equally important.\n\nDesigned specifically for Canadian dentists, this course explores corporate investment opportunities, business expense optimization, debt management, and financial strategies for sustainable growth. Whether you are an associate dentist, an established practice owner, or planning to expand your business, this course will help you make more informed financial decisions in 2027 and beyond.\n\nYou have invested years in building your dental career. Now, discover how to make your income work more effectively toward your financial future. Participants interested in further guidance will have the opportunity to connect with financial professionals for personalized consultations tailored to their investment objectives and business growth plans.\n\nThe course is delivered in English, in person and live online. Organized by CanaDent and sponsored by Experior Financial Group Inc. The registration fee will be announced soon.\n\nThis course is intended for educational purposes and does not constitute individualized financial, investment, tax, or legal advice.",
+    outcomeIntro:
+      "By the end of this course, participants will be better equipped to:",
+    highlights: [
+      "Identify relevant investment and financial growth opportunities.",
+      "Make informed personal and corporate financial decisions.",
+      "Identify opportunities to improve practice profitability.",
+      "Manage business debt and financial commitments more effectively.",
+      "Evaluate the financial implications of practice acquisition and expansion.",
+      "Develop a clearer financial strategy for 2027 and beyond.",
+    ],
+    audience: [
+      "Licensed dentists practicing in Canada",
+      "Incorporated dentists seeking investment opportunities",
+      "Dental practice owners looking to improve profitability",
+      "Associate dentists planning to establish their own practices",
+      "Dentists considering practice acquisition or expansion",
+      "Dentists seeking to build long-term wealth and financial independence",
+    ],
+    modules: [
+      {
+        title: "Leverage Your Corporation’s Investment Opportunities",
+        detail:
+          "Explore investment opportunities through your dental corporation, make better use of retained corporate earnings, explore personal and corporate wealth-building strategies, and evaluate investment opportunities based on your financial goals.",
+      },
+      {
+        title: "Turn Business Expenses into Financial Advantages",
+        detail:
+          "Understand the financial implications of business expenses, explore tax-efficient financial strategies, identify opportunities to optimize operational costs, and discover strategies to improve overall business profitability.",
+      },
+      {
+        title: "Managing Business Debt, Loans & Expansion Costs",
+        detail:
+          "Explore effective debt and loan management strategies, understand financing options for practice acquisition and expansion, evaluate the financial risks of business growth, and improve cash flow management and long-term financial planning.",
+      },
+    ],
+    calendar: {
+      startUtc: "2027-01-16T19:00:00Z",
+      endUtc: "2027-01-16T22:00:00Z",
+      timezone: "America/Toronto",
+    },
+  },
+  {
     slug: "immediate-implant-placement-esthetic-zone",
     title: "Immediate Implant Placement in the Esthetic Zone",
     navLabel: "Immediate Implant Placement",
