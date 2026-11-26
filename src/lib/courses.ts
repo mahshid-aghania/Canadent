@@ -28,6 +28,11 @@ export type Course = {
    * "Register" button instead of the in-app RegistrationPanel.
    */
   externalUrl?: string;
+  /**
+   * Hidden from the course listings (/courses, homepage, announcement bar) but
+   * the detail page stays live for anyone with the direct link.
+   */
+  unlisted?: boolean;
   description: string;
   highlights?: string[];
   schedule?: { day: string; topic: string }[];
@@ -58,6 +63,7 @@ export type Course = {
 export const courses: Course[] = [
   {
     slug: "where-should-canadian-dentists-invest-2027",
+    unlisted: true,
     title: "Where Should Canadian Dentists Invest in 2027?",
     navLabel: "Financial Masterclass 2027",
     subtitle: "Earn Smarter. Keep More. Build Wealth.",
