@@ -196,8 +196,9 @@ export function getCourseGroups(now: Date = new Date()): {
   upcoming: CourseCardModel[];
   past: CourseCardModel[];
 } {
-  const upcoming = sortUpcoming(courses.filter((c) => isUpcoming(c, now)));
-  const past = sortPast(courses.filter((c) => !isUpcoming(c, now)));
+  const listed = courses.filter((c) => !c.unlisted);
+  const upcoming = sortUpcoming(listed.filter((c) => isUpcoming(c, now)));
+  const past = sortPast(listed.filter((c) => !isUpcoming(c, now)));
   return {
     upcoming: upcoming.map((c) => toCourseCard(c, now)),
     past: past.map((c) => toCourseCard(c, now)),
