@@ -78,7 +78,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   aria-current={active ? "page" : undefined}
-                  className={`px-3 py-2 text-sm font-medium rounded-md whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                  className={`px-3 py-2 text-base font-bold rounded-md whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                     active
                       ? "text-[#1b3a8a] bg-[#1b3a8a]/10"
                       : "text-[#1b3a8a]/85 hover:text-[#1b3a8a] hover:bg-[#1b3a8a]/5"
@@ -127,7 +127,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   aria-current={active ? "page" : undefined}
-                  className={`block px-3 py-3 text-sm font-medium rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] ${
+                  className={`block px-3 py-3 text-base font-bold rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] ${
                     active
                       ? "text-[#1b3a8a] bg-[#1b3a8a]/10"
                       : "text-[#1b3a8a]/85 hover:text-[#1b3a8a] hover:bg-[#1b3a8a]/5"
