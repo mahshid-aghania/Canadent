@@ -54,7 +54,7 @@ export default function ContactPage() {
                     label: "Address",
                     content: (
                       <span className="text-sm text-[#1a1a2e]/60">
-                        265 Rimrock Road, Units 209<br />
+                        265 Rimrock Road, Unit 204<br />
                         North York, ON M3J3A6, Canada
                       </span>
                     ),

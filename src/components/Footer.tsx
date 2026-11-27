@@ -89,7 +89,7 @@ export default function Footer() {
             <li className="flex items-start gap-3">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-[#c9a84c]" />
               <span className="text-sm text-white/60">
-                265 Rimrock Road, Units 209<br />
+                265 Rimrock Road, Unit 204<br />
                 North York, ON M3J3A6, Canada
               </span>
             </li>

@@ -25,7 +25,7 @@ export function AccountantNavLink({ variant = "icon" }: { variant?: "icon" | "me
     return (
       <Link
         href="/accountant"
-        className="block px-3 py-3 text-sm font-medium rounded-md text-[#c9a84c] hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+        className="block px-3 py-3 text-sm font-medium rounded-md text-[#c9a84c] hover:bg-[#1b3a8a]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
       >
         Accountant Dashboard
       </Link>
@@ -35,7 +35,7 @@ export function AccountantNavLink({ variant = "icon" }: { variant?: "icon" | "me
   return (
     <Link
       href="/accountant"
-      className="hidden lg:flex text-[#c9a84c] hover:text-white transition-colors"
+      className="hidden lg:flex text-[#c9a84c] hover:text-[#1b3a8a] transition-colors"
       aria-label="Accountant Dashboard"
       title="Accountant Dashboard"
     >

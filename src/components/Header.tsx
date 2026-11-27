@@ -55,7 +55,7 @@ export default function Header() {
       </div>
 
       {/* Main nav */}
-      <div style={{ background: "#1b3a8a" }} className="px-4 shadow-md">
+      <div style={{ background: "#ffffff" }} className="px-4 shadow-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -78,10 +78,10 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   aria-current={active ? "page" : undefined}
-                  className={`px-3 py-2 text-sm font-medium rounded-md whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1b3a8a] ${
+                  className={`px-3 py-2 text-sm font-medium rounded-md whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                     active
-                      ? "text-white bg-white/15"
-                      : "text-white/85 hover:text-white hover:bg-white/10"
+                      ? "text-[#1b3a8a] bg-[#1b3a8a]/10"
+                      : "text-[#1b3a8a]/85 hover:text-[#1b3a8a] hover:bg-[#1b3a8a]/5"
                   }`}
                 >
                   {link.label}
@@ -95,20 +95,20 @@ export default function Header() {
             <AccountantNavLink variant="icon" />
             <Link
               href="/my-account"
-              className="hidden lg:flex text-white/70 hover:text-white transition-colors"
+              className="hidden lg:flex text-[#1b3a8a]/70 hover:text-[#1b3a8a] transition-colors"
               aria-label="My Account"
             >
               <User className="h-5 w-5" />
             </Link>
             <Link
               href="/cart"
-              className="hidden lg:flex text-white/70 hover:text-white transition-colors"
+              className="hidden lg:flex text-[#1b3a8a]/70 hover:text-[#1b3a8a] transition-colors"
               aria-label="Cart"
             >
               <ShoppingCart className="h-5 w-5" />
             </Link>
             <button
-              className="lg:hidden text-white"
+              className="lg:hidden text-[#1b3a8a]"
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
             >
@@ -119,7 +119,7 @@ export default function Header() {
 
         {/* Mobile nav */}
         {open && (
-          <div className="lg:hidden border-t border-white/10 pb-4">
+          <div className="lg:hidden border-t border-[#1b3a8a]/10 pb-4">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
@@ -129,8 +129,8 @@ export default function Header() {
                   aria-current={active ? "page" : undefined}
                   className={`block px-3 py-3 text-sm font-medium rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] ${
                     active
-                      ? "text-white bg-white/15"
-                      : "text-white/85 hover:text-white hover:bg-white/10"
+                      ? "text-[#1b3a8a] bg-[#1b3a8a]/10"
+                      : "text-[#1b3a8a]/85 hover:text-[#1b3a8a] hover:bg-[#1b3a8a]/5"
                   }`}
                   onClick={() => setOpen(false)}
                 >
